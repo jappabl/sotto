@@ -185,22 +185,42 @@ function registerIpc(ctx) {
   ipcMain.handle('meet:set-template', (_e, { id, template }) => meetings.updateMeta(id, { template }));
   ipcMain.handle('meet:remove', (_e, id) => meetings.remove(id));
   ipcMain.handle('meet:enhance', async (e, id) => {
-    const data = meetings.read(id);
+    let data = meetings.read(id);
     if (!data) throw new Error('meeting-not-found');
     if (!enhancer.available()) throw new Error('llm-unavailable');
-    const send = (p) => {
+    const send = (stage, p) => {
       if (windows.dashboard && !windows.dashboard.isDestroyed()) {
-        windows.dashboard.webContents.send('meet:enhance-progress', { id, progress: p });
+        windows.dashboard.webContents.send('meet:enhance-progress', { id, stage, progress: p });
       }
     };
-    const { enhanced, digests } = await enhancer.enhance({
+    // Stage 1: accuracy re-pass over the kept audio with the best installed
+    // whisper model (runs once; chunks are deleted afterwards).
+    const best = ['ggml-large-v3-turbo-q5_0.bin', 'ggml-small.bin']
+      .find((m) => transcriber.hasModel(m));
+    if (best && !data.meta.repassed) {
+      send('Improving transcript…', 0);
+      const improved = await meetings.repass(id, {
+        model: best,
+        onProgress: (p) => send('Improving transcript…', p * 0.4),
+      }).catch(() => false);
+      if (improved) data = meetings.read(id);
+    }
+    // Stages 2-3: digest + enhance on the local LLM.
+    const { enhanced, annotated, digests } = await enhancer.enhance({
       notes: data.notes,
       segments: data.transcript,
       template: data.meta.template,
       title: data.meta.title,
-    }, send);
+    }, (p) => send(p < 0.95 ? 'Reading the conversation…' : 'Enhancing your notes…', 0.4 + p * 0.6));
     meetings.saveEnhanced(id, enhanced);
-    meetings.updateMeta(id, { state: 'enhanced', digests });
+    meetings.saveAnnotated(id, annotated);
+    const patch = { state: 'enhanced', digests };
+    // Ad-hoc meetings earn a real title from their content.
+    if (/(morning|afternoon|evening) meeting$/.test(data.meta.title)) {
+      const t = await enhancer.suggestTitle(digests);
+      if (t) patch.title = t;
+    }
+    meetings.updateMeta(id, patch);
     return { enhanced };
   });
   ipcMain.handle('meet:ask', async (_e, { id, question }) => {

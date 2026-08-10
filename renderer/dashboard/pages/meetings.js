@@ -186,10 +186,12 @@ async function renderMeeting(container, id) {
   }
 }
 
+let showTranscript = false; // hidden by default: notes are the product
+
 function renderLiveBody(container, id, data) {
   const notes = el('textarea', {
     class: 'meet-notes',
-    placeholder: 'Type half-thoughts. "pricing pushback", "follow up re: API" — Sotto completes them later from what was said.',
+    placeholder: 'Type rough cues, typos and all. "pricing pushback", "follow up re: API". Sotto completes them afterwards from what was said.',
   });
   notes.value = data.notes;
   let saveTimer = null;
@@ -205,18 +207,34 @@ function renderLiveBody(container, id, data) {
   const meters = el('div', { class: 'meet-meters' },
     meter('You', 'mic'), meter('Them', 'sys'));
 
-  container.append(
-    el('div', { class: 'meet-live' },
-      el('div', { class: 'meet-pane' },
-        el('div', { class: 'meet-pane-label' }, 'MY NOTES'),
-        notes,
-      ),
-      el('div', { class: 'meet-pane meet-pane-feed' },
-        el('div', { class: 'meet-pane-label' }, 'LIVE TRANSCRIPT', meters),
-        feed,
-      ),
+  const layout = el('div', { class: 'meet-live' + (showTranscript ? '' : ' solo') });
+  const toggle = el('button', {
+    class: 'btn-ghost',
+    style: 'font-size:12px;padding:3px 8px',
+    onclick: () => {
+      showTranscript = !showTranscript;
+      renderMeeting(container, id);
+    },
+  }, showTranscript ? 'Hide transcript' : 'Show transcript');
+
+  layout.append(
+    el('div', { class: 'meet-pane' },
+      el('div', { class: 'meet-pane-label' }, 'MY NOTES',
+        el('span', { style: 'display:flex;gap:10px;align-items:center' }, meters, toggle)),
+      notes,
     ),
   );
+  if (showTranscript) {
+    layout.append(
+      el('div', { class: 'meet-pane meet-pane-feed' },
+        el('div', { class: 'meet-pane-label' }, 'LIVE TRANSCRIPT',
+          el('span', { style: 'font-weight:500;letter-spacing:0;text-transform:none;color:var(--ink-faint)' },
+            'Make sure everyone’s okay with transcription')),
+        feed,
+      ),
+    );
+  }
+  container.append(layout);
   notes.focus();
   feed.scrollTop = feed.scrollHeight;
 
@@ -291,7 +309,15 @@ function renderEndedBody(container, id, data) {
     body.replaceChildren();
     if (active === 'Enhanced') {
       if (data.enhanced) {
-        body.append(el('div', { class: 'meet-rendered', html: renderMarkdown(data.enhanced) }));
+        if (data.annotated && data.annotated.length) {
+          body.append(
+            el('div', { class: 'meet-provenance-hint' },
+              'Black is what you wrote. Gray is what Sotto heard. Hover a gray line and click “source” to see the moment it came from.'),
+            renderAnnotated(data.annotated, data.transcript),
+          );
+        } else {
+          body.append(el('div', { class: 'meet-rendered', html: renderMarkdown(data.enhanced) }));
+        }
       } else {
         body.append(el('div', { class: 'empty-state' },
           el('div', { class: 'serif-display' }, 'Not enhanced yet.'),
@@ -323,12 +349,17 @@ function renderEndedBody(container, id, data) {
 
   // ---- ask anything ----
   const q = el('input', { class: 'meet-ask-input', placeholder: 'Ask about this meeting… "what did we decide on pricing?"' });
-  const askBtn = el('button', { class: 'btn-dark', onclick: ask }, 'Ask');
+  const askBtn = el('button', { class: 'btn-dark', onclick: () => ask() }, 'Ask');
   const answers = el('div', { class: 'meet-answers' });
-  async function ask() {
-    const question = q.value.trim();
+  const chips = el('div', { class: 'meet-chips' },
+    el('button', { class: 'meet-chip-btn', onclick: () => ask('List every action item with its owner.') }, 'List actions'),
+    el('button', { class: 'meet-chip-btn', onclick: () => ask('Give me a three sentence summary of this meeting.') }, 'TL;DR'),
+    el('button', { class: 'meet-chip-btn', onclick: () => ask('Draft a short follow-up message to the other participants covering what we agreed and the next steps.') }, 'Draft follow-up'),
+  );
+  async function ask(preset) {
+    const question = preset || q.value.trim();
     if (!question) return;
-    q.value = '';
+    if (!preset) q.value = '';
     const row = el('div', { class: 'meet-answer' },
       el('div', { class: 'meet-answer-q' }, question),
       el('div', { class: 'meet-answer-a' }, 'Thinking…'));
@@ -342,25 +373,77 @@ function renderEndedBody(container, id, data) {
   }
   q.addEventListener('keydown', (e) => { if (e.key === 'Enter') ask(); });
 
-  container.append(bar, body,
+  container.append(bar, body, chips,
     el('div', { class: 'meet-ask' }, q, askBtn),
+    el('div', { class: 'meet-chat-footer' }, 'Answers come from this meeting only, on this Mac. Double-check important details.'),
     answers);
+}
+
+// Provenance-aware rendering: per-line origin colors + source magnifier.
+function renderAnnotated(annotated, transcript) {
+  const root = el('div', { class: 'meet-rendered' });
+  let list = null;
+  for (const line of annotated) {
+    const raw = line.text;
+    const h = raw.match(/^(#{1,3})\s+(.*)/);
+    const li = raw.match(/^\s*[-*]\s+(\[[ x]\]\s+)?(.*)/);
+    const cls = 'meet-line-' + (line.origin === 'user' ? 'user' : 'ai');
+    let node;
+    if (h) {
+      list = null;
+      node = el('h' + (h[1].length + 1), { class: cls, html: inline(escapeText(h[2])) });
+      root.append(node);
+    } else if (li) {
+      if (!list) { list = el('ul'); root.append(list); }
+      const checked = li[1] ? (li[1].includes('x') ? '☑ ' : '☐ ') : '';
+      node = el('li', { class: cls, html: checked + inline(escapeText(li[2])) });
+      list.append(node);
+    } else if (raw.trim() === '') {
+      list = null;
+      continue;
+    } else {
+      list = null;
+      node = el('p', { class: cls, html: inline(escapeText(raw)) });
+      root.append(node);
+    }
+    if (line.origin === 'ai' && line.src && transcript && transcript.length) {
+      const btn = el('span', { class: 'meet-src-btn' }, '🔍 source');
+      let pop = null;
+      btn.addEventListener('click', () => {
+        if (pop) { pop.remove(); pop = null; return; }
+        const from = line.src.t0 - 20;
+        const to = line.src.t1 + 20;
+        const segs = transcript.filter((s) => s.t1 >= from && s.t0 <= to).slice(0, 6);
+        pop = el('div', { class: 'meet-src-pop' },
+          segs.length ? segs.map((s) => segmentRow(s)) : el('span', {}, 'Source moment not found.'));
+        node.after(pop);
+      });
+      node.append(btn);
+    }
+  }
+  return root;
+}
+
+function escapeText(s) {
+  return String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
 }
 
 async function runEnhance(container, id) {
   const scrim = el('div', { class: 'scrim' },
     el('div', { class: 'modal enhance-modal' },
       el('h2', { class: 'serif-display', style: 'font-size:26px;margin-bottom:8px' }, 'Enhancing your notes.'),
-      el('p', { style: 'color:var(--ink-soft);margin-bottom:18px' },
-        'Reading the transcript and completing your notes — all on this Mac.'),
+      el('p', { style: 'color:var(--ink-soft);margin-bottom:18px', id: 'enh-stage' },
+        'Getting started…'),
       el('div', { class: 'dl-track', style: 'width:100%' },
         el('div', { class: 'dl-fill', id: 'enh-fill' })),
     ));
   document.getElementById('modal-root').append(scrim);
-  const un = window.sotto.on('meet:enhance-progress', ({ id: mid, progress }) => {
+  const un = window.sotto.on('meet:enhance-progress', ({ id: mid, stage, progress }) => {
     if (mid !== id) return;
     const f = document.getElementById('enh-fill');
     if (f) f.style.right = `${Math.max(0, 100 - progress * 100)}%`;
+    const s = document.getElementById('enh-stage');
+    if (s && stage) s.textContent = stage + ' All on this Mac.';
   });
   try {
     await window.sotto.invoke('meet:enhance', id);

@@ -71,7 +71,16 @@ function boot() {
     const sysaudio = new SystemAudio({ log });
     const recorder = new Recorder({ store, hotkeys, transcriber, inserter, polisher, sysaudio, log });
     const meetings = new MeetingManager({ baseDir: userData, transcriber, log });
+    meetings.getDictionary = () => store.dictionary;
+    meetings.sweepOrphans();
+    recorder.meetingsRef = meetings;
     const enhancer = new Enhancer({ polisher, log });
+
+    // First-run demo meeting: lets you try Enhance before your first real call.
+    if (meetings.list().length === 0 && !store.getSettings().demoSeeded) {
+      try { seedDemoMeeting(meetings); } catch (e) { log('demo seed failed: ' + e.message); }
+      store.setSettings({ demoSeeded: true });
+    }
 
     const settings = store.getSettings();
     hotkeys.setHotkey(settings.hotkey);
@@ -227,6 +236,31 @@ function boot() {
     if (!global.__sottoQuitting) e?.preventDefault?.();
     else app.quit();
   });
+}
+
+// A canned first-run meeting so Enhance can be tried with zero real calls.
+function seedDemoMeeting(meetings) {
+  const dir = path.join(meetings.baseDir, 'demo1');
+  fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(path.join(dir, 'meta.json'), JSON.stringify({
+    id: 'demo1', title: 'Demo: website redesign kickoff',
+    startedAt: Date.now() - 3600000, endedAt: Date.now() - 3300000,
+    state: 'ended', template: 'auto', appHint: 'Demo', segments: 8,
+  }, null, 2));
+  fs.writeFileSync(path.join(dir, 'notes.md'),
+    '- launch date??\n- maya owns hero design\n- budget 12k approved\n- competitor uses video bg, we wont');
+  const segs = [
+    { t0: 0, t1: 14, who: 'them', text: 'Thanks for making time. The main thing today is scoping the website redesign before the June board meeting.' },
+    { t0: 14, t1: 26, who: 'me', text: 'Right. My big question is whether we can realistically launch before the conference on June 12th.' },
+    { t0: 26, t1: 44, who: 'them', text: 'If we freeze scope this week, yes. Design needs three weeks, then two weeks of build. That puts launch around June 9th.' },
+    { t0: 44, t1: 58, who: 'them', text: 'Maya said she can own the hero section design herself, which saves us the agency fee there.' },
+    { t0: 58, t1: 74, who: 'me', text: 'And finance signed off on the twelve thousand dollar budget yesterday, so we are covered for the rest.' },
+    { t0: 74, t1: 92, who: 'them', text: 'One more thing. I looked at three competitor sites. They all use full screen video backgrounds now. I honestly think we should not follow that.' },
+    { t0: 92, t1: 106, who: 'me', text: 'Agreed, it kills load time. Static hero with strong typography instead.' },
+    { t0: 106, t1: 122, who: 'them', text: 'Okay. So next steps. I will write the scope doc by Friday, Maya starts design Monday, and we regroup in two weeks.' },
+  ];
+  fs.writeFileSync(path.join(dir, 'transcript.jsonl'),
+    segs.map((s) => JSON.stringify(s)).join('\n') + '\n');
 }
 
 // Screenshot autopilot for the visual smoke test: drives every dashboard page,

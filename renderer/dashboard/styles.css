@@ -730,6 +730,54 @@ html, body { height: 100%; overflow: hidden; background: var(--cream); }
   height: calc(100vh - 250px);
   min-height: 320px;
 }
+.meet-live.solo { grid-template-columns: 1fr; }
+
+/* provenance: your ink is black, the machine's is gray */
+.meet-line-user { color: var(--ink); }
+.meet-line-ai { color: var(--ink-soft); }
+.meet-src-btn {
+  opacity: 0;
+  margin-left: 8px;
+  font-size: 11px;
+  cursor: pointer;
+  color: var(--ink-faint);
+  border-radius: 5px;
+  padding: 0 5px;
+  transition: opacity 0.12s ease;
+}
+.meet-rendered li:hover .meet-src-btn,
+.meet-rendered p:hover .meet-src-btn,
+.meet-rendered h2:hover .meet-src-btn,
+.meet-rendered h3:hover .meet-src-btn { opacity: 1; }
+.meet-src-btn:hover { background: var(--card); color: var(--ink); }
+.meet-src-pop {
+  background: #fafaf7;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin: 6px 0 10px;
+  font-size: 12.5px;
+}
+.meet-src-pop .meet-seg { margin: 4px 0; }
+.meet-provenance-hint {
+  font-size: 12px;
+  color: var(--ink-faint);
+  margin: 4px 0 14px;
+}
+.meet-chips { display: flex; gap: 8px; margin-top: 14px; }
+.meet-chip-btn {
+  background: var(--card);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.meet-chip-btn:hover { background: var(--card-hover); }
+.meet-chat-footer {
+  font-size: 11.5px;
+  color: var(--ink-faint);
+  margin-top: 8px;
+}
 .meet-pane {
   display: flex;
   flex-direction: column;

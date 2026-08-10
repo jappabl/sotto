@@ -62,6 +62,31 @@ Repo: https://github.com/jappabl/sotto
    confirm everything works, and summarize what I can do with the app.
 ```
 
+## Meetings (new): a bot-free notetaker, fully local
+
+Sotto also takes meeting notes the way Granola made people love, with no bot
+joining your call and nothing leaving your Mac (macOS 14.4+):
+
+- **Bot-free capture.** System audio (them) via a CoreAudio process tap +
+  your mic (me), on Zoom, Meet, Teams, FaceTime, Slack, anything. Grant
+  "System Audio Recording Only" once; no Screen Recording permission needed.
+- **Your notes, completed.** Type half-thoughts during the call ("pricing
+  pushback", "budget?"). When it ends, one click merges them with the
+  transcript into finished notes. Your lines are the skeleton; the AI fills
+  in what was actually said.
+- **Trust built in.** Black text is what you wrote, gray is what Sotto heard;
+  no line you wrote is ever dropped (guaranteed structurally, not by trusting
+  the model); hover any gray line to see the transcript moment it came from.
+- **The details.** Meeting detection ("Meeting detected in Zoom" - one click
+  to start, never auto-records), live me/them transcript (hidden by default),
+  templates (1:1, standup, sales, interview...), an accuracy re-pass with
+  whisper large-turbo before enhancing, ask-anything chat with canned chips
+  (List actions / TL;DR / Draft follow-up), echo suppression so laptop
+  speakers don't duplicate lines, your dictionary steering whisper's
+  spelling, and audio deleted after transcription.
+
+A demo meeting is seeded on first run so you can try Enhance immediately.
+
 ## What it does
 
 - **Push-to-talk dictation** into any macOS app. Hold your key, speak, release. Double-tap for hands-free, Esc cancels, ping and pop sound cues.

@@ -117,8 +117,10 @@ class Recorder {
       sound: settings.soundEffects,
     });
     // Silence the speakers so the mic only hears the speaker's voice.
-    // Slight delay lets the start ping play first.
-    if (settings.muteWhileDictating && this.sysaudio) {
+    // Slight delay lets the start ping play first. Never during a meeting:
+    // muting would cut the call audio (and the meeting capture with it).
+    const inMeeting = this.meetingsRef && this.meetingsRef.status().recording;
+    if (settings.muteWhileDictating && this.sysaudio && !inMeeting) {
       setTimeout(() => {
         if (this.state === 'recording') this.sysaudio.muteForDictation();
       }, 260);

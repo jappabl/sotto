@@ -64,11 +64,13 @@ class MeetingManager {
       const meta = JSON.parse(fs.readFileSync(path.join(dir, 'meta.json'), 'utf8'));
       const notes = readOr(path.join(dir, 'notes.md'), '');
       const enhanced = readOr(path.join(dir, 'enhanced.md'), '');
+      let annotated = null;
+      try { annotated = JSON.parse(fs.readFileSync(path.join(dir, 'enhanced.json'), 'utf8')); } catch { /* optional */ }
       const transcript = readOr(path.join(dir, 'transcript.jsonl'), '')
         .split('\n').filter(Boolean).map((l) => { try { return JSON.parse(l); } catch { return null; } })
         .filter(Boolean)
         .sort((a, b) => a.t0 - b.t0);
-      return { meta, notes, enhanced, transcript };
+      return { meta, notes, enhanced, annotated, transcript };
     } catch {
       return null;
     }
@@ -85,6 +87,13 @@ class MeetingManager {
     const dir = path.join(this.baseDir, sanitize(id));
     if (!fs.existsSync(dir)) return false;
     fs.writeFileSync(path.join(dir, 'enhanced.md'), String(enhanced ?? ''));
+    return true;
+  }
+
+  saveAnnotated(id, annotated) {
+    const dir = path.join(this.baseDir, sanitize(id));
+    if (!fs.existsSync(dir)) return false;
+    fs.writeFileSync(path.join(dir, 'enhanced.json'), JSON.stringify(annotated || []));
     return true;
   }
 
@@ -173,6 +182,11 @@ class MeetingManager {
         this._emit('meeting:level', { id: this.active.id, mic: msg.mic || 0, sys: msg.sys || 0 });
         break;
       case 'chunk':
+        // Index every chunk so the post-meeting accuracy re-pass can replay
+        // them with a bigger model.
+        try {
+          fs.appendFileSync(path.join(this.active.chunksDir, 'index.jsonl'), JSON.stringify(msg) + '\n');
+        } catch { /* best-effort */ }
         this._queueChunk(msg);
         break;
       case 'error':
@@ -197,13 +211,14 @@ class MeetingManager {
     const rms = wavRms(fs.readFileSync(wavPath));
     if (rms < 0.0015) {
       fs.unlinkSync(wavPath);
+      if (msg.kind === 'sys') this._trackSilentSys(session);
       return; // silent chunk — nothing was said
     }
     const model = this.transcriber.hasModel('ggml-base.bin') ? 'ggml-base.bin'
       : this.transcriber.listModels().find((m) => m.installed)?.name;
     if (!model) return;
     const text = await this._whisperCli(wavPath, model);
-    fs.unlinkSync(wavPath);
+    // Chunks are kept until the meeting ends: the accuracy re-pass reuses them.
     const clean = String(text || '').trim();
     if (!clean || isLikelyHallucination(clean, rms)) return;
     const seg = {
@@ -211,23 +226,68 @@ class MeetingManager {
       t1: msg.t1,
       who: msg.kind === 'mic' ? 'me' : 'them',
       text: clean,
+      chunk: path.basename(msg.file),
     };
+    // Speaker echo: laptop speakers leak "them" into the mic channel.
+    const { isEcho } = require('./provenance');
+    const recent = this._recentSegs(session);
+    if (isEcho(seg, recent)) {
+      this.log('dropped echo segment: ' + clean.slice(0, 40));
+      return;
+    }
+    recent.push(seg);
+    if (recent.length > 8) recent.shift();
     fs.appendFileSync(path.join(session.dir, 'transcript.jsonl'), JSON.stringify(seg) + '\n');
     session.meta.segments += 1;
     this._emit('meeting:segment', { id: session.id, seg });
   }
 
+  _recentSegs(session) {
+    if (!session._recent) session._recent = [];
+    return session._recent;
+  }
+
+  // Repeated silent system chunks while the meeting runs = the permission is
+  // "granted" but macOS is delivering zeros. Tell the user once.
+  _trackSilentSys(session) {
+    session._silentSys = (session._silentSys || 0) + 1;
+    if (session._silentSys === 3 && !session._warnedSilent) {
+      session._warnedSilent = true;
+      this._emit('meeting:warning', {
+        id: session.id,
+        message: 'Not hearing the call — check System Settings → Privacy → Screen & System Audio Recording.',
+      });
+    }
+  }
+
   _whisperCli(wavPath, model) {
     return new Promise((resolve, reject) => {
       if (!this.transcriber.cliBin) return reject(new Error('whisper-cli missing'));
-      execFile(this.transcriber.cliBin, [
+      const args = [
         '-m', this.transcriber.modelPath(model),
         '-f', wavPath, '-nt', '--language', 'auto',
         '-t', String(Math.max(2, Math.min(4, os.cpus().length - 4))),
-      ], { timeout: 120000, maxBuffer: 4 * 1024 * 1024 }, (err, stdout) => {
-        if (err) reject(err); else resolve(String(stdout));
-      });
+      ];
+      // Custom vocabulary: the user's dictionary steers whisper's spelling.
+      const vocab = this._vocabPrompt();
+      if (vocab) args.push('--prompt', vocab);
+      execFile(this.transcriber.cliBin, args,
+        { timeout: 120000, maxBuffer: 4 * 1024 * 1024 }, (err, stdout) => {
+          if (err) reject(err); else resolve(String(stdout));
+        });
     });
+  }
+
+  _vocabPrompt() {
+    if (!this.getDictionary) return '';
+    try {
+      const words = this.getDictionary()
+        .map((d) => d.replacement || d.word)
+        .filter(Boolean).slice(0, 40);
+      return words.length ? 'Vocabulary: ' + words.join(', ') + '.' : '';
+    } catch {
+      return '';
+    }
   }
 
   // Stop recording; transcription of queued chunks continues, then finalize.
@@ -248,7 +308,8 @@ class MeetingManager {
     if (!session) return { ok: false };
     this.active = null;
     try { session.proc.kill(); } catch { /* gone */ }
-    fs.rmSync(session.chunksDir, { recursive: true, force: true });
+    // Chunk WAVs are KEPT until enhancement's accuracy re-pass consumes them
+    // (or the startup sweep expires them).
     const meta = this.updateMeta(session.id, {
       endedAt: Date.now(),
       state: 'ended',
@@ -257,6 +318,87 @@ class MeetingManager {
     this.log(`meeting ended (${reason}): ${session.id}, ${session.meta.segments} segments`);
     this._emit('meeting:ended', { id: session.id, meta });
     return { ok: true, id: session.id, meta };
+  }
+
+  // Post-meeting accuracy re-pass: replay kept chunks through a stronger
+  // model, rebuild the transcript, then delete the audio.
+  async repass(id, { model, onProgress = () => {} } = {}) {
+    const dir = path.join(this.baseDir, sanitize(id));
+    const chunksDir = path.join(dir, 'chunks');
+    const indexPath = path.join(chunksDir, 'index.jsonl');
+    if (!fs.existsSync(indexPath)) return false;
+    const entries = fs.readFileSync(indexPath, 'utf8').split('\n').filter(Boolean)
+      .map((l) => { try { return JSON.parse(l); } catch { return null; } })
+      .filter((e) => e && fs.existsSync(path.join(chunksDir, path.basename(e.file))));
+    if (!entries.length) return false;
+
+    const { wavRms, isLikelyHallucination } = require('./formatter');
+    const { isEcho } = require('./provenance');
+    const segs = [];
+    const recent = [];
+    let done = 0;
+    // Time-ordered replay so echo suppression sees neighbors correctly.
+    entries.sort((a, b) => a.t0 - b.t0);
+    for (const e of entries) {
+      const wavPath = path.join(chunksDir, path.basename(e.file));
+      done += 1;
+      const rms = wavRms(fs.readFileSync(wavPath));
+      if (rms >= 0.0015) {
+        try {
+          const text = String(await this._whisperCliModel(wavPath, model)).trim();
+          if (text && !isLikelyHallucination(text, rms)) {
+            const seg = { t0: e.t0, t1: e.t1, who: e.kind === 'mic' ? 'me' : 'them', text };
+            if (!isEcho(seg, recent)) {
+              segs.push(seg);
+              recent.push(seg);
+              if (recent.length > 8) recent.shift();
+            }
+          }
+        } catch (err) {
+          this.log('repass chunk failed: ' + err.message);
+        }
+      }
+      onProgress(done / entries.length);
+    }
+    if (segs.length) {
+      const tmp = path.join(dir, 'transcript.jsonl.tmp');
+      fs.writeFileSync(tmp, segs.map((s) => JSON.stringify(s)).join('\n') + '\n');
+      fs.renameSync(tmp, path.join(dir, 'transcript.jsonl'));
+      this.updateMeta(id, { segments: segs.length, repassed: model });
+    }
+    fs.rmSync(chunksDir, { recursive: true, force: true });
+    return segs.length > 0;
+  }
+
+  _whisperCliModel(wavPath, model) {
+    return new Promise((resolve, reject) => {
+      const args = [
+        '-m', this.transcriber.modelPath(model),
+        '-f', wavPath, '-nt', '--language', 'auto',
+        '-t', String(Math.max(2, Math.min(6, os.cpus().length - 2))),
+      ];
+      const vocab = this._vocabPrompt();
+      if (vocab) args.push('--prompt', vocab);
+      execFile(this.transcriber.cliBin, args,
+        { timeout: 180000, maxBuffer: 4 * 1024 * 1024 }, (err, stdout) => {
+          if (err) reject(err); else resolve(String(stdout));
+        });
+    });
+  }
+
+  // Startup hygiene: drop orphaned chunk audio from meetings that ended more
+  // than 48 h ago (crash recovery / disk safety).
+  sweepOrphans(now = Date.now()) {
+    for (const meta of this.list()) {
+      if (meta.state === 'recording') {
+        // A "recording" meeting at boot means we crashed mid-capture.
+        this.updateMeta(meta.id, { state: 'ended', endedAt: meta.endedAt || now });
+      }
+      const chunksDir = path.join(this.baseDir, sanitize(meta.id), 'chunks');
+      if (fs.existsSync(chunksDir) && (meta.endedAt || 0) < now - 48 * 3600000) {
+        fs.rmSync(chunksDir, { recursive: true, force: true });
+      }
+    }
   }
 
   status() {
