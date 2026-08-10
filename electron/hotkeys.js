@@ -162,6 +162,21 @@ class Hotkeys {
     });
   }
 
+  queryContext() {
+    return new Promise((resolve) => {
+      if (!this._ctxWaiters) this._ctxWaiters = [];
+      this._ctxWaiters.push(resolve);
+      this.send('ctx?');
+      setTimeout(() => {
+        const i = this._ctxWaiters.indexOf(resolve);
+        if (i >= 0) {
+          this._ctxWaiters.splice(i, 1);
+          resolve({ ok: false, before: '', after: '', selected: '' });
+        }
+      }, 1200);
+    });
+  }
+
   _handleEvent(msg) {
     switch (msg.e) {
       case 'ready':
@@ -178,6 +193,8 @@ class Hotkeys {
         this._fire('axStatus', msg.trusted);
         break;
       case 'mods': {
+        this.lastMods = { keys: msg.keys || [], fn: !!msg.fn };
+        this._fire('mods', this.lastMods);
         const satisfied = specSatisfied(this.spec, { keys: msg.keys || [], fn: !!msg.fn });
         if (satisfied && !this.active) {
           this.active = true;
@@ -206,6 +223,18 @@ class Hotkeys {
       case 'front': {
         const w = this._frontWaiters.shift();
         if (w) w({ name: msg.name || '', bundle: msg.bundle || '' });
+        break;
+      }
+      case 'ctx': {
+        const w = (this._ctxWaiters || []).shift();
+        if (w) {
+          w({
+            ok: !!msg.ok,
+            before: msg.before || '',
+            after: msg.after || '',
+            selected: msg.selected || '',
+          });
+        }
         break;
       }
       case 'tap_reenabled':

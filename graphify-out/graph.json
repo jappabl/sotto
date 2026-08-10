@@ -9,7 +9,7 @@
       "source_file": "renderer/dashboard/icons.js",
       "source_location": "L1",
       "id": "renderer_dashboard_icons_js",
-      "community": 13,
+      "community": 15,
       "norm_label": "icons.js"
     },
     {
@@ -18,7 +18,7 @@
       "source_file": "renderer/dashboard/icons.js",
       "source_location": "L3",
       "id": "dashboard_icons_s",
-      "community": 13,
+      "community": 15,
       "norm_label": "s()"
     },
     {
@@ -72,7 +72,7 @@
       "source_file": "renderer/dashboard/ui.js",
       "source_location": "L53",
       "id": "dashboard_ui_timelabel",
-      "community": 6,
+      "community": 7,
       "norm_label": "timelabel()"
     },
     {
@@ -81,7 +81,7 @@
       "source_file": "renderer/dashboard/ui.js",
       "source_location": "L57",
       "id": "dashboard_ui_daylabel",
-      "community": 6,
+      "community": 7,
       "norm_label": "daylabel()"
     },
     {
@@ -90,7 +90,7 @@
       "source_file": "renderer/dashboard/ui.js",
       "source_location": "L67",
       "id": "dashboard_ui_abbreviatecount",
-      "community": 6,
+      "community": 7,
       "norm_label": "abbreviatecount()"
     },
     {
@@ -162,7 +162,7 @@
       "source_file": "renderer/dashboard/pages/home.js",
       "source_location": "L1",
       "id": "renderer_dashboard_pages_home_js",
-      "community": 6,
+      "community": 7,
       "norm_label": "home.js"
     },
     {
@@ -171,7 +171,7 @@
       "source_file": "renderer/dashboard/pages/home.js",
       "source_location": "L8",
       "id": "pages_home_renderhome",
-      "community": 6,
+      "community": 7,
       "norm_label": "renderhome()"
     },
     {
@@ -180,7 +180,7 @@
       "source_file": "renderer/dashboard/pages/home.js",
       "source_location": "L99",
       "id": "pages_home_stattext",
-      "community": 6,
+      "community": 7,
       "norm_label": "stattext()"
     },
     {
@@ -189,7 +189,7 @@
       "source_file": "renderer/dashboard/pages/home.js",
       "source_location": "L103",
       "id": "pages_home_activityrow",
-      "community": 6,
+      "community": 7,
       "norm_label": "activityrow()"
     },
     {
@@ -216,7 +216,7 @@
       "source_file": "renderer/dashboard/pages/insights.js",
       "source_location": "L1",
       "id": "renderer_dashboard_pages_insights_js",
-      "community": 6,
+      "community": 7,
       "norm_label": "insights.js"
     },
     {
@@ -225,7 +225,7 @@
       "source_file": "renderer/dashboard/pages/insights.js",
       "source_location": "L5",
       "id": "pages_insights_renderinsights",
-      "community": 6,
+      "community": 7,
       "norm_label": "renderinsights()"
     },
     {
@@ -234,7 +234,7 @@
       "source_file": "renderer/dashboard/pages/insights.js",
       "source_location": "L37",
       "id": "pages_insights_statcard",
-      "community": 6,
+      "community": 7,
       "norm_label": "statcard()"
     },
     {
@@ -243,7 +243,7 @@
       "source_file": "renderer/dashboard/pages/insights.js",
       "source_location": "L45",
       "id": "pages_insights_plural",
-      "community": 6,
+      "community": 7,
       "norm_label": "plural()"
     },
     {
@@ -252,7 +252,7 @@
       "source_file": "renderer/dashboard/pages/insights.js",
       "source_location": "L49",
       "id": "pages_insights_numword",
-      "community": 6,
+      "community": 7,
       "norm_label": "numword()"
     },
     {
@@ -261,7 +261,7 @@
       "source_file": "renderer/dashboard/pages/insights.js",
       "source_location": "L54",
       "id": "pages_insights_cap",
-      "community": 6,
+      "community": 7,
       "norm_label": "cap()"
     },
     {
@@ -441,7 +441,7 @@
       "source_file": "renderer/flowbar/flowbar.js",
       "source_location": "L1",
       "id": "renderer_flowbar_flowbar_js",
-      "community": 9,
+      "community": 10,
       "norm_label": "flowbar.js"
     },
     {
@@ -450,7 +450,7 @@
       "source_file": "renderer/flowbar/flowbar.js",
       "source_location": "L18",
       "id": "flowbar_flowbar_setstate",
-      "community": 9,
+      "community": 10,
       "norm_label": "setstate()"
     },
     {
@@ -459,7 +459,7 @@
       "source_file": "renderer/flowbar/flowbar.js",
       "source_location": "L34",
       "id": "flowbar_flowbar_startcapture",
-      "community": 9,
+      "community": 10,
       "norm_label": "startcapture()"
     },
     {
@@ -468,7 +468,7 @@
       "source_file": "renderer/flowbar/flowbar.js",
       "source_location": "L69",
       "id": "flowbar_flowbar_teardowncapture",
-      "community": 9,
+      "community": 10,
       "norm_label": "teardowncapture()"
     },
     {
@@ -477,7 +477,7 @@
       "source_file": "renderer/flowbar/flowbar.js",
       "source_location": "L78",
       "id": "flowbar_flowbar_collectwav",
-      "community": 9,
+      "community": 10,
       "norm_label": "collectwav()"
     },
     {
@@ -486,7 +486,7 @@
       "source_file": "renderer/flowbar/flowbar.js",
       "source_location": "L93",
       "id": "flowbar_flowbar_encodewav16k",
-      "community": 9,
+      "community": 10,
       "norm_label": "encodewav16k()"
     },
     {
@@ -495,7 +495,7 @@
       "source_file": "renderer/flowbar/flowbar.js",
       "source_location": "L136",
       "id": "flowbar_flowbar_pushlevel",
-      "community": 9,
+      "community": 10,
       "norm_label": "pushlevel()"
     },
     {
@@ -504,7 +504,7 @@
       "source_file": "renderer/flowbar/flowbar.js",
       "source_location": "L141",
       "id": "flowbar_flowbar_renderbars",
-      "community": 9,
+      "community": 10,
       "norm_label": "renderbars()"
     },
     {
@@ -513,7 +513,7 @@
       "source_file": "renderer/flowbar/flowbar.js",
       "source_location": "L153",
       "id": "flowbar_flowbar_blip",
-      "community": 9,
+      "community": 10,
       "norm_label": "blip()"
     },
     {
@@ -522,7 +522,7 @@
       "source_file": "renderer/flowbar/worklet.js",
       "source_location": "L1",
       "id": "renderer_flowbar_worklet_js",
-      "community": 12,
+      "community": 14,
       "norm_label": "worklet.js"
     },
     {
@@ -531,7 +531,7 @@
       "source_file": "renderer/flowbar/worklet.js",
       "source_location": "L4",
       "id": "flowbar_worklet_captureprocessor",
-      "community": 12,
+      "community": 14,
       "norm_label": "captureprocessor"
     },
     {
@@ -540,7 +540,7 @@
       "source_file": "renderer/flowbar/worklet.js",
       "source_location": "L5",
       "id": "flowbar_worklet_captureprocessor_constructor",
-      "community": 12,
+      "community": 14,
       "norm_label": ".constructor()"
     },
     {
@@ -549,7 +549,7 @@
       "source_file": "renderer/flowbar/worklet.js",
       "source_location": "L11",
       "id": "flowbar_worklet_captureprocessor_process",
-      "community": 12,
+      "community": 14,
       "norm_label": ".process()"
     },
     {
@@ -558,7 +558,7 @@
       "source_file": "renderer/onboarding/onboarding.js",
       "source_location": "L1",
       "id": "renderer_onboarding_onboarding_js",
-      "community": 11,
+      "community": 12,
       "norm_label": "onboarding.js"
     },
     {
@@ -567,7 +567,7 @@
       "source_file": "renderer/onboarding/onboarding.js",
       "source_location": "L14",
       "id": "onboarding_onboarding_el",
-      "community": 11,
+      "community": 12,
       "norm_label": "el()"
     },
     {
@@ -576,7 +576,7 @@
       "source_file": "renderer/onboarding/onboarding.js",
       "source_location": "L29",
       "id": "onboarding_onboarding_renderdots",
-      "community": 11,
+      "community": 12,
       "norm_label": "renderdots()"
     },
     {
@@ -585,7 +585,7 @@
       "source_file": "renderer/onboarding/onboarding.js",
       "source_location": "L36",
       "id": "onboarding_onboarding_go",
-      "community": 11,
+      "community": 12,
       "norm_label": "go()"
     },
     {
@@ -594,7 +594,7 @@
       "source_file": "renderer/onboarding/onboarding.js",
       "source_location": "L42",
       "id": "onboarding_onboarding_render",
-      "community": 11,
+      "community": 12,
       "norm_label": "render()"
     },
     {
@@ -603,7 +603,7 @@
       "source_file": "renderer/onboarding/onboarding.js",
       "source_location": "L264",
       "id": "onboarding_onboarding_startmicmeter",
-      "community": 11,
+      "community": 12,
       "norm_label": "startmicmeter()"
     },
     {
@@ -612,7 +612,7 @@
       "source_file": "renderer/onboarding/onboarding.js",
       "source_location": "L306",
       "id": "onboarding_onboarding_stopmicmeter",
-      "community": 11,
+      "community": 12,
       "norm_label": "stopmicmeter()"
     },
     {
@@ -621,7 +621,7 @@
       "source_file": "native/keymon.swift",
       "source_location": "L1",
       "id": "native_keymon_swift",
-      "community": 10,
+      "community": 11,
       "norm_label": "keymon.swift"
     },
     {
@@ -630,7 +630,7 @@
       "source_file": "native/keymon.swift",
       "source_location": "L26",
       "id": "native_keymon_emit",
-      "community": 10,
+      "community": 11,
       "norm_label": "emit()"
     },
     {
@@ -639,7 +639,7 @@
       "source_file": "native/keymon.swift",
       "source_location": "L32",
       "id": "native_keymon_emitmods",
-      "community": 10,
+      "community": 11,
       "norm_label": "emitmods()"
     },
     {
@@ -648,7 +648,7 @@
       "source_file": "native/keymon.swift",
       "source_location": "L40",
       "id": "native_keymon_tapcallback",
-      "community": 10,
+      "community": 11,
       "norm_label": "tapcallback()"
     },
     {
@@ -657,7 +657,7 @@
       "source_file": "native/keymon.swift",
       "source_location": "L84",
       "id": "native_keymon_installtap",
-      "community": 10,
+      "community": 11,
       "norm_label": "installtap()"
     },
     {
@@ -666,7 +666,7 @@
       "source_file": "native/keymon.swift",
       "source_location": "L104",
       "id": "native_keymon_postkeychord",
-      "community": 10,
+      "community": 11,
       "norm_label": "postkeychord()"
     },
     {
@@ -675,7 +675,7 @@
       "source_file": "native/keymon.swift",
       "source_location": "L114",
       "id": "native_keymon_handle",
-      "community": 10,
+      "community": 11,
       "norm_label": "handle()"
     },
     {
@@ -684,7 +684,7 @@
       "source_file": "native/keymon.swift",
       "source_location": "L169",
       "id": "native_keymon_tryinstall",
-      "community": 10,
+      "community": 11,
       "norm_label": "tryinstall()"
     },
     {
@@ -693,7 +693,7 @@
       "source_file": "test/smoke/dictation.test.js",
       "source_location": "L1",
       "id": "test_smoke_dictation_test_js",
-      "community": 2,
+      "community": 13,
       "norm_label": "dictation.test.js"
     },
     {
@@ -702,7 +702,7 @@
       "source_file": "test/smoke/dictation.test.js",
       "source_location": "L70",
       "id": "smoke_dictation_test_norm",
-      "community": 2,
+      "community": 13,
       "norm_label": "norm()"
     },
     {
@@ -711,7 +711,7 @@
       "source_file": "test/smoke/transcribe.test.js",
       "source_location": "L1",
       "id": "test_smoke_transcribe_test_js",
-      "community": 2,
+      "community": 13,
       "norm_label": "transcribe.test.js"
     },
     {
@@ -720,16 +720,16 @@
       "source_file": "test/smoke/transcribe.test.js",
       "source_location": "L18",
       "id": "smoke_transcribe_test_main",
-      "community": 2,
+      "community": 13,
       "norm_label": "main()"
     },
     {
       "label": "checkAccuracy()",
       "file_type": "code",
       "source_file": "test/smoke/transcribe.test.js",
-      "source_location": "L69",
+      "source_location": "L98",
       "id": "smoke_transcribe_test_checkaccuracy",
-      "community": 2,
+      "community": 13,
       "norm_label": "checkaccuracy()"
     },
     {
@@ -738,8 +738,17 @@
       "source_file": "test/smoke/applaunch.test.js",
       "source_location": "L1",
       "id": "test_smoke_applaunch_test_js",
-      "community": 17,
+      "community": 19,
       "norm_label": "applaunch.test.js"
+    },
+    {
+      "label": "nuances.test.js",
+      "file_type": "code",
+      "source_file": "test/unit/nuances.test.js",
+      "source_location": "L1",
+      "id": "test_unit_nuances_test_js",
+      "community": 20,
+      "norm_label": "nuances.test.js"
     },
     {
       "label": "formatter.test.js",
@@ -747,7 +756,7 @@
       "source_file": "test/unit/formatter.test.js",
       "source_location": "L1",
       "id": "test_unit_formatter_test_js",
-      "community": 18,
+      "community": 21,
       "norm_label": "formatter.test.js"
     },
     {
@@ -756,8 +765,17 @@
       "source_file": "test/unit/hotkeys.test.js",
       "source_location": "L1",
       "id": "test_unit_hotkeys_test_js",
-      "community": 19,
+      "community": 22,
       "norm_label": "hotkeys.test.js"
+    },
+    {
+      "label": "corrections.test.js",
+      "file_type": "code",
+      "source_file": "test/unit/corrections.test.js",
+      "source_location": "L1",
+      "id": "test_unit_corrections_test_js",
+      "community": 23,
+      "norm_label": "corrections.test.js"
     },
     {
       "label": "store.test.js",
@@ -765,7 +783,7 @@
       "source_file": "test/unit/store.test.js",
       "source_location": "L1",
       "id": "test_unit_store_test_js",
-      "community": 20,
+      "community": 24,
       "norm_label": "store.test.js"
     },
     {
@@ -774,7 +792,7 @@
       "source_file": "electron/recorder.js",
       "source_location": "L1",
       "id": "electron_recorder_js",
-      "community": 5,
+      "community": 6,
       "norm_label": "recorder.js"
     },
     {
@@ -783,7 +801,7 @@
       "source_file": "electron/recorder.js",
       "source_location": "L10",
       "id": "electron_recorder_recorder",
-      "community": 5,
+      "community": 6,
       "norm_label": "recorder"
     },
     {
@@ -792,7 +810,7 @@
       "source_file": "electron/recorder.js",
       "source_location": "L11",
       "id": "electron_recorder_recorder_constructor",
-      "community": 5,
+      "community": 6,
       "norm_label": ".constructor()"
     },
     {
@@ -801,7 +819,7 @@
       "source_file": "electron/recorder.js",
       "source_location": "L32",
       "id": "electron_recorder_recorder_attachwindows",
-      "community": 5,
+      "community": 6,
       "norm_label": ".attachwindows()"
     },
     {
@@ -810,7 +828,7 @@
       "source_file": "electron/recorder.js",
       "source_location": "L37",
       "id": "electron_recorder_recorder_sendflowbar",
-      "community": 5,
+      "community": 6,
       "norm_label": "._sendflowbar()"
     },
     {
@@ -819,7 +837,7 @@
       "source_file": "electron/recorder.js",
       "source_location": "L43",
       "id": "electron_recorder_recorder_senddashboard",
-      "community": 5,
+      "community": 6,
       "norm_label": "._senddashboard()"
     },
     {
@@ -828,7 +846,7 @@
       "source_file": "electron/recorder.js",
       "source_location": "L49",
       "id": "electron_recorder_recorder_onholdstart",
-      "community": 5,
+      "community": 6,
       "norm_label": "._onholdstart()"
     },
     {
@@ -837,7 +855,7 @@
       "source_file": "electron/recorder.js",
       "source_location": "L55",
       "id": "electron_recorder_recorder_onholdend",
-      "community": 5,
+      "community": 6,
       "norm_label": "._onholdend()"
     },
     {
@@ -846,7 +864,7 @@
       "source_file": "electron/recorder.js",
       "source_location": "L61",
       "id": "electron_recorder_recorder_togglehandsfree",
-      "community": 5,
+      "community": 6,
       "norm_label": ".togglehandsfree()"
     },
     {
@@ -855,7 +873,7 @@
       "source_file": "electron/recorder.js",
       "source_location": "L71",
       "id": "electron_recorder_recorder_startrecording",
-      "community": 5,
+      "community": 6,
       "norm_label": ".startrecording()"
     },
     {
@@ -864,7 +882,7 @@
       "source_file": "electron/recorder.js",
       "source_location": "L95",
       "id": "electron_recorder_recorder_stoprecording",
-      "community": 5,
+      "community": 6,
       "norm_label": ".stoprecording()"
     },
     {
@@ -873,7 +891,7 @@
       "source_file": "electron/recorder.js",
       "source_location": "L112",
       "id": "electron_recorder_recorder_cancel",
-      "community": 5,
+      "community": 6,
       "norm_label": ".cancel()"
     },
     {
@@ -882,16 +900,16 @@
       "source_file": "electron/recorder.js",
       "source_location": "L124",
       "id": "electron_recorder_recorder_handleaudio",
-      "community": 5,
+      "community": 6,
       "norm_label": ".handleaudio()"
     },
     {
       "label": "._finish()",
       "file_type": "code",
       "source_file": "electron/recorder.js",
-      "source_location": "L194",
+      "source_location": "L195",
       "id": "electron_recorder_recorder_finish",
-      "community": 5,
+      "community": 6,
       "norm_label": "._finish()"
     },
     {
@@ -900,7 +918,7 @@
       "source_file": "electron/preload.js",
       "source_location": "L1",
       "id": "electron_preload_js",
-      "community": 14,
+      "community": 16,
       "norm_label": "preload.js"
     },
     {
@@ -909,7 +927,7 @@
       "source_file": "electron/preload.js",
       "source_location": "L24",
       "id": "electron_preload_wrapped",
-      "community": 14,
+      "community": 16,
       "norm_label": "wrapped()"
     },
     {
@@ -918,7 +936,7 @@
       "source_file": "electron/ipc.js",
       "source_location": "L1",
       "id": "electron_ipc_js",
-      "community": 15,
+      "community": 17,
       "norm_label": "ipc.js"
     },
     {
@@ -927,7 +945,7 @@
       "source_file": "electron/ipc.js",
       "source_location": "L7",
       "id": "electron_ipc_registeripc",
-      "community": 15,
+      "community": 17,
       "norm_label": "registeripc()"
     },
     {
@@ -936,7 +954,7 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L1",
       "id": "electron_transcriber_js",
-      "community": 3,
+      "community": 4,
       "norm_label": "transcriber.js"
     },
     {
@@ -945,7 +963,7 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L16",
       "id": "electron_transcriber_findbinary",
-      "community": 3,
+      "community": 4,
       "norm_label": "findbinary()"
     },
     {
@@ -954,7 +972,7 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L32",
       "id": "electron_transcriber_transcriber",
-      "community": 3,
+      "community": 4,
       "norm_label": "transcriber"
     },
     {
@@ -963,7 +981,7 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L33",
       "id": "electron_transcriber_transcriber_constructor",
-      "community": 3,
+      "community": 4,
       "norm_label": ".constructor()"
     },
     {
@@ -972,7 +990,7 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L46",
       "id": "electron_transcriber_transcriber_modelpath",
-      "community": 3,
+      "community": 4,
       "norm_label": ".modelpath()"
     },
     {
@@ -981,7 +999,7 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L50",
       "id": "electron_transcriber_transcriber_hasmodel",
-      "community": 3,
+      "community": 4,
       "norm_label": ".hasmodel()"
     },
     {
@@ -990,7 +1008,7 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L58",
       "id": "electron_transcriber_transcriber_listmodels",
-      "community": 3,
+      "community": 4,
       "norm_label": ".listmodels()"
     },
     {
@@ -999,7 +1017,7 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L65",
       "id": "electron_transcriber_transcriber_downloadmodel",
-      "community": 3,
+      "community": 4,
       "norm_label": ".downloadmodel()"
     },
     {
@@ -1008,7 +1026,7 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L76",
       "id": "electron_transcriber_transcriber_ensureserver",
-      "community": 3,
+      "community": 4,
       "norm_label": ".ensureserver()"
     },
     {
@@ -1017,7 +1035,7 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L90",
       "id": "electron_transcriber_transcriber_startserver",
-      "community": 3,
+      "community": 4,
       "norm_label": "._startserver()"
     },
     {
@@ -1026,7 +1044,7 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L126",
       "id": "electron_transcriber_transcriber_ping",
-      "community": 3,
+      "community": 4,
       "norm_label": "._ping()"
     },
     {
@@ -1035,7 +1053,7 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L141",
       "id": "electron_transcriber_transcriber_stopserver",
-      "community": 3,
+      "community": 4,
       "norm_label": ".stopserver()"
     },
     {
@@ -1044,7 +1062,7 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L152",
       "id": "electron_transcriber_transcriber_transcribe",
-      "community": 3,
+      "community": 4,
       "norm_label": ".transcribe()"
     },
     {
@@ -1053,7 +1071,7 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L166",
       "id": "electron_transcriber_transcriber_transcribeviaserver",
-      "community": 3,
+      "community": 4,
       "norm_label": "._transcribeviaserver()"
     },
     {
@@ -1062,7 +1080,7 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L218",
       "id": "electron_transcriber_transcriber_transcribeviacli",
-      "community": 3,
+      "community": 4,
       "norm_label": "._transcribeviacli()"
     },
     {
@@ -1071,7 +1089,7 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L236",
       "id": "electron_transcriber_httpsdownload",
-      "community": 3,
+      "community": 4,
       "norm_label": "httpsdownload()"
     },
     {
@@ -1080,7 +1098,7 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L267",
       "id": "electron_transcriber_sleep",
-      "community": 3,
+      "community": 4,
       "norm_label": "sleep()"
     },
     {
@@ -1089,7 +1107,7 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L1",
       "id": "electron_hotkeys_js",
-      "community": 4,
+      "community": 5,
       "norm_label": "hotkeys.js"
     },
     {
@@ -1098,7 +1116,7 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L38",
       "id": "electron_hotkeys_findkeymon",
-      "community": 4,
+      "community": 5,
       "norm_label": "findkeymon()"
     },
     {
@@ -1107,7 +1125,7 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L53",
       "id": "electron_hotkeys_specsatisfied",
-      "community": 4,
+      "community": 5,
       "norm_label": "specsatisfied()"
     },
     {
@@ -1116,7 +1134,7 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L59",
       "id": "electron_hotkeys_hotkeys",
-      "community": 4,
+      "community": 5,
       "norm_label": "hotkeys"
     },
     {
@@ -1125,7 +1143,7 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L60",
       "id": "electron_hotkeys_hotkeys_constructor",
-      "community": 4,
+      "community": 5,
       "norm_label": ".constructor()"
     },
     {
@@ -1134,7 +1152,7 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L74",
       "id": "electron_hotkeys_hotkeys_sethotkey",
-      "community": 4,
+      "community": 5,
       "norm_label": ".sethotkey()"
     },
     {
@@ -1143,7 +1161,7 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L81",
       "id": "electron_hotkeys_hotkeys_on",
-      "community": 4,
+      "community": 5,
       "norm_label": ".on()"
     },
     {
@@ -1152,7 +1170,7 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L86",
       "id": "electron_hotkeys_hotkeys_fire",
-      "community": 4,
+      "community": 5,
       "norm_label": "._fire()"
     },
     {
@@ -1161,7 +1179,7 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L90",
       "id": "electron_hotkeys_hotkeys_start",
-      "community": 4,
+      "community": 5,
       "norm_label": ".start()"
     },
     {
@@ -1170,7 +1188,7 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L120",
       "id": "electron_hotkeys_hotkeys_stop",
-      "community": 4,
+      "community": 5,
       "norm_label": ".stop()"
     },
     {
@@ -1179,7 +1197,7 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L129",
       "id": "electron_hotkeys_hotkeys_send",
-      "community": 4,
+      "community": 5,
       "norm_label": ".send()"
     },
     {
@@ -1188,7 +1206,7 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L135",
       "id": "electron_hotkeys_hotkeys_setrecording",
-      "community": 4,
+      "community": 5,
       "norm_label": ".setrecording()"
     },
     {
@@ -1197,7 +1215,7 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L139",
       "id": "electron_hotkeys_hotkeys_promptaccessibility",
-      "community": 4,
+      "community": 5,
       "norm_label": ".promptaccessibility()"
     },
     {
@@ -1206,7 +1224,7 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L143",
       "id": "electron_hotkeys_hotkeys_checkaccessibility",
-      "community": 4,
+      "community": 5,
       "norm_label": ".checkaccessibility()"
     },
     {
@@ -1215,7 +1233,7 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L147",
       "id": "electron_hotkeys_hotkeys_paste",
-      "community": 4,
+      "community": 5,
       "norm_label": ".paste()"
     },
     {
@@ -1224,7 +1242,7 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L151",
       "id": "electron_hotkeys_hotkeys_queryfront",
-      "community": 4,
+      "community": 5,
       "norm_label": ".queryfront()"
     },
     {
@@ -1233,7 +1251,7 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L165",
       "id": "electron_hotkeys_hotkeys_handleevent",
-      "community": 4,
+      "community": 5,
       "norm_label": "._handleevent()"
     },
     {
@@ -1242,106 +1260,169 @@
       "source_file": "electron/formatter.js",
       "source_location": "L1",
       "id": "electron_formatter_js",
-      "community": 2,
+      "community": 3,
       "norm_label": "formatter.js"
     },
     {
       "label": "stripFillers()",
       "file_type": "code",
       "source_file": "electron/formatter.js",
-      "source_location": "L28",
+      "source_location": "L27",
       "id": "electron_formatter_stripfillers",
-      "community": 2,
+      "community": 3,
       "norm_label": "stripfillers()"
     },
     {
-      "label": "applyBacktrack()",
+      "label": "applySpokenEmails()",
       "file_type": "code",
       "source_file": "electron/formatter.js",
-      "source_location": "L41",
-      "id": "electron_formatter_applybacktrack",
-      "community": 2,
-      "norm_label": "applybacktrack()"
+      "source_location": "L44",
+      "id": "electron_formatter_applyspokenemails",
+      "community": 3,
+      "norm_label": "applyspokenemails()"
+    },
+    {
+      "label": "stripPreamble()",
+      "file_type": "code",
+      "source_file": "electron/formatter.js",
+      "source_location": "L68",
+      "id": "electron_formatter_strippreamble",
+      "community": 3,
+      "norm_label": "strippreamble()"
+    },
+    {
+      "label": "stripHedges()",
+      "file_type": "code",
+      "source_file": "electron/formatter.js",
+      "source_location": "L79",
+      "id": "electron_formatter_striphedges",
+      "community": 3,
+      "norm_label": "striphedges()"
+    },
+    {
+      "label": "applySpokenEmoji()",
+      "file_type": "code",
+      "source_file": "electron/formatter.js",
+      "source_location": "L102",
+      "id": "electron_formatter_applyspokenemoji",
+      "community": 3,
+      "norm_label": "applyspokenemoji()"
+    },
+    {
+      "label": "applyListFormation()",
+      "file_type": "code",
+      "source_file": "electron/formatter.js",
+      "source_location": "L119",
+      "id": "electron_formatter_applylistformation",
+      "community": 3,
+      "norm_label": "applylistformation()"
+    },
+    {
+      "label": "fixHomophones()",
+      "file_type": "code",
+      "source_file": "electron/formatter.js",
+      "source_location": "L155",
+      "id": "electron_formatter_fixhomophones",
+      "community": 3,
+      "norm_label": "fixhomophones()"
+    },
+    {
+      "label": "matchCaseWord()",
+      "file_type": "code",
+      "source_file": "electron/formatter.js",
+      "source_location": "L160",
+      "id": "electron_formatter_matchcaseword",
+      "community": 3,
+      "norm_label": "matchcaseword()"
+    },
+    {
+      "label": "normalizeTimes()",
+      "file_type": "code",
+      "source_file": "electron/formatter.js",
+      "source_location": "L167",
+      "id": "electron_formatter_normalizetimes",
+      "community": 3,
+      "norm_label": "normalizetimes()"
     },
     {
       "label": "applySpokenPunctuation()",
       "file_type": "code",
       "source_file": "electron/formatter.js",
-      "source_location": "L54",
+      "source_location": "L178",
       "id": "electron_formatter_applyspokenpunctuation",
-      "community": 2,
+      "community": 3,
       "norm_label": "applyspokenpunctuation()"
     },
     {
       "label": "applyDictionary()",
       "file_type": "code",
       "source_file": "electron/formatter.js",
-      "source_location": "L71",
+      "source_location": "L195",
       "id": "electron_formatter_applydictionary",
-      "community": 2,
+      "community": 3,
       "norm_label": "applydictionary()"
     },
     {
       "label": "isSentenceStart()",
       "file_type": "code",
       "source_file": "electron/formatter.js",
-      "source_location": "L95",
+      "source_location": "L219",
       "id": "electron_formatter_issentencestart",
-      "community": 2,
+      "community": 3,
       "norm_label": "issentencestart()"
     },
     {
       "label": "applySnippets()",
       "file_type": "code",
       "source_file": "electron/formatter.js",
-      "source_location": "L100",
+      "source_location": "L224",
       "id": "electron_formatter_applysnippets",
-      "community": 2,
+      "community": 3,
       "norm_label": "applysnippets()"
     },
     {
       "label": "extractPressEnter()",
       "file_type": "code",
       "source_file": "electron/formatter.js",
-      "source_location": "L113",
+      "source_location": "L237",
       "id": "electron_formatter_extractpressenter",
-      "community": 2,
+      "community": 3,
       "norm_label": "extractpressenter()"
     },
     {
       "label": "finalTidy()",
       "file_type": "code",
       "source_file": "electron/formatter.js",
-      "source_location": "L121",
+      "source_location": "L246",
       "id": "electron_formatter_finaltidy",
-      "community": 2,
+      "community": 3,
       "norm_label": "finaltidy()"
     },
     {
       "label": "applyStyle()",
       "file_type": "code",
       "source_file": "electron/formatter.js",
-      "source_location": "L133",
+      "source_location": "L258",
       "id": "electron_formatter_applystyle",
-      "community": 2,
+      "community": 3,
       "norm_label": "applystyle()"
     },
     {
       "label": "escapeRe()",
       "file_type": "code",
       "source_file": "electron/formatter.js",
-      "source_location": "L154",
+      "source_location": "L279",
       "id": "electron_formatter_escapere",
-      "community": 2,
+      "community": 3,
       "norm_label": "escapere()"
     },
     {
       "label": "formatTranscript()",
       "file_type": "code",
       "source_file": "electron/formatter.js",
-      "source_location": "L164",
+      "source_location": "L289",
       "id": "electron_formatter_formattranscript",
-      "community": 2,
+      "community": 3,
       "norm_label": "formattranscript()"
     },
     {
@@ -1350,178 +1431,187 @@
       "source_file": "electron/store.js",
       "source_location": "L1",
       "id": "electron_store_js",
-      "community": 1,
+      "community": 2,
       "norm_label": "store.js"
     },
     {
       "label": "Store",
       "file_type": "code",
       "source_file": "electron/store.js",
-      "source_location": "L27",
+      "source_location": "L28",
       "id": "electron_store_store",
-      "community": 1,
+      "community": 2,
       "norm_label": "store"
     },
     {
       "label": ".constructor()",
       "file_type": "code",
       "source_file": "electron/store.js",
-      "source_location": "L28",
+      "source_location": "L29",
       "id": "electron_store_store_constructor",
-      "community": 1,
+      "community": 2,
       "norm_label": ".constructor()"
     },
     {
       "label": "._readJson()",
       "file_type": "code",
       "source_file": "electron/store.js",
-      "source_location": "L42",
+      "source_location": "L43",
       "id": "electron_store_store_readjson",
-      "community": 1,
+      "community": 2,
       "norm_label": "._readjson()"
     },
     {
       "label": "._writeJson()",
       "file_type": "code",
       "source_file": "electron/store.js",
-      "source_location": "L50",
+      "source_location": "L51",
       "id": "electron_store_store_writejson",
-      "community": 1,
+      "community": 2,
       "norm_label": "._writejson()"
     },
     {
       "label": ".getSettings()",
       "file_type": "code",
       "source_file": "electron/store.js",
-      "source_location": "L57",
+      "source_location": "L58",
       "id": "electron_store_store_getsettings",
-      "community": 1,
+      "community": 2,
       "norm_label": ".getsettings()"
     },
     {
       "label": ".setSettings()",
       "file_type": "code",
       "source_file": "electron/store.js",
-      "source_location": "L61",
+      "source_location": "L62",
       "id": "electron_store_store_setsettings",
-      "community": 1,
+      "community": 2,
       "norm_label": ".setsettings()"
     },
     {
       "label": ".addDictionaryEntry()",
       "file_type": "code",
       "source_file": "electron/store.js",
-      "source_location": "L68",
+      "source_location": "L69",
       "id": "electron_store_store_adddictionaryentry",
-      "community": 1,
+      "community": 2,
       "norm_label": ".adddictionaryentry()"
     },
     {
       "label": ".updateDictionaryEntry()",
       "file_type": "code",
       "source_file": "electron/store.js",
-      "source_location": "L85",
+      "source_location": "L86",
       "id": "electron_store_store_updatedictionaryentry",
-      "community": 1,
+      "community": 2,
       "norm_label": ".updatedictionaryentry()"
     },
     {
       "label": ".removeDictionaryEntry()",
       "file_type": "code",
       "source_file": "electron/store.js",
-      "source_location": "L93",
+      "source_location": "L94",
       "id": "electron_store_store_removedictionaryentry",
-      "community": 1,
+      "community": 2,
       "norm_label": ".removedictionaryentry()"
     },
     {
       "label": ".addSnippet()",
       "file_type": "code",
       "source_file": "electron/store.js",
-      "source_location": "L99",
+      "source_location": "L100",
       "id": "electron_store_store_addsnippet",
-      "community": 1,
+      "community": 2,
       "norm_label": ".addsnippet()"
     },
     {
       "label": ".updateSnippet()",
       "file_type": "code",
       "source_file": "electron/store.js",
-      "source_location": "L116",
+      "source_location": "L117",
       "id": "electron_store_store_updatesnippet",
-      "community": 1,
+      "community": 2,
       "norm_label": ".updatesnippet()"
     },
     {
       "label": ".removeSnippet()",
       "file_type": "code",
       "source_file": "electron/store.js",
-      "source_location": "L124",
+      "source_location": "L125",
       "id": "electron_store_store_removesnippet",
-      "community": 1,
+      "community": 2,
       "norm_label": ".removesnippet()"
     },
     {
       "label": "._loadHistory()",
       "file_type": "code",
       "source_file": "electron/store.js",
-      "source_location": "L130",
+      "source_location": "L131",
       "id": "electron_store_store_loadhistory",
-      "community": 1,
+      "community": 2,
       "norm_label": "._loadhistory()"
     },
     {
       "label": ".addHistoryEntry()",
       "file_type": "code",
       "source_file": "electron/store.js",
-      "source_location": "L143",
+      "source_location": "L144",
       "id": "electron_store_store_addhistoryentry",
-      "community": 1,
+      "community": 2,
       "norm_label": ".addhistoryentry()"
     },
     {
       "label": ".removeHistoryEntry()",
       "file_type": "code",
       "source_file": "electron/store.js",
-      "source_location": "L163",
+      "source_location": "L164",
       "id": "electron_store_store_removehistoryentry",
-      "community": 1,
+      "community": 2,
       "norm_label": ".removehistoryentry()"
+    },
+    {
+      "label": ".toggleHistoryEdit()",
+      "file_type": "code",
+      "source_file": "electron/store.js",
+      "source_location": "L176",
+      "id": "electron_store_store_togglehistoryedit",
+      "community": 2,
+      "norm_label": ".togglehistoryedit()"
     },
     {
       "label": "._rewriteHistory()",
       "file_type": "code",
       "source_file": "electron/store.js",
-      "source_location": "L173",
+      "source_location": "L190",
       "id": "electron_store_store_rewritehistory",
-      "community": 1,
+      "community": 2,
       "norm_label": "._rewritehistory()"
     },
     {
       "label": ".getHistory()",
       "file_type": "code",
       "source_file": "electron/store.js",
-      "source_location": "L179",
+      "source_location": "L196",
       "id": "electron_store_store_gethistory",
-      "community": 1,
+      "community": 2,
       "norm_label": ".gethistory()"
     },
     {
       "label": ".getStats()",
       "file_type": "code",
       "source_file": "electron/store.js",
-      "source_location": "L184",
+      "source_location": "L201",
       "id": "electron_store_store_getstats",
-      "community": 1,
+      "community": 2,
       "norm_label": ".getstats()"
     },
     {
       "label": ".pruneOldAudio()",
       "file_type": "code",
       "source_file": "electron/store.js",
-      "source_location": "L228",
+      "source_location": "L245",
       "id": "electron_store_store_pruneoldaudio",
-      "community": 1,
+      "community": 2,
       "norm_label": ".pruneoldaudio()"
     },
     {
@@ -1530,7 +1620,7 @@
       "source_file": "electron/tray.js",
       "source_location": "L1",
       "id": "electron_tray_js",
-      "community": 16,
+      "community": 18,
       "norm_label": "tray.js"
     },
     {
@@ -1539,7 +1629,7 @@
       "source_file": "electron/tray.js",
       "source_location": "L6",
       "id": "electron_tray_createtray",
-      "community": 16,
+      "community": 18,
       "norm_label": "createtray()"
     },
     {
@@ -1548,7 +1638,7 @@
       "source_file": "electron/main.js",
       "source_location": "L1",
       "id": "electron_main_js",
-      "community": 7,
+      "community": 8,
       "norm_label": "main.js"
     },
     {
@@ -1557,7 +1647,7 @@
       "source_file": "electron/main.js",
       "source_location": "L41",
       "id": "electron_main_boot",
-      "community": 7,
+      "community": 8,
       "norm_label": "boot()"
     },
     {
@@ -1566,7 +1656,7 @@
       "source_file": "electron/main.js",
       "source_location": "L151",
       "id": "electron_main_runsmokeautopilot",
-      "community": 7,
+      "community": 8,
       "norm_label": "runsmokeautopilot()"
     },
     {
@@ -1575,7 +1665,7 @@
       "source_file": "electron/main.js",
       "source_location": "L214",
       "id": "electron_main_rune2edictation",
-      "community": 7,
+      "community": 8,
       "norm_label": "rune2edictation()"
     },
     {
@@ -1584,7 +1674,7 @@
       "source_file": "electron/windows.js",
       "source_location": "L1",
       "id": "electron_windows_js",
-      "community": 7,
+      "community": 8,
       "norm_label": "windows.js"
     },
     {
@@ -1593,7 +1683,7 @@
       "source_file": "electron/windows.js",
       "source_location": "L8",
       "id": "electron_windows_createdashboard",
-      "community": 7,
+      "community": 8,
       "norm_label": "createdashboard()"
     },
     {
@@ -1602,7 +1692,7 @@
       "source_file": "electron/windows.js",
       "source_location": "L41",
       "id": "electron_windows_flowbarbounds",
-      "community": 7,
+      "community": 8,
       "norm_label": "flowbarbounds()"
     },
     {
@@ -1611,7 +1701,7 @@
       "source_file": "electron/windows.js",
       "source_location": "L59",
       "id": "electron_windows_clamp01",
-      "community": 7,
+      "community": 8,
       "norm_label": "clamp01()"
     },
     {
@@ -1620,7 +1710,7 @@
       "source_file": "electron/windows.js",
       "source_location": "L63",
       "id": "electron_windows_createflowbar",
-      "community": 7,
+      "community": 8,
       "norm_label": "createflowbar()"
     },
     {
@@ -1629,7 +1719,7 @@
       "source_file": "electron/windows.js",
       "source_location": "L97",
       "id": "electron_windows_setflowbarposition",
-      "community": 7,
+      "community": 8,
       "norm_label": "setflowbarposition()"
     },
     {
@@ -1638,7 +1728,7 @@
       "source_file": "electron/windows.js",
       "source_location": "L103",
       "id": "electron_windows_createonboarding",
-      "community": 7,
+      "community": 8,
       "norm_label": "createonboarding()"
     },
     {
@@ -1647,7 +1737,7 @@
       "source_file": "electron/inserter.js",
       "source_location": "L1",
       "id": "electron_inserter_js",
-      "community": 8,
+      "community": 9,
       "norm_label": "inserter.js"
     },
     {
@@ -1656,7 +1746,7 @@
       "source_file": "electron/inserter.js",
       "source_location": "L7",
       "id": "electron_inserter_inserter",
-      "community": 8,
+      "community": 9,
       "norm_label": "inserter"
     },
     {
@@ -1665,7 +1755,7 @@
       "source_file": "electron/inserter.js",
       "source_location": "L8",
       "id": "electron_inserter_inserter_constructor",
-      "community": 8,
+      "community": 9,
       "norm_label": ".constructor()"
     },
     {
@@ -1674,7 +1764,7 @@
       "source_file": "electron/inserter.js",
       "source_location": "L14",
       "id": "electron_inserter_inserter_insert",
-      "community": 8,
+      "community": 9,
       "norm_label": ".insert()"
     },
     {
@@ -1683,7 +1773,7 @@
       "source_file": "electron/inserter.js",
       "source_location": "L43",
       "id": "electron_inserter_inserter_copylast",
-      "community": 8,
+      "community": 9,
       "norm_label": ".copylast()"
     },
     {
@@ -1692,7 +1782,7 @@
       "source_file": "electron/inserter.js",
       "source_location": "L48",
       "id": "electron_inserter_inserter_pastelast",
-      "community": 8,
+      "community": 9,
       "norm_label": ".pastelast()"
     },
     {
@@ -1701,7 +1791,7 @@
       "source_file": "electron/inserter.js",
       "source_location": "L55",
       "id": "electron_inserter_inserter_snapshotclipboard",
-      "community": 8,
+      "community": 9,
       "norm_label": "._snapshotclipboard()"
     },
     {
@@ -1710,7 +1800,7 @@
       "source_file": "electron/inserter.js",
       "source_location": "L62",
       "id": "electron_inserter_inserter_restoreclipboard",
-      "community": 8,
+      "community": 9,
       "norm_label": "._restoreclipboard()"
     },
     {
@@ -1719,7 +1809,7 @@
       "source_file": "electron/inserter.js",
       "source_location": "L67",
       "id": "electron_inserter_inserter_manualpastenotice",
-      "community": 8,
+      "community": 9,
       "norm_label": "._manualpastenotice()"
     },
     {
@@ -1728,8 +1818,224 @@
       "source_file": "electron/inserter.js",
       "source_location": "L76",
       "id": "electron_inserter_sleep",
-      "community": 8,
+      "community": 9,
       "norm_label": "sleep()"
+    },
+    {
+      "label": "corrections.js",
+      "file_type": "code",
+      "source_file": "electron/corrections.js",
+      "source_location": "L1",
+      "id": "electron_corrections_js",
+      "community": 1,
+      "norm_label": "corrections.js"
+    },
+    {
+      "label": "isTime()",
+      "file_type": "code",
+      "source_file": "electron/corrections.js",
+      "source_location": "L47",
+      "id": "electron_corrections_istime",
+      "community": 1,
+      "norm_label": "istime()"
+    },
+    {
+      "label": "isDayWord()",
+      "file_type": "code",
+      "source_file": "electron/corrections.js",
+      "source_location": "L50",
+      "id": "electron_corrections_isdayword",
+      "community": 1,
+      "norm_label": "isdayword()"
+    },
+    {
+      "label": "isNumber()",
+      "file_type": "code",
+      "source_file": "electron/corrections.js",
+      "source_location": "L51",
+      "id": "electron_corrections_isnumber",
+      "community": 1,
+      "norm_label": "isnumber()"
+    },
+    {
+      "label": "isWeekday()",
+      "file_type": "code",
+      "source_file": "electron/corrections.js",
+      "source_location": "L54",
+      "id": "electron_corrections_isweekday",
+      "community": 1,
+      "norm_label": "isweekday()"
+    },
+    {
+      "label": "isMonth()",
+      "file_type": "code",
+      "source_file": "electron/corrections.js",
+      "source_location": "L55",
+      "id": "electron_corrections_ismonth",
+      "community": 1,
+      "norm_label": "ismonth()"
+    },
+    {
+      "label": "isProper()",
+      "file_type": "code",
+      "source_file": "electron/corrections.js",
+      "source_location": "L56",
+      "id": "electron_corrections_isproper",
+      "community": 1,
+      "norm_label": "isproper()"
+    },
+    {
+      "label": "shapeOf()",
+      "file_type": "code",
+      "source_file": "electron/corrections.js",
+      "source_location": "L58",
+      "id": "electron_corrections_shapeof",
+      "community": 1,
+      "norm_label": "shapeof()"
+    },
+    {
+      "label": "stripPunct()",
+      "file_type": "code",
+      "source_file": "electron/corrections.js",
+      "source_location": "L71",
+      "id": "electron_corrections_strippunct",
+      "community": 1,
+      "norm_label": "strippunct()"
+    },
+    {
+      "label": "words()",
+      "file_type": "code",
+      "source_file": "electron/corrections.js",
+      "source_location": "L75",
+      "id": "electron_corrections_words",
+      "community": 1,
+      "norm_label": "words()"
+    },
+    {
+      "label": "collapseStutters()",
+      "file_type": "code",
+      "source_file": "electron/corrections.js",
+      "source_location": "L85",
+      "id": "electron_corrections_collapsestutters",
+      "community": 1,
+      "norm_label": "collapsestutters()"
+    },
+    {
+      "label": "findMarker()",
+      "file_type": "code",
+      "source_file": "electron/corrections.js",
+      "source_location": "L118",
+      "id": "electron_corrections_findmarker",
+      "community": 1,
+      "norm_label": "findmarker()"
+    },
+    {
+      "label": "replaceTail()",
+      "file_type": "code",
+      "source_file": "electron/corrections.js",
+      "source_location": "L145",
+      "id": "electron_corrections_replacetail",
+      "community": 1,
+      "norm_label": "replacetail()"
+    },
+    {
+      "label": "isClauseLike()",
+      "file_type": "code",
+      "source_file": "electron/corrections.js",
+      "source_location": "L238",
+      "id": "electron_corrections_isclauselike",
+      "community": 1,
+      "norm_label": "isclauselike()"
+    },
+    {
+      "label": "applyMarkedCorrections()",
+      "file_type": "code",
+      "source_file": "electron/corrections.js",
+      "source_location": "L249",
+      "id": "electron_corrections_applymarkedcorrections",
+      "community": 1,
+      "norm_label": "applymarkedcorrections()"
+    },
+    {
+      "label": "correctAcross()",
+      "file_type": "code",
+      "source_file": "electron/corrections.js",
+      "source_location": "L359",
+      "id": "electron_corrections_correctacross",
+      "community": 1,
+      "norm_label": "correctacross()"
+    },
+    {
+      "label": "collapseRestatements()",
+      "file_type": "code",
+      "source_file": "electron/corrections.js",
+      "source_location": "L372",
+      "id": "electron_corrections_collapserestatements",
+      "community": 1,
+      "norm_label": "collapserestatements()"
+    },
+    {
+      "label": "collapseEllipsisRestatement()",
+      "file_type": "code",
+      "source_file": "electron/corrections.js",
+      "source_location": "L406",
+      "id": "electron_corrections_collapseellipsisrestatement",
+      "community": 1,
+      "norm_label": "collapseellipsisrestatement()"
+    },
+    {
+      "label": "collapseInlineRestatement()",
+      "file_type": "code",
+      "source_file": "electron/corrections.js",
+      "source_location": "L438",
+      "id": "electron_corrections_collapseinlinerestatement",
+      "community": 1,
+      "norm_label": "collapseinlinerestatement()"
+    },
+    {
+      "label": "sharedHead()",
+      "file_type": "code",
+      "source_file": "electron/corrections.js",
+      "source_location": "L454",
+      "id": "electron_corrections_sharedhead",
+      "community": 1,
+      "norm_label": "sharedhead()"
+    },
+    {
+      "label": "capitalize()",
+      "file_type": "code",
+      "source_file": "electron/corrections.js",
+      "source_location": "L464",
+      "id": "electron_corrections_capitalize",
+      "community": 1,
+      "norm_label": "capitalize()"
+    },
+    {
+      "label": "preserveCap()",
+      "file_type": "code",
+      "source_file": "electron/corrections.js",
+      "source_location": "L471",
+      "id": "electron_corrections_preservecap",
+      "community": 1,
+      "norm_label": "preservecap()"
+    },
+    {
+      "label": "applyCorrections()",
+      "file_type": "code",
+      "source_file": "electron/corrections.js",
+      "source_location": "L480",
+      "id": "electron_corrections_applycorrections",
+      "community": 1,
+      "norm_label": "applycorrections()"
+    },
+    {
+      "label": "applyBacktrack()",
+      "file_type": "code",
+      "source_file": "electron/formatter.js",
+      "source_location": "L41",
+      "community": 3,
+      "norm_label": "applybacktrack()",
+      "id": "electron_formatter_applybacktrack"
     }
   ],
   "links": [
@@ -1739,9 +2045,9 @@
       "source_file": "renderer/dashboard/icons.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_icons_js",
-      "target": "dashboard_icons_s",
-      "confidence_score": 1.0
+      "target": "dashboard_icons_s"
     },
     {
       "relation": "contains",
@@ -1749,9 +2055,9 @@
       "source_file": "renderer/dashboard/ui.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_ui_js",
-      "target": "dashboard_ui_el",
-      "confidence_score": 1.0
+      "target": "dashboard_ui_el"
     },
     {
       "relation": "contains",
@@ -1759,9 +2065,9 @@
       "source_file": "renderer/dashboard/ui.js",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_ui_js",
-      "target": "dashboard_ui_escapehtml",
-      "confidence_score": 1.0
+      "target": "dashboard_ui_escapehtml"
     },
     {
       "relation": "contains",
@@ -1769,9 +2075,9 @@
       "source_file": "renderer/dashboard/ui.js",
       "source_location": "L26",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_ui_js",
-      "target": "dashboard_ui_toast",
-      "confidence_score": 1.0
+      "target": "dashboard_ui_toast"
     },
     {
       "relation": "contains",
@@ -1779,9 +2085,9 @@
       "source_file": "renderer/dashboard/ui.js",
       "source_location": "L37",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_ui_js",
-      "target": "dashboard_ui_openmodal",
-      "confidence_score": 1.0
+      "target": "dashboard_ui_openmodal"
     },
     {
       "relation": "contains",
@@ -1789,9 +2095,9 @@
       "source_file": "renderer/dashboard/ui.js",
       "source_location": "L53",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_ui_js",
-      "target": "dashboard_ui_timelabel",
-      "confidence_score": 1.0
+      "target": "dashboard_ui_timelabel"
     },
     {
       "relation": "contains",
@@ -1799,9 +2105,9 @@
       "source_file": "renderer/dashboard/ui.js",
       "source_location": "L57",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_ui_js",
-      "target": "dashboard_ui_daylabel",
-      "confidence_score": 1.0
+      "target": "dashboard_ui_daylabel"
     },
     {
       "relation": "contains",
@@ -1809,9 +2115,9 @@
       "source_file": "renderer/dashboard/ui.js",
       "source_location": "L67",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_ui_js",
-      "target": "dashboard_ui_abbreviatecount",
-      "confidence_score": 1.0
+      "target": "dashboard_ui_abbreviatecount"
     },
     {
       "relation": "calls",
@@ -1820,9 +2126,9 @@
       "source_file": "renderer/dashboard/ui.js",
       "source_location": "L28",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "dashboard_ui_toast",
-      "target": "dashboard_ui_el",
-      "confidence_score": 1.0
+      "target": "dashboard_ui_el"
     },
     {
       "relation": "calls",
@@ -1831,9 +2137,9 @@
       "source_file": "renderer/dashboard/ui.js",
       "source_location": "L39",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "dashboard_ui_openmodal",
-      "target": "dashboard_ui_el",
-      "confidence_score": 1.0
+      "target": "dashboard_ui_el"
     },
     {
       "relation": "imports",
@@ -1842,9 +2148,9 @@
       "source_file": "renderer/dashboard/app.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_app_js",
-      "target": "dashboard_ui_el",
-      "confidence_score": 1.0
+      "target": "dashboard_ui_el"
     },
     {
       "relation": "imports",
@@ -1853,9 +2159,9 @@
       "source_file": "renderer/dashboard/pages/stylepage.js",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_stylepage_js",
-      "target": "dashboard_ui_el",
-      "confidence_score": 1.0
+      "target": "dashboard_ui_el"
     },
     {
       "relation": "imports",
@@ -1864,9 +2170,9 @@
       "source_file": "renderer/dashboard/pages/home.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_home_js",
-      "target": "dashboard_ui_el",
-      "confidence_score": 1.0
+      "target": "dashboard_ui_el"
     },
     {
       "relation": "imports",
@@ -1875,9 +2181,9 @@
       "source_file": "renderer/dashboard/pages/help.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_help_js",
-      "target": "dashboard_ui_el",
-      "confidence_score": 1.0
+      "target": "dashboard_ui_el"
     },
     {
       "relation": "imports",
@@ -1886,9 +2192,9 @@
       "source_file": "renderer/dashboard/pages/insights.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_insights_js",
-      "target": "dashboard_ui_el",
-      "confidence_score": 1.0
+      "target": "dashboard_ui_el"
     },
     {
       "relation": "imports",
@@ -1897,9 +2203,9 @@
       "source_file": "renderer/dashboard/pages/dictionary.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_dictionary_js",
-      "target": "dashboard_ui_el",
-      "confidence_score": 1.0
+      "target": "dashboard_ui_el"
     },
     {
       "relation": "imports",
@@ -1908,9 +2214,9 @@
       "source_file": "renderer/dashboard/pages/snippets.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_snippets_js",
-      "target": "dashboard_ui_el",
-      "confidence_score": 1.0
+      "target": "dashboard_ui_el"
     },
     {
       "relation": "imports",
@@ -1919,9 +2225,9 @@
       "source_file": "renderer/dashboard/pages/settings.js",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_settings_js",
-      "target": "dashboard_ui_el",
-      "confidence_score": 1.0
+      "target": "dashboard_ui_el"
     },
     {
       "relation": "imports",
@@ -1930,9 +2236,9 @@
       "source_file": "renderer/dashboard/pages/stylepage.js",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_stylepage_js",
-      "target": "dashboard_ui_toast",
-      "confidence_score": 1.0
+      "target": "dashboard_ui_toast"
     },
     {
       "relation": "imports",
@@ -1941,9 +2247,9 @@
       "source_file": "renderer/dashboard/pages/home.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_home_js",
-      "target": "dashboard_ui_toast",
-      "confidence_score": 1.0
+      "target": "dashboard_ui_toast"
     },
     {
       "relation": "imports",
@@ -1952,9 +2258,9 @@
       "source_file": "renderer/dashboard/pages/dictionary.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_dictionary_js",
-      "target": "dashboard_ui_toast",
-      "confidence_score": 1.0
+      "target": "dashboard_ui_toast"
     },
     {
       "relation": "imports",
@@ -1963,9 +2269,9 @@
       "source_file": "renderer/dashboard/pages/snippets.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_snippets_js",
-      "target": "dashboard_ui_toast",
-      "confidence_score": 1.0
+      "target": "dashboard_ui_toast"
     },
     {
       "relation": "imports",
@@ -1974,9 +2280,9 @@
       "source_file": "renderer/dashboard/pages/settings.js",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_settings_js",
-      "target": "dashboard_ui_toast",
-      "confidence_score": 1.0
+      "target": "dashboard_ui_toast"
     },
     {
       "relation": "imports",
@@ -1985,9 +2291,9 @@
       "source_file": "renderer/dashboard/pages/dictionary.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_dictionary_js",
-      "target": "dashboard_ui_openmodal",
-      "confidence_score": 1.0
+      "target": "dashboard_ui_openmodal"
     },
     {
       "relation": "imports",
@@ -1996,9 +2302,9 @@
       "source_file": "renderer/dashboard/pages/snippets.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_snippets_js",
-      "target": "dashboard_ui_openmodal",
-      "confidence_score": 1.0
+      "target": "dashboard_ui_openmodal"
     },
     {
       "relation": "imports",
@@ -2007,9 +2313,9 @@
       "source_file": "renderer/dashboard/pages/settings.js",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_settings_js",
-      "target": "dashboard_ui_openmodal",
-      "confidence_score": 1.0
+      "target": "dashboard_ui_openmodal"
     },
     {
       "relation": "calls",
@@ -2051,9 +2357,9 @@
       "source_file": "renderer/dashboard/pages/home.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_home_js",
-      "target": "dashboard_ui_timelabel",
-      "confidence_score": 1.0
+      "target": "dashboard_ui_timelabel"
     },
     {
       "relation": "calls",
@@ -2073,9 +2379,9 @@
       "source_file": "renderer/dashboard/pages/home.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_home_js",
-      "target": "dashboard_ui_daylabel",
-      "confidence_score": 1.0
+      "target": "dashboard_ui_daylabel"
     },
     {
       "relation": "calls",
@@ -2095,9 +2401,9 @@
       "source_file": "renderer/dashboard/pages/home.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_home_js",
-      "target": "dashboard_ui_abbreviatecount",
-      "confidence_score": 1.0
+      "target": "dashboard_ui_abbreviatecount"
     },
     {
       "relation": "imports",
@@ -2106,9 +2412,9 @@
       "source_file": "renderer/dashboard/pages/insights.js",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_insights_js",
-      "target": "dashboard_ui_abbreviatecount",
-      "confidence_score": 1.0
+      "target": "dashboard_ui_abbreviatecount"
     },
     {
       "relation": "calls",
@@ -2139,9 +2445,9 @@
       "source_file": "renderer/dashboard/app.js",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_app_js",
-      "target": "pages_home_renderhome",
-      "confidence_score": 1.0
+      "target": "pages_home_renderhome"
     },
     {
       "relation": "imports",
@@ -2150,9 +2456,9 @@
       "source_file": "renderer/dashboard/app.js",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_app_js",
-      "target": "pages_dictionary_renderdictionary",
-      "confidence_score": 1.0
+      "target": "pages_dictionary_renderdictionary"
     },
     {
       "relation": "imports",
@@ -2161,9 +2467,9 @@
       "source_file": "renderer/dashboard/app.js",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_app_js",
-      "target": "pages_snippets_rendersnippets",
-      "confidence_score": 1.0
+      "target": "pages_snippets_rendersnippets"
     },
     {
       "relation": "imports",
@@ -2172,9 +2478,9 @@
       "source_file": "renderer/dashboard/app.js",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_app_js",
-      "target": "pages_stylepage_renderstyle",
-      "confidence_score": 1.0
+      "target": "pages_stylepage_renderstyle"
     },
     {
       "relation": "imports",
@@ -2183,9 +2489,9 @@
       "source_file": "renderer/dashboard/app.js",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_app_js",
-      "target": "pages_insights_renderinsights",
-      "confidence_score": 1.0
+      "target": "pages_insights_renderinsights"
     },
     {
       "relation": "imports",
@@ -2194,9 +2500,9 @@
       "source_file": "renderer/dashboard/app.js",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_app_js",
-      "target": "pages_settings_rendersettings",
-      "confidence_score": 1.0
+      "target": "pages_settings_rendersettings"
     },
     {
       "relation": "imports",
@@ -2205,9 +2511,9 @@
       "source_file": "renderer/dashboard/app.js",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_app_js",
-      "target": "pages_help_renderhelp",
-      "confidence_score": 1.0
+      "target": "pages_help_renderhelp"
     },
     {
       "relation": "contains",
@@ -2215,9 +2521,9 @@
       "source_file": "renderer/dashboard/app.js",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_app_js",
-      "target": "dashboard_app_buildnav",
-      "confidence_score": 1.0
+      "target": "dashboard_app_buildnav"
     },
     {
       "relation": "contains",
@@ -2225,9 +2531,9 @@
       "source_file": "renderer/dashboard/app.js",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_app_js",
-      "target": "dashboard_app_navitem",
-      "confidence_score": 1.0
+      "target": "dashboard_app_navitem"
     },
     {
       "relation": "contains",
@@ -2235,9 +2541,9 @@
       "source_file": "renderer/dashboard/app.js",
       "source_location": "L54",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_app_js",
-      "target": "dashboard_app_navigate",
-      "confidence_score": 1.0
+      "target": "dashboard_app_navigate"
     },
     {
       "relation": "contains",
@@ -2245,9 +2551,9 @@
       "source_file": "renderer/dashboard/app.js",
       "source_location": "L74",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_app_js",
-      "target": "dashboard_app_refreshpermbadge",
-      "confidence_score": 1.0
+      "target": "dashboard_app_refreshpermbadge"
     },
     {
       "relation": "calls",
@@ -2256,9 +2562,9 @@
       "source_file": "renderer/dashboard/app.js",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "dashboard_app_buildnav",
-      "target": "dashboard_app_navitem",
-      "confidence_score": 1.0
+      "target": "dashboard_app_navitem"
     },
     {
       "relation": "calls",
@@ -2267,9 +2573,9 @@
       "source_file": "renderer/dashboard/app.js",
       "source_location": "L56",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "dashboard_app_navigate",
-      "target": "dashboard_app_buildnav",
-      "confidence_score": 1.0
+      "target": "dashboard_app_buildnav"
     },
     {
       "relation": "contains",
@@ -2277,9 +2583,9 @@
       "source_file": "renderer/dashboard/pages/stylepage.js",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_stylepage_js",
-      "target": "pages_stylepage_renderstyle",
-      "confidence_score": 1.0
+      "target": "pages_stylepage_renderstyle"
     },
     {
       "relation": "contains",
@@ -2287,9 +2593,9 @@
       "source_file": "renderer/dashboard/pages/home.js",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_home_js",
-      "target": "pages_home_renderhome",
-      "confidence_score": 1.0
+      "target": "pages_home_renderhome"
     },
     {
       "relation": "contains",
@@ -2297,9 +2603,9 @@
       "source_file": "renderer/dashboard/pages/home.js",
       "source_location": "L99",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_home_js",
-      "target": "pages_home_stattext",
-      "confidence_score": 1.0
+      "target": "pages_home_stattext"
     },
     {
       "relation": "contains",
@@ -2307,9 +2613,9 @@
       "source_file": "renderer/dashboard/pages/home.js",
       "source_location": "L103",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_home_js",
-      "target": "pages_home_activityrow",
-      "confidence_score": 1.0
+      "target": "pages_home_activityrow"
     },
     {
       "relation": "calls",
@@ -2318,9 +2624,9 @@
       "source_file": "renderer/dashboard/pages/home.js",
       "source_location": "L26",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pages_home_renderhome",
-      "target": "pages_home_stattext",
-      "confidence_score": 1.0
+      "target": "pages_home_stattext"
     },
     {
       "relation": "calls",
@@ -2329,9 +2635,9 @@
       "source_file": "renderer/dashboard/pages/home.js",
       "source_location": "L95",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pages_home_renderhome",
-      "target": "pages_home_activityrow",
-      "confidence_score": 1.0
+      "target": "pages_home_activityrow"
     },
     {
       "relation": "contains",
@@ -2339,9 +2645,9 @@
       "source_file": "renderer/dashboard/pages/help.js",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_help_js",
-      "target": "pages_help_renderhelp",
-      "confidence_score": 1.0
+      "target": "pages_help_renderhelp"
     },
     {
       "relation": "contains",
@@ -2349,9 +2655,9 @@
       "source_file": "renderer/dashboard/pages/insights.js",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_insights_js",
-      "target": "pages_insights_renderinsights",
-      "confidence_score": 1.0
+      "target": "pages_insights_renderinsights"
     },
     {
       "relation": "contains",
@@ -2359,9 +2665,9 @@
       "source_file": "renderer/dashboard/pages/insights.js",
       "source_location": "L37",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_insights_js",
-      "target": "pages_insights_statcard",
-      "confidence_score": 1.0
+      "target": "pages_insights_statcard"
     },
     {
       "relation": "contains",
@@ -2369,9 +2675,9 @@
       "source_file": "renderer/dashboard/pages/insights.js",
       "source_location": "L45",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_insights_js",
-      "target": "pages_insights_plural",
-      "confidence_score": 1.0
+      "target": "pages_insights_plural"
     },
     {
       "relation": "contains",
@@ -2379,9 +2685,9 @@
       "source_file": "renderer/dashboard/pages/insights.js",
       "source_location": "L49",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_insights_js",
-      "target": "pages_insights_numword",
-      "confidence_score": 1.0
+      "target": "pages_insights_numword"
     },
     {
       "relation": "contains",
@@ -2389,9 +2695,9 @@
       "source_file": "renderer/dashboard/pages/insights.js",
       "source_location": "L54",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_insights_js",
-      "target": "pages_insights_cap",
-      "confidence_score": 1.0
+      "target": "pages_insights_cap"
     },
     {
       "relation": "calls",
@@ -2400,9 +2706,9 @@
       "source_file": "renderer/dashboard/pages/insights.js",
       "source_location": "L26",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pages_insights_renderinsights",
-      "target": "pages_insights_statcard",
-      "confidence_score": 1.0
+      "target": "pages_insights_statcard"
     },
     {
       "relation": "calls",
@@ -2411,9 +2717,9 @@
       "source_file": "renderer/dashboard/pages/insights.js",
       "source_location": "L26",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pages_insights_renderinsights",
-      "target": "pages_insights_plural",
-      "confidence_score": 1.0
+      "target": "pages_insights_plural"
     },
     {
       "relation": "calls",
@@ -2422,9 +2728,9 @@
       "source_file": "renderer/dashboard/pages/insights.js",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pages_insights_renderinsights",
-      "target": "pages_insights_cap",
-      "confidence_score": 1.0
+      "target": "pages_insights_cap"
     },
     {
       "relation": "calls",
@@ -2433,9 +2739,9 @@
       "source_file": "renderer/dashboard/pages/insights.js",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pages_insights_renderinsights",
-      "target": "pages_insights_numword",
-      "confidence_score": 1.0
+      "target": "pages_insights_numword"
     },
     {
       "relation": "contains",
@@ -2443,9 +2749,9 @@
       "source_file": "renderer/dashboard/pages/dictionary.js",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_dictionary_js",
-      "target": "pages_dictionary_renderdictionary",
-      "confidence_score": 1.0
+      "target": "pages_dictionary_renderdictionary"
     },
     {
       "relation": "contains",
@@ -2453,9 +2759,9 @@
       "source_file": "renderer/dashboard/pages/dictionary.js",
       "source_location": "L75",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_dictionary_js",
-      "target": "pages_dictionary_examplechip",
-      "confidence_score": 1.0
+      "target": "pages_dictionary_examplechip"
     },
     {
       "relation": "contains",
@@ -2463,9 +2769,9 @@
       "source_file": "renderer/dashboard/pages/dictionary.js",
       "source_location": "L79",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_dictionary_js",
-      "target": "pages_dictionary_replacementchip",
-      "confidence_score": 1.0
+      "target": "pages_dictionary_replacementchip"
     },
     {
       "relation": "contains",
@@ -2473,9 +2779,9 @@
       "source_file": "renderer/dashboard/pages/dictionary.js",
       "source_location": "L87",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_dictionary_js",
-      "target": "pages_dictionary_entryrow",
-      "confidence_score": 1.0
+      "target": "pages_dictionary_entryrow"
     },
     {
       "relation": "contains",
@@ -2483,9 +2789,9 @@
       "source_file": "renderer/dashboard/pages/dictionary.js",
       "source_location": "L130",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_dictionary_js",
-      "target": "pages_dictionary_openaddmodal",
-      "confidence_score": 1.0
+      "target": "pages_dictionary_openaddmodal"
     },
     {
       "relation": "calls",
@@ -2494,9 +2800,9 @@
       "source_file": "renderer/dashboard/pages/dictionary.js",
       "source_location": "L46",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pages_dictionary_renderdictionary",
-      "target": "pages_dictionary_examplechip",
-      "confidence_score": 1.0
+      "target": "pages_dictionary_examplechip"
     },
     {
       "relation": "calls",
@@ -2505,9 +2811,9 @@
       "source_file": "renderer/dashboard/pages/dictionary.js",
       "source_location": "L48",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pages_dictionary_renderdictionary",
-      "target": "pages_dictionary_replacementchip",
-      "confidence_score": 1.0
+      "target": "pages_dictionary_replacementchip"
     },
     {
       "relation": "calls",
@@ -2516,9 +2822,9 @@
       "source_file": "renderer/dashboard/pages/dictionary.js",
       "source_location": "L71",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pages_dictionary_renderdictionary",
-      "target": "pages_dictionary_entryrow",
-      "confidence_score": 1.0
+      "target": "pages_dictionary_entryrow"
     },
     {
       "relation": "contains",
@@ -2526,9 +2832,9 @@
       "source_file": "renderer/dashboard/pages/snippets.js",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_snippets_js",
-      "target": "pages_snippets_rendersnippets",
-      "confidence_score": 1.0
+      "target": "pages_snippets_rendersnippets"
     },
     {
       "relation": "contains",
@@ -2536,9 +2842,9 @@
       "source_file": "renderer/dashboard/pages/snippets.js",
       "source_location": "L88",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_snippets_js",
-      "target": "pages_snippets_triggerchip",
-      "confidence_score": 1.0
+      "target": "pages_snippets_triggerchip"
     },
     {
       "relation": "contains",
@@ -2546,9 +2852,9 @@
       "source_file": "renderer/dashboard/pages/snippets.js",
       "source_location": "L97",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_snippets_js",
-      "target": "pages_snippets_openaddmodal",
-      "confidence_score": 1.0
+      "target": "pages_snippets_openaddmodal"
     },
     {
       "relation": "calls",
@@ -2557,9 +2863,9 @@
       "source_file": "renderer/dashboard/pages/snippets.js",
       "source_location": "L38",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pages_snippets_rendersnippets",
-      "target": "pages_snippets_triggerchip",
-      "confidence_score": 1.0
+      "target": "pages_snippets_triggerchip"
     },
     {
       "relation": "contains",
@@ -2567,9 +2873,9 @@
       "source_file": "renderer/dashboard/pages/settings.js",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_settings_js",
-      "target": "pages_settings_rendersettings",
-      "confidence_score": 1.0
+      "target": "pages_settings_rendersettings"
     },
     {
       "relation": "contains",
@@ -2577,9 +2883,9 @@
       "source_file": "renderer/dashboard/pages/settings.js",
       "source_location": "L168",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_settings_js",
-      "target": "pages_settings_modellabel",
-      "confidence_score": 1.0
+      "target": "pages_settings_modellabel"
     },
     {
       "relation": "contains",
@@ -2587,9 +2893,9 @@
       "source_file": "renderer/dashboard/pages/settings.js",
       "source_location": "L177",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_settings_js",
-      "target": "pages_settings_togglerow",
-      "confidence_score": 1.0
+      "target": "pages_settings_togglerow"
     },
     {
       "relation": "contains",
@@ -2597,9 +2903,9 @@
       "source_file": "renderer/dashboard/pages/settings.js",
       "source_location": "L190",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_settings_js",
-      "target": "pages_settings_selectrow",
-      "confidence_score": 1.0
+      "target": "pages_settings_selectrow"
     },
     {
       "relation": "contains",
@@ -2607,9 +2913,9 @@
       "source_file": "renderer/dashboard/pages/settings.js",
       "source_location": "L207",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_settings_js",
-      "target": "pages_settings_permrow",
-      "confidence_score": 1.0
+      "target": "pages_settings_permrow"
     },
     {
       "relation": "contains",
@@ -2617,9 +2923,9 @@
       "source_file": "renderer/dashboard/pages/settings.js",
       "source_location": "L220",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_settings_js",
-      "target": "pages_settings_namerow",
-      "confidence_score": 1.0
+      "target": "pages_settings_namerow"
     },
     {
       "relation": "contains",
@@ -2627,9 +2933,9 @@
       "source_file": "renderer/dashboard/pages/settings.js",
       "source_location": "L239",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_settings_js",
-      "target": "pages_settings_hotkeyrow",
-      "confidence_score": 1.0
+      "target": "pages_settings_hotkeyrow"
     },
     {
       "relation": "contains",
@@ -2637,9 +2943,9 @@
       "source_file": "renderer/dashboard/pages/settings.js",
       "source_location": "L257",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_dashboard_pages_settings_js",
-      "target": "pages_settings_openhotkeymodal",
-      "confidence_score": 1.0
+      "target": "pages_settings_openhotkeymodal"
     },
     {
       "relation": "calls",
@@ -2648,9 +2954,9 @@
       "source_file": "renderer/dashboard/pages/settings.js",
       "source_location": "L57",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pages_settings_rendersettings",
-      "target": "pages_settings_namerow",
-      "confidence_score": 1.0
+      "target": "pages_settings_namerow"
     },
     {
       "relation": "calls",
@@ -2659,9 +2965,9 @@
       "source_file": "renderer/dashboard/pages/settings.js",
       "source_location": "L58",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pages_settings_rendersettings",
-      "target": "pages_settings_hotkeyrow",
-      "confidence_score": 1.0
+      "target": "pages_settings_hotkeyrow"
     },
     {
       "relation": "calls",
@@ -2670,9 +2976,9 @@
       "source_file": "renderer/dashboard/pages/settings.js",
       "source_location": "L59",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pages_settings_rendersettings",
-      "target": "pages_settings_selectrow",
-      "confidence_score": 1.0
+      "target": "pages_settings_selectrow"
     },
     {
       "relation": "calls",
@@ -2681,9 +2987,9 @@
       "source_file": "renderer/dashboard/pages/settings.js",
       "source_location": "L66",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pages_settings_rendersettings",
-      "target": "pages_settings_togglerow",
-      "confidence_score": 1.0
+      "target": "pages_settings_togglerow"
     },
     {
       "relation": "calls",
@@ -2692,9 +2998,9 @@
       "source_file": "renderer/dashboard/pages/settings.js",
       "source_location": "L76",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "pages_settings_rendersettings",
-      "target": "pages_settings_permrow",
-      "confidence_score": 1.0
+      "target": "pages_settings_permrow"
     },
     {
       "relation": "contains",
@@ -2702,9 +3008,9 @@
       "source_file": "renderer/flowbar/flowbar.js",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_flowbar_flowbar_js",
-      "target": "flowbar_flowbar_setstate",
-      "confidence_score": 1.0
+      "target": "flowbar_flowbar_setstate"
     },
     {
       "relation": "contains",
@@ -2712,9 +3018,9 @@
       "source_file": "renderer/flowbar/flowbar.js",
       "source_location": "L34",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_flowbar_flowbar_js",
-      "target": "flowbar_flowbar_startcapture",
-      "confidence_score": 1.0
+      "target": "flowbar_flowbar_startcapture"
     },
     {
       "relation": "contains",
@@ -2722,9 +3028,9 @@
       "source_file": "renderer/flowbar/flowbar.js",
       "source_location": "L69",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_flowbar_flowbar_js",
-      "target": "flowbar_flowbar_teardowncapture",
-      "confidence_score": 1.0
+      "target": "flowbar_flowbar_teardowncapture"
     },
     {
       "relation": "contains",
@@ -2732,9 +3038,9 @@
       "source_file": "renderer/flowbar/flowbar.js",
       "source_location": "L78",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_flowbar_flowbar_js",
-      "target": "flowbar_flowbar_collectwav",
-      "confidence_score": 1.0
+      "target": "flowbar_flowbar_collectwav"
     },
     {
       "relation": "contains",
@@ -2742,9 +3048,9 @@
       "source_file": "renderer/flowbar/flowbar.js",
       "source_location": "L93",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_flowbar_flowbar_js",
-      "target": "flowbar_flowbar_encodewav16k",
-      "confidence_score": 1.0
+      "target": "flowbar_flowbar_encodewav16k"
     },
     {
       "relation": "contains",
@@ -2752,9 +3058,9 @@
       "source_file": "renderer/flowbar/flowbar.js",
       "source_location": "L136",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_flowbar_flowbar_js",
-      "target": "flowbar_flowbar_pushlevel",
-      "confidence_score": 1.0
+      "target": "flowbar_flowbar_pushlevel"
     },
     {
       "relation": "contains",
@@ -2762,9 +3068,9 @@
       "source_file": "renderer/flowbar/flowbar.js",
       "source_location": "L141",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_flowbar_flowbar_js",
-      "target": "flowbar_flowbar_renderbars",
-      "confidence_score": 1.0
+      "target": "flowbar_flowbar_renderbars"
     },
     {
       "relation": "contains",
@@ -2772,9 +3078,9 @@
       "source_file": "renderer/flowbar/flowbar.js",
       "source_location": "L153",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_flowbar_flowbar_js",
-      "target": "flowbar_flowbar_blip",
-      "confidence_score": 1.0
+      "target": "flowbar_flowbar_blip"
     },
     {
       "relation": "calls",
@@ -2783,9 +3089,9 @@
       "source_file": "renderer/flowbar/flowbar.js",
       "source_location": "L88",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "flowbar_flowbar_collectwav",
-      "target": "flowbar_flowbar_encodewav16k",
-      "confidence_score": 1.0
+      "target": "flowbar_flowbar_encodewav16k"
     },
     {
       "relation": "contains",
@@ -2793,9 +3099,9 @@
       "source_file": "renderer/flowbar/worklet.js",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_flowbar_worklet_js",
-      "target": "flowbar_worklet_captureprocessor",
-      "confidence_score": 1.0
+      "target": "flowbar_worklet_captureprocessor"
     },
     {
       "relation": "method",
@@ -2803,9 +3109,9 @@
       "source_file": "renderer/flowbar/worklet.js",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "flowbar_worklet_captureprocessor",
-      "target": "flowbar_worklet_captureprocessor_constructor",
-      "confidence_score": 1.0
+      "target": "flowbar_worklet_captureprocessor_constructor"
     },
     {
       "relation": "method",
@@ -2813,9 +3119,9 @@
       "source_file": "renderer/flowbar/worklet.js",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "flowbar_worklet_captureprocessor",
-      "target": "flowbar_worklet_captureprocessor_process",
-      "confidence_score": 1.0
+      "target": "flowbar_worklet_captureprocessor_process"
     },
     {
       "relation": "contains",
@@ -2823,9 +3129,9 @@
       "source_file": "renderer/onboarding/onboarding.js",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_onboarding_onboarding_js",
-      "target": "onboarding_onboarding_el",
-      "confidence_score": 1.0
+      "target": "onboarding_onboarding_el"
     },
     {
       "relation": "contains",
@@ -2833,9 +3139,9 @@
       "source_file": "renderer/onboarding/onboarding.js",
       "source_location": "L29",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_onboarding_onboarding_js",
-      "target": "onboarding_onboarding_renderdots",
-      "confidence_score": 1.0
+      "target": "onboarding_onboarding_renderdots"
     },
     {
       "relation": "contains",
@@ -2843,9 +3149,9 @@
       "source_file": "renderer/onboarding/onboarding.js",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_onboarding_onboarding_js",
-      "target": "onboarding_onboarding_go",
-      "confidence_score": 1.0
+      "target": "onboarding_onboarding_go"
     },
     {
       "relation": "contains",
@@ -2853,9 +3159,9 @@
       "source_file": "renderer/onboarding/onboarding.js",
       "source_location": "L42",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_onboarding_onboarding_js",
-      "target": "onboarding_onboarding_render",
-      "confidence_score": 1.0
+      "target": "onboarding_onboarding_render"
     },
     {
       "relation": "contains",
@@ -2863,9 +3169,9 @@
       "source_file": "renderer/onboarding/onboarding.js",
       "source_location": "L264",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_onboarding_onboarding_js",
-      "target": "onboarding_onboarding_startmicmeter",
-      "confidence_score": 1.0
+      "target": "onboarding_onboarding_startmicmeter"
     },
     {
       "relation": "contains",
@@ -2873,9 +3179,9 @@
       "source_file": "renderer/onboarding/onboarding.js",
       "source_location": "L306",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "renderer_onboarding_onboarding_js",
-      "target": "onboarding_onboarding_stopmicmeter",
-      "confidence_score": 1.0
+      "target": "onboarding_onboarding_stopmicmeter"
     },
     {
       "relation": "calls",
@@ -2884,9 +3190,9 @@
       "source_file": "renderer/onboarding/onboarding.js",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "onboarding_onboarding_renderdots",
-      "target": "onboarding_onboarding_el",
-      "confidence_score": 1.0
+      "target": "onboarding_onboarding_el"
     },
     {
       "relation": "calls",
@@ -2895,9 +3201,9 @@
       "source_file": "renderer/onboarding/onboarding.js",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "onboarding_onboarding_render",
-      "target": "onboarding_onboarding_renderdots",
-      "confidence_score": 1.0
+      "target": "onboarding_onboarding_renderdots"
     },
     {
       "relation": "calls",
@@ -2906,9 +3212,9 @@
       "source_file": "renderer/onboarding/onboarding.js",
       "source_location": "L37",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "onboarding_onboarding_go",
-      "target": "onboarding_onboarding_stopmicmeter",
-      "confidence_score": 1.0
+      "target": "onboarding_onboarding_stopmicmeter"
     },
     {
       "relation": "calls",
@@ -2917,9 +3223,9 @@
       "source_file": "renderer/onboarding/onboarding.js",
       "source_location": "L39",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "onboarding_onboarding_go",
-      "target": "onboarding_onboarding_render",
-      "confidence_score": 1.0
+      "target": "onboarding_onboarding_render"
     },
     {
       "relation": "contains",
@@ -2927,9 +3233,9 @@
       "source_file": "native/keymon.swift",
       "source_location": "L26",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "native_keymon_swift",
-      "target": "native_keymon_emit",
-      "confidence_score": 1.0
+      "target": "native_keymon_emit"
     },
     {
       "relation": "contains",
@@ -2937,9 +3243,9 @@
       "source_file": "native/keymon.swift",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "native_keymon_swift",
-      "target": "native_keymon_emitmods",
-      "confidence_score": 1.0
+      "target": "native_keymon_emitmods"
     },
     {
       "relation": "contains",
@@ -2947,9 +3253,9 @@
       "source_file": "native/keymon.swift",
       "source_location": "L40",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "native_keymon_swift",
-      "target": "native_keymon_tapcallback",
-      "confidence_score": 1.0
+      "target": "native_keymon_tapcallback"
     },
     {
       "relation": "contains",
@@ -2957,9 +3263,9 @@
       "source_file": "native/keymon.swift",
       "source_location": "L84",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "native_keymon_swift",
-      "target": "native_keymon_installtap",
-      "confidence_score": 1.0
+      "target": "native_keymon_installtap"
     },
     {
       "relation": "contains",
@@ -2967,9 +3273,9 @@
       "source_file": "native/keymon.swift",
       "source_location": "L104",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "native_keymon_swift",
-      "target": "native_keymon_postkeychord",
-      "confidence_score": 1.0
+      "target": "native_keymon_postkeychord"
     },
     {
       "relation": "contains",
@@ -2977,9 +3283,9 @@
       "source_file": "native/keymon.swift",
       "source_location": "L114",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "native_keymon_swift",
-      "target": "native_keymon_handle",
-      "confidence_score": 1.0
+      "target": "native_keymon_handle"
     },
     {
       "relation": "contains",
@@ -2987,9 +3293,9 @@
       "source_file": "native/keymon.swift",
       "source_location": "L169",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "native_keymon_swift",
-      "target": "native_keymon_tryinstall",
-      "confidence_score": 1.0
+      "target": "native_keymon_tryinstall"
     },
     {
       "relation": "calls",
@@ -2998,9 +3304,9 @@
       "source_file": "native/keymon.swift",
       "source_location": "L33",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "native_keymon_emitmods",
-      "target": "native_keymon_emit",
-      "confidence_score": 1.0
+      "target": "native_keymon_emit"
     },
     {
       "relation": "calls",
@@ -3009,9 +3315,9 @@
       "source_file": "native/keymon.swift",
       "source_location": "L46",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "native_keymon_tapcallback",
-      "target": "native_keymon_emit",
-      "confidence_score": 1.0
+      "target": "native_keymon_emit"
     },
     {
       "relation": "calls",
@@ -3020,9 +3326,9 @@
       "source_file": "native/keymon.swift",
       "source_location": "L118",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "native_keymon_handle",
-      "target": "native_keymon_emit",
-      "confidence_score": 1.0
+      "target": "native_keymon_emit"
     },
     {
       "relation": "calls",
@@ -3031,9 +3337,9 @@
       "source_file": "native/keymon.swift",
       "source_location": "L171",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "native_keymon_tryinstall",
-      "target": "native_keymon_emit",
-      "confidence_score": 1.0
+      "target": "native_keymon_emit"
     },
     {
       "relation": "calls",
@@ -3042,9 +3348,9 @@
       "source_file": "native/keymon.swift",
       "source_location": "L54",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "native_keymon_tapcallback",
-      "target": "native_keymon_emitmods",
-      "confidence_score": 1.0
+      "target": "native_keymon_emitmods"
     },
     {
       "relation": "calls",
@@ -3053,9 +3359,9 @@
       "source_file": "native/keymon.swift",
       "source_location": "L144",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "native_keymon_handle",
-      "target": "native_keymon_emitmods",
-      "confidence_score": 1.0
+      "target": "native_keymon_emitmods"
     },
     {
       "relation": "calls",
@@ -3064,9 +3370,9 @@
       "source_file": "native/keymon.swift",
       "source_location": "L170",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "native_keymon_tryinstall",
-      "target": "native_keymon_installtap",
-      "confidence_score": 1.0
+      "target": "native_keymon_installtap"
     },
     {
       "relation": "calls",
@@ -3075,9 +3381,9 @@
       "source_file": "native/keymon.swift",
       "source_location": "L128",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "native_keymon_handle",
-      "target": "native_keymon_postkeychord",
-      "confidence_score": 1.0
+      "target": "native_keymon_postkeychord"
     },
     {
       "relation": "contains",
@@ -3085,9 +3391,9 @@
       "source_file": "test/smoke/dictation.test.js",
       "source_location": "L70",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "test_smoke_dictation_test_js",
-      "target": "smoke_dictation_test_norm",
-      "confidence_score": 1.0
+      "target": "smoke_dictation_test_norm"
     },
     {
       "relation": "calls",
@@ -3106,9 +3412,9 @@
       "source_file": "test/smoke/transcribe.test.js",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "test_smoke_transcribe_test_js",
-      "target": "smoke_transcribe_test_main",
-      "confidence_score": 1.0
+      "target": "smoke_transcribe_test_main"
     },
     {
       "relation": "contains",
@@ -3116,9 +3422,9 @@
       "source_file": "test/smoke/transcribe.test.js",
       "source_location": "L69",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "test_smoke_transcribe_test_js",
-      "target": "smoke_transcribe_test_checkaccuracy",
-      "confidence_score": 1.0
+      "target": "smoke_transcribe_test_checkaccuracy"
     },
     {
       "relation": "calls",
@@ -3127,9 +3433,9 @@
       "source_file": "test/smoke/transcribe.test.js",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "smoke_transcribe_test_main",
-      "target": "smoke_transcribe_test_checkaccuracy",
-      "confidence_score": 1.0
+      "target": "smoke_transcribe_test_checkaccuracy"
     },
     {
       "relation": "calls",
@@ -3148,9 +3454,9 @@
       "source_file": "electron/recorder.js",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_recorder_js",
-      "target": "electron_recorder_recorder",
-      "confidence_score": 1.0
+      "target": "electron_recorder_recorder"
     },
     {
       "relation": "method",
@@ -3158,9 +3464,9 @@
       "source_file": "electron/recorder.js",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_recorder_recorder",
-      "target": "electron_recorder_recorder_constructor",
-      "confidence_score": 1.0
+      "target": "electron_recorder_recorder_constructor"
     },
     {
       "relation": "method",
@@ -3168,9 +3474,9 @@
       "source_file": "electron/recorder.js",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_recorder_recorder",
-      "target": "electron_recorder_recorder_attachwindows",
-      "confidence_score": 1.0
+      "target": "electron_recorder_recorder_attachwindows"
     },
     {
       "relation": "method",
@@ -3178,9 +3484,9 @@
       "source_file": "electron/recorder.js",
       "source_location": "L37",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_recorder_recorder",
-      "target": "electron_recorder_recorder_sendflowbar",
-      "confidence_score": 1.0
+      "target": "electron_recorder_recorder_sendflowbar"
     },
     {
       "relation": "method",
@@ -3188,9 +3494,9 @@
       "source_file": "electron/recorder.js",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_recorder_recorder",
-      "target": "electron_recorder_recorder_senddashboard",
-      "confidence_score": 1.0
+      "target": "electron_recorder_recorder_senddashboard"
     },
     {
       "relation": "method",
@@ -3198,9 +3504,9 @@
       "source_file": "electron/recorder.js",
       "source_location": "L49",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_recorder_recorder",
-      "target": "electron_recorder_recorder_onholdstart",
-      "confidence_score": 1.0
+      "target": "electron_recorder_recorder_onholdstart"
     },
     {
       "relation": "method",
@@ -3208,9 +3514,9 @@
       "source_file": "electron/recorder.js",
       "source_location": "L55",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_recorder_recorder",
-      "target": "electron_recorder_recorder_onholdend",
-      "confidence_score": 1.0
+      "target": "electron_recorder_recorder_onholdend"
     },
     {
       "relation": "method",
@@ -3218,9 +3524,9 @@
       "source_file": "electron/recorder.js",
       "source_location": "L61",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_recorder_recorder",
-      "target": "electron_recorder_recorder_togglehandsfree",
-      "confidence_score": 1.0
+      "target": "electron_recorder_recorder_togglehandsfree"
     },
     {
       "relation": "method",
@@ -3228,9 +3534,9 @@
       "source_file": "electron/recorder.js",
       "source_location": "L71",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_recorder_recorder",
-      "target": "electron_recorder_recorder_startrecording",
-      "confidence_score": 1.0
+      "target": "electron_recorder_recorder_startrecording"
     },
     {
       "relation": "method",
@@ -3238,9 +3544,9 @@
       "source_file": "electron/recorder.js",
       "source_location": "L95",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_recorder_recorder",
-      "target": "electron_recorder_recorder_stoprecording",
-      "confidence_score": 1.0
+      "target": "electron_recorder_recorder_stoprecording"
     },
     {
       "relation": "method",
@@ -3248,9 +3554,9 @@
       "source_file": "electron/recorder.js",
       "source_location": "L112",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_recorder_recorder",
-      "target": "electron_recorder_recorder_cancel",
-      "confidence_score": 1.0
+      "target": "electron_recorder_recorder_cancel"
     },
     {
       "relation": "method",
@@ -3258,9 +3564,9 @@
       "source_file": "electron/recorder.js",
       "source_location": "L124",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_recorder_recorder",
-      "target": "electron_recorder_recorder_handleaudio",
-      "confidence_score": 1.0
+      "target": "electron_recorder_recorder_handleaudio"
     },
     {
       "relation": "method",
@@ -3268,9 +3574,9 @@
       "source_file": "electron/recorder.js",
       "source_location": "L194",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_recorder_recorder",
-      "target": "electron_recorder_recorder_finish",
-      "confidence_score": 1.0
+      "target": "electron_recorder_recorder_finish"
     },
     {
       "relation": "calls",
@@ -3279,9 +3585,9 @@
       "source_file": "electron/recorder.js",
       "source_location": "L75",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_recorder_recorder_startrecording",
-      "target": "electron_recorder_recorder_sendflowbar",
-      "confidence_score": 1.0
+      "target": "electron_recorder_recorder_sendflowbar"
     },
     {
       "relation": "calls",
@@ -3290,9 +3596,9 @@
       "source_file": "electron/recorder.js",
       "source_location": "L101",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_recorder_recorder_stoprecording",
-      "target": "electron_recorder_recorder_sendflowbar",
-      "confidence_score": 1.0
+      "target": "electron_recorder_recorder_sendflowbar"
     },
     {
       "relation": "calls",
@@ -3301,9 +3607,9 @@
       "source_file": "electron/recorder.js",
       "source_location": "L119",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_recorder_recorder_cancel",
-      "target": "electron_recorder_recorder_sendflowbar",
-      "confidence_score": 1.0
+      "target": "electron_recorder_recorder_sendflowbar"
     },
     {
       "relation": "calls",
@@ -3312,9 +3618,9 @@
       "source_file": "electron/recorder.js",
       "source_location": "L188",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_recorder_recorder_handleaudio",
-      "target": "electron_recorder_recorder_sendflowbar",
-      "confidence_score": 1.0
+      "target": "electron_recorder_recorder_sendflowbar"
     },
     {
       "relation": "calls",
@@ -3323,9 +3629,9 @@
       "source_file": "electron/recorder.js",
       "source_location": "L200",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_recorder_recorder_finish",
-      "target": "electron_recorder_recorder_sendflowbar",
-      "confidence_score": 1.0
+      "target": "electron_recorder_recorder_sendflowbar"
     },
     {
       "relation": "calls",
@@ -3334,9 +3640,9 @@
       "source_file": "electron/recorder.js",
       "source_location": "L137",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_recorder_recorder_handleaudio",
-      "target": "electron_recorder_recorder_senddashboard",
-      "confidence_score": 1.0
+      "target": "electron_recorder_recorder_senddashboard"
     },
     {
       "relation": "calls",
@@ -3345,9 +3651,9 @@
       "source_file": "electron/recorder.js",
       "source_location": "L51",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_recorder_recorder_onholdstart",
-      "target": "electron_recorder_recorder_startrecording",
-      "confidence_score": 1.0
+      "target": "electron_recorder_recorder_startrecording"
     },
     {
       "relation": "calls",
@@ -3356,9 +3662,9 @@
       "source_file": "electron/recorder.js",
       "source_location": "L57",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_recorder_recorder_onholdend",
-      "target": "electron_recorder_recorder_stoprecording",
-      "confidence_score": 1.0
+      "target": "electron_recorder_recorder_stoprecording"
     },
     {
       "relation": "calls",
@@ -3367,9 +3673,9 @@
       "source_file": "electron/recorder.js",
       "source_location": "L64",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_recorder_recorder_togglehandsfree",
-      "target": "electron_recorder_recorder_stoprecording",
-      "confidence_score": 1.0
+      "target": "electron_recorder_recorder_stoprecording"
     },
     {
       "relation": "calls",
@@ -3378,9 +3684,9 @@
       "source_file": "electron/recorder.js",
       "source_location": "L67",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_recorder_recorder_togglehandsfree",
-      "target": "electron_recorder_recorder_startrecording",
-      "confidence_score": 1.0
+      "target": "electron_recorder_recorder_startrecording"
     },
     {
       "relation": "calls",
@@ -3389,9 +3695,9 @@
       "source_file": "electron/recorder.js",
       "source_location": "L146",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_recorder_recorder_handleaudio",
-      "target": "electron_recorder_recorder_finish",
-      "confidence_score": 1.0
+      "target": "electron_recorder_recorder_finish"
     },
     {
       "relation": "contains",
@@ -3399,9 +3705,9 @@
       "source_file": "electron/preload.js",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_preload_js",
-      "target": "electron_preload_wrapped",
-      "confidence_score": 1.0
+      "target": "electron_preload_wrapped"
     },
     {
       "relation": "contains",
@@ -3409,9 +3715,9 @@
       "source_file": "electron/ipc.js",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_ipc_js",
-      "target": "electron_ipc_registeripc",
-      "confidence_score": 1.0
+      "target": "electron_ipc_registeripc"
     },
     {
       "relation": "contains",
@@ -3419,9 +3725,9 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_transcriber_js",
-      "target": "electron_transcriber_findbinary",
-      "confidence_score": 1.0
+      "target": "electron_transcriber_findbinary"
     },
     {
       "relation": "contains",
@@ -3429,9 +3735,9 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_transcriber_js",
-      "target": "electron_transcriber_transcriber",
-      "confidence_score": 1.0
+      "target": "electron_transcriber_transcriber"
     },
     {
       "relation": "contains",
@@ -3439,9 +3745,9 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L236",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_transcriber_js",
-      "target": "electron_transcriber_httpsdownload",
-      "confidence_score": 1.0
+      "target": "electron_transcriber_httpsdownload"
     },
     {
       "relation": "contains",
@@ -3449,9 +3755,9 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L267",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_transcriber_js",
-      "target": "electron_transcriber_sleep",
-      "confidence_score": 1.0
+      "target": "electron_transcriber_sleep"
     },
     {
       "relation": "calls",
@@ -3460,9 +3766,9 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L37",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_transcriber_transcriber_constructor",
-      "target": "electron_transcriber_findbinary",
-      "confidence_score": 1.0
+      "target": "electron_transcriber_findbinary"
     },
     {
       "relation": "method",
@@ -3470,9 +3776,9 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L33",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_transcriber_transcriber",
-      "target": "electron_transcriber_transcriber_constructor",
-      "confidence_score": 1.0
+      "target": "electron_transcriber_transcriber_constructor"
     },
     {
       "relation": "method",
@@ -3480,9 +3786,9 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L46",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_transcriber_transcriber",
-      "target": "electron_transcriber_transcriber_modelpath",
-      "confidence_score": 1.0
+      "target": "electron_transcriber_transcriber_modelpath"
     },
     {
       "relation": "method",
@@ -3490,9 +3796,9 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L50",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_transcriber_transcriber",
-      "target": "electron_transcriber_transcriber_hasmodel",
-      "confidence_score": 1.0
+      "target": "electron_transcriber_transcriber_hasmodel"
     },
     {
       "relation": "method",
@@ -3500,9 +3806,9 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L58",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_transcriber_transcriber",
-      "target": "electron_transcriber_transcriber_listmodels",
-      "confidence_score": 1.0
+      "target": "electron_transcriber_transcriber_listmodels"
     },
     {
       "relation": "method",
@@ -3510,9 +3816,9 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L65",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_transcriber_transcriber",
-      "target": "electron_transcriber_transcriber_downloadmodel",
-      "confidence_score": 1.0
+      "target": "electron_transcriber_transcriber_downloadmodel"
     },
     {
       "relation": "method",
@@ -3520,9 +3826,9 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L76",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_transcriber_transcriber",
-      "target": "electron_transcriber_transcriber_ensureserver",
-      "confidence_score": 1.0
+      "target": "electron_transcriber_transcriber_ensureserver"
     },
     {
       "relation": "method",
@@ -3530,9 +3836,9 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L90",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_transcriber_transcriber",
-      "target": "electron_transcriber_transcriber_startserver",
-      "confidence_score": 1.0
+      "target": "electron_transcriber_transcriber_startserver"
     },
     {
       "relation": "method",
@@ -3540,9 +3846,9 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L126",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_transcriber_transcriber",
-      "target": "electron_transcriber_transcriber_ping",
-      "confidence_score": 1.0
+      "target": "electron_transcriber_transcriber_ping"
     },
     {
       "relation": "method",
@@ -3550,9 +3856,9 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L141",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_transcriber_transcriber",
-      "target": "electron_transcriber_transcriber_stopserver",
-      "confidence_score": 1.0
+      "target": "electron_transcriber_transcriber_stopserver"
     },
     {
       "relation": "method",
@@ -3560,9 +3866,9 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L152",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_transcriber_transcriber",
-      "target": "electron_transcriber_transcriber_transcribe",
-      "confidence_score": 1.0
+      "target": "electron_transcriber_transcriber_transcribe"
     },
     {
       "relation": "method",
@@ -3570,9 +3876,9 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L166",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_transcriber_transcriber",
-      "target": "electron_transcriber_transcriber_transcribeviaserver",
-      "confidence_score": 1.0
+      "target": "electron_transcriber_transcriber_transcribeviaserver"
     },
     {
       "relation": "method",
@@ -3580,9 +3886,9 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L218",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_transcriber_transcriber",
-      "target": "electron_transcriber_transcriber_transcribeviacli",
-      "confidence_score": 1.0
+      "target": "electron_transcriber_transcriber_transcribeviacli"
     },
     {
       "relation": "calls",
@@ -3591,9 +3897,9 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L52",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_transcriber_transcriber_hasmodel",
-      "target": "electron_transcriber_transcriber_modelpath",
-      "confidence_score": 1.0
+      "target": "electron_transcriber_transcriber_modelpath"
     },
     {
       "relation": "calls",
@@ -3602,9 +3908,9 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L68",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_transcriber_transcriber_downloadmodel",
-      "target": "electron_transcriber_transcriber_modelpath",
-      "confidence_score": 1.0
+      "target": "electron_transcriber_transcriber_modelpath"
     },
     {
       "relation": "calls",
@@ -3613,9 +3919,9 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L94",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_transcriber_transcriber_startserver",
-      "target": "electron_transcriber_transcriber_modelpath",
-      "confidence_score": 1.0
+      "target": "electron_transcriber_transcriber_modelpath"
     },
     {
       "relation": "calls",
@@ -3624,9 +3930,9 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L153",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_transcriber_transcriber_transcribe",
-      "target": "electron_transcriber_transcriber_hasmodel",
-      "confidence_score": 1.0
+      "target": "electron_transcriber_transcriber_hasmodel"
     },
     {
       "relation": "calls",
@@ -3635,9 +3941,9 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L70",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_transcriber_transcriber_downloadmodel",
-      "target": "electron_transcriber_httpsdownload",
-      "confidence_score": 1.0
+      "target": "electron_transcriber_httpsdownload"
     },
     {
       "relation": "calls",
@@ -3646,9 +3952,9 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L82",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_transcriber_transcriber_ensureserver",
-      "target": "electron_transcriber_transcriber_stopserver",
-      "confidence_score": 1.0
+      "target": "electron_transcriber_transcriber_stopserver"
     },
     {
       "relation": "calls",
@@ -3657,9 +3963,9 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L84",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_transcriber_transcriber_ensureserver",
-      "target": "electron_transcriber_transcriber_startserver",
-      "confidence_score": 1.0
+      "target": "electron_transcriber_transcriber_startserver"
     },
     {
       "relation": "calls",
@@ -3668,9 +3974,9 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L154",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_transcriber_transcriber_transcribe",
-      "target": "electron_transcriber_transcriber_ensureserver",
-      "confidence_score": 1.0
+      "target": "electron_transcriber_transcriber_ensureserver"
     },
     {
       "relation": "calls",
@@ -3679,9 +3985,9 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L115",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_transcriber_transcriber_startserver",
-      "target": "electron_transcriber_transcriber_ping",
-      "confidence_score": 1.0
+      "target": "electron_transcriber_transcriber_ping"
     },
     {
       "relation": "calls",
@@ -3690,9 +3996,9 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L120",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_transcriber_transcriber_startserver",
-      "target": "electron_transcriber_sleep",
-      "confidence_score": 1.0
+      "target": "electron_transcriber_sleep"
     },
     {
       "relation": "calls",
@@ -3701,9 +4007,9 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L122",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_transcriber_transcriber_startserver",
-      "target": "electron_transcriber_transcriber_stopserver",
-      "confidence_score": 1.0
+      "target": "electron_transcriber_transcriber_stopserver"
     },
     {
       "relation": "calls",
@@ -3712,9 +4018,9 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L156",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_transcriber_transcriber_transcribe",
-      "target": "electron_transcriber_transcriber_transcribeviaserver",
-      "confidence_score": 1.0
+      "target": "electron_transcriber_transcriber_transcribeviaserver"
     },
     {
       "relation": "calls",
@@ -3723,9 +4029,9 @@
       "source_file": "electron/transcriber.js",
       "source_location": "L162",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_transcriber_transcriber_transcribe",
-      "target": "electron_transcriber_transcriber_transcribeviacli",
-      "confidence_score": 1.0
+      "target": "electron_transcriber_transcriber_transcribeviacli"
     },
     {
       "relation": "contains",
@@ -3733,9 +4039,9 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L38",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_hotkeys_js",
-      "target": "electron_hotkeys_findkeymon",
-      "confidence_score": 1.0
+      "target": "electron_hotkeys_findkeymon"
     },
     {
       "relation": "contains",
@@ -3743,9 +4049,9 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L53",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_hotkeys_js",
-      "target": "electron_hotkeys_specsatisfied",
-      "confidence_score": 1.0
+      "target": "electron_hotkeys_specsatisfied"
     },
     {
       "relation": "contains",
@@ -3753,9 +4059,9 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L59",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_hotkeys_js",
-      "target": "electron_hotkeys_hotkeys",
-      "confidence_score": 1.0
+      "target": "electron_hotkeys_hotkeys"
     },
     {
       "relation": "calls",
@@ -3764,9 +4070,9 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L91",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_hotkeys_hotkeys_start",
-      "target": "electron_hotkeys_findkeymon",
-      "confidence_score": 1.0
+      "target": "electron_hotkeys_findkeymon"
     },
     {
       "relation": "calls",
@@ -3775,9 +4081,9 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L181",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_hotkeys_hotkeys_handleevent",
-      "target": "electron_hotkeys_specsatisfied",
-      "confidence_score": 1.0
+      "target": "electron_hotkeys_specsatisfied"
     },
     {
       "relation": "method",
@@ -3785,9 +4091,9 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L60",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_hotkeys_hotkeys",
-      "target": "electron_hotkeys_hotkeys_constructor",
-      "confidence_score": 1.0
+      "target": "electron_hotkeys_hotkeys_constructor"
     },
     {
       "relation": "method",
@@ -3795,9 +4101,9 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L74",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_hotkeys_hotkeys",
-      "target": "electron_hotkeys_hotkeys_sethotkey",
-      "confidence_score": 1.0
+      "target": "electron_hotkeys_hotkeys_sethotkey"
     },
     {
       "relation": "method",
@@ -3805,9 +4111,9 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L81",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_hotkeys_hotkeys",
-      "target": "electron_hotkeys_hotkeys_on",
-      "confidence_score": 1.0
+      "target": "electron_hotkeys_hotkeys_on"
     },
     {
       "relation": "method",
@@ -3815,9 +4121,9 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L86",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_hotkeys_hotkeys",
-      "target": "electron_hotkeys_hotkeys_fire",
-      "confidence_score": 1.0
+      "target": "electron_hotkeys_hotkeys_fire"
     },
     {
       "relation": "method",
@@ -3825,9 +4131,9 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L90",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_hotkeys_hotkeys",
-      "target": "electron_hotkeys_hotkeys_start",
-      "confidence_score": 1.0
+      "target": "electron_hotkeys_hotkeys_start"
     },
     {
       "relation": "method",
@@ -3835,9 +4141,9 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L120",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_hotkeys_hotkeys",
-      "target": "electron_hotkeys_hotkeys_stop",
-      "confidence_score": 1.0
+      "target": "electron_hotkeys_hotkeys_stop"
     },
     {
       "relation": "method",
@@ -3845,9 +4151,9 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L129",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_hotkeys_hotkeys",
-      "target": "electron_hotkeys_hotkeys_send",
-      "confidence_score": 1.0
+      "target": "electron_hotkeys_hotkeys_send"
     },
     {
       "relation": "method",
@@ -3855,9 +4161,9 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L135",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_hotkeys_hotkeys",
-      "target": "electron_hotkeys_hotkeys_setrecording",
-      "confidence_score": 1.0
+      "target": "electron_hotkeys_hotkeys_setrecording"
     },
     {
       "relation": "method",
@@ -3865,9 +4171,9 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L139",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_hotkeys_hotkeys",
-      "target": "electron_hotkeys_hotkeys_promptaccessibility",
-      "confidence_score": 1.0
+      "target": "electron_hotkeys_hotkeys_promptaccessibility"
     },
     {
       "relation": "method",
@@ -3875,9 +4181,9 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L143",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_hotkeys_hotkeys",
-      "target": "electron_hotkeys_hotkeys_checkaccessibility",
-      "confidence_score": 1.0
+      "target": "electron_hotkeys_hotkeys_checkaccessibility"
     },
     {
       "relation": "method",
@@ -3885,9 +4191,9 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L147",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_hotkeys_hotkeys",
-      "target": "electron_hotkeys_hotkeys_paste",
-      "confidence_score": 1.0
+      "target": "electron_hotkeys_hotkeys_paste"
     },
     {
       "relation": "method",
@@ -3895,9 +4201,9 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L151",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_hotkeys_hotkeys",
-      "target": "electron_hotkeys_hotkeys_queryfront",
-      "confidence_score": 1.0
+      "target": "electron_hotkeys_hotkeys_queryfront"
     },
     {
       "relation": "method",
@@ -3905,9 +4211,9 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L165",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_hotkeys_hotkeys",
-      "target": "electron_hotkeys_hotkeys_handleevent",
-      "confidence_score": 1.0
+      "target": "electron_hotkeys_hotkeys_handleevent"
     },
     {
       "relation": "calls",
@@ -3916,9 +4222,9 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L100",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_hotkeys_hotkeys_start",
-      "target": "electron_hotkeys_hotkeys_on",
-      "confidence_score": 1.0
+      "target": "electron_hotkeys_hotkeys_on"
     },
     {
       "relation": "calls",
@@ -3927,9 +4233,9 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L94",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_hotkeys_hotkeys_start",
-      "target": "electron_hotkeys_hotkeys_fire",
-      "confidence_score": 1.0
+      "target": "electron_hotkeys_hotkeys_fire"
     },
     {
       "relation": "calls",
@@ -3938,9 +4244,9 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L169",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_hotkeys_hotkeys_handleevent",
-      "target": "electron_hotkeys_hotkeys_fire",
-      "confidence_score": 1.0
+      "target": "electron_hotkeys_hotkeys_fire"
     },
     {
       "relation": "calls",
@@ -3949,9 +4255,9 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L123",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_hotkeys_hotkeys_stop",
-      "target": "electron_hotkeys_hotkeys_send",
-      "confidence_score": 1.0
+      "target": "electron_hotkeys_hotkeys_send"
     },
     {
       "relation": "calls",
@@ -3960,9 +4266,9 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L136",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_hotkeys_hotkeys_setrecording",
-      "target": "electron_hotkeys_hotkeys_send",
-      "confidence_score": 1.0
+      "target": "electron_hotkeys_hotkeys_send"
     },
     {
       "relation": "calls",
@@ -3971,9 +4277,9 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L140",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_hotkeys_hotkeys_promptaccessibility",
-      "target": "electron_hotkeys_hotkeys_send",
-      "confidence_score": 1.0
+      "target": "electron_hotkeys_hotkeys_send"
     },
     {
       "relation": "calls",
@@ -3982,9 +4288,9 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L144",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_hotkeys_hotkeys_checkaccessibility",
-      "target": "electron_hotkeys_hotkeys_send",
-      "confidence_score": 1.0
+      "target": "electron_hotkeys_hotkeys_send"
     },
     {
       "relation": "calls",
@@ -3993,9 +4299,9 @@
       "source_file": "electron/hotkeys.js",
       "source_location": "L148",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_hotkeys_hotkeys_paste",
-      "target": "electron_hotkeys_hotkeys_send",
-      "confidence_score": 1.0
+      "target": "electron_hotkeys_hotkeys_send"
     },
     {
       "relation": "contains",
@@ -4003,18 +4309,88 @@
       "source_file": "electron/formatter.js",
       "source_location": "L28",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_formatter_js",
-      "target": "electron_formatter_stripfillers",
+      "target": "electron_formatter_stripfillers"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L44",
+      "weight": 1.0,
+      "source": "electron_formatter_js",
+      "target": "electron_formatter_applyspokenemails",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "electron/formatter.js",
-      "source_location": "L41",
+      "source_location": "L68",
       "weight": 1.0,
       "source": "electron_formatter_js",
-      "target": "electron_formatter_applybacktrack",
+      "target": "electron_formatter_strippreamble",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L79",
+      "weight": 1.0,
+      "source": "electron_formatter_js",
+      "target": "electron_formatter_striphedges",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L102",
+      "weight": 1.0,
+      "source": "electron_formatter_js",
+      "target": "electron_formatter_applyspokenemoji",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L119",
+      "weight": 1.0,
+      "source": "electron_formatter_js",
+      "target": "electron_formatter_applylistformation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L155",
+      "weight": 1.0,
+      "source": "electron_formatter_js",
+      "target": "electron_formatter_fixhomophones",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L160",
+      "weight": 1.0,
+      "source": "electron_formatter_js",
+      "target": "electron_formatter_matchcaseword",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L167",
+      "weight": 1.0,
+      "source": "electron_formatter_js",
+      "target": "electron_formatter_normalizetimes",
       "confidence_score": 1.0
     },
     {
@@ -4023,9 +4399,9 @@
       "source_file": "electron/formatter.js",
       "source_location": "L54",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_formatter_js",
-      "target": "electron_formatter_applyspokenpunctuation",
-      "confidence_score": 1.0
+      "target": "electron_formatter_applyspokenpunctuation"
     },
     {
       "relation": "contains",
@@ -4033,9 +4409,9 @@
       "source_file": "electron/formatter.js",
       "source_location": "L71",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_formatter_js",
-      "target": "electron_formatter_applydictionary",
-      "confidence_score": 1.0
+      "target": "electron_formatter_applydictionary"
     },
     {
       "relation": "contains",
@@ -4043,9 +4419,9 @@
       "source_file": "electron/formatter.js",
       "source_location": "L95",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_formatter_js",
-      "target": "electron_formatter_issentencestart",
-      "confidence_score": 1.0
+      "target": "electron_formatter_issentencestart"
     },
     {
       "relation": "contains",
@@ -4053,9 +4429,9 @@
       "source_file": "electron/formatter.js",
       "source_location": "L100",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_formatter_js",
-      "target": "electron_formatter_applysnippets",
-      "confidence_score": 1.0
+      "target": "electron_formatter_applysnippets"
     },
     {
       "relation": "contains",
@@ -4063,9 +4439,9 @@
       "source_file": "electron/formatter.js",
       "source_location": "L113",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_formatter_js",
-      "target": "electron_formatter_extractpressenter",
-      "confidence_score": 1.0
+      "target": "electron_formatter_extractpressenter"
     },
     {
       "relation": "contains",
@@ -4073,9 +4449,9 @@
       "source_file": "electron/formatter.js",
       "source_location": "L121",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_formatter_js",
-      "target": "electron_formatter_finaltidy",
-      "confidence_score": 1.0
+      "target": "electron_formatter_finaltidy"
     },
     {
       "relation": "contains",
@@ -4083,9 +4459,9 @@
       "source_file": "electron/formatter.js",
       "source_location": "L133",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_formatter_js",
-      "target": "electron_formatter_applystyle",
-      "confidence_score": 1.0
+      "target": "electron_formatter_applystyle"
     },
     {
       "relation": "contains",
@@ -4093,9 +4469,9 @@
       "source_file": "electron/formatter.js",
       "source_location": "L154",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_formatter_js",
-      "target": "electron_formatter_escapere",
-      "confidence_score": 1.0
+      "target": "electron_formatter_escapere"
     },
     {
       "relation": "contains",
@@ -4103,9 +4479,19 @@
       "source_file": "electron/formatter.js",
       "source_location": "L164",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_formatter_js",
-      "target": "electron_formatter_formattranscript",
-      "confidence_score": 1.0
+      "target": "electron_formatter_formattranscript"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L41",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "electron_formatter_js",
+      "target": "electron_formatter_applybacktrack"
     },
     {
       "relation": "calls",
@@ -4114,8 +4500,19 @@
       "source_file": "electron/formatter.js",
       "source_location": "L182",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_formatter_formattranscript",
-      "target": "electron_formatter_stripfillers",
+      "target": "electron_formatter_stripfillers"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L330",
+      "weight": 1.0,
+      "source": "electron_formatter_formattranscript",
+      "target": "electron_formatter_applyspokenemails",
       "confidence_score": 1.0
     },
     {
@@ -4123,10 +4520,65 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "electron/formatter.js",
-      "source_location": "L183",
+      "source_location": "L326",
       "weight": 1.0,
       "source": "electron_formatter_formattranscript",
-      "target": "electron_formatter_applybacktrack",
+      "target": "electron_formatter_strippreamble",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L322",
+      "weight": 1.0,
+      "source": "electron_formatter_formattranscript",
+      "target": "electron_formatter_striphedges",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L332",
+      "weight": 1.0,
+      "source": "electron_formatter_formattranscript",
+      "target": "electron_formatter_applyspokenemoji",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L334",
+      "weight": 1.0,
+      "source": "electron_formatter_formattranscript",
+      "target": "electron_formatter_applylistformation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L333",
+      "weight": 1.0,
+      "source": "electron_formatter_formattranscript",
+      "target": "electron_formatter_fixhomophones",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L331",
+      "weight": 1.0,
+      "source": "electron_formatter_formattranscript",
+      "target": "electron_formatter_normalizetimes",
       "confidence_score": 1.0
     },
     {
@@ -4136,9 +4588,9 @@
       "source_file": "electron/formatter.js",
       "source_location": "L184",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_formatter_formattranscript",
-      "target": "electron_formatter_applyspokenpunctuation",
-      "confidence_score": 1.0
+      "target": "electron_formatter_applyspokenpunctuation"
     },
     {
       "relation": "calls",
@@ -4147,9 +4599,9 @@
       "source_file": "electron/formatter.js",
       "source_location": "L77",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_formatter_applydictionary",
-      "target": "electron_formatter_escapere",
-      "confidence_score": 1.0
+      "target": "electron_formatter_escapere"
     },
     {
       "relation": "calls",
@@ -4158,9 +4610,9 @@
       "source_file": "electron/formatter.js",
       "source_location": "L185",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_formatter_formattranscript",
-      "target": "electron_formatter_applydictionary",
-      "confidence_score": 1.0
+      "target": "electron_formatter_applydictionary"
     },
     {
       "relation": "calls",
@@ -4169,9 +4621,9 @@
       "source_file": "electron/formatter.js",
       "source_location": "L106",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_formatter_applysnippets",
-      "target": "electron_formatter_escapere",
-      "confidence_score": 1.0
+      "target": "electron_formatter_escapere"
     },
     {
       "relation": "calls",
@@ -4180,9 +4632,9 @@
       "source_file": "electron/formatter.js",
       "source_location": "L186",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_formatter_formattranscript",
-      "target": "electron_formatter_applysnippets",
-      "confidence_score": 1.0
+      "target": "electron_formatter_applysnippets"
     },
     {
       "relation": "calls",
@@ -4191,9 +4643,9 @@
       "source_file": "electron/formatter.js",
       "source_location": "L190",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_formatter_formattranscript",
-      "target": "electron_formatter_extractpressenter",
-      "confidence_score": 1.0
+      "target": "electron_formatter_extractpressenter"
     },
     {
       "relation": "calls",
@@ -4202,9 +4654,9 @@
       "source_file": "electron/formatter.js",
       "source_location": "L194",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_formatter_formattranscript",
-      "target": "electron_formatter_finaltidy",
-      "confidence_score": 1.0
+      "target": "electron_formatter_finaltidy"
     },
     {
       "relation": "calls",
@@ -4213,9 +4665,9 @@
       "source_file": "electron/formatter.js",
       "source_location": "L147",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_formatter_applystyle",
-      "target": "electron_formatter_escapere",
-      "confidence_score": 1.0
+      "target": "electron_formatter_escapere"
     },
     {
       "relation": "calls",
@@ -4224,9 +4676,31 @@
       "source_file": "electron/formatter.js",
       "source_location": "L195",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_formatter_formattranscript",
-      "target": "electron_formatter_applystyle",
-      "confidence_score": 1.0
+      "target": "electron_formatter_applystyle"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "electron/formatter.js",
+      "source_location": "L321",
+      "weight": 1.0,
+      "source": "electron_formatter_formattranscript",
+      "target": "electron_corrections_applycorrections"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L183",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "electron_formatter_formattranscript",
+      "target": "electron_formatter_applybacktrack"
     },
     {
       "relation": "contains",
@@ -4234,9 +4708,9 @@
       "source_file": "electron/store.js",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_js",
-      "target": "electron_store_store",
-      "confidence_score": 1.0
+      "target": "electron_store_store"
     },
     {
       "relation": "method",
@@ -4244,9 +4718,9 @@
       "source_file": "electron/store.js",
       "source_location": "L28",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store",
-      "target": "electron_store_store_constructor",
-      "confidence_score": 1.0
+      "target": "electron_store_store_constructor"
     },
     {
       "relation": "method",
@@ -4254,9 +4728,9 @@
       "source_file": "electron/store.js",
       "source_location": "L42",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store",
-      "target": "electron_store_store_readjson",
-      "confidence_score": 1.0
+      "target": "electron_store_store_readjson"
     },
     {
       "relation": "method",
@@ -4264,9 +4738,9 @@
       "source_file": "electron/store.js",
       "source_location": "L50",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store",
-      "target": "electron_store_store_writejson",
-      "confidence_score": 1.0
+      "target": "electron_store_store_writejson"
     },
     {
       "relation": "method",
@@ -4274,9 +4748,9 @@
       "source_file": "electron/store.js",
       "source_location": "L57",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store",
-      "target": "electron_store_store_getsettings",
-      "confidence_score": 1.0
+      "target": "electron_store_store_getsettings"
     },
     {
       "relation": "method",
@@ -4284,9 +4758,9 @@
       "source_file": "electron/store.js",
       "source_location": "L61",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store",
-      "target": "electron_store_store_setsettings",
-      "confidence_score": 1.0
+      "target": "electron_store_store_setsettings"
     },
     {
       "relation": "method",
@@ -4294,9 +4768,9 @@
       "source_file": "electron/store.js",
       "source_location": "L68",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store",
-      "target": "electron_store_store_adddictionaryentry",
-      "confidence_score": 1.0
+      "target": "electron_store_store_adddictionaryentry"
     },
     {
       "relation": "method",
@@ -4304,9 +4778,9 @@
       "source_file": "electron/store.js",
       "source_location": "L85",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store",
-      "target": "electron_store_store_updatedictionaryentry",
-      "confidence_score": 1.0
+      "target": "electron_store_store_updatedictionaryentry"
     },
     {
       "relation": "method",
@@ -4314,9 +4788,9 @@
       "source_file": "electron/store.js",
       "source_location": "L93",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store",
-      "target": "electron_store_store_removedictionaryentry",
-      "confidence_score": 1.0
+      "target": "electron_store_store_removedictionaryentry"
     },
     {
       "relation": "method",
@@ -4324,9 +4798,9 @@
       "source_file": "electron/store.js",
       "source_location": "L99",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store",
-      "target": "electron_store_store_addsnippet",
-      "confidence_score": 1.0
+      "target": "electron_store_store_addsnippet"
     },
     {
       "relation": "method",
@@ -4334,9 +4808,9 @@
       "source_file": "electron/store.js",
       "source_location": "L116",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store",
-      "target": "electron_store_store_updatesnippet",
-      "confidence_score": 1.0
+      "target": "electron_store_store_updatesnippet"
     },
     {
       "relation": "method",
@@ -4344,9 +4818,9 @@
       "source_file": "electron/store.js",
       "source_location": "L124",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store",
-      "target": "electron_store_store_removesnippet",
-      "confidence_score": 1.0
+      "target": "electron_store_store_removesnippet"
     },
     {
       "relation": "method",
@@ -4354,9 +4828,9 @@
       "source_file": "electron/store.js",
       "source_location": "L130",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store",
-      "target": "electron_store_store_loadhistory",
-      "confidence_score": 1.0
+      "target": "electron_store_store_loadhistory"
     },
     {
       "relation": "method",
@@ -4364,9 +4838,9 @@
       "source_file": "electron/store.js",
       "source_location": "L143",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store",
-      "target": "electron_store_store_addhistoryentry",
-      "confidence_score": 1.0
+      "target": "electron_store_store_addhistoryentry"
     },
     {
       "relation": "method",
@@ -4374,8 +4848,18 @@
       "source_file": "electron/store.js",
       "source_location": "L163",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store",
-      "target": "electron_store_store_removehistoryentry",
+      "target": "electron_store_store_removehistoryentry"
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L176",
+      "weight": 1.0,
+      "source": "electron_store_store",
+      "target": "electron_store_store_togglehistoryedit",
       "confidence_score": 1.0
     },
     {
@@ -4384,9 +4868,9 @@
       "source_file": "electron/store.js",
       "source_location": "L173",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store",
-      "target": "electron_store_store_rewritehistory",
-      "confidence_score": 1.0
+      "target": "electron_store_store_rewritehistory"
     },
     {
       "relation": "method",
@@ -4394,9 +4878,9 @@
       "source_file": "electron/store.js",
       "source_location": "L179",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store",
-      "target": "electron_store_store_gethistory",
-      "confidence_score": 1.0
+      "target": "electron_store_store_gethistory"
     },
     {
       "relation": "method",
@@ -4404,9 +4888,9 @@
       "source_file": "electron/store.js",
       "source_location": "L184",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store",
-      "target": "electron_store_store_getstats",
-      "confidence_score": 1.0
+      "target": "electron_store_store_getstats"
     },
     {
       "relation": "method",
@@ -4414,9 +4898,9 @@
       "source_file": "electron/store.js",
       "source_location": "L228",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store",
-      "target": "electron_store_store_pruneoldaudio",
-      "confidence_score": 1.0
+      "target": "electron_store_store_pruneoldaudio"
     },
     {
       "relation": "calls",
@@ -4425,9 +4909,9 @@
       "source_file": "electron/store.js",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store_constructor",
-      "target": "electron_store_store_readjson",
-      "confidence_score": 1.0
+      "target": "electron_store_store_readjson"
     },
     {
       "relation": "calls",
@@ -4436,9 +4920,9 @@
       "source_file": "electron/store.js",
       "source_location": "L63",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store_setsettings",
-      "target": "electron_store_store_writejson",
-      "confidence_score": 1.0
+      "target": "electron_store_store_writejson"
     },
     {
       "relation": "calls",
@@ -4447,9 +4931,9 @@
       "source_file": "electron/store.js",
       "source_location": "L81",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store_adddictionaryentry",
-      "target": "electron_store_store_writejson",
-      "confidence_score": 1.0
+      "target": "electron_store_store_writejson"
     },
     {
       "relation": "calls",
@@ -4458,9 +4942,9 @@
       "source_file": "electron/store.js",
       "source_location": "L89",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store_updatedictionaryentry",
-      "target": "electron_store_store_writejson",
-      "confidence_score": 1.0
+      "target": "electron_store_store_writejson"
     },
     {
       "relation": "calls",
@@ -4469,9 +4953,9 @@
       "source_file": "electron/store.js",
       "source_location": "L95",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store_removedictionaryentry",
-      "target": "electron_store_store_writejson",
-      "confidence_score": 1.0
+      "target": "electron_store_store_writejson"
     },
     {
       "relation": "calls",
@@ -4480,9 +4964,9 @@
       "source_file": "electron/store.js",
       "source_location": "L112",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store_addsnippet",
-      "target": "electron_store_store_writejson",
-      "confidence_score": 1.0
+      "target": "electron_store_store_writejson"
     },
     {
       "relation": "calls",
@@ -4491,9 +4975,9 @@
       "source_file": "electron/store.js",
       "source_location": "L120",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store_updatesnippet",
-      "target": "electron_store_store_writejson",
-      "confidence_score": 1.0
+      "target": "electron_store_store_writejson"
     },
     {
       "relation": "calls",
@@ -4502,9 +4986,9 @@
       "source_file": "electron/store.js",
       "source_location": "L126",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store_removesnippet",
-      "target": "electron_store_store_writejson",
-      "confidence_score": 1.0
+      "target": "electron_store_store_writejson"
     },
     {
       "relation": "calls",
@@ -4513,9 +4997,9 @@
       "source_file": "electron/store.js",
       "source_location": "L64",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store_setsettings",
-      "target": "electron_store_store_getsettings",
-      "confidence_score": 1.0
+      "target": "electron_store_store_getsettings"
     },
     {
       "relation": "calls",
@@ -4524,9 +5008,9 @@
       "source_file": "electron/store.js",
       "source_location": "L158",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store_addhistoryentry",
-      "target": "electron_store_store_loadhistory",
-      "confidence_score": 1.0
+      "target": "electron_store_store_loadhistory"
     },
     {
       "relation": "calls",
@@ -4535,7 +5019,18 @@
       "source_file": "electron/store.js",
       "source_location": "L164",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store_removehistoryentry",
+      "target": "electron_store_store_loadhistory"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L177",
+      "weight": 1.0,
+      "source": "electron_store_store_togglehistoryedit",
       "target": "electron_store_store_loadhistory",
       "confidence_score": 1.0
     },
@@ -4546,9 +5041,9 @@
       "source_file": "electron/store.js",
       "source_location": "L180",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store_gethistory",
-      "target": "electron_store_store_loadhistory",
-      "confidence_score": 1.0
+      "target": "electron_store_store_loadhistory"
     },
     {
       "relation": "calls",
@@ -4557,9 +5052,9 @@
       "source_file": "electron/store.js",
       "source_location": "L185",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store_getstats",
-      "target": "electron_store_store_loadhistory",
-      "confidence_score": 1.0
+      "target": "electron_store_store_loadhistory"
     },
     {
       "relation": "calls",
@@ -4568,9 +5063,9 @@
       "source_file": "electron/store.js",
       "source_location": "L231",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store_pruneoldaudio",
-      "target": "electron_store_store_loadhistory",
-      "confidence_score": 1.0
+      "target": "electron_store_store_loadhistory"
     },
     {
       "relation": "calls",
@@ -4579,7 +5074,18 @@
       "source_file": "electron/store.js",
       "source_location": "L170",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store_removehistoryentry",
+      "target": "electron_store_store_rewritehistory"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L186",
+      "weight": 1.0,
+      "source": "electron_store_store_togglehistoryedit",
       "target": "electron_store_store_rewritehistory",
       "confidence_score": 1.0
     },
@@ -4590,9 +5096,9 @@
       "source_file": "electron/store.js",
       "source_location": "L238",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_store_store_pruneoldaudio",
-      "target": "electron_store_store_rewritehistory",
-      "confidence_score": 1.0
+      "target": "electron_store_store_rewritehistory"
     },
     {
       "relation": "contains",
@@ -4600,9 +5106,9 @@
       "source_file": "electron/tray.js",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_tray_js",
-      "target": "electron_tray_createtray",
-      "confidence_score": 1.0
+      "target": "electron_tray_createtray"
     },
     {
       "relation": "contains",
@@ -4610,9 +5116,9 @@
       "source_file": "electron/main.js",
       "source_location": "L41",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_main_js",
-      "target": "electron_main_boot",
-      "confidence_score": 1.0
+      "target": "electron_main_boot"
     },
     {
       "relation": "contains",
@@ -4620,9 +5126,9 @@
       "source_file": "electron/main.js",
       "source_location": "L151",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_main_js",
-      "target": "electron_main_runsmokeautopilot",
-      "confidence_score": 1.0
+      "target": "electron_main_runsmokeautopilot"
     },
     {
       "relation": "contains",
@@ -4630,9 +5136,9 @@
       "source_file": "electron/main.js",
       "source_location": "L214",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_main_js",
-      "target": "electron_main_rune2edictation",
-      "confidence_score": 1.0
+      "target": "electron_main_rune2edictation"
     },
     {
       "relation": "calls",
@@ -4651,9 +5157,9 @@
       "source_file": "electron/windows.js",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_windows_js",
-      "target": "electron_windows_createdashboard",
-      "confidence_score": 1.0
+      "target": "electron_windows_createdashboard"
     },
     {
       "relation": "contains",
@@ -4661,9 +5167,9 @@
       "source_file": "electron/windows.js",
       "source_location": "L41",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_windows_js",
-      "target": "electron_windows_flowbarbounds",
-      "confidence_score": 1.0
+      "target": "electron_windows_flowbarbounds"
     },
     {
       "relation": "contains",
@@ -4671,9 +5177,9 @@
       "source_file": "electron/windows.js",
       "source_location": "L59",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_windows_js",
-      "target": "electron_windows_clamp01",
-      "confidence_score": 1.0
+      "target": "electron_windows_clamp01"
     },
     {
       "relation": "contains",
@@ -4681,9 +5187,9 @@
       "source_file": "electron/windows.js",
       "source_location": "L63",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_windows_js",
-      "target": "electron_windows_createflowbar",
-      "confidence_score": 1.0
+      "target": "electron_windows_createflowbar"
     },
     {
       "relation": "contains",
@@ -4691,9 +5197,9 @@
       "source_file": "electron/windows.js",
       "source_location": "L97",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_windows_js",
-      "target": "electron_windows_setflowbarposition",
-      "confidence_score": 1.0
+      "target": "electron_windows_setflowbarposition"
     },
     {
       "relation": "contains",
@@ -4701,9 +5207,9 @@
       "source_file": "electron/windows.js",
       "source_location": "L103",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_windows_js",
-      "target": "electron_windows_createonboarding",
-      "confidence_score": 1.0
+      "target": "electron_windows_createonboarding"
     },
     {
       "relation": "calls",
@@ -4712,9 +5218,9 @@
       "source_file": "electron/windows.js",
       "source_location": "L48",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_windows_flowbarbounds",
-      "target": "electron_windows_clamp01",
-      "confidence_score": 1.0
+      "target": "electron_windows_clamp01"
     },
     {
       "relation": "calls",
@@ -4723,9 +5229,9 @@
       "source_file": "electron/windows.js",
       "source_location": "L64",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_windows_createflowbar",
-      "target": "electron_windows_flowbarbounds",
-      "confidence_score": 1.0
+      "target": "electron_windows_flowbarbounds"
     },
     {
       "relation": "calls",
@@ -4734,9 +5240,9 @@
       "source_file": "electron/windows.js",
       "source_location": "L99",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_windows_setflowbarposition",
-      "target": "electron_windows_flowbarbounds",
-      "confidence_score": 1.0
+      "target": "electron_windows_flowbarbounds"
     },
     {
       "relation": "contains",
@@ -4744,9 +5250,9 @@
       "source_file": "electron/inserter.js",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_inserter_js",
-      "target": "electron_inserter_inserter",
-      "confidence_score": 1.0
+      "target": "electron_inserter_inserter"
     },
     {
       "relation": "contains",
@@ -4754,9 +5260,9 @@
       "source_file": "electron/inserter.js",
       "source_location": "L76",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_inserter_js",
-      "target": "electron_inserter_sleep",
-      "confidence_score": 1.0
+      "target": "electron_inserter_sleep"
     },
     {
       "relation": "method",
@@ -4764,9 +5270,9 @@
       "source_file": "electron/inserter.js",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_inserter_inserter",
-      "target": "electron_inserter_inserter_constructor",
-      "confidence_score": 1.0
+      "target": "electron_inserter_inserter_constructor"
     },
     {
       "relation": "method",
@@ -4774,9 +5280,9 @@
       "source_file": "electron/inserter.js",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_inserter_inserter",
-      "target": "electron_inserter_inserter_insert",
-      "confidence_score": 1.0
+      "target": "electron_inserter_inserter_insert"
     },
     {
       "relation": "method",
@@ -4784,9 +5290,9 @@
       "source_file": "electron/inserter.js",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_inserter_inserter",
-      "target": "electron_inserter_inserter_copylast",
-      "confidence_score": 1.0
+      "target": "electron_inserter_inserter_copylast"
     },
     {
       "relation": "method",
@@ -4794,9 +5300,9 @@
       "source_file": "electron/inserter.js",
       "source_location": "L48",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_inserter_inserter",
-      "target": "electron_inserter_inserter_pastelast",
-      "confidence_score": 1.0
+      "target": "electron_inserter_inserter_pastelast"
     },
     {
       "relation": "method",
@@ -4804,9 +5310,9 @@
       "source_file": "electron/inserter.js",
       "source_location": "L55",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_inserter_inserter",
-      "target": "electron_inserter_inserter_snapshotclipboard",
-      "confidence_score": 1.0
+      "target": "electron_inserter_inserter_snapshotclipboard"
     },
     {
       "relation": "method",
@@ -4814,9 +5320,9 @@
       "source_file": "electron/inserter.js",
       "source_location": "L62",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_inserter_inserter",
-      "target": "electron_inserter_inserter_restoreclipboard",
-      "confidence_score": 1.0
+      "target": "electron_inserter_inserter_restoreclipboard"
     },
     {
       "relation": "method",
@@ -4824,9 +5330,9 @@
       "source_file": "electron/inserter.js",
       "source_location": "L67",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_inserter_inserter",
-      "target": "electron_inserter_inserter_manualpastenotice",
-      "confidence_score": 1.0
+      "target": "electron_inserter_inserter_manualpastenotice"
     },
     {
       "relation": "calls",
@@ -4835,9 +5341,9 @@
       "source_file": "electron/inserter.js",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_inserter_inserter_insert",
-      "target": "electron_inserter_inserter_snapshotclipboard",
-      "confidence_score": 1.0
+      "target": "electron_inserter_inserter_snapshotclipboard"
     },
     {
       "relation": "calls",
@@ -4846,9 +5352,9 @@
       "source_file": "electron/inserter.js",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_inserter_inserter_insert",
-      "target": "electron_inserter_inserter_manualpastenotice",
-      "confidence_score": 1.0
+      "target": "electron_inserter_inserter_manualpastenotice"
     },
     {
       "relation": "calls",
@@ -4857,9 +5363,9 @@
       "source_file": "electron/inserter.js",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_inserter_inserter_insert",
-      "target": "electron_inserter_sleep",
-      "confidence_score": 1.0
+      "target": "electron_inserter_sleep"
     },
     {
       "relation": "calls",
@@ -4868,11 +5374,583 @@
       "source_file": "electron/inserter.js",
       "source_location": "L38",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "electron_inserter_inserter_insert",
-      "target": "electron_inserter_inserter_restoreclipboard",
+      "target": "electron_inserter_inserter_restoreclipboard"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L47",
+      "weight": 1.0,
+      "source": "electron_corrections_js",
+      "target": "electron_corrections_istime",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "electron_corrections_js",
+      "target": "electron_corrections_isdayword",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "electron_corrections_js",
+      "target": "electron_corrections_isnumber",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "electron_corrections_js",
+      "target": "electron_corrections_isweekday",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "electron_corrections_js",
+      "target": "electron_corrections_ismonth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "electron_corrections_js",
+      "target": "electron_corrections_isproper",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "electron_corrections_js",
+      "target": "electron_corrections_shapeof",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L71",
+      "weight": 1.0,
+      "source": "electron_corrections_js",
+      "target": "electron_corrections_strippunct",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L75",
+      "weight": 1.0,
+      "source": "electron_corrections_js",
+      "target": "electron_corrections_words",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L85",
+      "weight": 1.0,
+      "source": "electron_corrections_js",
+      "target": "electron_corrections_collapsestutters",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L118",
+      "weight": 1.0,
+      "source": "electron_corrections_js",
+      "target": "electron_corrections_findmarker",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L145",
+      "weight": 1.0,
+      "source": "electron_corrections_js",
+      "target": "electron_corrections_replacetail",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L238",
+      "weight": 1.0,
+      "source": "electron_corrections_js",
+      "target": "electron_corrections_isclauselike",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L249",
+      "weight": 1.0,
+      "source": "electron_corrections_js",
+      "target": "electron_corrections_applymarkedcorrections",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L359",
+      "weight": 1.0,
+      "source": "electron_corrections_js",
+      "target": "electron_corrections_correctacross",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L372",
+      "weight": 1.0,
+      "source": "electron_corrections_js",
+      "target": "electron_corrections_collapserestatements",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L406",
+      "weight": 1.0,
+      "source": "electron_corrections_js",
+      "target": "electron_corrections_collapseellipsisrestatement",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L438",
+      "weight": 1.0,
+      "source": "electron_corrections_js",
+      "target": "electron_corrections_collapseinlinerestatement",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L454",
+      "weight": 1.0,
+      "source": "electron_corrections_js",
+      "target": "electron_corrections_sharedhead",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L464",
+      "weight": 1.0,
+      "source": "electron_corrections_js",
+      "target": "electron_corrections_capitalize",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L471",
+      "weight": 1.0,
+      "source": "electron_corrections_js",
+      "target": "electron_corrections_preservecap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L480",
+      "weight": 1.0,
+      "source": "electron_corrections_js",
+      "target": "electron_corrections_applycorrections",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "electron_corrections_shapeof",
+      "target": "electron_corrections_istime",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L64",
+      "weight": 1.0,
+      "source": "electron_corrections_shapeof",
+      "target": "electron_corrections_isdayword",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L61",
+      "weight": 1.0,
+      "source": "electron_corrections_shapeof",
+      "target": "electron_corrections_isnumber",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L62",
+      "weight": 1.0,
+      "source": "electron_corrections_shapeof",
+      "target": "electron_corrections_isweekday",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L63",
+      "weight": 1.0,
+      "source": "electron_corrections_shapeof",
+      "target": "electron_corrections_ismonth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L65",
+      "weight": 1.0,
+      "source": "electron_corrections_shapeof",
+      "target": "electron_corrections_isproper",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L204",
+      "weight": 1.0,
+      "source": "electron_corrections_replacetail",
+      "target": "electron_corrections_isproper",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "electron_corrections_shapeof",
+      "target": "electron_corrections_strippunct",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L171",
+      "weight": 1.0,
+      "source": "electron_corrections_replacetail",
+      "target": "electron_corrections_shapeof",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L139",
+      "weight": 1.0,
+      "source": "electron_corrections_findmarker",
+      "target": "electron_corrections_strippunct",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L151",
+      "weight": 1.0,
+      "source": "electron_corrections_replacetail",
+      "target": "electron_corrections_strippunct",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L419",
+      "weight": 1.0,
+      "source": "electron_corrections_collapseellipsisrestatement",
+      "target": "electron_corrections_strippunct",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L146",
+      "weight": 1.0,
+      "source": "electron_corrections_replacetail",
+      "target": "electron_corrections_words",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L239",
+      "weight": 1.0,
+      "source": "electron_corrections_isclauselike",
+      "target": "electron_corrections_words",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L415",
+      "weight": 1.0,
+      "source": "electron_corrections_collapseellipsisrestatement",
+      "target": "electron_corrections_words",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L439",
+      "weight": 1.0,
+      "source": "electron_corrections_collapseinlinerestatement",
+      "target": "electron_corrections_words",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L455",
+      "weight": 1.0,
+      "source": "electron_corrections_sharedhead",
+      "target": "electron_corrections_words",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L481",
+      "weight": 1.0,
+      "source": "electron_corrections_applycorrections",
+      "target": "electron_corrections_collapsestutters",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L268",
+      "weight": 1.0,
+      "source": "electron_corrections_applymarkedcorrections",
+      "target": "electron_corrections_findmarker",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L318",
+      "weight": 1.0,
+      "source": "electron_corrections_applymarkedcorrections",
+      "target": "electron_corrections_replacetail",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L360",
+      "weight": 1.0,
+      "source": "electron_corrections_correctacross",
+      "target": "electron_corrections_replacetail",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L335",
+      "weight": 1.0,
+      "source": "electron_corrections_applymarkedcorrections",
+      "target": "electron_corrections_isclauselike",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L362",
+      "weight": 1.0,
+      "source": "electron_corrections_correctacross",
+      "target": "electron_corrections_isclauselike",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L299",
+      "weight": 1.0,
+      "source": "electron_corrections_applymarkedcorrections",
+      "target": "electron_corrections_correctacross",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L306",
+      "weight": 1.0,
+      "source": "electron_corrections_applymarkedcorrections",
+      "target": "electron_corrections_preservecap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L482",
+      "weight": 1.0,
+      "source": "electron_corrections_applycorrections",
+      "target": "electron_corrections_applymarkedcorrections",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L382",
+      "weight": 1.0,
+      "source": "electron_corrections_collapserestatements",
+      "target": "electron_corrections_sharedhead",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L387",
+      "weight": 1.0,
+      "source": "electron_corrections_collapserestatements",
+      "target": "electron_corrections_preservecap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L483",
+      "weight": 1.0,
+      "source": "electron_corrections_applycorrections",
+      "target": "electron_corrections_collapserestatements",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L427",
+      "weight": 1.0,
+      "source": "electron_corrections_collapseellipsisrestatement",
+      "target": "electron_corrections_preservecap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L484",
+      "weight": 1.0,
+      "source": "electron_corrections_applycorrections",
+      "target": "electron_corrections_collapseellipsisrestatement",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/corrections.js",
+      "source_location": "L473",
+      "weight": 1.0,
+      "source": "electron_corrections_preservecap",
+      "target": "electron_corrections_capitalize",
       "confidence_score": 1.0
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "a659638c5aa19b4d49d8ae2aafa8ee1f4dbeb49d"
+  "built_at_commit": "417cfcb2b4dd293300e441dc02ef13d1bfe0bfc8"
 }

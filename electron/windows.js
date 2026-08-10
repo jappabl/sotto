@@ -64,6 +64,10 @@ function createFlowbar(settings) {
   const bounds = flowbarBounds(settings.flowBarDock, settings.flowBarOffset);
   const win = new BrowserWindow({
     ...bounds,
+    // NSPanel: the only window type macOS will float above OTHER apps'
+    // fullscreen Spaces. A plain window vanishes there even at
+    // screen-saver level.
+    type: 'panel',
     frame: false,
     transparent: true,
     resizable: false,
@@ -84,8 +88,15 @@ function createFlowbar(settings) {
       backgroundThrottling: false,
     },
   });
-  win.setAlwaysOnTop(true, 'screen-saver');
-  win.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true });
+  win.setAlwaysOnTop(true, 'screen-saver', 1);
+  win.setVisibleOnAllWorkspaces(true, {
+    visibleOnFullScreen: true,
+    skipTransformProcessType: true,
+  });
+  win.setFullScreenable(false);
+  if (typeof win.setHiddenInMissionControl === 'function') {
+    win.setHiddenInMissionControl(true);
+  }
   win.loadFile(path.join(__dirname, '..', 'renderer', 'flowbar', 'index.html'));
   // Headless E2E runs keep the overlay hidden; JS still runs (no throttling).
   if (process.env.SOTTO_E2E !== '1') {

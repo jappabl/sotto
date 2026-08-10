@@ -17,6 +17,8 @@ const DEFAULT_SETTINGS = {
   flowBarOffset: 0.5,        // fraction along the docked edge
   textStyle: 'formal',       // 'formal' | 'casual' | 'very-casual'
   cleanupLevel: 'medium',    // 'none' | 'light' | 'medium' | 'high'
+  aiPolish: false,           // local-LLM cleanup pass (needs LLM model)
+  commandMode: true,         // fn+ctrl chord edits the selection by voice
   removeFillers: true,
   autoPunctuate: true,       // spoken punctuation commands
   autoLearn: true,           // learn dictionary words from corrections (manual add only in v1)

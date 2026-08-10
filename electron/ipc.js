@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 
 function registerIpc(ctx) {
-  const { store, recorder, hotkeys, transcriber, inserter, windows } = ctx;
+  const { store, recorder, hotkeys, transcriber, polisher, inserter, windows } = ctx;
 
   // ---- settings ----
   ipcMain.handle('settings:get', () => store.getSettings());
@@ -25,6 +25,12 @@ function registerIpc(ctx) {
     }
     if (patch.model && patch.model !== before.model && transcriber.hasModel(patch.model)) {
       transcriber.ensureServer(patch.model).catch(() => {});
+    }
+    if (patch.aiPolish === true && polisher.available()) {
+      polisher.ensureServer().catch(() => {});
+    }
+    if (patch.aiPolish === false) {
+      polisher.stop();
     }
     for (const w of [windows.dashboard, windows.flowbar]) {
       if (w && !w.isDestroyed()) w.webContents.send('settings:changed', after);
@@ -139,6 +145,30 @@ function registerIpc(ctx) {
       }
     };
     await transcriber.downloadModel(model, send);
+    send(1);
+    return true;
+  });
+
+  // ---- AI polish ----
+  ipcMain.handle('polish:status', () => ({
+    engine: !!polisher.serverBin,
+    models: polisher.listModels(),
+    ready: polisher.ready,
+  }));
+  ipcMain.handle('polish:download', async (_e, model) => {
+    const { LLM_MODELS, DEFAULT_LLM } = require('./polisher');
+    const name = model || DEFAULT_LLM;
+    const def = LLM_MODELS[name];
+    if (!def) throw new Error('unknown llm model');
+    const send = (p) => {
+      if (windows.dashboard && !windows.dashboard.isDestroyed()) {
+        windows.dashboard.webContents.send('ob:model-progress', { model: name, progress: p });
+      }
+    };
+    const { httpsDownload } = require('./transcriber');
+    const dest = require('path').join(polisher.modelsDir, name);
+    await httpsDownload(def.url, dest + '.download', send);
+    require('fs').renameSync(dest + '.download', dest);
     send(1);
     return true;
   });

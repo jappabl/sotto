@@ -7,6 +7,7 @@ const fs = require('fs');
 const { Store } = require('./store');
 const { Hotkeys } = require('./hotkeys');
 const { Transcriber } = require('./transcriber');
+const { Polisher } = require('./polisher');
 const { Inserter } = require('./inserter');
 const { Recorder } = require('./recorder');
 const { registerIpc } = require('./ipc');
@@ -55,8 +56,12 @@ function boot() {
       log,
     });
     const hotkeys = new Hotkeys({ log });
+    const polisher = new Polisher({
+      modelsDir: path.join(userData, 'models'),
+      log,
+    });
     const inserter = new Inserter({ hotkeys, log });
-    const recorder = new Recorder({ store, hotkeys, transcriber, inserter, log });
+    const recorder = new Recorder({ store, hotkeys, transcriber, inserter, polisher, log });
 
     const settings = store.getSettings();
     hotkeys.setHotkey(settings.hotkey);
@@ -66,7 +71,7 @@ function boot() {
       flowbar: null,
       onboarding: null,
     };
-    const ctx = { store, hotkeys, transcriber, inserter, recorder, windows, app, log };
+    const ctx = { store, hotkeys, transcriber, polisher, inserter, recorder, windows, app, log };
 
     registerIpc(ctx);
 
@@ -99,6 +104,9 @@ function boot() {
     if (transcriber.hasModel(settings.model)) {
       transcriber.ensureServer(settings.model).catch((e) => log('server warmup failed: ' + e.message));
     }
+    if (settings.aiPolish && polisher.available()) {
+      polisher.ensureServer().catch((e) => log('llm warmup failed: ' + e.message));
+    }
 
     store.pruneOldAudio();
 
@@ -125,6 +133,7 @@ function boot() {
     app.on('will-quit', () => {
       hotkeys.stop();
       transcriber.stopServer();
+      polisher.stop();
     });
 
     log('sotto started');

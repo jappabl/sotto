@@ -8,6 +8,7 @@ const listenChannels = [
   'flow:record-cancel',
   'flow:done',
   'flow:error',
+  'flow:command-mode',
   'data:changed',
   'ob:model-progress',
   'ob:ax-status',

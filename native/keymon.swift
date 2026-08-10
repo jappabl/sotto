@@ -101,6 +101,53 @@ func installTap() -> Bool {
     return true
 }
 
+// Read the focused text field through the Accessibility API: text before and
+// after the cursor (for mid-sentence continuation) and the current selection
+// (for Command Mode). Secure fields are never read.
+func focusedContext() -> [String: Any] {
+    var result: [String: Any] = ["e": "ctx", "ok": false,
+                                 "before": "", "after": "", "selected": ""]
+    let systemWide = AXUIElementCreateSystemWide()
+    var focusedRef: CFTypeRef?
+    guard AXUIElementCopyAttributeValue(systemWide, kAXFocusedUIElementAttribute as CFString, &focusedRef) == .success,
+          let focused = focusedRef else { return result }
+    let el = focused as! AXUIElement
+
+    var subroleRef: CFTypeRef?
+    AXUIElementCopyAttributeValue(el, kAXSubroleAttribute as CFString, &subroleRef)
+    if let subrole = subroleRef as? String, subrole == "AXSecureTextField" {
+        return result // never read password fields
+    }
+
+    var valueRef: CFTypeRef?
+    guard AXUIElementCopyAttributeValue(el, kAXValueAttribute as CFString, &valueRef) == .success,
+          let value = valueRef as? String else { return result }
+
+    var selTextRef: CFTypeRef?
+    AXUIElementCopyAttributeValue(el, kAXSelectedTextAttribute as CFString, &selTextRef)
+    let selected = (selTextRef as? String) ?? ""
+
+    var caret = value.count
+    var rangeRef: CFTypeRef?
+    if AXUIElementCopyAttributeValue(el, kAXSelectedTextRangeAttribute as CFString, &rangeRef) == .success,
+       let rr = rangeRef, CFGetTypeID(rr) == AXValueGetTypeID() {
+        var range = CFRange(location: 0, length: 0)
+        if AXValueGetValue(rr as! AXValue, .cfRange, &range) {
+            caret = min(max(0, range.location), value.count)
+        }
+    }
+
+    let chars = Array(value)
+    let beforeStart = max(0, caret - 240)
+    let afterEnd = min(chars.count, caret + 240)
+    let safeCaret = min(caret, chars.count)
+    result["ok"] = true
+    result["before"] = String(chars[beforeStart..<safeCaret])
+    result["after"] = String(chars[safeCaret..<afterEnd])
+    result["selected"] = String(selected.prefix(4000))
+    return result
+}
+
 func postKeyChord(virtualKey: CGKeyCode, flags: CGEventFlags) {
     let src = CGEventSource(stateID: .combinedSessionState)
     guard let down = CGEvent(keyboardEventSource: src, virtualKey: virtualKey, keyDown: true),
@@ -124,6 +171,8 @@ func handle(command raw: String) {
         emit(["e": "front",
               "name": app?.localizedName ?? "",
               "bundle": app?.bundleIdentifier ?? ""])
+    case "ctx?":
+        emit(focusedContext())
     case "paste!":
         postKeyChord(virtualKey: 9, flags: .maskCommand) // ⌘V
         emit(["e": "pasted"])

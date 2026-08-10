@@ -13,7 +13,8 @@
 
 const STRONG_MARKERS = [
   'scratch that', 'strike that', 'change that', 'no wait', 'no, wait',
-  'wait no', 'wait, no', 'i meant', 'make that', 'or rather', 'correction',
+  'wait no', 'wait, no', 'no hold on', 'no, hold on', 'i meant', 'make that',
+  'or rather', 'correction',
 ];
 // "I mean" corrects only when whisper set it off with a comma (", I mean").
 const BOUNDARY_MARKERS = ['i mean'];

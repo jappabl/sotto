@@ -22,12 +22,13 @@ const HOTKEY_OPTIONS = [
 ];
 
 export async function renderSettings(container) {
-  const [settings, version, micStatus, axStatus, models] = await Promise.all([
+  const [settings, version, micStatus, axStatus, models, polish] = await Promise.all([
     window.sotto.invoke('settings:get'),
     window.sotto.invoke('app:version'),
     window.sotto.invoke('perm:mic-status'),
     window.sotto.invoke('perm:ax-status'),
     window.sotto.invoke('models:list'),
+    window.sotto.invoke('polish:status'),
   ]);
 
   container.replaceChildren();
@@ -101,6 +102,19 @@ export async function renderSettings(container) {
         rerender();
       },
     }));
+    body.append(aiPolishRow(settings, polish, save, rerender));
+    body.append(toggleRow({
+      name: 'Command Mode',
+      desc: 'Hold your talk key + ctrl, then speak an instruction — "make this shorter" rewrites the selected text. Needs AI Polish.',
+      value: settings.commandMode,
+      onChange: (v) => save({ commandMode: v }, rerender),
+    }));
+    body.append(toggleRow({
+      name: 'Auto-learn dictionary',
+      desc: 'When you hand-correct a word after dictating, Sotto quietly adds the fixed spelling to your dictionary (marked ✨).',
+      value: settings.autoLearn,
+      onChange: (v) => save({ autoLearn: v }, rerender),
+    }));
     body.append(toggleRow({
       name: 'Sound effects',
       desc: 'Play a soft ping when dictation starts and a pop when text lands.',
@@ -169,9 +183,44 @@ function modelLabel(m) {
   const names = {
     'ggml-tiny.en.bin': 'Tiny (English, fastest)',
     'ggml-base.bin': 'Base (all languages)',
-    'ggml-small.bin': 'Small (all languages, most accurate)',
+    'ggml-small.bin': 'Small (all languages)',
+    'ggml-large-v3-turbo-q5_0.bin': 'Large Turbo (most accurate)',
   };
   return (names[m.name] || m.name) + (m.installed ? '' : ' — download');
+}
+
+function aiPolishRow(settings, polish, save, rerender) {
+  const installed = polish.models.some((m) => m.installed);
+  const desc = !polish.engine
+    ? 'Needs llama.cpp — run "brew install llama.cpp", then relaunch Sotto. '
+    : installed
+      ? 'A small language model runs on-device after each dictation, catching the fuzzy self-corrections rules can miss. '
+      : 'Downloads a ~2 GB on-device language model (one time). ';
+  const row = el('div', { class: 'setting-row' },
+    el('div', { class: 'setting-info' },
+      el('div', { class: 'setting-name' }, 'AI Polish (beta)'),
+      el('div', { class: 'setting-desc' }, desc,
+        settings.aiPolish && installed ? el('span', { class: 'perm-ok' }, 'Active ✓') : null),
+    ),
+  );
+  const sw = el('div', { class: 'switch' + (settings.aiPolish ? ' on' : '') });
+  row.append(sw);
+  row.addEventListener('click', async () => {
+    if (settings.aiPolish) return save({ aiPolish: false }, rerender);
+    if (!polish.engine) return toast('Install llama.cpp first: brew install llama.cpp');
+    if (!installed) {
+      toast('Downloading the polish model (~2 GB)…');
+      try {
+        await window.sotto.invoke('polish:download', null);
+      } catch {
+        toast('Download failed — check your connection');
+        return rerender();
+      }
+    }
+    await save({ aiPolish: true }, rerender);
+    toast('AI Polish is on');
+  });
+  return row;
 }
 
 function toggleRow({ name, desc, value, onChange }) {

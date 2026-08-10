@@ -59,7 +59,9 @@ html, body {
 
 #pill.idle       { width: 74px;  height: 22px; }
 #pill.recording  { width: 196px; height: 36px; }
+#pill.recording.command { background: #3d2d73; }
 #pill.processing { width: 120px; height: 30px; }
+#pill.processing.command { background: #3d2d73; }
 #pill.flash      { width: 120px; height: 30px; background: #1e5c3a; }
 #pill.error      { width: 200px; height: 30px; background: #5c1e1e; }
 

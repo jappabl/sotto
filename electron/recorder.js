@@ -7,19 +7,24 @@
 const fs = require('fs');
 const path = require('path');
 
+const CTRL_KEYS = [59, 62]; // left/right control
+
 class Recorder {
-  constructor({ store, hotkeys, transcriber, inserter, log = () => {} }) {
+  constructor({ store, hotkeys, transcriber, inserter, polisher = null, log = () => {} }) {
     this.store = store;
     this.hotkeys = hotkeys;
     this.transcriber = transcriber;
     this.inserter = inserter;
+    this.polisher = polisher;
     this.log = log;
     this.state = 'idle';
     this.handsFree = false;
+    this.commandMode = false;
     this.flowbar = null;         // BrowserWindow, set by main
     this.dashboard = null;
     this.sessionStart = 0;
     this.frontApp = { name: '', bundle: '' };
+    this.context = { ok: false, before: '', after: '', selected: '' };
     this.capTimer = null;
     this._pendingStop = null;
 
@@ -27,6 +32,18 @@ class Recorder {
     hotkeys.on('holdEnd', (dur) => this._onHoldEnd(dur));
     hotkeys.on('doubleTap', () => this.toggleHandsFree());
     hotkeys.on('esc', () => this.cancel());
+    // Adding ctrl while the push-to-talk hold is young switches the session
+    // to Command Mode ("edit my selection with what I'm about to say").
+    hotkeys.on('mods', (mods) => {
+      if (this.state === 'recording' && !this.commandMode &&
+          this.store.getSettings().commandMode &&
+          Date.now() - this.sessionStart < 2000 &&
+          mods.fn && mods.keys.some((k) => CTRL_KEYS.includes(k))) {
+        this.commandMode = true;
+        this._sendFlowbar('flow:command-mode', {});
+        this.log('switched to command mode');
+      }
+    });
   }
 
   attachWindows({ flowbar, dashboard }) {
@@ -78,9 +95,12 @@ class Recorder {
     }
     this.state = 'recording';
     this.sessionStart = Date.now();
+    this.commandMode = false;
     this.hotkeys.setRecording(true);
-    // Snapshot the frontmost app now — that's where text will land.
+    // Snapshot the frontmost app + text context now — that's where text lands.
     this.hotkeys.queryFront().then((f) => { this.frontApp = f; });
+    this.context = { ok: false, before: '', after: '', selected: '' };
+    this.hotkeys.queryContext().then((c) => { this.context = c; });
     this._sendFlowbar('flow:record-start', {
       mode,
       sound: settings.soundEffects,
@@ -158,7 +178,13 @@ class Recorder {
         language: settings.language,
       });
       this.log(`transcribed in ${Date.now() - t0}ms via ${engine}: ${rawText.slice(0, 60)}`);
-      const { text, pressEnter } = require('./formatter').formatTranscript(rawText, {
+
+      if (this.commandMode) {
+        return await this._handleCommand(rawText, { durMs, audioFile, wavPath });
+      }
+
+      const formatter = require('./formatter');
+      let { text, pressEnter } = formatter.formatTranscript(rawText, {
         removeFillers: settings.removeFillers,
         autoPunctuate: settings.autoPunctuate,
         pressEnterCommand: settings.pressEnterCommand,
@@ -174,6 +200,24 @@ class Recorder {
         return { ok: false, reason: 'empty' };
       }
 
+      // Optional local-LLM polish: catches fuzzy corrections the rules
+      // missed. Deterministic text is the floor — null means keep ours.
+      if (settings.aiPolish && this.polisher && settings.cleanupLevel !== 'none') {
+        const polished = await this.polisher.polish(text, {
+          context: this.context.ok ? this.context : null,
+          appName: this.frontApp.name,
+        });
+        if (polished && polished !== text) {
+          this.log('polish applied: ' + polished.slice(0, 60));
+          text = formatter.applyStyle(polished, settings.textStyle, this.store.dictionary);
+        }
+      }
+
+      // Continuation casing/spacing against the text already in the field.
+      if (this.context.ok) {
+        text = formatter.adjustForContext(text, this.context.before);
+      }
+
       const entry = this.store.addHistoryEntry({
         text, raw: rawText,
         app: this.frontApp.name, bundle: this.frontApp.bundle,
@@ -183,6 +227,7 @@ class Recorder {
       await this.inserter.insert(text, { pressEnter });
       this._finish({ words: entry.words });
       this._sendDashboard('data:changed', { what: 'history' });
+      this._scheduleAutoLearn(text);
       return { ok: true, text };
     } catch (err) {
       this.log('transcription failed: ' + err.message);
@@ -190,6 +235,66 @@ class Recorder {
       this.state = 'idle';
       return { ok: false, reason: err.message };
     }
+  }
+
+  // Command Mode: the dictation is an instruction applied to the selection.
+  async _handleCommand(instructionRaw, { durMs, audioFile }) {
+    const { formatTranscript } = require('./formatter');
+    const instruction = formatTranscript(instructionRaw, {
+      cleanupLevel: 'light', pressEnterCommand: false,
+    }).text;
+    if (!instruction) {
+      this._finish(null);
+      return { ok: false, reason: 'empty-instruction' };
+    }
+    if (!this.polisher || !this.polisher.available() || !this.store.getSettings().aiPolish) {
+      this._sendFlowbar('flow:error', { message: 'Turn on AI Polish for Command Mode' });
+      this.state = 'idle';
+      return { ok: false, reason: 'polish-off' };
+    }
+    const selected = this.context.selected || '';
+    this.log(`command: "${instruction.slice(0, 50)}" over ${selected.length} chars`);
+    const result = await this.polisher.applyInstruction(instruction, selected);
+    if (!result) {
+      this._sendFlowbar('flow:error', { message: 'Command didn’t produce a result' });
+      this.state = 'idle';
+      return { ok: false, reason: 'no-result' };
+    }
+    this.store.addHistoryEntry({
+      text: result, raw: `⌘ ${instruction}`,
+      app: this.frontApp.name, bundle: this.frontApp.bundle,
+      durMs, audioFile,
+    });
+    // Pasting over a selection replaces it.
+    await this.inserter.insert(result, {});
+    this._finish({ words: result.split(/\s+/).length });
+    this._sendDashboard('data:changed', { what: 'history' });
+    return { ok: true, text: result };
+  }
+
+  // A little while after inserting, see if the user hand-corrected any words
+  // and teach the dictionary (✨ entries).
+  _scheduleAutoLearn(insertedText) {
+    const settings = this.store.getSettings();
+    if (!settings.autoLearn || !this.context.ok) return;
+    const bundle = this.frontApp.bundle;
+    setTimeout(async () => {
+      try {
+        const front = await this.hotkeys.queryFront();
+        if (front.bundle !== bundle) return; // they moved on
+        const ctx = await this.hotkeys.queryContext();
+        if (!ctx.ok) return;
+        const fieldText = `${ctx.before}${ctx.selected}${ctx.after}`;
+        const { detectCorrections } = require('./autolearn');
+        for (const { to } of detectCorrections(insertedText, fieldText)) {
+          const added = this.store.addDictionaryEntry({ word: to, auto: true });
+          if (added) {
+            this.log(`auto-learned: ${to}`);
+            this._sendDashboard('data:changed', { what: 'dictionary' });
+          }
+        }
+      } catch { /* best-effort */ }
+    }, 15000);
   }
 
   _finish(result) {

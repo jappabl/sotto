@@ -30,6 +30,8 @@ seen=" "
 # Queue items keep the *referenced* name (symlink) so bundled files match the
 # names binaries actually load, while contents come from the resolved file.
 queue="/opt/homebrew/bin/whisper-cli /opt/homebrew/bin/whisper-server"
+# llama-server is optional (AI Polish); bundle it when present.
+[ -x /opt/homebrew/bin/llama-server ] && queue="$queue /opt/homebrew/bin/llama-server"
 
 while [ -n "${queue// /}" ]; do
   item="${queue%% *}"
@@ -48,7 +50,7 @@ while [ -n "${queue// /}" ]; do
   done
 done
 
-for f in bin/whisper-cli bin/whisper-server bin/*.dylib; do
+for f in bin/whisper-cli bin/whisper-server bin/llama-server bin/*.dylib; do
   [ -f "$f" ] || continue
   base=$(basename "$f")
   case "$base" in

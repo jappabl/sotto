@@ -13,11 +13,13 @@ for (let i = 0; i < NUM_BARS; i++) bars.appendChild(document.createElement('i'))
 const barEls = [...bars.children];
 
 let state = 'idle';
+let commandMode = false;
 let levels = new Array(NUM_BARS).fill(0);
 
 function setState(next) {
   state = next;
-  pill.className = next;
+  if (next === 'idle' || next === 'flash' || next === 'error') commandMode = false;
+  pill.className = next + (commandMode && (next === 'recording' || next === 'processing') ? ' command' : '');
   if (next !== 'recording') levels.fill(0);
 }
 
@@ -221,6 +223,12 @@ window.sotto.on('flow:error', ({ message }) => {
   setState('error');
   msg.textContent = message || 'Something went wrong';
   setTimeout(() => setState('idle'), 2600);
+});
+
+// Command Mode: the session becomes a voice instruction — pill turns purple.
+window.sotto.on('flow:command-mode', () => {
+  commandMode = true;
+  setState(state);
 });
 
 // ---------- hover / click / drag ----------

@@ -40,6 +40,27 @@ dock at the bottom, left, or right edge.
 |---|---|
 | ![Idle](docs/screenshots/flow-idle.png) | ![Recording](docs/screenshots/flow-recording.png) |
 
+## AI Polish, Command Mode & context (all still on-device)
+
+- **AI Polish (beta)** — Settings → System. A local LLM (Llama 3.2 3B via
+  llama.cpp, ~2 GB one-time download) runs after the rule engine and catches
+  the fuzzy corrections rules can't: "You know what, forget the pizza place.
+  Book the sushi spot instead." → just the sushi part. Strict output
+  validation means a bad LLM answer silently falls back to the deterministic
+  text — it can never make things worse. Transcripts that contain
+  instructions are typed as-is, never obeyed.
+- **Command Mode** — select text anywhere, hold your talk key + **ctrl**
+  (the pill turns purple), and say what to do: "make this more concise",
+  "turn this into bullet points", "translate to Spanish".
+- **Context awareness** — Sotto reads the text around your cursor through
+  the Accessibility API (never password fields): dictating mid-sentence
+  joins in lowercase with correct spacing, and the surrounding text is fed
+  to AI Polish. All local, nothing uploaded.
+- **Auto-learn dictionary** — hand-fix a word after dictating and Sotto
+  notices, adding the corrected spelling to your dictionary (✨ entries).
+- **Pro accuracy model** — whisper `large-v3-turbo` (quantized, ~574 MB)
+  selectable in Settings → System for near-cloud accuracy, still local.
+
 ## Features
 
 - **Push-to-talk & hands-free** dictation into any macOS app

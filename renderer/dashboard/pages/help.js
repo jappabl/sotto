@@ -29,6 +29,8 @@ export async function renderHelp(container) {
     ['Talk like a human', 'Stutters (“the the”), false starts, and comma-bound hedges (“, you know,”) disappear on their own. Tune how aggressive this is in Style → Auto Cleanup.'],
     ['Speak emails and lists', '“jane dot smith at gmail dot com” becomes a real address; “first do X second do Y” becomes a numbered list; “thumbs up emoji” types 👍.'],
     ['Change your mind later', 'Every dictation keeps its raw transcript — hover a row in Home and click the undo arrow to see exactly what you said.'],
+    ['AI Polish (beta)', 'Turn it on in Settings → System and a small on-device language model catches the fuzzy stuff — "forget the pizza place, book sushi instead" comes out as just the sushi part. Nothing leaves your Mac.'],
+    ['Command Mode', 'Select some text, hold your talk key + <span class="keycap">ctrl</span>, and say what to do — "make this more concise", "translate to Spanish". The pill turns purple while it listens.'],
     ['Send instantly', 'End with “press enter” and Sotto hits Enter after pasting — great in chat apps.'],
     ['Teach it your words', 'Add names and jargon in Dictionary. Add “spoken phrase → written form” rules for shorthand.'],
     ['Never re-type boilerplate', 'Save Snippets — say “personal email” and your full address appears.'],

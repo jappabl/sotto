@@ -280,6 +280,22 @@ function escapeRe(s) {
   return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
+// Context-aware continuation: adapt the insert to the text already before the
+// cursor — lowercase when joining mid-sentence, add a leading space when the
+// existing text doesn't end with one.
+function adjustForContext(text, before) {
+  if (!text || !before || !before.trim()) return text;
+  let out = text;
+  const endsMidSentence = /[\w,;:—-]\s*$/.test(before) && !/[.!?…]\s*$/.test(before);
+  if (endsMidSentence && /^[A-Z][a-z]/.test(out) && !/^I\b/.test(out)) {
+    out = out[0].toLowerCase() + out.slice(1);
+  }
+  if (!/\s$/.test(before) && !/^[\s.,;:!?)]/.test(out)) {
+    out = ' ' + out;
+  }
+  return out;
+}
+
 /**
  * The full pipeline. options:
  *   removeFillers, autoPunctuate, pressEnterCommand — booleans
@@ -349,6 +365,7 @@ function formatTranscript(rawText, options = {}) {
 
 module.exports = {
   formatTranscript,
+  adjustForContext,
   stripFillers,
   stripPreamble,
   stripHedges,
