@@ -6,6 +6,8 @@ const fs = require('fs');
 
 const { Store } = require('./store');
 const { SystemAudio } = require('./sysaudio');
+const { MeetingManager } = require('./meetings');
+const { Enhancer } = require('./enhancer');
 const { Hotkeys } = require('./hotkeys');
 const { Transcriber } = require('./transcriber');
 const { Polisher } = require('./polisher');
@@ -68,6 +70,8 @@ function boot() {
     const inserter = new Inserter({ hotkeys, log });
     const sysaudio = new SystemAudio({ log });
     const recorder = new Recorder({ store, hotkeys, transcriber, inserter, polisher, sysaudio, log });
+    const meetings = new MeetingManager({ baseDir: userData, transcriber, log });
+    const enhancer = new Enhancer({ polisher, log });
 
     const settings = store.getSettings();
     hotkeys.setHotkey(settings.hotkey);
@@ -77,7 +81,51 @@ function boot() {
       flowbar: null,
       onboarding: null,
     };
-    const ctx = { store, hotkeys, transcriber, polisher, inserter, recorder, windows, app, log };
+    const ctx = { store, hotkeys, transcriber, polisher, inserter, recorder, meetings, enhancer, windows, app, log };
+
+    // Meeting events flow to the dashboard for live UI.
+    meetings.onEvent = (event, payload) => {
+      if (windows.dashboard && !windows.dashboard.isDestroyed()) {
+        windows.dashboard.webContents.send(event, payload);
+      }
+      if (event === 'meeting:started' || event === 'meeting:ended') {
+        if (windows.flowbar && !windows.flowbar.isDestroyed()) {
+          windows.flowbar.webContents.send('flow:meeting-state', {
+            recording: event === 'meeting:started',
+          });
+        }
+      }
+    };
+
+    // Meeting detection: when a meeting app holds the mic and we're not
+    // already capturing, offer to take notes (once per hour per app).
+    const meetPromptCooldown = new Map();
+    setInterval(async () => {
+      try {
+        const settings2 = store.getSettings();
+        if (!settings2.meetingDetection || meetings.status().recording) return;
+        if (recorder.state !== 'idle') return;
+        const probe = await hotkeys.queryMeeting();
+        if (!probe.app || !probe.micBusy) return;
+        const last = meetPromptCooldown.get(probe.app) || 0;
+        if (Date.now() - last < 60 * 60 * 1000) return;
+        meetPromptCooldown.set(probe.app, Date.now());
+        const { Notification } = require('electron');
+        const n = new Notification({
+          title: `Meeting detected in ${probe.name}`,
+          body: 'Click to start taking notes with Sotto.',
+          silent: true,
+        });
+        n.on('click', () => {
+          meetings.start({ appHint: probe.name });
+          if (windows.dashboard && !windows.dashboard.isDestroyed()) {
+            windows.dashboard.show();
+            windows.dashboard.webContents.send('debug:navigate', 'meetings');
+          }
+        });
+        n.show();
+      } catch { /* best-effort */ }
+    }, 15000);
 
     registerIpc(ctx);
 

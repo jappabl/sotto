@@ -14,14 +14,22 @@ const barEls = [...bars.children];
 
 let state = 'idle';
 let commandMode = false;
+let meetingLive = false;
 let levels = new Array(NUM_BARS).fill(0);
 
 function setState(next) {
   state = next;
   if (next === 'idle' || next === 'flash' || next === 'error') commandMode = false;
-  pill.className = next + (commandMode && (next === 'recording' || next === 'processing') ? ' command' : '');
+  pill.className = next
+    + (commandMode && (next === 'recording' || next === 'processing') ? ' command' : '')
+    + (meetingLive ? ' meeting' : '');
   if (next !== 'recording') levels.fill(0);
 }
+
+window.sotto.on('flow:meeting-state', ({ recording }) => {
+  meetingLive = !!recording;
+  setState(state);
+});
 
 // ---------- audio capture ----------
 let audioCtx = null;

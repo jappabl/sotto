@@ -173,6 +173,53 @@ function registerIpc(ctx) {
     return true;
   });
 
+  // ---- meetings ----
+  const { meetings, enhancer } = ctx;
+  ipcMain.handle('meet:list', () => meetings.list());
+  ipcMain.handle('meet:read', (_e, id) => meetings.read(id));
+  ipcMain.handle('meet:start', (_e, opts) => meetings.start(opts || {}));
+  ipcMain.handle('meet:stop', () => meetings.stop());
+  ipcMain.handle('meet:status', () => meetings.status());
+  ipcMain.handle('meet:save-notes', (_e, { id, notes }) => meetings.saveNotes(id, notes));
+  ipcMain.handle('meet:rename', (_e, { id, title }) => meetings.updateMeta(id, { title: String(title || '').slice(0, 120) }));
+  ipcMain.handle('meet:set-template', (_e, { id, template }) => meetings.updateMeta(id, { template }));
+  ipcMain.handle('meet:remove', (_e, id) => meetings.remove(id));
+  ipcMain.handle('meet:enhance', async (e, id) => {
+    const data = meetings.read(id);
+    if (!data) throw new Error('meeting-not-found');
+    if (!enhancer.available()) throw new Error('llm-unavailable');
+    const send = (p) => {
+      if (windows.dashboard && !windows.dashboard.isDestroyed()) {
+        windows.dashboard.webContents.send('meet:enhance-progress', { id, progress: p });
+      }
+    };
+    const { enhanced, digests } = await enhancer.enhance({
+      notes: data.notes,
+      segments: data.transcript,
+      template: data.meta.template,
+      title: data.meta.title,
+    }, send);
+    meetings.saveEnhanced(id, enhanced);
+    meetings.updateMeta(id, { state: 'enhanced', digests });
+    return { enhanced };
+  });
+  ipcMain.handle('meet:ask', async (_e, { id, question }) => {
+    const data = meetings.read(id);
+    if (!data) throw new Error('meeting-not-found');
+    if (!enhancer.available()) throw new Error('llm-unavailable');
+    return enhancer.ask({
+      question: String(question || '').slice(0, 500),
+      notes: data.notes,
+      enhanced: data.enhanced,
+      digests: data.meta.digests,
+      segments: data.transcript,
+    });
+  });
+  ipcMain.handle('meet:copy', (_e, text) => {
+    require('electron').clipboard.writeText(String(text || ''));
+    return true;
+  });
+
   // ---- onboarding ----
   ipcMain.handle('ob:finish', (_e, { userName }) => {
     store.setSettings({ onboarded: true, userName: userName || store.getSettings().userName });

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>CFBundleIdentifier</key>
+  <string>dev.haolin.sotto.meetcap</string>
+  <key>CFBundleName</key>
+  <string>Sotto Meeting Capture</string>
+  <key>NSAudioCaptureUsageDescription</key>
+  <string>Sotto records meeting audio (what you hear) to transcribe your meetings locally on this Mac.</string>
+  <key>NSMicrophoneUsageDescription</key>
+  <string>Sotto records your microphone to transcribe your side of meetings locally on this Mac.</string>
+</dict>
+</plist>

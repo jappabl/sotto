@@ -110,6 +110,12 @@ export async function renderSettings(container) {
       onChange: (v) => save({ commandMode: v }, rerender),
     }));
     body.append(toggleRow({
+      name: 'Meeting detection',
+      desc: 'When a call starts in Zoom, Teams, Webex, FaceTime, Slack, or Discord, offer to take meeting notes.',
+      value: settings.meetingDetection,
+      onChange: (v) => save({ meetingDetection: v }, rerender),
+    }));
+    body.append(toggleRow({
       name: 'Auto-learn dictionary',
       desc: 'When you hand-correct a word after dictating, Sotto quietly adds the fixed spelling to your dictionary (marked ✨).',
       value: settings.autoLearn,

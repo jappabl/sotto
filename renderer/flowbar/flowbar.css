@@ -65,6 +65,22 @@ html, body {
 #pill.flash      { width: 120px; height: 30px; background: #1e5c3a; }
 #pill.error      { width: 200px; height: 30px; background: #5c1e1e; }
 
+/* meeting-recording indicator: soft red dot on the pill's left edge */
+#pill.meeting::before {
+  content: '';
+  position: absolute;
+  left: 9px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #e25c4a;
+  animation: meetpulse 2.2s ease-in-out infinite;
+}
+@keyframes meetpulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
 /* idle dots */
 #dots {
   display: none;

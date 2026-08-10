@@ -20,6 +20,7 @@ const DEFAULT_SETTINGS = {
   textStyle: 'formal',       // 'formal' | 'casual' | 'very-casual'
   cleanupLevel: 'medium',    // 'none' | 'light' | 'medium' | 'high'
   aiPolish: false,           // local-LLM cleanup pass (needs LLM model)
+  meetingDetection: true,    // offer to take notes when a call starts
   commandMode: true,         // fn+ctrl chord edits the selection by voice
   removeFillers: true,
   autoPunctuate: true,       // spoken punctuation commands

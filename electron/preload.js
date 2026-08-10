@@ -16,6 +16,14 @@ const listenChannels = [
   'debug:navigate',
   'debug:flow-state',
   'debug:ob-step',
+  'meeting:started',
+  'meeting:ready',
+  'meeting:level',
+  'meeting:segment',
+  'meeting:warning',
+  'meeting:ended',
+  'meet:enhance-progress',
+  'flow:meeting-state',
 ];
 
 contextBridge.exposeInMainWorld('sotto', {

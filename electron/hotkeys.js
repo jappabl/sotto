@@ -170,6 +170,21 @@ class Hotkeys {
     });
   }
 
+  queryMeeting() {
+    return new Promise((resolve) => {
+      if (!this._meetWaiters) this._meetWaiters = [];
+      this._meetWaiters.push(resolve);
+      this.send('meet?');
+      setTimeout(() => {
+        const i = this._meetWaiters.indexOf(resolve);
+        if (i >= 0) {
+          this._meetWaiters.splice(i, 1);
+          resolve({ app: '', name: '', micBusy: false });
+        }
+      }, 1200);
+    });
+  }
+
   queryContext() {
     return new Promise((resolve) => {
       if (!this._ctxWaiters) this._ctxWaiters = [];
@@ -231,6 +246,11 @@ class Hotkeys {
       case 'front': {
         const w = this._frontWaiters.shift();
         if (w) w({ name: msg.name || '', bundle: msg.bundle || '' });
+        break;
+      }
+      case 'meet': {
+        const w = (this._meetWaiters || []).shift();
+        if (w) w({ app: msg.app || '', name: msg.name || '', micBusy: !!msg.micBusy });
         break;
       }
       case 'ctx': {

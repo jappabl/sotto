@@ -31,6 +31,23 @@ function createTray(ctx) {
         label: recorder.state === 'recording' ? 'Stop dictation' : 'Start hands-free dictation',
         click: () => recorder.toggleHandsFree(),
       },
+      {
+        label: ctx.meetings && ctx.meetings.status().recording
+          ? 'End meeting notes' : 'Start meeting notes',
+        click: () => {
+          if (ctx.meetings.status().recording) {
+            ctx.meetings.stop();
+          } else {
+            ctx.meetings.start({});
+            const w = ctx.windows.dashboard;
+            if (w && !w.isDestroyed()) {
+              w.show();
+              w.webContents.send('debug:navigate', 'meetings');
+            }
+          }
+          rebuild();
+        },
+      },
       { type: 'separator' },
       {
         label: 'Quit Sotto',

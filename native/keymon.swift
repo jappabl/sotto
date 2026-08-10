@@ -18,6 +18,7 @@
 
 import Cocoa
 import ApplicationServices
+import CoreAudio
 
 var recording = false
 var downModifierKeys = Set<Int64>()
@@ -148,6 +149,51 @@ func focusedContext() -> [String: Any] {
     return result
 }
 
+// Meeting probe: is a meeting app running, and is the default microphone in
+// use by SOME process (i.e. a call is live)?
+let meetingBundles: [String: String] = [
+    "us.zoom.xos": "Zoom",
+    "com.microsoft.teams2": "Microsoft Teams",
+    "com.microsoft.teams": "Microsoft Teams",
+    "com.cisco.webexmeetingsapp": "Webex",
+    "Cisco-Systems.Spark": "Webex",
+    "com.apple.FaceTime": "FaceTime",
+    "com.hnc.Discord": "Discord",
+    "com.tinyspeck.slackmacgap": "Slack",
+]
+
+func meetingProbe() -> [String: Any] {
+    var runningApp: String? = nil
+    var runningName: String? = nil
+    for app in NSWorkspace.shared.runningApplications {
+        if let bid = app.bundleIdentifier, let name = meetingBundles[bid] {
+            runningApp = bid
+            runningName = name
+            break
+        }
+    }
+    var micBusy = false
+    var deviceID = AudioObjectID(kAudioObjectUnknown)
+    var size = UInt32(MemoryLayout<AudioObjectID>.size)
+    var addr = AudioObjectPropertyAddress(
+        mSelector: kAudioHardwarePropertyDefaultInputDevice,
+        mScope: kAudioObjectPropertyScopeGlobal,
+        mElement: kAudioObjectPropertyElementMain)
+    if AudioObjectGetPropertyData(AudioObjectID(kAudioObjectSystemObject), &addr, 0, nil, &size, &deviceID) == noErr,
+       deviceID != kAudioObjectUnknown {
+        var running: UInt32 = 0
+        var rsize = UInt32(MemoryLayout<UInt32>.size)
+        var raddr = AudioObjectPropertyAddress(
+            mSelector: kAudioDevicePropertyDeviceIsRunningSomewhere,
+            mScope: kAudioObjectPropertyScopeGlobal,
+            mElement: kAudioObjectPropertyElementMain)
+        if AudioObjectGetPropertyData(deviceID, &raddr, 0, nil, &rsize, &running) == noErr {
+            micBusy = running != 0
+        }
+    }
+    return ["e": "meet", "app": runningApp ?? "", "name": runningName ?? "", "micBusy": micBusy]
+}
+
 func postKeyChord(virtualKey: CGKeyCode, flags: CGEventFlags) {
     let src = CGEventSource(stateID: .combinedSessionState)
     guard let down = CGEvent(keyboardEventSource: src, virtualKey: virtualKey, keyDown: true),
@@ -173,6 +219,8 @@ func handle(command raw: String) {
               "bundle": app?.bundleIdentifier ?? ""])
     case "ctx?":
         emit(focusedContext())
+    case "meet?":
+        emit(meetingProbe())
     case "paste!":
         postKeyChord(virtualKey: 9, flags: .maskCommand) // ⌘V
         emit(["e": "pasted"])
