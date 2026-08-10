@@ -33,7 +33,7 @@
     "mac": {
       "category": "public.app-category.productivity",
       "icon": "assets/icon.icns",
-      "target": [{ "target": "dir", "arch": ["arm64"] }],
+      "target": [{ "target": "dmg", "arch": ["arm64"] }],
       "extendInfo": {
         "NSMicrophoneUsageDescription": "Sotto uses the microphone to transcribe your speech into text.",
         "LSUIElement": false

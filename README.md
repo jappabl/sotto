@@ -1,136 +1,115 @@
-# Sotto
+<div align="center">
 
-![Sotto](assets/logo.png)
+<img src="assets/logo.png" alt="Sotto" width="420" />
 
-**Open-source voice dictation for macOS.** Hold a key, speak, release — clean,
-formatted text appears at your cursor in any app. Modeled on the Wispr Flow
-experience, rebuilt from scratch, and **100% local**: transcription runs
-on-device with whisper.cpp. No account, no cloud, no telemetry.
+**Open-source voice dictation for macOS. Hold a key, speak, release: polished text lands at your cursor in any app.**
 
-![Home](docs/screenshots/dash-home.png)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/jappabl/sotto?color=7c5ce0)](https://github.com/jappabl/sotto/releases/latest)
+[![Platform](https://img.shields.io/badge/platform-macOS%20(Apple%20Silicon)-lightgrey.svg)](#requirements)
+[![Tests](https://img.shields.io/badge/tests-91%20unit%20%2B%204%20E2E-1e5c3a.svg)](#testing)
+[![100% local](https://img.shields.io/badge/speech-never%20leaves%20your%20Mac-101014.svg)](#privacy)
 
-## How it works
+![The Sotto dashboard](docs/screenshots/dash-home.png)
 
-Hold **fn** (or a hotkey you pick), talk, and let go.
+</div>
 
-- Sotto records while you hold, then transcribes in one pass on-device
-  (whisper.cpp with Metal, kept resident for sub-second turnaround).
-- The transcript is cleaned deterministically: filler words stripped, spoken
-  punctuation ("comma", "new line") applied, your dictionary and snippets
-  applied — and self-corrections resolved by the **Backtrack engine**:
-  - "meet at 5, no wait, 6" → *meet at 6* (slot swap: times, numbers, days,
-    names)
-  - "2pm today, make that 4pm tomorrow" → both slots corrected at once
-  - "Send the report. Scratch that, send the deck." → only the deck survives
-  - plain restatement works too ("as a gift… as a present"), and guard rails
-    keep real sentences safe — "I actually enjoyed the movie" is never touched
-  - stutters ("the the"), false starts, and comma-bound hedges vanish;
-    "their going to" becomes "they're going to"
-  - spoken emails ("jane dot smith at gmail dot com"), times ("5 PM" → 5pm),
-    numbered lists ("first… second…"), and "thumbs up emoji" → 👍
-  - four Auto Cleanup levels (None / Light / Medium / High) in Style, and
-    every dictation keeps its raw transcript — one click reverts any AI edit
-- The finished text is pasted at your cursor via a clipboard swap; your old
-  clipboard is restored right after.
+Sotto is a from-scratch, fully local take on the modern AI dictation app. Hold **fn**, talk like a human (stumbles, "no wait", second thoughts and all), and let go. What gets typed is what you *meant*: fillers gone, self-corrections resolved, punctuation in place. Transcription runs on-device with whisper.cpp, cleanup runs on-device too, and nothing you say ever touches a server.
 
-The **flow bar** — the little pill at the bottom of your screen — shows a live
-waveform while you speak, shimmers while it thinks, and can be clicked for
-hands-free mode (double-tapping the hotkey works too, Esc cancels). Drag it to
-dock at the bottom, left, or right edge.
+No account. No subscription. No cloud. The only network request Sotto ever makes is downloading a model.
 
-| | |
+| Idle | Recording |
 |---|---|
 | ![Idle](docs/screenshots/flow-idle.png) | ![Recording](docs/screenshots/flow-recording.png) |
 
-## AI Polish, Command Mode & context (all still on-device)
-
-- **AI Polish (beta)** — Settings → System. A local LLM (Llama 3.2 3B via
-  llama.cpp, ~2 GB one-time download) runs after the rule engine and catches
-  the fuzzy corrections rules can't: "You know what, forget the pizza place.
-  Book the sushi spot instead." → just the sushi part. Strict output
-  validation means a bad LLM answer silently falls back to the deterministic
-  text — it can never make things worse. Transcripts that contain
-  instructions are typed as-is, never obeyed.
-- **Command Mode** — select text anywhere, hold your talk key + **ctrl**
-  (the pill turns purple), and say what to do: "make this more concise",
-  "turn this into bullet points", "translate to Spanish".
-- **Context awareness** — Sotto reads the text around your cursor through
-  the Accessibility API (never password fields): dictating mid-sentence
-  joins in lowercase with correct spacing, and the surrounding text is fed
-  to AI Polish. All local, nothing uploaded.
-- **Auto-learn dictionary** — hand-fix a word after dictating and Sotto
-  notices, adding the corrected spelling to your dictionary (✨ entries).
-- **Pro accuracy model** — whisper `large-v3-turbo` (quantized, ~574 MB)
-  selectable in Settings → System for near-cloud accuracy, still local.
-
-## Features
-
-- **Push-to-talk & hands-free** dictation into any macOS app
-- **Dictionary** — teach it names and jargon, plus "spoken → written" rules
-  ("by the way" → "btw")
-- **Snippets** — say "personal email", get your full address
-- **Styles** — Formal / Casual / very casual casing and punctuation presets
-- **"Press enter"** — end a dictation with it to send the message
-- **History & insights** — searchable recent activity with audio playback,
-  streaks, words dictated, average WPM
-- **Guided onboarding** — permissions, mic check, hotkey choice, model download
-- **100+ languages** via whisper's multilingual models, with auto-detect
-
-![Dictionary](docs/screenshots/dash-dictionary.png)
-
 ## Install
 
-Requirements: macOS 13+ on Apple Silicon, Xcode Command Line Tools
-(`xcode-select --install`), Node 20+, and [Homebrew](https://brew.sh) with
-whisper.cpp for building (`brew install whisper-cpp`).
+**Option A: download the app.** Grab `Sotto-<version>-arm64.dmg` from the [latest release](https://github.com/jappabl/sotto/releases/latest), open it, drag Sotto into Applications. The app is not notarized (no Apple developer account), so the first launch needs a right-click on Sotto.app, then **Open**, then Open again.
+
+**Option B: build from source.**
 
 ```bash
+brew install whisper-cpp llama.cpp
 git clone https://github.com/jappabl/sotto.git && cd sotto
 npm install
-npm run build:native   # builds keymon + bundles whisper.cpp into bin/
+npm run build:native
 npm start
 ```
 
-Onboarding walks you through microphone + Accessibility permissions and
-downloads the speech model (~150 MB, one time). To build a standalone
-`Sotto.app` (whisper.cpp bundled inside, Homebrew not needed afterwards):
+Either way, onboarding walks you through microphone + Accessibility permissions and downloads the speech model (~150 MB, one time). Then click into any textbox, hold **fn**, and say something.
 
-```bash
-npm run dist           # → dist/mac-arm64/Sotto.app
+### Or let your AI assistant install it
+
+Paste this into Claude Code, Cursor, or any AI assistant that can run commands on your Mac:
+
+```text
+Set up Sotto, an open-source local voice dictation app for macOS, on this machine.
+
+Repo: https://github.com/jappabl/sotto
+
+1. Verify prerequisites: Apple Silicon Mac, Xcode Command Line Tools
+   (xcode-select --install), Node 20+, and Homebrew. Install anything missing.
+2. Run: brew install whisper-cpp llama.cpp
+3. Run: git clone https://github.com/jappabl/sotto.git && cd sotto
+4. Run: npm install && npm run build:native
+5. Launch it with: npm start
+6. Tell me what to click in onboarding: I need to grant Microphone and
+   Accessibility permissions, pick a push-to-talk key, and let it download
+   the speech model.
+7. If my fn key opens the emoji picker, tell me to set System Settings >
+   Keyboard > "Press globe key to" > Do Nothing, or pick another hotkey.
+8. Afterwards, run npm test and node test/smoke/transcribe.test.js to
+   confirm everything works, and summarize what I can do with the app.
 ```
 
-Tip: if the fn key opens the emoji picker or changes input sources on your
-Mac, set *System Settings → Keyboard → "Press 🌐 key to" → Do Nothing*, or
-pick a different hotkey in Settings → General.
+## What it does
+
+- **Push-to-talk dictation** into any macOS app. Hold your key, speak, release. Double-tap for hands-free, Esc cancels, ping and pop sound cues.
+- **Backtrack corrections.** "Meet at 5, no wait, 6" types *Meet at 6*. "Send it to John, I mean, Jane" swaps just the name. "2pm today, make that 4pm tomorrow" corrects both slots. Plain restatement works too, and guard rails keep real sentences safe: "I actually enjoyed the movie" is never touched.
+- **Talk like a human.** Stutters ("the the"), false starts, filler words, and comma-bound hedges vanish. "their going to" becomes "they're going to".
+- **AI Polish (beta).** An on-device LLM (Llama 3.2 3B via llama.cpp) catches the fuzzy cases rules cannot: "You know what, forget the pizza place. Book the sushi spot instead." comes out as just the sushi part. Strict output validation falls back to the deterministic text on anything suspicious, so polish can never make a dictation worse.
+- **Command Mode.** Select text anywhere, hold your talk key + ctrl, and say what to do: "make this more concise", "translate to Spanish".
+- **Context awareness.** Sotto reads the text around your cursor through the Accessibility API (never password fields). Dictating mid-sentence joins in lowercase with correct spacing.
+- **Dictionary, snippets, styles.** Teach it names and jargon (plus spoken-to-written rules like "by the way" to "btw"), expand spoken triggers into boilerplate, and pick Formal / Casual / very casual output. Hand-fix a word after dictating and Sotto learns it automatically.
+- **Spoken structure.** "comma", "new line", "bullet point", "first... second..." lists, "jane dot smith at gmail dot com", "thumbs up emoji", and "press enter" to send the message.
+- **History and insights.** Recent activity with audio playback, streaks, words dictated, average WPM. Every dictation keeps its raw transcript; one click reverts any AI edit.
+- **Never hears your music.** System output mutes during capture (restored the instant you release), and the mic picker refuses to auto-select loopback devices like BlackHole.
+
+## Requirements
+
+- Apple Silicon Mac, macOS 13 or newer
+- For building from source: Node 20+, Xcode Command Line Tools, Homebrew with `whisper-cpp` (and `llama.cpp` for AI Polish)
+- The packaged app from Releases bundles all binaries and needs no Homebrew
 
 ## Testing
 
 ```bash
-npm test               # unit suites: formatter, store, hotkey chords
-npm run test:smoke     # + transcription E2E (synthesized speech → whisper),
-                       #   app-launch autopilot (screenshots every screen),
-                       #   full-pipeline dictation E2E (fake mic → pasteboard)
+npm test               # 91 unit tests: corrections, formatter, store, hotkeys
+npm run test:smoke     # + synthesized-speech ASR tests, a screenshot autopilot
+                       #   over every screen, a full fake-microphone dictation
+                       #   E2E, and a live local-LLM polish test
 ```
 
 ## Architecture
 
-Electron with **zero runtime npm dependencies**. A small Swift helper
-(`native/keymon.swift`) provides what Electron can't: global fn-key
-detection via a CGEventTap, frontmost-app queries, and ⌘V injection. The
-renderer records 16 kHz mono WAV through an AudioWorklet; the main process
-runs `whisper-server` (resident model) with `whisper-cli` as fallback; a pure
-formatter module applies every text rule (fully unit-tested). Data lives in
-plain JSON under `~/Library/Application Support/Sotto/`.
+Electron with zero runtime npm dependencies. A small Swift helper (`native/keymon.swift`) provides what Electron cannot: global fn-key detection via a CGEventTap, focused-field reading, and paste injection. Audio is captured at 16 kHz through an AudioWorklet, transcribed by a resident `whisper-server`, cleaned by a pure, fully unit-tested formatter pipeline, optionally polished by a resident `llama-server`, and pasted via a clipboard swap that restores your clipboard afterwards. Data lives in plain JSON under `~/Library/Application Support/Sotto/`.
 
 See [docs/DESIGN.md](docs/DESIGN.md) for the full design document.
 
 ## Privacy
 
-Everything — audio, transcripts, settings, stats — stays on your Mac.
-Dictation audio is kept for 14 days (for playback in History), then pruned.
-The only network request Sotto ever makes is downloading a whisper model.
+Everything (audio, transcripts, settings, stats) stays on your Mac. Dictation audio is kept 14 days for playback in History, then pruned. There is no telemetry, no account, and no server.
+
+## Troubleshooting
+
+- **fn opens the emoji picker:** System Settings > Keyboard > "Press globe key to" > Do Nothing, or pick a different hotkey in Settings > General.
+- **Nothing types:** grant Accessibility in System Settings > Privacy & Security (Settings > System in Sotto shows live permission status).
+- **Music keeps dictating itself:** that should be impossible now; check that "Mute system audio while dictating" is on in Settings > System, and that your Microphone setting is not a loopback device.
+
+## Contributing
+
+Issues and PRs welcome. `npm test` must pass; new formatter behavior needs a test. The correction engine lives in [electron/corrections.js](electron/corrections.js) and is the most fun file to extend.
 
 ## License
 
-MIT. "Wispr Flow" is a trademark of its owner; Sotto is an independent
-open-source project and is not affiliated with or endorsed by Wispr.
+MIT. Built on [whisper.cpp](https://github.com/ggerganov/whisper.cpp) and [llama.cpp](https://github.com/ggerganov/llama.cpp). "Wispr Flow" is a trademark of its owner; Sotto is an independent project modeled on its interaction design and is not affiliated with or endorsed by Wispr.
