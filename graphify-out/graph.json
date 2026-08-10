@@ -1,0 +1,4878 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "icons.js",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/icons.js",
+      "source_location": "L1",
+      "id": "renderer_dashboard_icons_js",
+      "community": 13,
+      "norm_label": "icons.js"
+    },
+    {
+      "label": "s()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/icons.js",
+      "source_location": "L3",
+      "id": "dashboard_icons_s",
+      "community": 13,
+      "norm_label": "s()"
+    },
+    {
+      "label": "ui.js",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/ui.js",
+      "source_location": "L1",
+      "id": "renderer_dashboard_ui_js",
+      "community": 0,
+      "norm_label": "ui.js"
+    },
+    {
+      "label": "el()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/ui.js",
+      "source_location": "L3",
+      "id": "dashboard_ui_el",
+      "community": 0,
+      "norm_label": "el()"
+    },
+    {
+      "label": "escapeHtml()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/ui.js",
+      "source_location": "L18",
+      "id": "dashboard_ui_escapehtml",
+      "community": 0,
+      "norm_label": "escapehtml()"
+    },
+    {
+      "label": "toast()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/ui.js",
+      "source_location": "L26",
+      "id": "dashboard_ui_toast",
+      "community": 0,
+      "norm_label": "toast()"
+    },
+    {
+      "label": "openModal()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/ui.js",
+      "source_location": "L37",
+      "id": "dashboard_ui_openmodal",
+      "community": 0,
+      "norm_label": "openmodal()"
+    },
+    {
+      "label": "timeLabel()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/ui.js",
+      "source_location": "L53",
+      "id": "dashboard_ui_timelabel",
+      "community": 6,
+      "norm_label": "timelabel()"
+    },
+    {
+      "label": "dayLabel()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/ui.js",
+      "source_location": "L57",
+      "id": "dashboard_ui_daylabel",
+      "community": 6,
+      "norm_label": "daylabel()"
+    },
+    {
+      "label": "abbreviateCount()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/ui.js",
+      "source_location": "L67",
+      "id": "dashboard_ui_abbreviatecount",
+      "community": 6,
+      "norm_label": "abbreviatecount()"
+    },
+    {
+      "label": "app.js",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/app.js",
+      "source_location": "L1",
+      "id": "renderer_dashboard_app_js",
+      "community": 0,
+      "norm_label": "app.js"
+    },
+    {
+      "label": "buildNav()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/app.js",
+      "source_location": "L32",
+      "id": "dashboard_app_buildnav",
+      "community": 0,
+      "norm_label": "buildnav()"
+    },
+    {
+      "label": "navItem()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/app.js",
+      "source_location": "L43",
+      "id": "dashboard_app_navitem",
+      "community": 0,
+      "norm_label": "navitem()"
+    },
+    {
+      "label": "navigate()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/app.js",
+      "source_location": "L54",
+      "id": "dashboard_app_navigate",
+      "community": 0,
+      "norm_label": "navigate()"
+    },
+    {
+      "label": "refreshPermBadge()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/app.js",
+      "source_location": "L74",
+      "id": "dashboard_app_refreshpermbadge",
+      "community": 0,
+      "norm_label": "refreshpermbadge()"
+    },
+    {
+      "label": "stylepage.js",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/pages/stylepage.js",
+      "source_location": "L1",
+      "id": "renderer_dashboard_pages_stylepage_js",
+      "community": 0,
+      "norm_label": "stylepage.js"
+    },
+    {
+      "label": "renderStyle()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/pages/stylepage.js",
+      "source_location": "L27",
+      "id": "pages_stylepage_renderstyle",
+      "community": 0,
+      "norm_label": "renderstyle()"
+    },
+    {
+      "label": "home.js",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/pages/home.js",
+      "source_location": "L1",
+      "id": "renderer_dashboard_pages_home_js",
+      "community": 6,
+      "norm_label": "home.js"
+    },
+    {
+      "label": "renderHome()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/pages/home.js",
+      "source_location": "L8",
+      "id": "pages_home_renderhome",
+      "community": 6,
+      "norm_label": "renderhome()"
+    },
+    {
+      "label": "statText()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/pages/home.js",
+      "source_location": "L99",
+      "id": "pages_home_stattext",
+      "community": 6,
+      "norm_label": "stattext()"
+    },
+    {
+      "label": "activityRow()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/pages/home.js",
+      "source_location": "L103",
+      "id": "pages_home_activityrow",
+      "community": 6,
+      "norm_label": "activityrow()"
+    },
+    {
+      "label": "help.js",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/pages/help.js",
+      "source_location": "L1",
+      "id": "renderer_dashboard_pages_help_js",
+      "community": 0,
+      "norm_label": "help.js"
+    },
+    {
+      "label": "renderHelp()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/pages/help.js",
+      "source_location": "L5",
+      "id": "pages_help_renderhelp",
+      "community": 0,
+      "norm_label": "renderhelp()"
+    },
+    {
+      "label": "insights.js",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/pages/insights.js",
+      "source_location": "L1",
+      "id": "renderer_dashboard_pages_insights_js",
+      "community": 6,
+      "norm_label": "insights.js"
+    },
+    {
+      "label": "renderInsights()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/pages/insights.js",
+      "source_location": "L5",
+      "id": "pages_insights_renderinsights",
+      "community": 6,
+      "norm_label": "renderinsights()"
+    },
+    {
+      "label": "statCard()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/pages/insights.js",
+      "source_location": "L37",
+      "id": "pages_insights_statcard",
+      "community": 6,
+      "norm_label": "statcard()"
+    },
+    {
+      "label": "plural()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/pages/insights.js",
+      "source_location": "L45",
+      "id": "pages_insights_plural",
+      "community": 6,
+      "norm_label": "plural()"
+    },
+    {
+      "label": "numWord()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/pages/insights.js",
+      "source_location": "L49",
+      "id": "pages_insights_numword",
+      "community": 6,
+      "norm_label": "numword()"
+    },
+    {
+      "label": "cap()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/pages/insights.js",
+      "source_location": "L54",
+      "id": "pages_insights_cap",
+      "community": 6,
+      "norm_label": "cap()"
+    },
+    {
+      "label": "dictionary.js",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/pages/dictionary.js",
+      "source_location": "L1",
+      "id": "renderer_dashboard_pages_dictionary_js",
+      "community": 0,
+      "norm_label": "dictionary.js"
+    },
+    {
+      "label": "renderDictionary()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/pages/dictionary.js",
+      "source_location": "L9",
+      "id": "pages_dictionary_renderdictionary",
+      "community": 0,
+      "norm_label": "renderdictionary()"
+    },
+    {
+      "label": "exampleChip()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/pages/dictionary.js",
+      "source_location": "L75",
+      "id": "pages_dictionary_examplechip",
+      "community": 0,
+      "norm_label": "examplechip()"
+    },
+    {
+      "label": "replacementChip()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/pages/dictionary.js",
+      "source_location": "L79",
+      "id": "pages_dictionary_replacementchip",
+      "community": 0,
+      "norm_label": "replacementchip()"
+    },
+    {
+      "label": "entryRow()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/pages/dictionary.js",
+      "source_location": "L87",
+      "id": "pages_dictionary_entryrow",
+      "community": 0,
+      "norm_label": "entryrow()"
+    },
+    {
+      "label": "openAddModal()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/pages/dictionary.js",
+      "source_location": "L130",
+      "id": "pages_dictionary_openaddmodal",
+      "community": 0,
+      "norm_label": "openaddmodal()"
+    },
+    {
+      "label": "snippets.js",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/pages/snippets.js",
+      "source_location": "L1",
+      "id": "renderer_dashboard_pages_snippets_js",
+      "community": 0,
+      "norm_label": "snippets.js"
+    },
+    {
+      "label": "renderSnippets()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/pages/snippets.js",
+      "source_location": "L8",
+      "id": "pages_snippets_rendersnippets",
+      "community": 0,
+      "norm_label": "rendersnippets()"
+    },
+    {
+      "label": "triggerChip()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/pages/snippets.js",
+      "source_location": "L88",
+      "id": "pages_snippets_triggerchip",
+      "community": 0,
+      "norm_label": "triggerchip()"
+    },
+    {
+      "label": "openAddModal()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/pages/snippets.js",
+      "source_location": "L97",
+      "id": "pages_snippets_openaddmodal",
+      "community": 0,
+      "norm_label": "openaddmodal()"
+    },
+    {
+      "label": "settings.js",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/pages/settings.js",
+      "source_location": "L1",
+      "id": "renderer_dashboard_pages_settings_js",
+      "community": 0,
+      "norm_label": "settings.js"
+    },
+    {
+      "label": "renderSettings()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/pages/settings.js",
+      "source_location": "L24",
+      "id": "pages_settings_rendersettings",
+      "community": 0,
+      "norm_label": "rendersettings()"
+    },
+    {
+      "label": "modelLabel()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/pages/settings.js",
+      "source_location": "L168",
+      "id": "pages_settings_modellabel",
+      "community": 0,
+      "norm_label": "modellabel()"
+    },
+    {
+      "label": "toggleRow()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/pages/settings.js",
+      "source_location": "L177",
+      "id": "pages_settings_togglerow",
+      "community": 0,
+      "norm_label": "togglerow()"
+    },
+    {
+      "label": "selectRow()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/pages/settings.js",
+      "source_location": "L190",
+      "id": "pages_settings_selectrow",
+      "community": 0,
+      "norm_label": "selectrow()"
+    },
+    {
+      "label": "permRow()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/pages/settings.js",
+      "source_location": "L207",
+      "id": "pages_settings_permrow",
+      "community": 0,
+      "norm_label": "permrow()"
+    },
+    {
+      "label": "nameRow()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/pages/settings.js",
+      "source_location": "L220",
+      "id": "pages_settings_namerow",
+      "community": 0,
+      "norm_label": "namerow()"
+    },
+    {
+      "label": "hotkeyRow()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/pages/settings.js",
+      "source_location": "L239",
+      "id": "pages_settings_hotkeyrow",
+      "community": 0,
+      "norm_label": "hotkeyrow()"
+    },
+    {
+      "label": "openHotkeyModal()",
+      "file_type": "code",
+      "source_file": "renderer/dashboard/pages/settings.js",
+      "source_location": "L257",
+      "id": "pages_settings_openhotkeymodal",
+      "community": 0,
+      "norm_label": "openhotkeymodal()"
+    },
+    {
+      "label": "flowbar.js",
+      "file_type": "code",
+      "source_file": "renderer/flowbar/flowbar.js",
+      "source_location": "L1",
+      "id": "renderer_flowbar_flowbar_js",
+      "community": 9,
+      "norm_label": "flowbar.js"
+    },
+    {
+      "label": "setState()",
+      "file_type": "code",
+      "source_file": "renderer/flowbar/flowbar.js",
+      "source_location": "L18",
+      "id": "flowbar_flowbar_setstate",
+      "community": 9,
+      "norm_label": "setstate()"
+    },
+    {
+      "label": "startCapture()",
+      "file_type": "code",
+      "source_file": "renderer/flowbar/flowbar.js",
+      "source_location": "L34",
+      "id": "flowbar_flowbar_startcapture",
+      "community": 9,
+      "norm_label": "startcapture()"
+    },
+    {
+      "label": "teardownCapture()",
+      "file_type": "code",
+      "source_file": "renderer/flowbar/flowbar.js",
+      "source_location": "L69",
+      "id": "flowbar_flowbar_teardowncapture",
+      "community": 9,
+      "norm_label": "teardowncapture()"
+    },
+    {
+      "label": "collectWav()",
+      "file_type": "code",
+      "source_file": "renderer/flowbar/flowbar.js",
+      "source_location": "L78",
+      "id": "flowbar_flowbar_collectwav",
+      "community": 9,
+      "norm_label": "collectwav()"
+    },
+    {
+      "label": "encodeWav16k()",
+      "file_type": "code",
+      "source_file": "renderer/flowbar/flowbar.js",
+      "source_location": "L93",
+      "id": "flowbar_flowbar_encodewav16k",
+      "community": 9,
+      "norm_label": "encodewav16k()"
+    },
+    {
+      "label": "pushLevel()",
+      "file_type": "code",
+      "source_file": "renderer/flowbar/flowbar.js",
+      "source_location": "L136",
+      "id": "flowbar_flowbar_pushlevel",
+      "community": 9,
+      "norm_label": "pushlevel()"
+    },
+    {
+      "label": "renderBars()",
+      "file_type": "code",
+      "source_file": "renderer/flowbar/flowbar.js",
+      "source_location": "L141",
+      "id": "flowbar_flowbar_renderbars",
+      "community": 9,
+      "norm_label": "renderbars()"
+    },
+    {
+      "label": "blip()",
+      "file_type": "code",
+      "source_file": "renderer/flowbar/flowbar.js",
+      "source_location": "L153",
+      "id": "flowbar_flowbar_blip",
+      "community": 9,
+      "norm_label": "blip()"
+    },
+    {
+      "label": "worklet.js",
+      "file_type": "code",
+      "source_file": "renderer/flowbar/worklet.js",
+      "source_location": "L1",
+      "id": "renderer_flowbar_worklet_js",
+      "community": 12,
+      "norm_label": "worklet.js"
+    },
+    {
+      "label": "CaptureProcessor",
+      "file_type": "code",
+      "source_file": "renderer/flowbar/worklet.js",
+      "source_location": "L4",
+      "id": "flowbar_worklet_captureprocessor",
+      "community": 12,
+      "norm_label": "captureprocessor"
+    },
+    {
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "renderer/flowbar/worklet.js",
+      "source_location": "L5",
+      "id": "flowbar_worklet_captureprocessor_constructor",
+      "community": 12,
+      "norm_label": ".constructor()"
+    },
+    {
+      "label": ".process()",
+      "file_type": "code",
+      "source_file": "renderer/flowbar/worklet.js",
+      "source_location": "L11",
+      "id": "flowbar_worklet_captureprocessor_process",
+      "community": 12,
+      "norm_label": ".process()"
+    },
+    {
+      "label": "onboarding.js",
+      "file_type": "code",
+      "source_file": "renderer/onboarding/onboarding.js",
+      "source_location": "L1",
+      "id": "renderer_onboarding_onboarding_js",
+      "community": 11,
+      "norm_label": "onboarding.js"
+    },
+    {
+      "label": "el()",
+      "file_type": "code",
+      "source_file": "renderer/onboarding/onboarding.js",
+      "source_location": "L14",
+      "id": "onboarding_onboarding_el",
+      "community": 11,
+      "norm_label": "el()"
+    },
+    {
+      "label": "renderDots()",
+      "file_type": "code",
+      "source_file": "renderer/onboarding/onboarding.js",
+      "source_location": "L29",
+      "id": "onboarding_onboarding_renderdots",
+      "community": 11,
+      "norm_label": "renderdots()"
+    },
+    {
+      "label": "go()",
+      "file_type": "code",
+      "source_file": "renderer/onboarding/onboarding.js",
+      "source_location": "L36",
+      "id": "onboarding_onboarding_go",
+      "community": 11,
+      "norm_label": "go()"
+    },
+    {
+      "label": "render()",
+      "file_type": "code",
+      "source_file": "renderer/onboarding/onboarding.js",
+      "source_location": "L42",
+      "id": "onboarding_onboarding_render",
+      "community": 11,
+      "norm_label": "render()"
+    },
+    {
+      "label": "startMicMeter()",
+      "file_type": "code",
+      "source_file": "renderer/onboarding/onboarding.js",
+      "source_location": "L264",
+      "id": "onboarding_onboarding_startmicmeter",
+      "community": 11,
+      "norm_label": "startmicmeter()"
+    },
+    {
+      "label": "stopMicMeter()",
+      "file_type": "code",
+      "source_file": "renderer/onboarding/onboarding.js",
+      "source_location": "L306",
+      "id": "onboarding_onboarding_stopmicmeter",
+      "community": 11,
+      "norm_label": "stopmicmeter()"
+    },
+    {
+      "label": "keymon.swift",
+      "file_type": "code",
+      "source_file": "native/keymon.swift",
+      "source_location": "L1",
+      "id": "native_keymon_swift",
+      "community": 10,
+      "norm_label": "keymon.swift"
+    },
+    {
+      "label": "emit()",
+      "file_type": "code",
+      "source_file": "native/keymon.swift",
+      "source_location": "L26",
+      "id": "native_keymon_emit",
+      "community": 10,
+      "norm_label": "emit()"
+    },
+    {
+      "label": "emitMods()",
+      "file_type": "code",
+      "source_file": "native/keymon.swift",
+      "source_location": "L32",
+      "id": "native_keymon_emitmods",
+      "community": 10,
+      "norm_label": "emitmods()"
+    },
+    {
+      "label": "tapCallback()",
+      "file_type": "code",
+      "source_file": "native/keymon.swift",
+      "source_location": "L40",
+      "id": "native_keymon_tapcallback",
+      "community": 10,
+      "norm_label": "tapcallback()"
+    },
+    {
+      "label": "installTap()",
+      "file_type": "code",
+      "source_file": "native/keymon.swift",
+      "source_location": "L84",
+      "id": "native_keymon_installtap",
+      "community": 10,
+      "norm_label": "installtap()"
+    },
+    {
+      "label": "postKeyChord()",
+      "file_type": "code",
+      "source_file": "native/keymon.swift",
+      "source_location": "L104",
+      "id": "native_keymon_postkeychord",
+      "community": 10,
+      "norm_label": "postkeychord()"
+    },
+    {
+      "label": "handle()",
+      "file_type": "code",
+      "source_file": "native/keymon.swift",
+      "source_location": "L114",
+      "id": "native_keymon_handle",
+      "community": 10,
+      "norm_label": "handle()"
+    },
+    {
+      "label": "tryInstall()",
+      "file_type": "code",
+      "source_file": "native/keymon.swift",
+      "source_location": "L169",
+      "id": "native_keymon_tryinstall",
+      "community": 10,
+      "norm_label": "tryinstall()"
+    },
+    {
+      "label": "dictation.test.js",
+      "file_type": "code",
+      "source_file": "test/smoke/dictation.test.js",
+      "source_location": "L1",
+      "id": "test_smoke_dictation_test_js",
+      "community": 2,
+      "norm_label": "dictation.test.js"
+    },
+    {
+      "label": "norm()",
+      "file_type": "code",
+      "source_file": "test/smoke/dictation.test.js",
+      "source_location": "L70",
+      "id": "smoke_dictation_test_norm",
+      "community": 2,
+      "norm_label": "norm()"
+    },
+    {
+      "label": "transcribe.test.js",
+      "file_type": "code",
+      "source_file": "test/smoke/transcribe.test.js",
+      "source_location": "L1",
+      "id": "test_smoke_transcribe_test_js",
+      "community": 2,
+      "norm_label": "transcribe.test.js"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "test/smoke/transcribe.test.js",
+      "source_location": "L18",
+      "id": "smoke_transcribe_test_main",
+      "community": 2,
+      "norm_label": "main()"
+    },
+    {
+      "label": "checkAccuracy()",
+      "file_type": "code",
+      "source_file": "test/smoke/transcribe.test.js",
+      "source_location": "L69",
+      "id": "smoke_transcribe_test_checkaccuracy",
+      "community": 2,
+      "norm_label": "checkaccuracy()"
+    },
+    {
+      "label": "applaunch.test.js",
+      "file_type": "code",
+      "source_file": "test/smoke/applaunch.test.js",
+      "source_location": "L1",
+      "id": "test_smoke_applaunch_test_js",
+      "community": 17,
+      "norm_label": "applaunch.test.js"
+    },
+    {
+      "label": "formatter.test.js",
+      "file_type": "code",
+      "source_file": "test/unit/formatter.test.js",
+      "source_location": "L1",
+      "id": "test_unit_formatter_test_js",
+      "community": 18,
+      "norm_label": "formatter.test.js"
+    },
+    {
+      "label": "hotkeys.test.js",
+      "file_type": "code",
+      "source_file": "test/unit/hotkeys.test.js",
+      "source_location": "L1",
+      "id": "test_unit_hotkeys_test_js",
+      "community": 19,
+      "norm_label": "hotkeys.test.js"
+    },
+    {
+      "label": "store.test.js",
+      "file_type": "code",
+      "source_file": "test/unit/store.test.js",
+      "source_location": "L1",
+      "id": "test_unit_store_test_js",
+      "community": 20,
+      "norm_label": "store.test.js"
+    },
+    {
+      "label": "recorder.js",
+      "file_type": "code",
+      "source_file": "electron/recorder.js",
+      "source_location": "L1",
+      "id": "electron_recorder_js",
+      "community": 5,
+      "norm_label": "recorder.js"
+    },
+    {
+      "label": "Recorder",
+      "file_type": "code",
+      "source_file": "electron/recorder.js",
+      "source_location": "L10",
+      "id": "electron_recorder_recorder",
+      "community": 5,
+      "norm_label": "recorder"
+    },
+    {
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "electron/recorder.js",
+      "source_location": "L11",
+      "id": "electron_recorder_recorder_constructor",
+      "community": 5,
+      "norm_label": ".constructor()"
+    },
+    {
+      "label": ".attachWindows()",
+      "file_type": "code",
+      "source_file": "electron/recorder.js",
+      "source_location": "L32",
+      "id": "electron_recorder_recorder_attachwindows",
+      "community": 5,
+      "norm_label": ".attachwindows()"
+    },
+    {
+      "label": "._sendFlowbar()",
+      "file_type": "code",
+      "source_file": "electron/recorder.js",
+      "source_location": "L37",
+      "id": "electron_recorder_recorder_sendflowbar",
+      "community": 5,
+      "norm_label": "._sendflowbar()"
+    },
+    {
+      "label": "._sendDashboard()",
+      "file_type": "code",
+      "source_file": "electron/recorder.js",
+      "source_location": "L43",
+      "id": "electron_recorder_recorder_senddashboard",
+      "community": 5,
+      "norm_label": "._senddashboard()"
+    },
+    {
+      "label": "._onHoldStart()",
+      "file_type": "code",
+      "source_file": "electron/recorder.js",
+      "source_location": "L49",
+      "id": "electron_recorder_recorder_onholdstart",
+      "community": 5,
+      "norm_label": "._onholdstart()"
+    },
+    {
+      "label": "._onHoldEnd()",
+      "file_type": "code",
+      "source_file": "electron/recorder.js",
+      "source_location": "L55",
+      "id": "electron_recorder_recorder_onholdend",
+      "community": 5,
+      "norm_label": "._onholdend()"
+    },
+    {
+      "label": ".toggleHandsFree()",
+      "file_type": "code",
+      "source_file": "electron/recorder.js",
+      "source_location": "L61",
+      "id": "electron_recorder_recorder_togglehandsfree",
+      "community": 5,
+      "norm_label": ".togglehandsfree()"
+    },
+    {
+      "label": ".startRecording()",
+      "file_type": "code",
+      "source_file": "electron/recorder.js",
+      "source_location": "L71",
+      "id": "electron_recorder_recorder_startrecording",
+      "community": 5,
+      "norm_label": ".startrecording()"
+    },
+    {
+      "label": ".stopRecording()",
+      "file_type": "code",
+      "source_file": "electron/recorder.js",
+      "source_location": "L95",
+      "id": "electron_recorder_recorder_stoprecording",
+      "community": 5,
+      "norm_label": ".stoprecording()"
+    },
+    {
+      "label": ".cancel()",
+      "file_type": "code",
+      "source_file": "electron/recorder.js",
+      "source_location": "L112",
+      "id": "electron_recorder_recorder_cancel",
+      "community": 5,
+      "norm_label": ".cancel()"
+    },
+    {
+      "label": ".handleAudio()",
+      "file_type": "code",
+      "source_file": "electron/recorder.js",
+      "source_location": "L124",
+      "id": "electron_recorder_recorder_handleaudio",
+      "community": 5,
+      "norm_label": ".handleaudio()"
+    },
+    {
+      "label": "._finish()",
+      "file_type": "code",
+      "source_file": "electron/recorder.js",
+      "source_location": "L194",
+      "id": "electron_recorder_recorder_finish",
+      "community": 5,
+      "norm_label": "._finish()"
+    },
+    {
+      "label": "preload.js",
+      "file_type": "code",
+      "source_file": "electron/preload.js",
+      "source_location": "L1",
+      "id": "electron_preload_js",
+      "community": 14,
+      "norm_label": "preload.js"
+    },
+    {
+      "label": "wrapped()",
+      "file_type": "code",
+      "source_file": "electron/preload.js",
+      "source_location": "L24",
+      "id": "electron_preload_wrapped",
+      "community": 14,
+      "norm_label": "wrapped()"
+    },
+    {
+      "label": "ipc.js",
+      "file_type": "code",
+      "source_file": "electron/ipc.js",
+      "source_location": "L1",
+      "id": "electron_ipc_js",
+      "community": 15,
+      "norm_label": "ipc.js"
+    },
+    {
+      "label": "registerIpc()",
+      "file_type": "code",
+      "source_file": "electron/ipc.js",
+      "source_location": "L7",
+      "id": "electron_ipc_registeripc",
+      "community": 15,
+      "norm_label": "registeripc()"
+    },
+    {
+      "label": "transcriber.js",
+      "file_type": "code",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L1",
+      "id": "electron_transcriber_js",
+      "community": 3,
+      "norm_label": "transcriber.js"
+    },
+    {
+      "label": "findBinary()",
+      "file_type": "code",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L16",
+      "id": "electron_transcriber_findbinary",
+      "community": 3,
+      "norm_label": "findbinary()"
+    },
+    {
+      "label": "Transcriber",
+      "file_type": "code",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L32",
+      "id": "electron_transcriber_transcriber",
+      "community": 3,
+      "norm_label": "transcriber"
+    },
+    {
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L33",
+      "id": "electron_transcriber_transcriber_constructor",
+      "community": 3,
+      "norm_label": ".constructor()"
+    },
+    {
+      "label": ".modelPath()",
+      "file_type": "code",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L46",
+      "id": "electron_transcriber_transcriber_modelpath",
+      "community": 3,
+      "norm_label": ".modelpath()"
+    },
+    {
+      "label": ".hasModel()",
+      "file_type": "code",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L50",
+      "id": "electron_transcriber_transcriber_hasmodel",
+      "community": 3,
+      "norm_label": ".hasmodel()"
+    },
+    {
+      "label": ".listModels()",
+      "file_type": "code",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L58",
+      "id": "electron_transcriber_transcriber_listmodels",
+      "community": 3,
+      "norm_label": ".listmodels()"
+    },
+    {
+      "label": ".downloadModel()",
+      "file_type": "code",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L65",
+      "id": "electron_transcriber_transcriber_downloadmodel",
+      "community": 3,
+      "norm_label": ".downloadmodel()"
+    },
+    {
+      "label": ".ensureServer()",
+      "file_type": "code",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L76",
+      "id": "electron_transcriber_transcriber_ensureserver",
+      "community": 3,
+      "norm_label": ".ensureserver()"
+    },
+    {
+      "label": "._startServer()",
+      "file_type": "code",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L90",
+      "id": "electron_transcriber_transcriber_startserver",
+      "community": 3,
+      "norm_label": "._startserver()"
+    },
+    {
+      "label": "._ping()",
+      "file_type": "code",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L126",
+      "id": "electron_transcriber_transcriber_ping",
+      "community": 3,
+      "norm_label": "._ping()"
+    },
+    {
+      "label": ".stopServer()",
+      "file_type": "code",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L141",
+      "id": "electron_transcriber_transcriber_stopserver",
+      "community": 3,
+      "norm_label": ".stopserver()"
+    },
+    {
+      "label": ".transcribe()",
+      "file_type": "code",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L152",
+      "id": "electron_transcriber_transcriber_transcribe",
+      "community": 3,
+      "norm_label": ".transcribe()"
+    },
+    {
+      "label": "._transcribeViaServer()",
+      "file_type": "code",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L166",
+      "id": "electron_transcriber_transcriber_transcribeviaserver",
+      "community": 3,
+      "norm_label": "._transcribeviaserver()"
+    },
+    {
+      "label": "._transcribeViaCli()",
+      "file_type": "code",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L218",
+      "id": "electron_transcriber_transcriber_transcribeviacli",
+      "community": 3,
+      "norm_label": "._transcribeviacli()"
+    },
+    {
+      "label": "httpsDownload()",
+      "file_type": "code",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L236",
+      "id": "electron_transcriber_httpsdownload",
+      "community": 3,
+      "norm_label": "httpsdownload()"
+    },
+    {
+      "label": "sleep()",
+      "file_type": "code",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L267",
+      "id": "electron_transcriber_sleep",
+      "community": 3,
+      "norm_label": "sleep()"
+    },
+    {
+      "label": "hotkeys.js",
+      "file_type": "code",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L1",
+      "id": "electron_hotkeys_js",
+      "community": 4,
+      "norm_label": "hotkeys.js"
+    },
+    {
+      "label": "findKeymon()",
+      "file_type": "code",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L38",
+      "id": "electron_hotkeys_findkeymon",
+      "community": 4,
+      "norm_label": "findkeymon()"
+    },
+    {
+      "label": "specSatisfied()",
+      "file_type": "code",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L53",
+      "id": "electron_hotkeys_specsatisfied",
+      "community": 4,
+      "norm_label": "specsatisfied()"
+    },
+    {
+      "label": "Hotkeys",
+      "file_type": "code",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L59",
+      "id": "electron_hotkeys_hotkeys",
+      "community": 4,
+      "norm_label": "hotkeys"
+    },
+    {
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L60",
+      "id": "electron_hotkeys_hotkeys_constructor",
+      "community": 4,
+      "norm_label": ".constructor()"
+    },
+    {
+      "label": ".setHotkey()",
+      "file_type": "code",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L74",
+      "id": "electron_hotkeys_hotkeys_sethotkey",
+      "community": 4,
+      "norm_label": ".sethotkey()"
+    },
+    {
+      "label": ".on()",
+      "file_type": "code",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L81",
+      "id": "electron_hotkeys_hotkeys_on",
+      "community": 4,
+      "norm_label": ".on()"
+    },
+    {
+      "label": "._fire()",
+      "file_type": "code",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L86",
+      "id": "electron_hotkeys_hotkeys_fire",
+      "community": 4,
+      "norm_label": "._fire()"
+    },
+    {
+      "label": ".start()",
+      "file_type": "code",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L90",
+      "id": "electron_hotkeys_hotkeys_start",
+      "community": 4,
+      "norm_label": ".start()"
+    },
+    {
+      "label": ".stop()",
+      "file_type": "code",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L120",
+      "id": "electron_hotkeys_hotkeys_stop",
+      "community": 4,
+      "norm_label": ".stop()"
+    },
+    {
+      "label": ".send()",
+      "file_type": "code",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L129",
+      "id": "electron_hotkeys_hotkeys_send",
+      "community": 4,
+      "norm_label": ".send()"
+    },
+    {
+      "label": ".setRecording()",
+      "file_type": "code",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L135",
+      "id": "electron_hotkeys_hotkeys_setrecording",
+      "community": 4,
+      "norm_label": ".setrecording()"
+    },
+    {
+      "label": ".promptAccessibility()",
+      "file_type": "code",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L139",
+      "id": "electron_hotkeys_hotkeys_promptaccessibility",
+      "community": 4,
+      "norm_label": ".promptaccessibility()"
+    },
+    {
+      "label": ".checkAccessibility()",
+      "file_type": "code",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L143",
+      "id": "electron_hotkeys_hotkeys_checkaccessibility",
+      "community": 4,
+      "norm_label": ".checkaccessibility()"
+    },
+    {
+      "label": ".paste()",
+      "file_type": "code",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L147",
+      "id": "electron_hotkeys_hotkeys_paste",
+      "community": 4,
+      "norm_label": ".paste()"
+    },
+    {
+      "label": ".queryFront()",
+      "file_type": "code",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L151",
+      "id": "electron_hotkeys_hotkeys_queryfront",
+      "community": 4,
+      "norm_label": ".queryfront()"
+    },
+    {
+      "label": "._handleEvent()",
+      "file_type": "code",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L165",
+      "id": "electron_hotkeys_hotkeys_handleevent",
+      "community": 4,
+      "norm_label": "._handleevent()"
+    },
+    {
+      "label": "formatter.js",
+      "file_type": "code",
+      "source_file": "electron/formatter.js",
+      "source_location": "L1",
+      "id": "electron_formatter_js",
+      "community": 2,
+      "norm_label": "formatter.js"
+    },
+    {
+      "label": "stripFillers()",
+      "file_type": "code",
+      "source_file": "electron/formatter.js",
+      "source_location": "L28",
+      "id": "electron_formatter_stripfillers",
+      "community": 2,
+      "norm_label": "stripfillers()"
+    },
+    {
+      "label": "applyBacktrack()",
+      "file_type": "code",
+      "source_file": "electron/formatter.js",
+      "source_location": "L41",
+      "id": "electron_formatter_applybacktrack",
+      "community": 2,
+      "norm_label": "applybacktrack()"
+    },
+    {
+      "label": "applySpokenPunctuation()",
+      "file_type": "code",
+      "source_file": "electron/formatter.js",
+      "source_location": "L54",
+      "id": "electron_formatter_applyspokenpunctuation",
+      "community": 2,
+      "norm_label": "applyspokenpunctuation()"
+    },
+    {
+      "label": "applyDictionary()",
+      "file_type": "code",
+      "source_file": "electron/formatter.js",
+      "source_location": "L71",
+      "id": "electron_formatter_applydictionary",
+      "community": 2,
+      "norm_label": "applydictionary()"
+    },
+    {
+      "label": "isSentenceStart()",
+      "file_type": "code",
+      "source_file": "electron/formatter.js",
+      "source_location": "L95",
+      "id": "electron_formatter_issentencestart",
+      "community": 2,
+      "norm_label": "issentencestart()"
+    },
+    {
+      "label": "applySnippets()",
+      "file_type": "code",
+      "source_file": "electron/formatter.js",
+      "source_location": "L100",
+      "id": "electron_formatter_applysnippets",
+      "community": 2,
+      "norm_label": "applysnippets()"
+    },
+    {
+      "label": "extractPressEnter()",
+      "file_type": "code",
+      "source_file": "electron/formatter.js",
+      "source_location": "L113",
+      "id": "electron_formatter_extractpressenter",
+      "community": 2,
+      "norm_label": "extractpressenter()"
+    },
+    {
+      "label": "finalTidy()",
+      "file_type": "code",
+      "source_file": "electron/formatter.js",
+      "source_location": "L121",
+      "id": "electron_formatter_finaltidy",
+      "community": 2,
+      "norm_label": "finaltidy()"
+    },
+    {
+      "label": "applyStyle()",
+      "file_type": "code",
+      "source_file": "electron/formatter.js",
+      "source_location": "L133",
+      "id": "electron_formatter_applystyle",
+      "community": 2,
+      "norm_label": "applystyle()"
+    },
+    {
+      "label": "escapeRe()",
+      "file_type": "code",
+      "source_file": "electron/formatter.js",
+      "source_location": "L154",
+      "id": "electron_formatter_escapere",
+      "community": 2,
+      "norm_label": "escapere()"
+    },
+    {
+      "label": "formatTranscript()",
+      "file_type": "code",
+      "source_file": "electron/formatter.js",
+      "source_location": "L164",
+      "id": "electron_formatter_formattranscript",
+      "community": 2,
+      "norm_label": "formattranscript()"
+    },
+    {
+      "label": "store.js",
+      "file_type": "code",
+      "source_file": "electron/store.js",
+      "source_location": "L1",
+      "id": "electron_store_js",
+      "community": 1,
+      "norm_label": "store.js"
+    },
+    {
+      "label": "Store",
+      "file_type": "code",
+      "source_file": "electron/store.js",
+      "source_location": "L27",
+      "id": "electron_store_store",
+      "community": 1,
+      "norm_label": "store"
+    },
+    {
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "electron/store.js",
+      "source_location": "L28",
+      "id": "electron_store_store_constructor",
+      "community": 1,
+      "norm_label": ".constructor()"
+    },
+    {
+      "label": "._readJson()",
+      "file_type": "code",
+      "source_file": "electron/store.js",
+      "source_location": "L42",
+      "id": "electron_store_store_readjson",
+      "community": 1,
+      "norm_label": "._readjson()"
+    },
+    {
+      "label": "._writeJson()",
+      "file_type": "code",
+      "source_file": "electron/store.js",
+      "source_location": "L50",
+      "id": "electron_store_store_writejson",
+      "community": 1,
+      "norm_label": "._writejson()"
+    },
+    {
+      "label": ".getSettings()",
+      "file_type": "code",
+      "source_file": "electron/store.js",
+      "source_location": "L57",
+      "id": "electron_store_store_getsettings",
+      "community": 1,
+      "norm_label": ".getsettings()"
+    },
+    {
+      "label": ".setSettings()",
+      "file_type": "code",
+      "source_file": "electron/store.js",
+      "source_location": "L61",
+      "id": "electron_store_store_setsettings",
+      "community": 1,
+      "norm_label": ".setsettings()"
+    },
+    {
+      "label": ".addDictionaryEntry()",
+      "file_type": "code",
+      "source_file": "electron/store.js",
+      "source_location": "L68",
+      "id": "electron_store_store_adddictionaryentry",
+      "community": 1,
+      "norm_label": ".adddictionaryentry()"
+    },
+    {
+      "label": ".updateDictionaryEntry()",
+      "file_type": "code",
+      "source_file": "electron/store.js",
+      "source_location": "L85",
+      "id": "electron_store_store_updatedictionaryentry",
+      "community": 1,
+      "norm_label": ".updatedictionaryentry()"
+    },
+    {
+      "label": ".removeDictionaryEntry()",
+      "file_type": "code",
+      "source_file": "electron/store.js",
+      "source_location": "L93",
+      "id": "electron_store_store_removedictionaryentry",
+      "community": 1,
+      "norm_label": ".removedictionaryentry()"
+    },
+    {
+      "label": ".addSnippet()",
+      "file_type": "code",
+      "source_file": "electron/store.js",
+      "source_location": "L99",
+      "id": "electron_store_store_addsnippet",
+      "community": 1,
+      "norm_label": ".addsnippet()"
+    },
+    {
+      "label": ".updateSnippet()",
+      "file_type": "code",
+      "source_file": "electron/store.js",
+      "source_location": "L116",
+      "id": "electron_store_store_updatesnippet",
+      "community": 1,
+      "norm_label": ".updatesnippet()"
+    },
+    {
+      "label": ".removeSnippet()",
+      "file_type": "code",
+      "source_file": "electron/store.js",
+      "source_location": "L124",
+      "id": "electron_store_store_removesnippet",
+      "community": 1,
+      "norm_label": ".removesnippet()"
+    },
+    {
+      "label": "._loadHistory()",
+      "file_type": "code",
+      "source_file": "electron/store.js",
+      "source_location": "L130",
+      "id": "electron_store_store_loadhistory",
+      "community": 1,
+      "norm_label": "._loadhistory()"
+    },
+    {
+      "label": ".addHistoryEntry()",
+      "file_type": "code",
+      "source_file": "electron/store.js",
+      "source_location": "L143",
+      "id": "electron_store_store_addhistoryentry",
+      "community": 1,
+      "norm_label": ".addhistoryentry()"
+    },
+    {
+      "label": ".removeHistoryEntry()",
+      "file_type": "code",
+      "source_file": "electron/store.js",
+      "source_location": "L163",
+      "id": "electron_store_store_removehistoryentry",
+      "community": 1,
+      "norm_label": ".removehistoryentry()"
+    },
+    {
+      "label": "._rewriteHistory()",
+      "file_type": "code",
+      "source_file": "electron/store.js",
+      "source_location": "L173",
+      "id": "electron_store_store_rewritehistory",
+      "community": 1,
+      "norm_label": "._rewritehistory()"
+    },
+    {
+      "label": ".getHistory()",
+      "file_type": "code",
+      "source_file": "electron/store.js",
+      "source_location": "L179",
+      "id": "electron_store_store_gethistory",
+      "community": 1,
+      "norm_label": ".gethistory()"
+    },
+    {
+      "label": ".getStats()",
+      "file_type": "code",
+      "source_file": "electron/store.js",
+      "source_location": "L184",
+      "id": "electron_store_store_getstats",
+      "community": 1,
+      "norm_label": ".getstats()"
+    },
+    {
+      "label": ".pruneOldAudio()",
+      "file_type": "code",
+      "source_file": "electron/store.js",
+      "source_location": "L228",
+      "id": "electron_store_store_pruneoldaudio",
+      "community": 1,
+      "norm_label": ".pruneoldaudio()"
+    },
+    {
+      "label": "tray.js",
+      "file_type": "code",
+      "source_file": "electron/tray.js",
+      "source_location": "L1",
+      "id": "electron_tray_js",
+      "community": 16,
+      "norm_label": "tray.js"
+    },
+    {
+      "label": "createTray()",
+      "file_type": "code",
+      "source_file": "electron/tray.js",
+      "source_location": "L6",
+      "id": "electron_tray_createtray",
+      "community": 16,
+      "norm_label": "createtray()"
+    },
+    {
+      "label": "main.js",
+      "file_type": "code",
+      "source_file": "electron/main.js",
+      "source_location": "L1",
+      "id": "electron_main_js",
+      "community": 7,
+      "norm_label": "main.js"
+    },
+    {
+      "label": "boot()",
+      "file_type": "code",
+      "source_file": "electron/main.js",
+      "source_location": "L41",
+      "id": "electron_main_boot",
+      "community": 7,
+      "norm_label": "boot()"
+    },
+    {
+      "label": "runSmokeAutopilot()",
+      "file_type": "code",
+      "source_file": "electron/main.js",
+      "source_location": "L151",
+      "id": "electron_main_runsmokeautopilot",
+      "community": 7,
+      "norm_label": "runsmokeautopilot()"
+    },
+    {
+      "label": "runE2EDictation()",
+      "file_type": "code",
+      "source_file": "electron/main.js",
+      "source_location": "L214",
+      "id": "electron_main_rune2edictation",
+      "community": 7,
+      "norm_label": "rune2edictation()"
+    },
+    {
+      "label": "windows.js",
+      "file_type": "code",
+      "source_file": "electron/windows.js",
+      "source_location": "L1",
+      "id": "electron_windows_js",
+      "community": 7,
+      "norm_label": "windows.js"
+    },
+    {
+      "label": "createDashboard()",
+      "file_type": "code",
+      "source_file": "electron/windows.js",
+      "source_location": "L8",
+      "id": "electron_windows_createdashboard",
+      "community": 7,
+      "norm_label": "createdashboard()"
+    },
+    {
+      "label": "flowbarBounds()",
+      "file_type": "code",
+      "source_file": "electron/windows.js",
+      "source_location": "L41",
+      "id": "electron_windows_flowbarbounds",
+      "community": 7,
+      "norm_label": "flowbarbounds()"
+    },
+    {
+      "label": "clamp01()",
+      "file_type": "code",
+      "source_file": "electron/windows.js",
+      "source_location": "L59",
+      "id": "electron_windows_clamp01",
+      "community": 7,
+      "norm_label": "clamp01()"
+    },
+    {
+      "label": "createFlowbar()",
+      "file_type": "code",
+      "source_file": "electron/windows.js",
+      "source_location": "L63",
+      "id": "electron_windows_createflowbar",
+      "community": 7,
+      "norm_label": "createflowbar()"
+    },
+    {
+      "label": "setFlowbarPosition()",
+      "file_type": "code",
+      "source_file": "electron/windows.js",
+      "source_location": "L97",
+      "id": "electron_windows_setflowbarposition",
+      "community": 7,
+      "norm_label": "setflowbarposition()"
+    },
+    {
+      "label": "createOnboarding()",
+      "file_type": "code",
+      "source_file": "electron/windows.js",
+      "source_location": "L103",
+      "id": "electron_windows_createonboarding",
+      "community": 7,
+      "norm_label": "createonboarding()"
+    },
+    {
+      "label": "inserter.js",
+      "file_type": "code",
+      "source_file": "electron/inserter.js",
+      "source_location": "L1",
+      "id": "electron_inserter_js",
+      "community": 8,
+      "norm_label": "inserter.js"
+    },
+    {
+      "label": "Inserter",
+      "file_type": "code",
+      "source_file": "electron/inserter.js",
+      "source_location": "L7",
+      "id": "electron_inserter_inserter",
+      "community": 8,
+      "norm_label": "inserter"
+    },
+    {
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "electron/inserter.js",
+      "source_location": "L8",
+      "id": "electron_inserter_inserter_constructor",
+      "community": 8,
+      "norm_label": ".constructor()"
+    },
+    {
+      "label": ".insert()",
+      "file_type": "code",
+      "source_file": "electron/inserter.js",
+      "source_location": "L14",
+      "id": "electron_inserter_inserter_insert",
+      "community": 8,
+      "norm_label": ".insert()"
+    },
+    {
+      "label": ".copyLast()",
+      "file_type": "code",
+      "source_file": "electron/inserter.js",
+      "source_location": "L43",
+      "id": "electron_inserter_inserter_copylast",
+      "community": 8,
+      "norm_label": ".copylast()"
+    },
+    {
+      "label": ".pasteLast()",
+      "file_type": "code",
+      "source_file": "electron/inserter.js",
+      "source_location": "L48",
+      "id": "electron_inserter_inserter_pastelast",
+      "community": 8,
+      "norm_label": ".pastelast()"
+    },
+    {
+      "label": "._snapshotClipboard()",
+      "file_type": "code",
+      "source_file": "electron/inserter.js",
+      "source_location": "L55",
+      "id": "electron_inserter_inserter_snapshotclipboard",
+      "community": 8,
+      "norm_label": "._snapshotclipboard()"
+    },
+    {
+      "label": "._restoreClipboard()",
+      "file_type": "code",
+      "source_file": "electron/inserter.js",
+      "source_location": "L62",
+      "id": "electron_inserter_inserter_restoreclipboard",
+      "community": 8,
+      "norm_label": "._restoreclipboard()"
+    },
+    {
+      "label": "._manualPasteNotice()",
+      "file_type": "code",
+      "source_file": "electron/inserter.js",
+      "source_location": "L67",
+      "id": "electron_inserter_inserter_manualpastenotice",
+      "community": 8,
+      "norm_label": "._manualpastenotice()"
+    },
+    {
+      "label": "sleep()",
+      "file_type": "code",
+      "source_file": "electron/inserter.js",
+      "source_location": "L76",
+      "id": "electron_inserter_sleep",
+      "community": 8,
+      "norm_label": "sleep()"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/icons.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "renderer_dashboard_icons_js",
+      "target": "dashboard_icons_s",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/ui.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "renderer_dashboard_ui_js",
+      "target": "dashboard_ui_el",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/ui.js",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "renderer_dashboard_ui_js",
+      "target": "dashboard_ui_escapehtml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/ui.js",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "renderer_dashboard_ui_js",
+      "target": "dashboard_ui_toast",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/ui.js",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "renderer_dashboard_ui_js",
+      "target": "dashboard_ui_openmodal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/ui.js",
+      "source_location": "L53",
+      "weight": 1.0,
+      "source": "renderer_dashboard_ui_js",
+      "target": "dashboard_ui_timelabel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/ui.js",
+      "source_location": "L57",
+      "weight": 1.0,
+      "source": "renderer_dashboard_ui_js",
+      "target": "dashboard_ui_daylabel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/ui.js",
+      "source_location": "L67",
+      "weight": 1.0,
+      "source": "renderer_dashboard_ui_js",
+      "target": "dashboard_ui_abbreviatecount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/ui.js",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "dashboard_ui_toast",
+      "target": "dashboard_ui_el",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/ui.js",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "dashboard_ui_openmodal",
+      "target": "dashboard_ui_el",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/app.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "renderer_dashboard_app_js",
+      "target": "dashboard_ui_el",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/stylepage.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_stylepage_js",
+      "target": "dashboard_ui_el",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/home.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_home_js",
+      "target": "dashboard_ui_el",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/help.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_help_js",
+      "target": "dashboard_ui_el",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/insights.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_insights_js",
+      "target": "dashboard_ui_el",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/dictionary.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_dictionary_js",
+      "target": "dashboard_ui_el",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/snippets.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_snippets_js",
+      "target": "dashboard_ui_el",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/settings.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_settings_js",
+      "target": "dashboard_ui_el",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/stylepage.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_stylepage_js",
+      "target": "dashboard_ui_toast",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/home.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_home_js",
+      "target": "dashboard_ui_toast",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/dictionary.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_dictionary_js",
+      "target": "dashboard_ui_toast",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/snippets.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_snippets_js",
+      "target": "dashboard_ui_toast",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/settings.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_settings_js",
+      "target": "dashboard_ui_toast",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/dictionary.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_dictionary_js",
+      "target": "dashboard_ui_openmodal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/snippets.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_snippets_js",
+      "target": "dashboard_ui_openmodal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/settings.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_settings_js",
+      "target": "dashboard_ui_openmodal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "renderer/dashboard/pages/dictionary.js",
+      "source_location": "L164",
+      "weight": 1.0,
+      "source": "pages_dictionary_openaddmodal",
+      "target": "dashboard_ui_openmodal"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "renderer/dashboard/pages/snippets.js",
+      "source_location": "L132",
+      "weight": 1.0,
+      "source": "pages_snippets_openaddmodal",
+      "target": "dashboard_ui_openmodal"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "renderer/dashboard/pages/settings.js",
+      "source_location": "L310",
+      "weight": 1.0,
+      "source": "pages_settings_openhotkeymodal",
+      "target": "dashboard_ui_openmodal"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/home.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_home_js",
+      "target": "dashboard_ui_timelabel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "renderer/dashboard/pages/home.js",
+      "source_location": "L144",
+      "weight": 1.0,
+      "source": "pages_home_activityrow",
+      "target": "dashboard_ui_timelabel"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/home.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_home_js",
+      "target": "dashboard_ui_daylabel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "renderer/dashboard/pages/home.js",
+      "source_location": "L88",
+      "weight": 1.0,
+      "source": "pages_home_renderhome",
+      "target": "dashboard_ui_daylabel"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/home.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_home_js",
+      "target": "dashboard_ui_abbreviatecount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/insights.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_insights_js",
+      "target": "dashboard_ui_abbreviatecount",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "renderer/dashboard/pages/home.js",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "pages_home_renderhome",
+      "target": "dashboard_ui_abbreviatecount"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "renderer/dashboard/pages/insights.js",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "pages_insights_renderinsights",
+      "target": "dashboard_ui_abbreviatecount"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/app.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "renderer_dashboard_app_js",
+      "target": "pages_home_renderhome",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/app.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "renderer_dashboard_app_js",
+      "target": "pages_dictionary_renderdictionary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/app.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "renderer_dashboard_app_js",
+      "target": "pages_snippets_rendersnippets",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/app.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "renderer_dashboard_app_js",
+      "target": "pages_stylepage_renderstyle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/app.js",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "renderer_dashboard_app_js",
+      "target": "pages_insights_renderinsights",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/app.js",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "renderer_dashboard_app_js",
+      "target": "pages_settings_rendersettings",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/app.js",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "renderer_dashboard_app_js",
+      "target": "pages_help_renderhelp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/app.js",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "renderer_dashboard_app_js",
+      "target": "dashboard_app_buildnav",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/app.js",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "renderer_dashboard_app_js",
+      "target": "dashboard_app_navitem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/app.js",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "renderer_dashboard_app_js",
+      "target": "dashboard_app_navigate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/app.js",
+      "source_location": "L74",
+      "weight": 1.0,
+      "source": "renderer_dashboard_app_js",
+      "target": "dashboard_app_refreshpermbadge",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/app.js",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "dashboard_app_buildnav",
+      "target": "dashboard_app_navitem",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/app.js",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "dashboard_app_navigate",
+      "target": "dashboard_app_buildnav",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/stylepage.js",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_stylepage_js",
+      "target": "pages_stylepage_renderstyle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/home.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_home_js",
+      "target": "pages_home_renderhome",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/home.js",
+      "source_location": "L99",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_home_js",
+      "target": "pages_home_stattext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/home.js",
+      "source_location": "L103",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_home_js",
+      "target": "pages_home_activityrow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/home.js",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "pages_home_renderhome",
+      "target": "pages_home_stattext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/home.js",
+      "source_location": "L95",
+      "weight": 1.0,
+      "source": "pages_home_renderhome",
+      "target": "pages_home_activityrow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/help.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_help_js",
+      "target": "pages_help_renderhelp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/insights.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_insights_js",
+      "target": "pages_insights_renderinsights",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/insights.js",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_insights_js",
+      "target": "pages_insights_statcard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/insights.js",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_insights_js",
+      "target": "pages_insights_plural",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/insights.js",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_insights_js",
+      "target": "pages_insights_numword",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/insights.js",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_insights_js",
+      "target": "pages_insights_cap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/insights.js",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "pages_insights_renderinsights",
+      "target": "pages_insights_statcard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/insights.js",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "pages_insights_renderinsights",
+      "target": "pages_insights_plural",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/insights.js",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "pages_insights_renderinsights",
+      "target": "pages_insights_cap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/insights.js",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "pages_insights_renderinsights",
+      "target": "pages_insights_numword",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/dictionary.js",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_dictionary_js",
+      "target": "pages_dictionary_renderdictionary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/dictionary.js",
+      "source_location": "L75",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_dictionary_js",
+      "target": "pages_dictionary_examplechip",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/dictionary.js",
+      "source_location": "L79",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_dictionary_js",
+      "target": "pages_dictionary_replacementchip",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/dictionary.js",
+      "source_location": "L87",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_dictionary_js",
+      "target": "pages_dictionary_entryrow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/dictionary.js",
+      "source_location": "L130",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_dictionary_js",
+      "target": "pages_dictionary_openaddmodal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/dictionary.js",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "pages_dictionary_renderdictionary",
+      "target": "pages_dictionary_examplechip",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/dictionary.js",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "pages_dictionary_renderdictionary",
+      "target": "pages_dictionary_replacementchip",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/dictionary.js",
+      "source_location": "L71",
+      "weight": 1.0,
+      "source": "pages_dictionary_renderdictionary",
+      "target": "pages_dictionary_entryrow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/snippets.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_snippets_js",
+      "target": "pages_snippets_rendersnippets",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/snippets.js",
+      "source_location": "L88",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_snippets_js",
+      "target": "pages_snippets_triggerchip",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/snippets.js",
+      "source_location": "L97",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_snippets_js",
+      "target": "pages_snippets_openaddmodal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/snippets.js",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "pages_snippets_rendersnippets",
+      "target": "pages_snippets_triggerchip",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/settings.js",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_settings_js",
+      "target": "pages_settings_rendersettings",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/settings.js",
+      "source_location": "L168",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_settings_js",
+      "target": "pages_settings_modellabel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/settings.js",
+      "source_location": "L177",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_settings_js",
+      "target": "pages_settings_togglerow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/settings.js",
+      "source_location": "L190",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_settings_js",
+      "target": "pages_settings_selectrow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/settings.js",
+      "source_location": "L207",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_settings_js",
+      "target": "pages_settings_permrow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/settings.js",
+      "source_location": "L220",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_settings_js",
+      "target": "pages_settings_namerow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/settings.js",
+      "source_location": "L239",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_settings_js",
+      "target": "pages_settings_hotkeyrow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/settings.js",
+      "source_location": "L257",
+      "weight": 1.0,
+      "source": "renderer_dashboard_pages_settings_js",
+      "target": "pages_settings_openhotkeymodal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/settings.js",
+      "source_location": "L57",
+      "weight": 1.0,
+      "source": "pages_settings_rendersettings",
+      "target": "pages_settings_namerow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/settings.js",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "pages_settings_rendersettings",
+      "target": "pages_settings_hotkeyrow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/settings.js",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "pages_settings_rendersettings",
+      "target": "pages_settings_selectrow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/settings.js",
+      "source_location": "L66",
+      "weight": 1.0,
+      "source": "pages_settings_rendersettings",
+      "target": "pages_settings_togglerow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/dashboard/pages/settings.js",
+      "source_location": "L76",
+      "weight": 1.0,
+      "source": "pages_settings_rendersettings",
+      "target": "pages_settings_permrow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/flowbar/flowbar.js",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "renderer_flowbar_flowbar_js",
+      "target": "flowbar_flowbar_setstate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/flowbar/flowbar.js",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "renderer_flowbar_flowbar_js",
+      "target": "flowbar_flowbar_startcapture",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/flowbar/flowbar.js",
+      "source_location": "L69",
+      "weight": 1.0,
+      "source": "renderer_flowbar_flowbar_js",
+      "target": "flowbar_flowbar_teardowncapture",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/flowbar/flowbar.js",
+      "source_location": "L78",
+      "weight": 1.0,
+      "source": "renderer_flowbar_flowbar_js",
+      "target": "flowbar_flowbar_collectwav",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/flowbar/flowbar.js",
+      "source_location": "L93",
+      "weight": 1.0,
+      "source": "renderer_flowbar_flowbar_js",
+      "target": "flowbar_flowbar_encodewav16k",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/flowbar/flowbar.js",
+      "source_location": "L136",
+      "weight": 1.0,
+      "source": "renderer_flowbar_flowbar_js",
+      "target": "flowbar_flowbar_pushlevel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/flowbar/flowbar.js",
+      "source_location": "L141",
+      "weight": 1.0,
+      "source": "renderer_flowbar_flowbar_js",
+      "target": "flowbar_flowbar_renderbars",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/flowbar/flowbar.js",
+      "source_location": "L153",
+      "weight": 1.0,
+      "source": "renderer_flowbar_flowbar_js",
+      "target": "flowbar_flowbar_blip",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/flowbar/flowbar.js",
+      "source_location": "L88",
+      "weight": 1.0,
+      "source": "flowbar_flowbar_collectwav",
+      "target": "flowbar_flowbar_encodewav16k",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/flowbar/worklet.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "renderer_flowbar_worklet_js",
+      "target": "flowbar_worklet_captureprocessor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/flowbar/worklet.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "flowbar_worklet_captureprocessor",
+      "target": "flowbar_worklet_captureprocessor_constructor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/flowbar/worklet.js",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "flowbar_worklet_captureprocessor",
+      "target": "flowbar_worklet_captureprocessor_process",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/onboarding/onboarding.js",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "renderer_onboarding_onboarding_js",
+      "target": "onboarding_onboarding_el",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/onboarding/onboarding.js",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "renderer_onboarding_onboarding_js",
+      "target": "onboarding_onboarding_renderdots",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/onboarding/onboarding.js",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "renderer_onboarding_onboarding_js",
+      "target": "onboarding_onboarding_go",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/onboarding/onboarding.js",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "renderer_onboarding_onboarding_js",
+      "target": "onboarding_onboarding_render",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/onboarding/onboarding.js",
+      "source_location": "L264",
+      "weight": 1.0,
+      "source": "renderer_onboarding_onboarding_js",
+      "target": "onboarding_onboarding_startmicmeter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/onboarding/onboarding.js",
+      "source_location": "L306",
+      "weight": 1.0,
+      "source": "renderer_onboarding_onboarding_js",
+      "target": "onboarding_onboarding_stopmicmeter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/onboarding/onboarding.js",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "onboarding_onboarding_renderdots",
+      "target": "onboarding_onboarding_el",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/onboarding/onboarding.js",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "onboarding_onboarding_render",
+      "target": "onboarding_onboarding_renderdots",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/onboarding/onboarding.js",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "onboarding_onboarding_go",
+      "target": "onboarding_onboarding_stopmicmeter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "renderer/onboarding/onboarding.js",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "onboarding_onboarding_go",
+      "target": "onboarding_onboarding_render",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "native/keymon.swift",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "native_keymon_swift",
+      "target": "native_keymon_emit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "native/keymon.swift",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "native_keymon_swift",
+      "target": "native_keymon_emitmods",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "native/keymon.swift",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "native_keymon_swift",
+      "target": "native_keymon_tapcallback",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "native/keymon.swift",
+      "source_location": "L84",
+      "weight": 1.0,
+      "source": "native_keymon_swift",
+      "target": "native_keymon_installtap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "native/keymon.swift",
+      "source_location": "L104",
+      "weight": 1.0,
+      "source": "native_keymon_swift",
+      "target": "native_keymon_postkeychord",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "native/keymon.swift",
+      "source_location": "L114",
+      "weight": 1.0,
+      "source": "native_keymon_swift",
+      "target": "native_keymon_handle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "native/keymon.swift",
+      "source_location": "L169",
+      "weight": 1.0,
+      "source": "native_keymon_swift",
+      "target": "native_keymon_tryinstall",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "native/keymon.swift",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "native_keymon_emitmods",
+      "target": "native_keymon_emit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "native/keymon.swift",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "native_keymon_tapcallback",
+      "target": "native_keymon_emit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "native/keymon.swift",
+      "source_location": "L118",
+      "weight": 1.0,
+      "source": "native_keymon_handle",
+      "target": "native_keymon_emit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "native/keymon.swift",
+      "source_location": "L171",
+      "weight": 1.0,
+      "source": "native_keymon_tryinstall",
+      "target": "native_keymon_emit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "native/keymon.swift",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "native_keymon_tapcallback",
+      "target": "native_keymon_emitmods",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "native/keymon.swift",
+      "source_location": "L144",
+      "weight": 1.0,
+      "source": "native_keymon_handle",
+      "target": "native_keymon_emitmods",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "native/keymon.swift",
+      "source_location": "L170",
+      "weight": 1.0,
+      "source": "native_keymon_tryinstall",
+      "target": "native_keymon_installtap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "native/keymon.swift",
+      "source_location": "L128",
+      "weight": 1.0,
+      "source": "native_keymon_handle",
+      "target": "native_keymon_postkeychord",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test/smoke/dictation.test.js",
+      "source_location": "L70",
+      "weight": 1.0,
+      "source": "test_smoke_dictation_test_js",
+      "target": "smoke_dictation_test_norm",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "test/smoke/transcribe.test.js",
+      "source_location": "L71",
+      "weight": 1.0,
+      "source": "smoke_transcribe_test_checkaccuracy",
+      "target": "smoke_dictation_test_norm"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test/smoke/transcribe.test.js",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "test_smoke_transcribe_test_js",
+      "target": "smoke_transcribe_test_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test/smoke/transcribe.test.js",
+      "source_location": "L69",
+      "weight": 1.0,
+      "source": "test_smoke_transcribe_test_js",
+      "target": "smoke_transcribe_test_checkaccuracy",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "test/smoke/transcribe.test.js",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "smoke_transcribe_test_main",
+      "target": "smoke_transcribe_test_checkaccuracy",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "test/smoke/transcribe.test.js",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "smoke_transcribe_test_main",
+      "target": "electron_formatter_formattranscript"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/recorder.js",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "electron_recorder_js",
+      "target": "electron_recorder_recorder",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/recorder.js",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "electron_recorder_recorder",
+      "target": "electron_recorder_recorder_constructor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/recorder.js",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "electron_recorder_recorder",
+      "target": "electron_recorder_recorder_attachwindows",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/recorder.js",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "electron_recorder_recorder",
+      "target": "electron_recorder_recorder_sendflowbar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/recorder.js",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "electron_recorder_recorder",
+      "target": "electron_recorder_recorder_senddashboard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/recorder.js",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "electron_recorder_recorder",
+      "target": "electron_recorder_recorder_onholdstart",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/recorder.js",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "electron_recorder_recorder",
+      "target": "electron_recorder_recorder_onholdend",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/recorder.js",
+      "source_location": "L61",
+      "weight": 1.0,
+      "source": "electron_recorder_recorder",
+      "target": "electron_recorder_recorder_togglehandsfree",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/recorder.js",
+      "source_location": "L71",
+      "weight": 1.0,
+      "source": "electron_recorder_recorder",
+      "target": "electron_recorder_recorder_startrecording",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/recorder.js",
+      "source_location": "L95",
+      "weight": 1.0,
+      "source": "electron_recorder_recorder",
+      "target": "electron_recorder_recorder_stoprecording",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/recorder.js",
+      "source_location": "L112",
+      "weight": 1.0,
+      "source": "electron_recorder_recorder",
+      "target": "electron_recorder_recorder_cancel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/recorder.js",
+      "source_location": "L124",
+      "weight": 1.0,
+      "source": "electron_recorder_recorder",
+      "target": "electron_recorder_recorder_handleaudio",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/recorder.js",
+      "source_location": "L194",
+      "weight": 1.0,
+      "source": "electron_recorder_recorder",
+      "target": "electron_recorder_recorder_finish",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/recorder.js",
+      "source_location": "L75",
+      "weight": 1.0,
+      "source": "electron_recorder_recorder_startrecording",
+      "target": "electron_recorder_recorder_sendflowbar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/recorder.js",
+      "source_location": "L101",
+      "weight": 1.0,
+      "source": "electron_recorder_recorder_stoprecording",
+      "target": "electron_recorder_recorder_sendflowbar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/recorder.js",
+      "source_location": "L119",
+      "weight": 1.0,
+      "source": "electron_recorder_recorder_cancel",
+      "target": "electron_recorder_recorder_sendflowbar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/recorder.js",
+      "source_location": "L188",
+      "weight": 1.0,
+      "source": "electron_recorder_recorder_handleaudio",
+      "target": "electron_recorder_recorder_sendflowbar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/recorder.js",
+      "source_location": "L200",
+      "weight": 1.0,
+      "source": "electron_recorder_recorder_finish",
+      "target": "electron_recorder_recorder_sendflowbar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/recorder.js",
+      "source_location": "L137",
+      "weight": 1.0,
+      "source": "electron_recorder_recorder_handleaudio",
+      "target": "electron_recorder_recorder_senddashboard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/recorder.js",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "electron_recorder_recorder_onholdstart",
+      "target": "electron_recorder_recorder_startrecording",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/recorder.js",
+      "source_location": "L57",
+      "weight": 1.0,
+      "source": "electron_recorder_recorder_onholdend",
+      "target": "electron_recorder_recorder_stoprecording",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/recorder.js",
+      "source_location": "L64",
+      "weight": 1.0,
+      "source": "electron_recorder_recorder_togglehandsfree",
+      "target": "electron_recorder_recorder_stoprecording",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/recorder.js",
+      "source_location": "L67",
+      "weight": 1.0,
+      "source": "electron_recorder_recorder_togglehandsfree",
+      "target": "electron_recorder_recorder_startrecording",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/recorder.js",
+      "source_location": "L146",
+      "weight": 1.0,
+      "source": "electron_recorder_recorder_handleaudio",
+      "target": "electron_recorder_recorder_finish",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/preload.js",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "electron_preload_js",
+      "target": "electron_preload_wrapped",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/ipc.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "electron_ipc_js",
+      "target": "electron_ipc_registeripc",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "electron_transcriber_js",
+      "target": "electron_transcriber_findbinary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "electron_transcriber_js",
+      "target": "electron_transcriber_transcriber",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L236",
+      "weight": 1.0,
+      "source": "electron_transcriber_js",
+      "target": "electron_transcriber_httpsdownload",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L267",
+      "weight": 1.0,
+      "source": "electron_transcriber_js",
+      "target": "electron_transcriber_sleep",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "electron_transcriber_transcriber_constructor",
+      "target": "electron_transcriber_findbinary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "electron_transcriber_transcriber",
+      "target": "electron_transcriber_transcriber_constructor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "electron_transcriber_transcriber",
+      "target": "electron_transcriber_transcriber_modelpath",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "electron_transcriber_transcriber",
+      "target": "electron_transcriber_transcriber_hasmodel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "electron_transcriber_transcriber",
+      "target": "electron_transcriber_transcriber_listmodels",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L65",
+      "weight": 1.0,
+      "source": "electron_transcriber_transcriber",
+      "target": "electron_transcriber_transcriber_downloadmodel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L76",
+      "weight": 1.0,
+      "source": "electron_transcriber_transcriber",
+      "target": "electron_transcriber_transcriber_ensureserver",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L90",
+      "weight": 1.0,
+      "source": "electron_transcriber_transcriber",
+      "target": "electron_transcriber_transcriber_startserver",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L126",
+      "weight": 1.0,
+      "source": "electron_transcriber_transcriber",
+      "target": "electron_transcriber_transcriber_ping",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L141",
+      "weight": 1.0,
+      "source": "electron_transcriber_transcriber",
+      "target": "electron_transcriber_transcriber_stopserver",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L152",
+      "weight": 1.0,
+      "source": "electron_transcriber_transcriber",
+      "target": "electron_transcriber_transcriber_transcribe",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L166",
+      "weight": 1.0,
+      "source": "electron_transcriber_transcriber",
+      "target": "electron_transcriber_transcriber_transcribeviaserver",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L218",
+      "weight": 1.0,
+      "source": "electron_transcriber_transcriber",
+      "target": "electron_transcriber_transcriber_transcribeviacli",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "electron_transcriber_transcriber_hasmodel",
+      "target": "electron_transcriber_transcriber_modelpath",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L68",
+      "weight": 1.0,
+      "source": "electron_transcriber_transcriber_downloadmodel",
+      "target": "electron_transcriber_transcriber_modelpath",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L94",
+      "weight": 1.0,
+      "source": "electron_transcriber_transcriber_startserver",
+      "target": "electron_transcriber_transcriber_modelpath",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L153",
+      "weight": 1.0,
+      "source": "electron_transcriber_transcriber_transcribe",
+      "target": "electron_transcriber_transcriber_hasmodel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L70",
+      "weight": 1.0,
+      "source": "electron_transcriber_transcriber_downloadmodel",
+      "target": "electron_transcriber_httpsdownload",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L82",
+      "weight": 1.0,
+      "source": "electron_transcriber_transcriber_ensureserver",
+      "target": "electron_transcriber_transcriber_stopserver",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L84",
+      "weight": 1.0,
+      "source": "electron_transcriber_transcriber_ensureserver",
+      "target": "electron_transcriber_transcriber_startserver",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L154",
+      "weight": 1.0,
+      "source": "electron_transcriber_transcriber_transcribe",
+      "target": "electron_transcriber_transcriber_ensureserver",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L115",
+      "weight": 1.0,
+      "source": "electron_transcriber_transcriber_startserver",
+      "target": "electron_transcriber_transcriber_ping",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L120",
+      "weight": 1.0,
+      "source": "electron_transcriber_transcriber_startserver",
+      "target": "electron_transcriber_sleep",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L122",
+      "weight": 1.0,
+      "source": "electron_transcriber_transcriber_startserver",
+      "target": "electron_transcriber_transcriber_stopserver",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L156",
+      "weight": 1.0,
+      "source": "electron_transcriber_transcriber_transcribe",
+      "target": "electron_transcriber_transcriber_transcribeviaserver",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/transcriber.js",
+      "source_location": "L162",
+      "weight": 1.0,
+      "source": "electron_transcriber_transcriber_transcribe",
+      "target": "electron_transcriber_transcriber_transcribeviacli",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "electron_hotkeys_js",
+      "target": "electron_hotkeys_findkeymon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L53",
+      "weight": 1.0,
+      "source": "electron_hotkeys_js",
+      "target": "electron_hotkeys_specsatisfied",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "electron_hotkeys_js",
+      "target": "electron_hotkeys_hotkeys",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L91",
+      "weight": 1.0,
+      "source": "electron_hotkeys_hotkeys_start",
+      "target": "electron_hotkeys_findkeymon",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L181",
+      "weight": 1.0,
+      "source": "electron_hotkeys_hotkeys_handleevent",
+      "target": "electron_hotkeys_specsatisfied",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "electron_hotkeys_hotkeys",
+      "target": "electron_hotkeys_hotkeys_constructor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L74",
+      "weight": 1.0,
+      "source": "electron_hotkeys_hotkeys",
+      "target": "electron_hotkeys_hotkeys_sethotkey",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L81",
+      "weight": 1.0,
+      "source": "electron_hotkeys_hotkeys",
+      "target": "electron_hotkeys_hotkeys_on",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L86",
+      "weight": 1.0,
+      "source": "electron_hotkeys_hotkeys",
+      "target": "electron_hotkeys_hotkeys_fire",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L90",
+      "weight": 1.0,
+      "source": "electron_hotkeys_hotkeys",
+      "target": "electron_hotkeys_hotkeys_start",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L120",
+      "weight": 1.0,
+      "source": "electron_hotkeys_hotkeys",
+      "target": "electron_hotkeys_hotkeys_stop",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L129",
+      "weight": 1.0,
+      "source": "electron_hotkeys_hotkeys",
+      "target": "electron_hotkeys_hotkeys_send",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L135",
+      "weight": 1.0,
+      "source": "electron_hotkeys_hotkeys",
+      "target": "electron_hotkeys_hotkeys_setrecording",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L139",
+      "weight": 1.0,
+      "source": "electron_hotkeys_hotkeys",
+      "target": "electron_hotkeys_hotkeys_promptaccessibility",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L143",
+      "weight": 1.0,
+      "source": "electron_hotkeys_hotkeys",
+      "target": "electron_hotkeys_hotkeys_checkaccessibility",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L147",
+      "weight": 1.0,
+      "source": "electron_hotkeys_hotkeys",
+      "target": "electron_hotkeys_hotkeys_paste",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L151",
+      "weight": 1.0,
+      "source": "electron_hotkeys_hotkeys",
+      "target": "electron_hotkeys_hotkeys_queryfront",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L165",
+      "weight": 1.0,
+      "source": "electron_hotkeys_hotkeys",
+      "target": "electron_hotkeys_hotkeys_handleevent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L100",
+      "weight": 1.0,
+      "source": "electron_hotkeys_hotkeys_start",
+      "target": "electron_hotkeys_hotkeys_on",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L94",
+      "weight": 1.0,
+      "source": "electron_hotkeys_hotkeys_start",
+      "target": "electron_hotkeys_hotkeys_fire",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L169",
+      "weight": 1.0,
+      "source": "electron_hotkeys_hotkeys_handleevent",
+      "target": "electron_hotkeys_hotkeys_fire",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L123",
+      "weight": 1.0,
+      "source": "electron_hotkeys_hotkeys_stop",
+      "target": "electron_hotkeys_hotkeys_send",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L136",
+      "weight": 1.0,
+      "source": "electron_hotkeys_hotkeys_setrecording",
+      "target": "electron_hotkeys_hotkeys_send",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L140",
+      "weight": 1.0,
+      "source": "electron_hotkeys_hotkeys_promptaccessibility",
+      "target": "electron_hotkeys_hotkeys_send",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L144",
+      "weight": 1.0,
+      "source": "electron_hotkeys_hotkeys_checkaccessibility",
+      "target": "electron_hotkeys_hotkeys_send",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/hotkeys.js",
+      "source_location": "L148",
+      "weight": 1.0,
+      "source": "electron_hotkeys_hotkeys_paste",
+      "target": "electron_hotkeys_hotkeys_send",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "electron_formatter_js",
+      "target": "electron_formatter_stripfillers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "electron_formatter_js",
+      "target": "electron_formatter_applybacktrack",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "electron_formatter_js",
+      "target": "electron_formatter_applyspokenpunctuation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L71",
+      "weight": 1.0,
+      "source": "electron_formatter_js",
+      "target": "electron_formatter_applydictionary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L95",
+      "weight": 1.0,
+      "source": "electron_formatter_js",
+      "target": "electron_formatter_issentencestart",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L100",
+      "weight": 1.0,
+      "source": "electron_formatter_js",
+      "target": "electron_formatter_applysnippets",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L113",
+      "weight": 1.0,
+      "source": "electron_formatter_js",
+      "target": "electron_formatter_extractpressenter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L121",
+      "weight": 1.0,
+      "source": "electron_formatter_js",
+      "target": "electron_formatter_finaltidy",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L133",
+      "weight": 1.0,
+      "source": "electron_formatter_js",
+      "target": "electron_formatter_applystyle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L154",
+      "weight": 1.0,
+      "source": "electron_formatter_js",
+      "target": "electron_formatter_escapere",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L164",
+      "weight": 1.0,
+      "source": "electron_formatter_js",
+      "target": "electron_formatter_formattranscript",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L182",
+      "weight": 1.0,
+      "source": "electron_formatter_formattranscript",
+      "target": "electron_formatter_stripfillers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L183",
+      "weight": 1.0,
+      "source": "electron_formatter_formattranscript",
+      "target": "electron_formatter_applybacktrack",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L184",
+      "weight": 1.0,
+      "source": "electron_formatter_formattranscript",
+      "target": "electron_formatter_applyspokenpunctuation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L77",
+      "weight": 1.0,
+      "source": "electron_formatter_applydictionary",
+      "target": "electron_formatter_escapere",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L185",
+      "weight": 1.0,
+      "source": "electron_formatter_formattranscript",
+      "target": "electron_formatter_applydictionary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L106",
+      "weight": 1.0,
+      "source": "electron_formatter_applysnippets",
+      "target": "electron_formatter_escapere",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L186",
+      "weight": 1.0,
+      "source": "electron_formatter_formattranscript",
+      "target": "electron_formatter_applysnippets",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L190",
+      "weight": 1.0,
+      "source": "electron_formatter_formattranscript",
+      "target": "electron_formatter_extractpressenter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L194",
+      "weight": 1.0,
+      "source": "electron_formatter_formattranscript",
+      "target": "electron_formatter_finaltidy",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L147",
+      "weight": 1.0,
+      "source": "electron_formatter_applystyle",
+      "target": "electron_formatter_escapere",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/formatter.js",
+      "source_location": "L195",
+      "weight": 1.0,
+      "source": "electron_formatter_formattranscript",
+      "target": "electron_formatter_applystyle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "electron_store_js",
+      "target": "electron_store_store",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "electron_store_store",
+      "target": "electron_store_store_constructor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "electron_store_store",
+      "target": "electron_store_store_readjson",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "electron_store_store",
+      "target": "electron_store_store_writejson",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L57",
+      "weight": 1.0,
+      "source": "electron_store_store",
+      "target": "electron_store_store_getsettings",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L61",
+      "weight": 1.0,
+      "source": "electron_store_store",
+      "target": "electron_store_store_setsettings",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L68",
+      "weight": 1.0,
+      "source": "electron_store_store",
+      "target": "electron_store_store_adddictionaryentry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L85",
+      "weight": 1.0,
+      "source": "electron_store_store",
+      "target": "electron_store_store_updatedictionaryentry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L93",
+      "weight": 1.0,
+      "source": "electron_store_store",
+      "target": "electron_store_store_removedictionaryentry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L99",
+      "weight": 1.0,
+      "source": "electron_store_store",
+      "target": "electron_store_store_addsnippet",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L116",
+      "weight": 1.0,
+      "source": "electron_store_store",
+      "target": "electron_store_store_updatesnippet",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L124",
+      "weight": 1.0,
+      "source": "electron_store_store",
+      "target": "electron_store_store_removesnippet",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L130",
+      "weight": 1.0,
+      "source": "electron_store_store",
+      "target": "electron_store_store_loadhistory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L143",
+      "weight": 1.0,
+      "source": "electron_store_store",
+      "target": "electron_store_store_addhistoryentry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L163",
+      "weight": 1.0,
+      "source": "electron_store_store",
+      "target": "electron_store_store_removehistoryentry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L173",
+      "weight": 1.0,
+      "source": "electron_store_store",
+      "target": "electron_store_store_rewritehistory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L179",
+      "weight": 1.0,
+      "source": "electron_store_store",
+      "target": "electron_store_store_gethistory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L184",
+      "weight": 1.0,
+      "source": "electron_store_store",
+      "target": "electron_store_store_getstats",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L228",
+      "weight": 1.0,
+      "source": "electron_store_store",
+      "target": "electron_store_store_pruneoldaudio",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "electron_store_store_constructor",
+      "target": "electron_store_store_readjson",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L63",
+      "weight": 1.0,
+      "source": "electron_store_store_setsettings",
+      "target": "electron_store_store_writejson",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L81",
+      "weight": 1.0,
+      "source": "electron_store_store_adddictionaryentry",
+      "target": "electron_store_store_writejson",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L89",
+      "weight": 1.0,
+      "source": "electron_store_store_updatedictionaryentry",
+      "target": "electron_store_store_writejson",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L95",
+      "weight": 1.0,
+      "source": "electron_store_store_removedictionaryentry",
+      "target": "electron_store_store_writejson",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L112",
+      "weight": 1.0,
+      "source": "electron_store_store_addsnippet",
+      "target": "electron_store_store_writejson",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L120",
+      "weight": 1.0,
+      "source": "electron_store_store_updatesnippet",
+      "target": "electron_store_store_writejson",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L126",
+      "weight": 1.0,
+      "source": "electron_store_store_removesnippet",
+      "target": "electron_store_store_writejson",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L64",
+      "weight": 1.0,
+      "source": "electron_store_store_setsettings",
+      "target": "electron_store_store_getsettings",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L158",
+      "weight": 1.0,
+      "source": "electron_store_store_addhistoryentry",
+      "target": "electron_store_store_loadhistory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L164",
+      "weight": 1.0,
+      "source": "electron_store_store_removehistoryentry",
+      "target": "electron_store_store_loadhistory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L180",
+      "weight": 1.0,
+      "source": "electron_store_store_gethistory",
+      "target": "electron_store_store_loadhistory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L185",
+      "weight": 1.0,
+      "source": "electron_store_store_getstats",
+      "target": "electron_store_store_loadhistory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L231",
+      "weight": 1.0,
+      "source": "electron_store_store_pruneoldaudio",
+      "target": "electron_store_store_loadhistory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L170",
+      "weight": 1.0,
+      "source": "electron_store_store_removehistoryentry",
+      "target": "electron_store_store_rewritehistory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/store.js",
+      "source_location": "L238",
+      "weight": 1.0,
+      "source": "electron_store_store_pruneoldaudio",
+      "target": "electron_store_store_rewritehistory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/tray.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "electron_tray_js",
+      "target": "electron_tray_createtray",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/main.js",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "electron_main_js",
+      "target": "electron_main_boot",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/main.js",
+      "source_location": "L151",
+      "weight": 1.0,
+      "source": "electron_main_js",
+      "target": "electron_main_runsmokeautopilot",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/main.js",
+      "source_location": "L214",
+      "weight": 1.0,
+      "source": "electron_main_js",
+      "target": "electron_main_rune2edictation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "electron/main.js",
+      "source_location": "L190",
+      "weight": 1.0,
+      "source": "electron_main_runsmokeautopilot",
+      "target": "electron_windows_createonboarding"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/windows.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "electron_windows_js",
+      "target": "electron_windows_createdashboard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/windows.js",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "electron_windows_js",
+      "target": "electron_windows_flowbarbounds",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/windows.js",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "electron_windows_js",
+      "target": "electron_windows_clamp01",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/windows.js",
+      "source_location": "L63",
+      "weight": 1.0,
+      "source": "electron_windows_js",
+      "target": "electron_windows_createflowbar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/windows.js",
+      "source_location": "L97",
+      "weight": 1.0,
+      "source": "electron_windows_js",
+      "target": "electron_windows_setflowbarposition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/windows.js",
+      "source_location": "L103",
+      "weight": 1.0,
+      "source": "electron_windows_js",
+      "target": "electron_windows_createonboarding",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/windows.js",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "electron_windows_flowbarbounds",
+      "target": "electron_windows_clamp01",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/windows.js",
+      "source_location": "L64",
+      "weight": 1.0,
+      "source": "electron_windows_createflowbar",
+      "target": "electron_windows_flowbarbounds",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/windows.js",
+      "source_location": "L99",
+      "weight": 1.0,
+      "source": "electron_windows_setflowbarposition",
+      "target": "electron_windows_flowbarbounds",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/inserter.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "electron_inserter_js",
+      "target": "electron_inserter_inserter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/inserter.js",
+      "source_location": "L76",
+      "weight": 1.0,
+      "source": "electron_inserter_js",
+      "target": "electron_inserter_sleep",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/inserter.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "electron_inserter_inserter",
+      "target": "electron_inserter_inserter_constructor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/inserter.js",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "electron_inserter_inserter",
+      "target": "electron_inserter_inserter_insert",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/inserter.js",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "electron_inserter_inserter",
+      "target": "electron_inserter_inserter_copylast",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/inserter.js",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "electron_inserter_inserter",
+      "target": "electron_inserter_inserter_pastelast",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/inserter.js",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "electron_inserter_inserter",
+      "target": "electron_inserter_inserter_snapshotclipboard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/inserter.js",
+      "source_location": "L62",
+      "weight": 1.0,
+      "source": "electron_inserter_inserter",
+      "target": "electron_inserter_inserter_restoreclipboard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/inserter.js",
+      "source_location": "L67",
+      "weight": 1.0,
+      "source": "electron_inserter_inserter",
+      "target": "electron_inserter_inserter_manualpastenotice",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/inserter.js",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "electron_inserter_inserter_insert",
+      "target": "electron_inserter_inserter_snapshotclipboard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/inserter.js",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "electron_inserter_inserter_insert",
+      "target": "electron_inserter_inserter_manualpastenotice",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/inserter.js",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "electron_inserter_inserter_insert",
+      "target": "electron_inserter_sleep",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "electron/inserter.js",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "electron_inserter_inserter_insert",
+      "target": "electron_inserter_inserter_restoreclipboard",
+      "confidence_score": 1.0
+    }
+  ],
+  "hyperedges": [],
+  "built_at_commit": "a659638c5aa19b4d49d8ae2aafa8ee1f4dbeb49d"
+}

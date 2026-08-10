@@ -163,6 +163,7 @@ class Recorder {
         autoPunctuate: settings.autoPunctuate,
         pressEnterCommand: settings.pressEnterCommand,
         textStyle: settings.textStyle,
+        cleanupLevel: settings.cleanupLevel,
         dictionary: this.store.dictionary,
         snippets: this.store.snippets,
       });

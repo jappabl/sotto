@@ -119,6 +119,27 @@ function activityRow(h, container) {
       },
     }));
   }
+  if (h.raw && h.text && h.raw !== h.text) {
+    actions.append(el('button', {
+      title: 'Undo AI edit — show the raw transcript',
+      html: icons.undo,
+      onclick: async () => {
+        await window.sotto.invoke('history:toggle-edit', h.id);
+        toast('Showing raw transcript');
+        renderHome(container);
+      },
+    }));
+  } else if (h.raw && h.text === h.raw && h.words > 0) {
+    actions.append(el('button', {
+      title: 'Redo AI edit',
+      html: icons.spark,
+      onclick: async () => {
+        const r = await window.sotto.invoke('history:toggle-edit', h.id);
+        if (r) toast('AI edit restored');
+        renderHome(container);
+      },
+    }));
+  }
   if (h.audioFile) {
     actions.append(el('button', {
       title: 'Play audio',

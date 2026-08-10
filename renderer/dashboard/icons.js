@@ -31,4 +31,5 @@ export const icons = {
   info: s('<circle cx="8" cy="8" r="6.2"/><path d="M8 7.2v4"/><circle cx="8" cy="4.9" r="0.5" fill="currentColor" stroke="none"/>'),
   check: s('<path d="m3 8.5 3.2 3.2L13 5"/>'),
   cloudOff: s('<path d="M4.5 12.5h6.9a3.1 3.1 0 0 0 .6-6.1 4.5 4.5 0 0 0-8.3-1.5A3.6 3.6 0 0 0 4.5 12.5z"/><path d="m2.5 2.5 11 11"/>'),
+  undo: s('<path d="M3 6.5h6.5a3.5 3.5 0 0 1 0 7H6"/><path d="M5.8 3.7 3 6.5l2.8 2.8"/>'),
 };

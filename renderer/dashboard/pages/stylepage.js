@@ -61,8 +61,39 @@ export async function renderStyle(container) {
   }
   container.append(cards);
 
+  // ---- Auto Cleanup level ----
+  const LEVELS = [
+    ['none', 'None', 'Verbatim — exactly what you said, nothing removed.'],
+    ['light', 'Light', 'Strips filler words and stutters. Keeps everything else.'],
+    ['medium', 'Medium', 'Also fixes self-corrections — "no wait", "scratch that", restatements.'],
+    ['high', 'High', 'Also drops throat-clearing openers like "okay so the thing is…".'],
+  ];
+  const currentLevel = settings.cleanupLevel || 'medium';
+  container.append(
+    el('div', { class: 'page-head', style: 'margin-top:34px;margin-bottom:14px' },
+      el('h1', { class: 'page-title', style: 'font-size:20px' }, 'Auto Cleanup'),
+    ),
+  );
+  const levelCards = el('div', { class: 'style-cards', style: 'grid-template-columns:repeat(4,1fr)' });
+  for (const [key, title, desc] of LEVELS) {
+    levelCards.append(
+      el('div', {
+        class: 'style-card' + (currentLevel === key ? ' selected' : ''),
+        onclick: async () => {
+          await window.sotto.invoke('settings:set', { cleanupLevel: key });
+          toast('Cleanup level updated');
+          renderStyle(container);
+        },
+      },
+        el('h3', { class: 'serif-display', style: 'font-size:20px' }, title),
+        el('div', { class: 'style-sub', style: 'margin-bottom:0' }, desc),
+      ),
+    );
+  }
+  container.append(levelCards);
+
   container.append(
     el('div', { class: 'style-note' },
-      'Styles are applied on-device with deterministic rules — filler words removed, sentence caps, and punctuation tuned to the level you choose.'),
+      'Everything runs on-device with deterministic rules. Any dictation can be reverted to its raw transcript from Home — hover a row and click the undo arrow.'),
   );
 }

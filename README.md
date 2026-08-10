@@ -14,8 +14,20 @@ Hold **fn** (or a hotkey you pick), talk, and let go.
 - Sotto records while you hold, then transcribes in one pass on-device
   (whisper.cpp with Metal, kept resident for sub-second turnaround).
 - The transcript is cleaned deterministically: filler words stripped, spoken
-  punctuation ("comma", "new line") applied, self-corrections resolved
-  ("…scratch that…" keeps only the fix), your dictionary and snippets applied.
+  punctuation ("comma", "new line") applied, your dictionary and snippets
+  applied — and self-corrections resolved by the **Backtrack engine**:
+  - "meet at 5, no wait, 6" → *meet at 6* (slot swap: times, numbers, days,
+    names)
+  - "2pm today, make that 4pm tomorrow" → both slots corrected at once
+  - "Send the report. Scratch that, send the deck." → only the deck survives
+  - plain restatement works too ("as a gift… as a present"), and guard rails
+    keep real sentences safe — "I actually enjoyed the movie" is never touched
+  - stutters ("the the"), false starts, and comma-bound hedges vanish;
+    "their going to" becomes "they're going to"
+  - spoken emails ("jane dot smith at gmail dot com"), times ("5 PM" → 5pm),
+    numbered lists ("first… second…"), and "thumbs up emoji" → 👍
+  - four Auto Cleanup levels (None / Light / Medium / High) in Style, and
+    every dictation keeps its raw transcript — one click reverts any AI edit
 - The finished text is pasted at your cursor via a clipboard swap; your old
   clipboard is restored right after.
 

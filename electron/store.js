@@ -16,6 +16,7 @@ const DEFAULT_SETTINGS = {
   flowBarDock: 'bottom',     // 'bottom' | 'left' | 'right'
   flowBarOffset: 0.5,        // fraction along the docked edge
   textStyle: 'formal',       // 'formal' | 'casual' | 'very-casual'
+  cleanupLevel: 'medium',    // 'none' | 'light' | 'medium' | 'high'
   removeFillers: true,
   autoPunctuate: true,       // spoken punctuation commands
   autoLearn: true,           // learn dictionary words from corrections (manual add only in v1)
@@ -168,6 +169,22 @@ class Store {
     }
     this._history = hist.filter((h) => h.id !== id);
     this._rewriteHistory();
+  }
+
+  // "Undo AI edit": swap the cleaned text back to the raw transcript (and
+  // back again). The raw transcript is always retained.
+  toggleHistoryEdit(id) {
+    const e = this._loadHistory().find((h) => h.id === id);
+    if (!e || !e.raw) return null;
+    if (e.text === e.raw) {
+      if (e.edited === undefined || e.edited === e.raw) return null; // nothing to redo
+      e.text = e.edited; // redo AI edit
+    } else {
+      e.edited = e.text;
+      e.text = e.raw; // undo AI edit
+    }
+    this._rewriteHistory();
+    return e;
   }
 
   _rewriteHistory() {

@@ -61,6 +61,35 @@ async function main() {
   console.log('  press-enter raw:', JSON.stringify(r2.text), '→', JSON.stringify(f2));
   assert.equal(f2.pressEnter, true, 'expected pressEnter=true from: ' + r2.text);
 
+  // Spoken self-corrections through real ASR audio (Backtrack).
+  const corrections = [
+    {
+      phrase: 'Let us meet at five, no wait, six.',
+      mustNot: [/\bfive\b/i, /\b5\b/, /\bwait\b/i],
+      must: [/\b(six|6)\b/i],
+    },
+    {
+      phrase: 'Send the file to John. Scratch that, send it to Jane.',
+      mustNot: [/\bJohn\b/, /scratch/i],
+      must: [/\bJane\b/],
+    },
+  ];
+  for (const c of corrections) {
+    const a = path.join(TMP, 'corr.aiff');
+    const w = path.join(TMP, 'corr.wav');
+    execFileSync('say', ['-o', a, c.phrase]);
+    execFileSync('afconvert', ['-f', 'WAVE', '-d', 'LEI16@16000', '-c', '1', a, w]);
+    const r = await t.transcribe(w, { model: 'ggml-base.bin', language: 'auto' });
+    const out = formatTranscript(r.text, {}).text;
+    console.log('  backtrack raw:', JSON.stringify(r.text), '→', JSON.stringify(out));
+    for (const re of c.mustNot) {
+      assert.ok(!re.test(out), `"${out}" should not match ${re} (raw: ${r.text})`);
+    }
+    for (const re of c.must) {
+      assert.ok(re.test(out), `"${out}" should match ${re} (raw: ${r.text})`);
+    }
+  }
+
   t.stopServer();
   fs.rmSync(TMP, { recursive: true, force: true });
   console.log('TRANSCRIBE_SMOKE_OK');

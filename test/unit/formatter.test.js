@@ -3,8 +3,9 @@ const assert = require('node:assert');
 const {
   formatTranscript,
   stripFillers,
-  applyBacktrack,
   applySpokenPunctuation,
+  applySpokenEmails,
+  normalizeTimes,
   applyDictionary,
   applySnippets,
   applyStyle,
@@ -25,22 +26,39 @@ test('does not strip words containing filler substrings', () => {
   assert.equal(stripFillers('Bermuda era hermit'), 'Bermuda era hermit');
 });
 
-test('backtrack keeps the correction', () => {
+test('corrections flow through the full pipeline', () => {
   assert.equal(
-    applyBacktrack("Let's meet at 5, scratch that, 6pm works better."),
-    '6pm works better.',
+    formatTranscript("Let's meet at 5, scratch that, 6pm.", {}).text,
+    "Let's meet at 6pm.",
   );
   assert.equal(
-    applyBacktrack('Send it to John, I mean, Jane.'),
-    'Jane.',
+    formatTranscript('Send it to John, I mean, Jane.', {}).text,
+    'Send it to Jane.',
+  );
+  assert.equal(
+    formatTranscript('The deadline is Friday. Ship it Monday, no wait, Tuesday.', {}).text,
+    'The deadline is Friday. Ship it Tuesday.',
   );
 });
 
-test('backtrack only clears within the sentence', () => {
+test('spoken emails', () => {
   assert.equal(
-    applyBacktrack('The deadline is Friday. Send it Monday, scratch that, Tuesday.'),
-    'The deadline is Friday. Tuesday.',
+    applySpokenEmails('reach me at jane dot smith at gmail dot com thanks'),
+    'reach me at jane.smith@gmail.com thanks',
   );
+  assert.equal(
+    applySpokenEmails('check the docs at readme dot io'),
+    'check the docs at readme.io',
+  );
+  assert.equal(
+    applySpokenEmails('we met at the cafe and talked'),
+    'we met at the cafe and talked',
+  );
+});
+
+test('time normalization', () => {
+  assert.equal(normalizeTimes('see you at 5 PM sharp'), 'see you at 5pm sharp');
+  assert.equal(normalizeTimes('the 6:30 a.m. flight'), 'the 6:30am flight');
 });
 
 test('spoken punctuation', () => {

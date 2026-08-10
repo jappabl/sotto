@@ -39,6 +39,7 @@ function registerIpc(ctx) {
     store.removeHistoryEntry(id);
     return true;
   });
+  ipcMain.handle('history:toggle-edit', (_e, id) => store.toggleHistoryEdit(id));
   ipcMain.handle('history:audio-path', (_e, audioFile) => {
     if (!audioFile || audioFile.includes('..') || audioFile.includes('/')) return null;
     const p = path.join(store.audioDir, audioFile);
