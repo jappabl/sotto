@@ -24,6 +24,7 @@ const listenChannels = [
   'meeting:ended',
   'meet:enhance-progress',
   'flow:meeting-state',
+  'org:changed',
 ];
 
 contextBridge.exposeInMainWorld('sotto', {

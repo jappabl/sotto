@@ -26,11 +26,16 @@ export async function renderMeetings(container) {
 // ---------------------------------------------------------------------------
 
 async function renderList(container) {
-  const [meetings, status] = await Promise.all([
+  const [meetings, status, org, shared] = await Promise.all([
     window.sotto.invoke('meet:list'),
     window.sotto.invoke('meet:status'),
+    window.sotto.invoke('org:status'),
+    window.sotto.invoke('org:list'),
   ]);
   container.replaceChildren();
+  unsubs.push(window.sotto.on('org:changed', () => {
+    if (!currentMeetingId) renderList(container);
+  }));
 
   container.append(
     el('div', { class: 'page-head' },
@@ -82,6 +87,40 @@ async function renderList(container) {
       container.append(list);
     }
     list.append(meetingRow(m, container, status));
+  }
+
+  // ---- org: notes shared into the team folder ----
+  if (org.configured && shared.length) {
+    container.append(el('div', { class: 'day-label' }, `SHARED · ${org.name.toUpperCase()}`));
+    const slist = el('div', { class: 'activity-list' });
+    for (const s of shared) {
+      slist.append(el('div', { class: 'activity-row meet-row' },
+        el('div', { class: 'act-time' }, timeLabel(s.sharedAt || s.startedAt)),
+        el('div', { class: 'act-text' },
+          el('span', { style: 'font-weight:600' }, s.title),
+          el('span', { style: 'color:var(--ink-faint)' }, `  ·  by ${s.author}`),
+        ),
+        el('div', { class: 'act-actions', style: 'display:flex' },
+          el('button', {
+            class: 'btn-gray', style: 'padding:4px 12px;font-size:12.5px',
+            onclick: async (e) => {
+              e.stopPropagation();
+              const r = await window.sotto.invoke('org:import', s.file);
+              if (r.ok) {
+                toast('Added to your meetings');
+                renderList(container);
+              } else toast('Could not import that note');
+            },
+          }, 'Import'),
+        ),
+      ));
+    }
+    container.append(slist);
+  } else if (!org.configured) {
+    container.append(
+      el('div', { class: 'style-note', style: 'margin-top:26px' },
+        'Working with a team? Point Sotto at a shared folder in Settings → General and shared notes appear here for everyone. No accounts, no server.'),
+    );
   }
 }
 
@@ -167,6 +206,17 @@ async function renderMeeting(container, id) {
     tSel.addEventListener('change', () =>
       window.sotto.invoke('meet:set-template', { id, template: tSel.value }));
     headRight.append(tSel);
+    headRight.append(el('button', {
+      class: 'btn-gray',
+      onclick: async () => {
+        const org = await window.sotto.invoke('org:status');
+        if (!org.configured) {
+          return toast('Set an org folder first: Settings → General → Org space');
+        }
+        const r = await window.sotto.invoke('org:share', id);
+        toast(r.ok ? `Shared with ${org.name}` : 'Share failed');
+      },
+    }, 'Share'));
     headRight.append(el('button', {
       class: 'btn-dark',
       onclick: () => runEnhance(container, id),

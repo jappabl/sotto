@@ -64,6 +64,7 @@ export async function renderSettings(container) {
       options: LANGS,
       onChange: async (v) => { await save({ language: v }); },
     }));
+    body.append(await orgRow(rerender));
     body.append(toggleRow({
       name: 'Launch at login',
       desc: 'Start Sotto quietly in the menu bar when you log in.',
@@ -200,6 +201,30 @@ function modelLabel(m) {
     'ggml-large-v3-turbo-q5_0.bin': 'Large Turbo (most accurate)',
   };
   return (names[m.name] || m.name) + (m.installed ? '' : ' — download');
+}
+
+async function orgRow(rerender) {
+  const org = await window.sotto.invoke('org:status');
+  return el('div', { class: 'setting-row' },
+    el('div', { class: 'setting-info' },
+      el('div', { class: 'setting-name' }, 'Org space'),
+      el('div', { class: 'setting-desc' },
+        org.configured
+          ? el('span', {}, 'Sharing through ', el('b', {}, org.name),
+              org.members > 1 ? ` · ${org.members} people have shared` : '',
+              '. Meeting notes you share land there; teammates pointing Sotto at the same folder see them.')
+          : 'Pick a folder your team already shares (iCloud, Dropbox, Drive, a repo). Shared notes travel through it. No accounts, no server.'),
+    ),
+    org.configured
+      ? el('span', { style: 'display:flex;gap:8px' },
+          el('button', { class: 'btn-gray', onclick: async () => { await window.sotto.invoke('org:open-folder'); } }, 'Open'),
+          el('button', { class: 'btn-ghost', onclick: async () => { await window.sotto.invoke('org:leave'); rerender(); } }, 'Leave'),
+        )
+      : el('button', {
+          class: 'btn-gray',
+          onclick: async () => { await window.sotto.invoke('org:choose'); rerender(); },
+        }, 'Choose folder'),
+  );
 }
 
 async function micRow(settings, save) {

@@ -70,6 +70,8 @@ function boot() {
     const inserter = new Inserter({ hotkeys, log });
     const sysaudio = new SystemAudio({ log });
     const recorder = new Recorder({ store, hotkeys, transcriber, inserter, polisher, sysaudio, log });
+    const { OrgSpace } = require('./orgspace');
+    const orgspace = new OrgSpace({ getSettings: () => store.getSettings(), log });
     const meetings = new MeetingManager({ baseDir: userData, transcriber, log });
     meetings.getDictionary = () => store.dictionary;
     meetings.sweepOrphans();
@@ -90,7 +92,14 @@ function boot() {
       flowbar: null,
       onboarding: null,
     };
-    const ctx = { store, hotkeys, transcriber, polisher, inserter, recorder, meetings, enhancer, windows, app, log };
+    const ctx = { store, hotkeys, transcriber, polisher, inserter, recorder, meetings, enhancer, orgspace, windows, app, log };
+
+    orgspace.onChange = () => {
+      if (windows.dashboard && !windows.dashboard.isDestroyed()) {
+        windows.dashboard.webContents.send('org:changed', {});
+      }
+    };
+    orgspace.watch();
 
     // Meeting events flow to the dashboard for live UI.
     meetings.onEvent = (event, payload) => {

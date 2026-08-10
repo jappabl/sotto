@@ -240,6 +240,40 @@ function registerIpc(ctx) {
     return true;
   });
 
+  // ---- org space (shared-folder team notes) ----
+  const { orgspace } = ctx;
+  ipcMain.handle('org:status', () => orgspace.status());
+  ipcMain.handle('org:choose', async () => {
+    const { dialog } = require('electron');
+    const r = await dialog.showOpenDialog(windows.dashboard, {
+      title: 'Choose your org folder',
+      message: 'Pick a folder your team shares (iCloud, Dropbox, Drive, a repo). Shared notes live there.',
+      properties: ['openDirectory', 'createDirectory'],
+    });
+    if (r.canceled || !r.filePaths[0]) return orgspace.status();
+    store.setSettings({ orgDir: r.filePaths[0] });
+    orgspace.watch();
+    return orgspace.status();
+  });
+  ipcMain.handle('org:leave', () => {
+    store.setSettings({ orgDir: '' });
+    orgspace.unwatch();
+    return orgspace.status();
+  });
+  ipcMain.handle('org:list', () => orgspace.list());
+  ipcMain.handle('org:share', (_e, id) => {
+    const data = meetings.read(id);
+    if (!data) return { ok: false, reason: 'meeting-not-found' };
+    return orgspace.share(data, store.getSettings().userName || 'Someone');
+  });
+  ipcMain.handle('org:read', (_e, file) => orgspace.read(file));
+  ipcMain.handle('org:import', (_e, file) => orgspace.import(file, meetings));
+  ipcMain.handle('org:open-folder', () => {
+    const d = orgspace.dir();
+    if (d) shell.openPath(d);
+    return true;
+  });
+
   // ---- onboarding ----
   ipcMain.handle('ob:finish', (_e, { userName }) => {
     store.setSettings({ onboarded: true, userName: userName || store.getSettings().userName });
