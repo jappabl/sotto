@@ -1,0 +1,43 @@
+{
+  "name": "sotto",
+  "productName": "Sotto",
+  "version": "1.0.0",
+  "description": "Open-source local voice dictation for macOS — hold a key, speak, and polished text appears in any app.",
+  "license": "MIT",
+  "author": "Hao Lin",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "electron .",
+    "build:native": "./native/build.sh",
+    "test": "node --test test/unit/",
+    "test:smoke": "node test/smoke/transcribe.test.js && node test/smoke/applaunch.test.js",
+    "dist": "electron-builder --mac"
+  },
+  "devDependencies": {
+    "electron": "^38.2.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "dev.haolin.sotto",
+    "productName": "Sotto",
+    "directories": { "output": "dist" },
+    "files": [
+      "electron/**/*",
+      "renderer/**/*",
+      "assets/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      { "from": "bin", "to": "bin" }
+    ],
+    "mac": {
+      "category": "public.app-category.productivity",
+      "icon": "assets/icon.icns",
+      "target": [{ "target": "dir", "arch": ["arm64"] }],
+      "extendInfo": {
+        "NSMicrophoneUsageDescription": "Sotto uses the microphone to transcribe your speech into text.",
+        "LSUIElement": false
+      }
+    }
+  }
+}
