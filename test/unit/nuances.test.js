@@ -156,3 +156,34 @@ test('the whole nine yards', () => {
   assert.equal(text, 'Tell Alex that the launch moved to Thursday at 4pm.');
   assert.equal(pressEnter, true);
 });
+
+// ---- em-dash policy ----
+
+const { stripEmDashes } = require('../../electron/formatter');
+
+test('em dashes never survive', () => {
+  assert.equal(stripEmDashes('One thing — the deadline moved'), 'One thing - the deadline moved');
+  assert.equal(stripEmDashes('pages 5–10 are done'), 'pages 5-10 are done');
+  assert.equal(
+    formatTranscript('The plan — such as it is — works', {}).text,
+    'The plan - such as it is - works',
+  );
+});
+
+test('spoken "em dash" gives a spaced hyphen', () => {
+  assert.equal(
+    formatTranscript('one more thing em dash the deadline moved', {}).text,
+    'One more thing - the deadline moved',
+  );
+  assert.equal(
+    formatTranscript('one more thing m dash the deadline moved', {}).text,
+    'One more thing - the deadline moved',
+  );
+});
+
+test('spoken "hyphen" joins words', () => {
+  assert.equal(
+    formatTranscript('the follow hyphen up email', {}).text,
+    'The follow-up email',
+  );
+});

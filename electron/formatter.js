@@ -19,6 +19,10 @@ const SPOKEN_PUNCT = [
   [/\bclose paren(?:thesis)?\b/gi, ')'],
   [/\b(?:open|begin) quotes?\b\s*/gi, '“'],
   [/\s*\b(?:close|end) quotes?\b/gi, '”'],
+  // House style: no em dashes, ever. Speaking "em dash" (which ASR renders
+  // as "em dash", "m dash", or a stray "M-") gives a spaced hyphen.
+  [/\s*\b(?:em|m)[\s-]?dash\b\s*/gi, ' - '],
+  [/\s*\bhyphen\b\s*/gi, '-'],
   [/\bnew line\b/gi, '\n'],
   [/\bnew paragraph\b/gi, '\n\n'],
   [/\b(?:new bullet|bullet point)\b/gi, '\n- '],
@@ -243,8 +247,16 @@ function extractPressEnter(text) {
   return { text, pressEnter: false };
 }
 
+// No em dashes, ever: ranges between digits become plain hyphens, prose
+// dashes become spaced hyphens. Catches whisper output and LLM polish alike.
+function stripEmDashes(text) {
+  return text
+    .replace(/(\d)\s*[—–]\s*(\d)/g, '$1-$2')
+    .replace(/\s*[—–]\s*/g, ' - ');
+}
+
 function finalTidy(text) {
-  let out = text
+  let out = stripEmDashes(text)
     .replace(/[ \t]{2,}/g, ' ')
     .replace(/\s+([,.;:!?])/g, '$1')
     .trim();
@@ -366,6 +378,7 @@ function formatTranscript(rawText, options = {}) {
 module.exports = {
   formatTranscript,
   adjustForContext,
+  stripEmDashes,
   stripFillers,
   stripPreamble,
   stripHedges,

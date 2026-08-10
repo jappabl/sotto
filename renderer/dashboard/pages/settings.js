@@ -121,6 +121,13 @@ export async function renderSettings(container) {
       value: settings.soundEffects,
       onChange: (v) => save({ soundEffects: v }, rerender),
     }));
+    body.append(toggleRow({
+      name: 'Mute system audio while dictating',
+      desc: 'Silences your speakers during capture so music and videos never leak into transcripts. Restored the moment you release.',
+      value: settings.muteWhileDictating,
+      onChange: (v) => save({ muteWhileDictating: v }, rerender),
+    }));
+    body.append(await micRow(settings, save));
     body.append(selectRow({
       name: 'Flow bar position',
       desc: 'Where the dictation pill lives. You can also drag the pill itself.',
@@ -187,6 +194,22 @@ function modelLabel(m) {
     'ggml-large-v3-turbo-q5_0.bin': 'Large Turbo (most accurate)',
   };
   return (names[m.name] || m.name) + (m.installed ? '' : ' — download');
+}
+
+async function micRow(settings, save) {
+  let options = [['auto', 'Automatic (skips virtual devices)']];
+  try {
+    const devices = (await navigator.mediaDevices.enumerateDevices())
+      .filter((d) => d.kind === 'audioinput' && d.deviceId !== 'default' && d.label);
+    options = options.concat(devices.map((d) => [d.deviceId, d.label]));
+  } catch { /* labels appear once mic permission is granted */ }
+  return selectRow({
+    name: 'Microphone',
+    desc: 'Which input Sotto listens to. Automatic never picks loopback devices like BlackHole or OBS.',
+    value: settings.micDevice,
+    options,
+    onChange: (v) => save({ micDevice: v }),
+  });
 }
 
 function aiPolishRow(settings, polish, save, rerender) {

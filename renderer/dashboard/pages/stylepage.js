@@ -8,19 +8,19 @@ const STYLES = [
     key: 'formal',
     title: 'Formal.',
     sub: 'Caps + Punctuation',
-    example: 'Running about ten minutes late — grab us a table? I’ll take the usual.',
+    example: 'Running about ten minutes late, grab us a table? I’ll take the usual.',
   },
   {
     key: 'casual',
     title: 'Casual',
     sub: 'Caps + Less punctuation',
-    example: 'Running about ten minutes late — grab us a table? I’ll take the usual',
+    example: 'Running about ten minutes late, grab us a table? I’ll take the usual',
   },
   {
     key: 'very-casual',
     title: 'very casual',
     sub: 'No Caps + Less punctuation',
-    example: 'running about ten minutes late — grab us a table? i’ll take the usual',
+    example: 'running about ten minutes late, grab us a table? i’ll take the usual',
   },
 ];
 

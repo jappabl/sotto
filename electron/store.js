@@ -12,6 +12,8 @@ const DEFAULT_SETTINGS = {
   language: 'auto',          // whisper language code or 'auto'
   model: 'ggml-base.bin',
   soundEffects: true,
+  muteWhileDictating: true,  // silence speakers during capture (no bleed)
+  micDevice: 'auto',         // 'auto' avoids loopback/virtual devices
   launchAtLogin: false,
   flowBarDock: 'bottom',     // 'bottom' | 'left' | 'right'
   flowBarOffset: 0.5,        // fraction along the docked edge

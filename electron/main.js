@@ -5,6 +5,7 @@ const path = require('path');
 const fs = require('fs');
 
 const { Store } = require('./store');
+const { SystemAudio } = require('./sysaudio');
 const { Hotkeys } = require('./hotkeys');
 const { Transcriber } = require('./transcriber');
 const { Polisher } = require('./polisher');
@@ -24,6 +25,10 @@ if (process.env.SOTTO_USERDATA) {
 
 // E2E dictation test: Chromium's fake capture device plays a WAV file as the
 // "microphone", letting the entire pipeline run with no human speaking.
+// System-wide echo cancellation: lets Chromium subtract OTHER apps' audio
+// (music, videos) from the mic signal on macOS.
+app.commandLine.appendSwitch('enable-features', 'ChromeWideEchoCancellation');
+
 if (process.env.SOTTO_FAKE_MIC) {
   app.commandLine.appendSwitch('use-fake-device-for-media-stream');
   app.commandLine.appendSwitch('use-fake-ui-for-media-stream');
@@ -61,7 +66,8 @@ function boot() {
       log,
     });
     const inserter = new Inserter({ hotkeys, log });
-    const recorder = new Recorder({ store, hotkeys, transcriber, inserter, polisher, log });
+    const sysaudio = new SystemAudio({ log });
+    const recorder = new Recorder({ store, hotkeys, transcriber, inserter, polisher, sysaudio, log });
 
     const settings = store.getSettings();
     hotkeys.setHotkey(settings.hotkey);
@@ -134,6 +140,7 @@ function boot() {
       hotkeys.stop();
       transcriber.stopServer();
       polisher.stop();
+      sysaudio.restore();
     });
 
     log('sotto started');

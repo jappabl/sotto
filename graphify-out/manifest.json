@@ -20,8 +20,8 @@
     "hash": "313d619305ae55d15dab0d53fee253cb"
   },
   "/Users/hlin/Documents/badminton/code/wispr/renderer/dashboard/pages/help.js": {
-    "mtime": 1786342084.5713747,
-    "hash": "2250c0aeb6fb7fd7303e7f115cff402b"
+    "mtime": 1786343121.0383313,
+    "hash": "590a89e90788605d69119d9ba8780f9c"
   },
   "/Users/hlin/Documents/badminton/code/wispr/renderer/dashboard/pages/insights.js": {
     "mtime": 1786331368.1683574,
@@ -36,12 +36,12 @@
     "hash": "abf3cf1b78295623e1cc715ae8f77a7a"
   },
   "/Users/hlin/Documents/badminton/code/wispr/renderer/dashboard/pages/settings.js": {
-    "mtime": 1786331350.6306999,
-    "hash": "e17cd0d3f858559de271e25ad9d5d61f"
+    "mtime": 1786342982.8881857,
+    "hash": "0f1a1e5c3ad3870ccf96c1b8ad4d49d3"
   },
   "/Users/hlin/Documents/badminton/code/wispr/renderer/flowbar/flowbar.js": {
-    "mtime": 1786332459.9431965,
-    "hash": "f3ba5370471e2ed6216c9cbb224fe8e5"
+    "mtime": 1786342955.2835996,
+    "hash": "26e71412ab36aba03ce2a272d6823647"
   },
   "/Users/hlin/Documents/badminton/code/wispr/renderer/flowbar/worklet.js": {
     "mtime": 1786330869.2032208,
@@ -52,8 +52,8 @@
     "hash": "2586d245735ff0e4e0e5cb080f58bc17"
   },
   "/Users/hlin/Documents/badminton/code/wispr/native/keymon.swift": {
-    "mtime": 1786332077.265209,
-    "hash": "44051c7c647a20a71e82125718bf06a9"
+    "mtime": 1786342748.2323766,
+    "hash": "7df8aa3b9d7d61bb543314cb1c0cd625"
   },
   "/Users/hlin/Documents/badminton/code/wispr/test/smoke/dictation.test.js": {
     "mtime": 1786332103.6240137,
@@ -62,6 +62,10 @@
   "/Users/hlin/Documents/badminton/code/wispr/test/smoke/transcribe.test.js": {
     "mtime": 1786342039.8711724,
     "hash": "329327af775b7bdefd89bb8506b5f368"
+  },
+  "/Users/hlin/Documents/badminton/code/wispr/test/smoke/polish.test.js": {
+    "mtime": 1786343116.7670305,
+    "hash": "958958c350f47989edd0964d99b0e8c8"
   },
   "/Users/hlin/Documents/badminton/code/wispr/test/smoke/applaunch.test.js": {
     "mtime": 1786332139.937187,
@@ -87,57 +91,69 @@
     "mtime": 1786331565.8542435,
     "hash": "407d09a8c011662aef9377b684bd0f22"
   },
+  "/Users/hlin/Documents/badminton/code/wispr/test/unit/parity.test.js": {
+    "mtime": 1786343079.6478677,
+    "hash": "a0423d1c95587a635e6dc4093c3daa3a"
+  },
   "/Users/hlin/Documents/badminton/code/wispr/electron/recorder.js": {
-    "mtime": 1786341741.765574,
-    "hash": "e745183493989b419162dbe25d5680cd"
+    "mtime": 1786342892.5189836,
+    "hash": "831be5f84bd21e766d3d2214502304dd"
   },
   "/Users/hlin/Documents/badminton/code/wispr/electron/preload.js": {
-    "mtime": 1786331673.116566,
-    "hash": "1d9dd065231b0616548aad8f46554905"
+    "mtime": 1786342956.248901,
+    "hash": "34ab91bcd496774e4e7f663221e498b2"
   },
   "/Users/hlin/Documents/badminton/code/wispr/electron/ipc.js": {
-    "mtime": 1786341743.6303673,
-    "hash": "f4cac9764976a4d009595ee622ffa710"
+    "mtime": 1786342935.9222655,
+    "hash": "135c31c3410e189c5aa95bfef8c7c374"
   },
   "/Users/hlin/Documents/badminton/code/wispr/electron/transcriber.js": {
-    "mtime": 1786332728.685049,
-    "hash": "80050858a9d9363524cbcff4524774fe"
+    "mtime": 1786342945.313936,
+    "hash": "69ccc7e1a1892fb142edb8079a3c3894"
   },
   "/Users/hlin/Documents/badminton/code/wispr/electron/hotkeys.js": {
-    "mtime": 1786332360.2935817,
-    "hash": "29997c4c77c07bc1d147d02f6c84fec4"
+    "mtime": 1786342809.8276186,
+    "hash": "d1307612100ae535c54d128a4aa14bad"
+  },
+  "/Users/hlin/Documents/badminton/code/wispr/electron/polisher.js": {
+    "mtime": 1786342722.3144207,
+    "hash": "9c099ad209a13c41aac53771c61f3272"
   },
   "/Users/hlin/Documents/badminton/code/wispr/electron/formatter.js": {
-    "mtime": 1786342006.883021,
-    "hash": "8121749dad3e54dee01191d0a6281569"
+    "mtime": 1786342830.64385,
+    "hash": "409c20c6ad0dcf454774dbae8053f588"
   },
   "/Users/hlin/Documents/badminton/code/wispr/electron/store.js": {
-    "mtime": 1786341802.1698983,
-    "hash": "5ed1b10541c7f34130f1ee5222872819"
+    "mtime": 1786342901.84535,
+    "hash": "ffbebdf3a4020a49226e09582f7a4a0c"
   },
   "/Users/hlin/Documents/badminton/code/wispr/electron/tray.js": {
     "mtime": 1786330711.4597676,
     "hash": "a0addce6a4a62283a6d0037a726082ef"
   },
   "/Users/hlin/Documents/badminton/code/wispr/electron/main.js": {
-    "mtime": 1786332496.7449422,
-    "hash": "8d24a7a725a358b5717a1b19fb3479ac"
+    "mtime": 1786342918.1705997,
+    "hash": "447bfca1f118b82a1a507fb9238f7a0b"
   },
   "/Users/hlin/Documents/badminton/code/wispr/electron/windows.js": {
-    "mtime": 1786332083.886819,
-    "hash": "43f2645e55f56a717918e321ea64091d"
+    "mtime": 1786342580.3962193,
+    "hash": "d7ac176f5be0c9fd6d044cfc7e9c96d5"
   },
   "/Users/hlin/Documents/badminton/code/wispr/electron/inserter.js": {
     "mtime": 1786332080.7491915,
     "hash": "f0edf18ec3ca8536389cabe641464d45"
   },
+  "/Users/hlin/Documents/badminton/code/wispr/electron/autolearn.js": {
+    "mtime": 1786342841.796434,
+    "hash": "e69ee69f0ee14ae6e3ac9d5f3eb00bc9"
+  },
   "/Users/hlin/Documents/badminton/code/wispr/electron/corrections.js": {
-    "mtime": 1786341939.145524,
-    "hash": "090f50b302cc3eb0e508552210a2e286"
+    "mtime": 1786343046.0565963,
+    "hash": "719467261475d16913b7103693a5da5e"
   },
   "/Users/hlin/Documents/badminton/code/wispr/README.md": {
-    "mtime": 1786342092.244678,
-    "hash": "0dd93b4e50a971d5d45db1d5803f9a74"
+    "mtime": 1786343230.8911035,
+    "hash": "4cc56c28b65a6faae7859c56ff2b9716"
   },
   "/Users/hlin/Documents/badminton/code/wispr/renderer/dashboard/index.html": {
     "mtime": 1786331041.651387,
@@ -156,79 +172,79 @@
     "hash": "2eecc2f7a5a0d0321cc3ad06f0429915"
   },
   "/Users/hlin/Documents/badminton/code/wispr/test/smoke/tmp/shots/dash-snippets.png": {
-    "mtime": 1786342108.0862744,
+    "mtime": 1786343157.6542037,
     "hash": "89e624782c22bdee03cfc4f11a7cdca7"
   },
   "/Users/hlin/Documents/badminton/code/wispr/test/smoke/tmp/shots/dash-settings.png": {
-    "mtime": 1786342110.5092099,
+    "mtime": 1786343159.8123648,
     "hash": "c3a49518ec740de8a3c8846a2fb6b4bc"
   },
   "/Users/hlin/Documents/badminton/code/wispr/test/smoke/tmp/shots/dash-home.png": {
-    "mtime": 1786342106.6391845,
-    "hash": "a1bbb2ec7dc1d677cc9ae83645008852"
+    "mtime": 1786343156.2188735,
+    "hash": "8c6920fb6bcfddd592daaf4133dad6d8"
   },
   "/Users/hlin/Documents/badminton/code/wispr/test/smoke/tmp/shots/flow-processing.png": {
-    "mtime": 1786342112.7995548,
-    "hash": "90266a958e4039a4a131d9e51aac7f0c"
+    "mtime": 1786343161.9341595,
+    "hash": "17673560c76fbea63364b632a92b2809"
   },
   "/Users/hlin/Documents/badminton/code/wispr/test/smoke/tmp/shots/flow-idle.png": {
-    "mtime": 1786342111.6988802,
+    "mtime": 1786343161.0087478,
     "hash": "56301a282d29d280d8e82e74d9572732"
   },
   "/Users/hlin/Documents/badminton/code/wispr/test/smoke/tmp/shots/flow-recording.png": {
-    "mtime": 1786342112.1666262,
-    "hash": "f5e598a67511fea537c015e2409b77b8"
+    "mtime": 1786343161.4657059,
+    "hash": "98374795e77bddfe960232de4f7c30e3"
   },
   "/Users/hlin/Documents/badminton/code/wispr/test/smoke/tmp/shots/dash-insights.png": {
-    "mtime": 1786342109.7893758,
+    "mtime": 1786343159.1024704,
     "hash": "c0b019c860610647de4898ff46a62850"
   },
   "/Users/hlin/Documents/badminton/code/wispr/test/smoke/tmp/shots/dash-dictionary.png": {
-    "mtime": 1786342107.3630242,
+    "mtime": 1786343156.9318068,
     "hash": "4072db2022a2391bc009c8365e776162"
   },
   "/Users/hlin/Documents/badminton/code/wispr/test/smoke/tmp/shots/ob-1.png": {
-    "mtime": 1786342115.1655345,
-    "hash": "0b7fba096a03fa6aa8e1876f02f4531b"
+    "mtime": 1786343164.3140101,
+    "hash": "06cc997411fd8f2706fba8a174e65367"
   },
   "/Users/hlin/Documents/badminton/code/wispr/test/smoke/tmp/shots/ob-0.png": {
-    "mtime": 1786342114.636411,
+    "mtime": 1786343163.7909048,
     "hash": "9c967d6a486b99cccae3bf7a5fa46c9e"
   },
   "/Users/hlin/Documents/badminton/code/wispr/test/smoke/tmp/shots/dash-help.png": {
-    "mtime": 1786342111.241383,
-    "hash": "ec453c0e6b8744f9c7ad171771f8e91b"
+    "mtime": 1786343160.5463665,
+    "hash": "50725833a030bb96fdc4e0c90c218e81"
   },
   "/Users/hlin/Documents/badminton/code/wispr/test/smoke/tmp/shots/flow-error.png": {
-    "mtime": 1786342113.267781,
+    "mtime": 1786343162.3929815,
     "hash": "2d590c0a6e50caea43f8fcd2b1d17e75"
   },
   "/Users/hlin/Documents/badminton/code/wispr/test/smoke/tmp/shots/ob-2.png": {
-    "mtime": 1786342115.7273233,
+    "mtime": 1786343164.8717356,
     "hash": "5353d3b66e53a2da8795115b5d8bb62b"
   },
   "/Users/hlin/Documents/badminton/code/wispr/test/smoke/tmp/shots/ob-3.png": {
-    "mtime": 1786342116.289662,
+    "mtime": 1786343165.4231708,
     "hash": "477710ecaa9aa70f114baa42bdca23a8"
   },
   "/Users/hlin/Documents/badminton/code/wispr/test/smoke/tmp/shots/ob-7.png": {
-    "mtime": 1786342118.5006688,
-    "hash": "0229d15c534bae11c73b51ba027e96c1"
+    "mtime": 1786343167.6148844,
+    "hash": "8fc8e3f45428dde4b18bbf5f2854d642"
   },
   "/Users/hlin/Documents/badminton/code/wispr/test/smoke/tmp/shots/ob-6.png": {
-    "mtime": 1786342117.9569278,
-    "hash": "bd0196d97a83b70e5d143db90e94f68f"
+    "mtime": 1786343167.0735378,
+    "hash": "796744c295a12cbf2f062b70f8d9ef22"
   },
   "/Users/hlin/Documents/badminton/code/wispr/test/smoke/tmp/shots/dash-style.png": {
-    "mtime": 1786342109.0622442,
-    "hash": "b31f62e49fc9bad8cca347e6795d91b3"
+    "mtime": 1786343158.3861554,
+    "hash": "a3d166f6575a03ec4ca64546add98f33"
   },
   "/Users/hlin/Documents/badminton/code/wispr/test/smoke/tmp/shots/ob-4.png": {
-    "mtime": 1786342116.8494833,
+    "mtime": 1786343165.974755,
     "hash": "3e87ffcb1f232d545d4234444a87182a"
   },
   "/Users/hlin/Documents/badminton/code/wispr/test/smoke/tmp/shots/ob-5.png": {
-    "mtime": 1786342117.3994744,
+    "mtime": 1786343166.5193722,
     "hash": "82bc3611e0c1c6c0dd289ef0b3b33cc9"
   },
   "/Users/hlin/Documents/badminton/code/wispr/docs/screenshots/dash-settings.png": {

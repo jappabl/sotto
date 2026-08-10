@@ -10,12 +10,13 @@ const path = require('path');
 const CTRL_KEYS = [59, 62]; // left/right control
 
 class Recorder {
-  constructor({ store, hotkeys, transcriber, inserter, polisher = null, log = () => {} }) {
+  constructor({ store, hotkeys, transcriber, inserter, polisher = null, sysaudio = null, log = () => {} }) {
     this.store = store;
     this.hotkeys = hotkeys;
     this.transcriber = transcriber;
     this.inserter = inserter;
     this.polisher = polisher;
+    this.sysaudio = sysaudio;
     this.log = log;
     this.state = 'idle';
     this.handsFree = false;
@@ -105,6 +106,13 @@ class Recorder {
       mode,
       sound: settings.soundEffects,
     });
+    // Silence the speakers so the mic only hears the speaker's voice.
+    // Slight delay lets the start ping play first.
+    if (settings.muteWhileDictating && this.sysaudio) {
+      setTimeout(() => {
+        if (this.state === 'recording') this.sysaudio.muteForDictation();
+      }, 260);
+    }
     // Hands-free session cap (matches the original's 20-minute limit).
     this.capTimer = setTimeout(() => {
       if (this.state === 'recording') this.stopRecording();
@@ -118,6 +126,7 @@ class Recorder {
     this.handsFree = false;
     clearTimeout(this.capTimer);
     this.hotkeys.setRecording(false);
+    if (this.sysaudio) this.sysaudio.restore();
     this._sendFlowbar('flow:record-stop', {});
     // Renderer replies with audio via ipc 'flow:audio' → handleAudio().
     // Guard: if no audio arrives (renderer wedged), reset in 10 s.
@@ -135,6 +144,7 @@ class Recorder {
     this.handsFree = false;
     clearTimeout(this.capTimer);
     this.hotkeys.setRecording(false);
+    if (this.sysaudio) this.sysaudio.restore();
     const durMs = Date.now() - this.sessionStart;
     this._sendFlowbar('flow:record-cancel', { keepAudio: durMs > 2000 });
     this.log('recording cancelled');
@@ -209,7 +219,11 @@ class Recorder {
         });
         if (polished && polished !== text) {
           this.log('polish applied: ' + polished.slice(0, 60));
-          text = formatter.applyStyle(polished, settings.textStyle, this.store.dictionary);
+          text = formatter.applyStyle(
+            formatter.stripEmDashes(polished),
+            settings.textStyle,
+            this.store.dictionary,
+          );
         }
       }
 
@@ -303,6 +317,7 @@ class Recorder {
     clearTimeout(this.capTimer);
     clearTimeout(this._pendingStop);
     this.hotkeys.setRecording(false);
+    if (this.sysaudio) this.sysaudio.restore(); // belt & braces
     this._sendFlowbar('flow:done', result || {});
   }
 }

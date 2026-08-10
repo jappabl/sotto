@@ -33,6 +33,27 @@ let captureRate = 48000;
 let recordStartTs = 0;
 let stopping = false;
 
+// Loopback/virtual devices route SYSTEM audio in as a "microphone" — never
+// auto-select one of those for dictation.
+const VIRTUAL_MIC = /blackhole|soundflower|loopback|aggregate|vb-?cable|obs|virtual/i;
+
+async function resolveMicDeviceId(setting) {
+  try {
+    const devices = (await navigator.mediaDevices.enumerateDevices())
+      .filter((d) => d.kind === 'audioinput');
+    if (setting && setting !== 'auto') {
+      if (devices.some((d) => d.deviceId === setting)) return setting;
+    }
+    // auto: keep the system default unless it's a virtual device.
+    const def = devices.find((d) => d.deviceId === 'default');
+    if (def && !VIRTUAL_MIC.test(def.label)) return undefined; // system default is fine
+    const real = devices.find((d) => d.deviceId !== 'default' && !VIRTUAL_MIC.test(d.label));
+    return real ? real.deviceId : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
 async function startCapture() {
   chunks = [];
   chunksLen = 0;
@@ -40,12 +61,15 @@ async function startCapture() {
   // Chromium's processing chain (echo cancellation & co.) silences the fake
   // capture device used by the E2E tests, so request raw audio there.
   const { fakeMic } = await window.sotto.invoke('app:env');
+  const settings = await window.sotto.invoke('settings:get');
+  const deviceId = fakeMic ? undefined : await resolveMicDeviceId(settings.micDevice);
   mediaStream = await navigator.mediaDevices.getUserMedia({
     audio: fakeMic ? {
       echoCancellation: false,
       noiseSuppression: false,
       autoGainControl: false,
     } : {
+      ...(deviceId ? { deviceId: { exact: deviceId } } : {}),
       channelCount: 1,
       echoCancellation: true,
       noiseSuppression: true,
