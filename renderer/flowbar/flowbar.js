@@ -35,8 +35,15 @@ async function startCapture() {
   chunks = [];
   chunksLen = 0;
   stopping = false;
+  // Chromium's processing chain (echo cancellation & co.) silences the fake
+  // capture device used by the E2E tests, so request raw audio there.
+  const { fakeMic } = await window.sotto.invoke('app:env');
   mediaStream = await navigator.mediaDevices.getUserMedia({
-    audio: {
+    audio: fakeMic ? {
+      echoCancellation: false,
+      noiseSuppression: false,
+      autoGainControl: false,
+    } : {
       channelCount: 1,
       echoCancellation: true,
       noiseSuppression: true,
@@ -256,6 +263,19 @@ document.addEventListener('mouseup', async () => {
   } else {
     tooltip.classList.remove('show');
     await window.sotto.invoke('flow:click');
+  }
+});
+
+// Visual smoke-test hook: force a pill state without recording.
+window.sotto.on('debug:flow-state', (which) => {
+  if (which === 'recording') {
+    setState('recording');
+    levels = levels.map(() => 0.15 + Math.random() * 0.8);
+  } else if (which === 'error') {
+    setState('error');
+    msg.textContent = 'Transcription failed';
+  } else {
+    setState(which);
   }
 });
 

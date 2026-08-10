@@ -79,11 +79,12 @@ class Hotkeys {
   }
 
   on(name, fn) {
-    this.handlers[name] = fn;
+    if (!this.handlers[name]) this.handlers[name] = [];
+    this.handlers[name].push(fn);
   }
 
   _fire(name, ...args) {
-    if (this.handlers[name]) this.handlers[name](...args);
+    for (const fn of this.handlers[name] || []) fn(...args);
   }
 
   start() {

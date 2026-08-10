@@ -87,7 +87,10 @@ function createFlowbar(settings) {
   win.setAlwaysOnTop(true, 'screen-saver');
   win.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true });
   win.loadFile(path.join(__dirname, '..', 'renderer', 'flowbar', 'index.html'));
-  win.once('ready-to-show', () => win.showInactive());
+  // Headless E2E runs keep the overlay hidden; JS still runs (no throttling).
+  if (process.env.SOTTO_E2E !== '1') {
+    win.once('ready-to-show', () => win.showInactive());
+  }
   return win;
 }
 

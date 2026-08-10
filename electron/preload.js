@@ -12,6 +12,9 @@ const listenChannels = [
   'ob:model-progress',
   'ob:ax-status',
   'settings:changed',
+  'debug:navigate',
+  'debug:flow-state',
+  'debug:ob-step',
 ];
 
 contextBridge.exposeInMainWorld('sotto', {

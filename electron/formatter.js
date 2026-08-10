@@ -44,7 +44,11 @@ function applyBacktrack(text) {
     const re = new RegExp(`([^.!?\\n]*?)[,\\s]*\\b${phrase}\\b[,\\s]*`, 'gi');
     out = out.replace(re, '');
   }
-  return out.replace(/\s{2,}/g, ' ').replace(/^[\s,]+/, '').trim();
+  return out
+    .replace(/([.!?])([A-Za-z])/g, '$1 $2') // re-space sentence boundaries we glued
+    .replace(/\s{2,}/g, ' ')
+    .replace(/^[\s,]+/, '')
+    .trim();
 }
 
 function applySpokenPunctuation(text) {
@@ -58,8 +62,9 @@ function applySpokenPunctuation(text) {
     .replace(/([,.;:!?])(?=[^\s\n.)!?,;:])/g, '$1 ')
     .replace(/[ \t]*\n[ \t]*/g, '\n')
     .replace(/([.!?])\s*\.+/g, '$1');
-  // Capitalize after sentence-enders and newlines.
-  out = out.replace(/([.!?]\s+|\n+)([a-z])/g, (m, sep, ch) => sep + ch.toUpperCase());
+  // Capitalize after sentence-enders and paragraph breaks (a single "new line"
+  // continues the thought, so it keeps its casing).
+  out = out.replace(/([.!?]\s+|\n{2,})([a-z])/g, (m, sep, ch) => sep + ch.toUpperCase());
   return out.trim();
 }
 
@@ -122,6 +127,30 @@ function finalTidy(text) {
   return out;
 }
 
+// Style presets: formal keeps everything; casual drops the trailing period on
+// short message-like text; very-casual also lowercases (keeping "I" and words
+// the user explicitly cased in their dictionary).
+function applyStyle(text, style, dictionary = []) {
+  if (style === 'casual' || style === 'very-casual') {
+    if (!text.includes('\n') && text.length < 220) {
+      text = text.replace(/\.$/, '');
+    }
+  }
+  if (style === 'very-casual') {
+    text = text.toLowerCase()
+      .replace(/\bi\b/g, 'I')
+      .replace(/\bi'([a-z])/g, "I'$1")
+      .replace(/\bi’([a-z])/g, 'I’$1');
+    for (const entry of dictionary) {
+      const saved = entry.replacement || entry.word;
+      if (!saved || saved === saved.toLowerCase()) continue;
+      const re = new RegExp(`\\b${escapeRe(saved.toLowerCase())}\\b`, 'g');
+      text = text.replace(re, saved);
+    }
+  }
+  return text;
+}
+
 function escapeRe(s) {
   return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
@@ -137,6 +166,7 @@ function formatTranscript(rawText, options = {}) {
     removeFillers = true,
     autoPunctuate = true,
     pressEnterCommand = true,
+    textStyle = 'formal',
     dictionary = [],
     snippets = [],
   } = options;
@@ -162,6 +192,7 @@ function formatTranscript(rawText, options = {}) {
     pressEnter = r.pressEnter;
   }
   text = finalTidy(text);
+  text = applyStyle(text, textStyle, dictionary);
   return { text, pressEnter };
 }
 
@@ -172,6 +203,7 @@ module.exports = {
   applySpokenPunctuation,
   applyDictionary,
   applySnippets,
+  applyStyle,
   extractPressEnter,
   FILLERS,
 };

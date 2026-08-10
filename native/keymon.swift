@@ -137,6 +137,14 @@ func handle(command raw: String) {
         recording = true
     case "rec 0":
         recording = false
+    case "test-fn 1":
+        // Test hook: synthesize an fn press so automated tests can exercise
+        // the whole pipeline without real keyboard input.
+        fnDown = true
+        emitMods()
+    case "test-fn 0":
+        fnDown = false
+        emitMods()
     case "quit":
         exit(0)
     default:

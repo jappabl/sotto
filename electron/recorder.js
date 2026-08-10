@@ -162,6 +162,7 @@ class Recorder {
         removeFillers: settings.removeFillers,
         autoPunctuate: settings.autoPunctuate,
         pressEnterCommand: settings.pressEnterCommand,
+        textStyle: settings.textStyle,
         dictionary: this.store.dictionary,
         snippets: this.store.snippets,
       });

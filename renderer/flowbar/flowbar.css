@@ -65,7 +65,7 @@ html, body {
 
 /* idle dots */
 #dots {
-  display: flex;
+  display: none;
   gap: 4px;
   align-items: center;
 }

@@ -1,0 +1,202 @@
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--cream);
+}
+
+.drag-strip {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 48px;
+  -webkit-app-region: drag;
+  z-index: 10;
+}
+
+#dots {
+  position: fixed;
+  top: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 7px;
+  z-index: 11;
+}
+#dots i {
+  width: 34px;
+  height: 4px;
+  border-radius: 2px;
+  background: #e0ded5;
+  transition: background 0.25s ease;
+}
+#dots i.done { background: var(--ink); }
+
+#stage {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 70px 70px 50px;
+  text-align: center;
+}
+
+.ob-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 42px;
+  line-height: 1.15;
+  margin-bottom: 14px;
+  max-width: 640px;
+}
+.ob-title em { font-style: italic; color: var(--purple); }
+
+.ob-sub {
+  color: var(--ink-soft);
+  font-size: 15.5px;
+  line-height: 1.55;
+  max-width: 480px;
+  margin-bottom: 34px;
+}
+
+.ob-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 8px;
+}
+.ob-actions .btn-dark { padding: 11px 26px; font-size: 15px; border-radius: 13px; }
+.ob-actions .btn-ghost { font-size: 14.5px; }
+
+.ob-input {
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: #fff;
+  padding: 13px 18px;
+  font-size: 16px;
+  width: 320px;
+  outline: none;
+  text-align: center;
+  margin-bottom: 26px;
+}
+.ob-input:focus { border-color: var(--purple); }
+
+/* permission cards */
+.perm-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 480px;
+  margin-bottom: 30px;
+}
+.perm-card {
+  background: #fff;
+  border: 1px solid var(--line-soft);
+  border-radius: 16px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-align: left;
+  box-shadow: var(--shadow-card);
+}
+.perm-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--lavender);
+  color: var(--purple-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.perm-info { flex: 1; }
+.perm-name { font-weight: 700; font-size: 15px; margin-bottom: 3px; }
+.perm-desc { color: var(--ink-soft); font-size: 13px; line-height: 1.45; }
+.perm-action .btn-dark { padding: 8px 16px; }
+.perm-granted {
+  color: var(--green);
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* mic test */
+.mic-meter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  height: 72px;
+  margin-bottom: 30px;
+}
+.mic-meter i {
+  width: 6px;
+  height: 8px;
+  border-radius: 3px;
+  background: #d9d6cc;
+  transition: height 0.08s linear, background 0.08s linear;
+}
+.mic-meter i.hot { background: var(--purple); }
+
+/* shortcut choice */
+.hk-cards {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+.hk-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 22px 26px;
+  cursor: pointer;
+  min-width: 150px;
+  transition: border-color 0.12s ease, box-shadow 0.12s ease;
+}
+.hk-card:hover { border-color: #cfccc2; }
+.hk-card.selected { border-color: var(--purple); box-shadow: 0 0 0 1px var(--purple); }
+.hk-card .keycap { font-size: 15px; padding: 3px 10px; }
+.hk-card-label { margin-top: 12px; font-size: 12.5px; color: var(--ink-soft); }
+
+/* try it */
+.try-box {
+  width: 560px;
+  min-height: 140px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 18px 20px;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: left;
+  outline: none;
+  margin-bottom: 18px;
+  resize: none;
+  font-family: var(--sans);
+}
+.try-box:focus { border-color: var(--purple); }
+.try-hint {
+  color: var(--ink-faint);
+  font-size: 13.5px;
+  margin-bottom: 22px;
+}
+.try-hint .keycap { margin: 0 2px; }
+
+.dl-track {
+  width: 380px;
+  height: 5px;
+  background: #e3e1d9;
+  border-radius: 3px;
+  margin: 6px 0 30px;
+  position: relative;
+  overflow: hidden;
+}
+.dl-fill {
+  position: absolute;
+  inset: 0 100% 0 0;
+  background: var(--purple);
+  border-radius: 3px;
+}

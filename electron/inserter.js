@@ -17,6 +17,9 @@ class Inserter {
     const saved = this._snapshotClipboard();
     clipboard.writeText(text);
 
+    // Test mode: leave the text on the clipboard, don't press keys.
+    if (process.env.SOTTO_NO_PASTE === '1') return true;
+
     if (!this.hotkeys.axTrusted) {
       this._manualPasteNotice();
       return false;

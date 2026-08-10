@@ -15,6 +15,7 @@ const DEFAULT_SETTINGS = {
   launchAtLogin: false,
   flowBarDock: 'bottom',     // 'bottom' | 'left' | 'right'
   flowBarOffset: 0.5,        // fraction along the docked edge
+  textStyle: 'formal',       // 'formal' | 'casual' | 'very-casual'
   removeFillers: true,
   autoPunctuate: true,       // spoken punctuation commands
   autoLearn: true,           // learn dictionary words from corrections (manual add only in v1)

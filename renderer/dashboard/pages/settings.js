@@ -1,0 +1,311 @@
+// Settings: sub-sidebar (General / System / Experimental / About) with the
+// hotkey modal, model picker, permission status, and formatter toggles.
+
+import { el, toast, openModal } from '../ui.js';
+import { icons } from '../icons.js';
+
+let section = 'general';
+
+const LANGS = [
+  ['auto', 'Auto-detect'], ['en', 'English'], ['es', 'Spanish'], ['fr', 'French'],
+  ['de', 'German'], ['it', 'Italian'], ['pt', 'Portuguese'], ['nl', 'Dutch'],
+  ['ja', 'Japanese'], ['ko', 'Korean'], ['zh', 'Chinese'], ['hi', 'Hindi'],
+  ['ru', 'Russian'], ['ar', 'Arabic'], ['pl', 'Polish'], ['tr', 'Turkish'],
+  ['vi', 'Vietnamese'], ['uk', 'Ukrainian'], ['sv', 'Swedish'], ['da', 'Danish'],
+];
+
+const HOTKEY_OPTIONS = [
+  ['fn', ['fn'], 'Hold the fn key'],
+  ['ctrl+alt', ['ctrl', 'opt'], 'Hold Control + Option'],
+  ['rcmd', ['right ⌘'], 'Hold Right Command'],
+  ['ralt', ['right ⌥'], 'Hold Right Option'],
+];
+
+export async function renderSettings(container) {
+  const [settings, version, micStatus, axStatus, models] = await Promise.all([
+    window.sotto.invoke('settings:get'),
+    window.sotto.invoke('app:version'),
+    window.sotto.invoke('perm:mic-status'),
+    window.sotto.invoke('perm:ax-status'),
+    window.sotto.invoke('models:list'),
+  ]);
+
+  container.replaceChildren();
+
+  const body = el('div', { class: 'settings-body' });
+  const sections = [
+    ['general', 'General', icons.sliders],
+    ['system', 'System', icons.display],
+    ['experimental', 'Experimental', icons.flask],
+    ['about', 'About', icons.info],
+  ];
+  const nav = el('div', { class: 'settings-nav' },
+    el('div', { class: 'sn-label' }, 'SETTINGS'),
+    sections.map(([key, label, icon]) =>
+      el('div', {
+        class: 'sn-item' + (section === key ? ' active' : ''),
+        onclick: () => { section = key; renderSettings(container); },
+      }, el('span', { html: icon }), label)),
+  );
+
+  container.append(el('div', { class: 'settings-layout' }, nav, body));
+
+  const rerender = () => renderSettings(container);
+
+  if (section === 'general') {
+    body.append(el('h1', { class: 'settings-title serif-display' }, 'General'));
+    body.append(nameRow(settings, rerender));
+    body.append(hotkeyRow(settings, rerender));
+    body.append(selectRow({
+      name: 'Language',
+      desc: 'Language you dictate in. Auto-detect figures it out per dictation.',
+      value: settings.language,
+      options: LANGS,
+      onChange: async (v) => { await save({ language: v }); },
+    }));
+    body.append(toggleRow({
+      name: 'Launch at login',
+      desc: 'Start Sotto quietly in the menu bar when you log in.',
+      value: settings.launchAtLogin,
+      onChange: (v) => save({ launchAtLogin: v }, rerender),
+    }));
+  }
+
+  if (section === 'system') {
+    body.append(el('h1', { class: 'settings-title serif-display' }, 'System'));
+    body.append(permRow('Microphone', micStatus === 'granted',
+      'Needed to hear you. ',
+      () => window.sotto.invoke('perm:mic-open-settings')));
+    body.append(permRow('Accessibility', axStatus,
+      'Needed for the dictation hotkey and to paste text for you. ',
+      () => window.sotto.invoke('perm:ax-open-settings')));
+    body.append(selectRow({
+      name: 'Transcription model',
+      desc: 'Bigger models are more accurate, smaller ones are faster. All run on-device.',
+      value: settings.model,
+      options: models.map((m) => [m.name, modelLabel(m)]),
+      onChange: async (v) => {
+        const m = models.find((x) => x.name === v);
+        if (m && !m.installed) {
+          toast('Downloading model…');
+          try {
+            await window.sotto.invoke('models:download', v);
+          } catch {
+            toast('Download failed — check your connection');
+            rerender();
+            return;
+          }
+        }
+        await save({ model: v });
+        toast('Model ready');
+        rerender();
+      },
+    }));
+    body.append(toggleRow({
+      name: 'Sound effects',
+      desc: 'Play a soft ping when dictation starts and a pop when text lands.',
+      value: settings.soundEffects,
+      onChange: (v) => save({ soundEffects: v }, rerender),
+    }));
+    body.append(selectRow({
+      name: 'Flow bar position',
+      desc: 'Where the dictation pill lives. You can also drag the pill itself.',
+      value: settings.flowBarDock,
+      options: [['bottom', 'Bottom'], ['left', 'Left edge'], ['right', 'Right edge']],
+      onChange: (v) => save({ flowBarDock: v }),
+    }));
+  }
+
+  if (section === 'experimental') {
+    body.append(el('h1', { class: 'settings-title serif-display' }, 'Experimental'));
+    body.append(toggleRow({
+      name: 'Remove filler words',
+      desc: 'Strip "um", "uh", and friends from transcripts.',
+      value: settings.removeFillers,
+      onChange: (v) => save({ removeFillers: v, }, rerender),
+    }));
+    body.append(toggleRow({
+      name: 'Spoken punctuation & commands',
+      desc: 'Say "comma", "new line", or "new paragraph" to punctuate as you go.',
+      value: settings.autoPunctuate,
+      onChange: (v) => save({ autoPunctuate: v }, rerender),
+    }));
+    body.append(toggleRow({
+      name: '"Press enter" command',
+      desc: 'End a dictation with "press enter" to send the message after pasting.',
+      value: settings.pressEnterCommand,
+      onChange: (v) => save({ pressEnterCommand: v }, rerender),
+    }));
+  }
+
+  if (section === 'about') {
+    body.append(el('h1', { class: 'settings-title serif-display' }, 'About'));
+    body.append(el('div', { class: 'setting-row' },
+      el('div', { class: 'setting-info' },
+        el('div', { class: 'setting-name' }, 'Sotto'),
+        el('div', { class: 'setting-desc' },
+          'Open-source voice dictation for macOS. Speech never leaves your Mac — transcription runs locally on whisper.cpp.'),
+      ),
+    ));
+    body.append(el('div', { class: 'setting-row' },
+      el('div', { class: 'setting-info' },
+        el('div', { class: 'setting-name' }, 'Privacy'),
+        el('div', { class: 'setting-desc' },
+          'No account, no cloud, no telemetry. History and audio live in your Application Support folder and stay there.'),
+      ),
+    ));
+    body.append(el('div', { class: 'settings-version' },
+      el('span', { html: icons.cloudOff }),
+      `Sotto v${version} · offline transcription`));
+  }
+
+  async function save(patch, cb) {
+    await window.sotto.invoke('settings:set', patch);
+    cb && cb();
+  }
+}
+
+function modelLabel(m) {
+  const names = {
+    'ggml-tiny.en.bin': 'Tiny (English, fastest)',
+    'ggml-base.bin': 'Base (all languages)',
+    'ggml-small.bin': 'Small (all languages, most accurate)',
+  };
+  return (names[m.name] || m.name) + (m.installed ? '' : ' — download');
+}
+
+function toggleRow({ name, desc, value, onChange }) {
+  const sw = el('div', { class: 'switch' + (value ? ' on' : '') });
+  const row = el('div', { class: 'setting-row' },
+    el('div', { class: 'setting-info' },
+      el('div', { class: 'setting-name' }, name),
+      el('div', { class: 'setting-desc' }, desc),
+    ),
+    sw,
+  );
+  row.addEventListener('click', () => onChange(!value));
+  return row;
+}
+
+function selectRow({ name, desc, value, options, onChange }) {
+  const sel = el('select', {},
+    options.map(([v, label]) => {
+      const opt = el('option', { value: v }, label);
+      if (v === value) opt.selected = true;
+      return opt;
+    }));
+  sel.addEventListener('change', () => onChange(sel.value));
+  return el('div', { class: 'setting-row' },
+    el('div', { class: 'setting-info' },
+      el('div', { class: 'setting-name' }, name),
+      el('div', { class: 'setting-desc' }, desc),
+    ),
+    sel,
+  );
+}
+
+function permRow(name, granted, desc, openSettings) {
+  return el('div', { class: 'setting-row' },
+    el('div', { class: 'setting-info' },
+      el('div', { class: 'setting-name' }, name),
+      el('div', { class: 'setting-desc' }, desc,
+        granted
+          ? el('span', { class: 'perm-ok' }, 'Granted ✓')
+          : el('span', { class: 'perm-warn' }, 'Not granted')),
+    ),
+    granted ? null : el('button', { class: 'btn-gray', onclick: openSettings }, 'Open System Settings'),
+  );
+}
+
+function nameRow(settings, rerender) {
+  const input = el('input', {
+    value: settings.userName || '',
+    placeholder: 'Your name',
+    style: 'border:1px solid var(--line);border-radius:9px;padding:7px 10px;background:#fff;outline:none;width:170px;',
+  });
+  input.addEventListener('change', async () => {
+    await window.sotto.invoke('settings:set', { userName: input.value.trim() });
+    toast('Saved');
+  });
+  return el('div', { class: 'setting-row' },
+    el('div', { class: 'setting-info' },
+      el('div', { class: 'setting-name' }, 'Your name'),
+      el('div', { class: 'setting-desc' }, 'Used for the Home screen greeting.'),
+    ),
+    input,
+  );
+}
+
+function hotkeyRow(settings, rerender) {
+  const caps = (HOTKEY_OPTIONS.find(([k]) => k === settings.hotkey) || HOTKEY_OPTIONS[0])[1];
+  return el('div', { class: 'setting-row' },
+    el('div', { class: 'setting-info' },
+      el('div', { class: 'setting-name' }, 'Shortcuts'),
+      el('div', { class: 'setting-desc' },
+        'Push to talk: ',
+        ...caps.flatMap((k, i) => [i ? ' + ' : '', el('span', { class: 'keycap' }, k)]),
+        ' · double-tap for hands-free',
+      ),
+    ),
+    el('button', {
+      class: 'btn-gray',
+      onclick: () => openHotkeyModal(settings, rerender),
+    }, 'Change'),
+  );
+}
+
+function openHotkeyModal(settings, rerender) {
+  let current = settings.hotkey;
+  const optionEls = new Map();
+
+  const renderSelection = () => {
+    for (const [key, node] of optionEls) {
+      node.classList.toggle('selected', key === current);
+    }
+  };
+
+  const pick = async (key) => {
+    current = key;
+    renderSelection();
+    await window.sotto.invoke('settings:set', { hotkey: key });
+    toast('Shortcut updated');
+    rerender();
+  };
+
+  const opts = el('div', { class: 'hk-opts' });
+  for (const [key, caps] of HOTKEY_OPTIONS) {
+    const node = el('div', { class: 'hk-opt', onclick: () => pick(key) },
+      ...caps.flatMap((k, i) => [i ? '+' : '', el('span', { class: 'keycap' }, k)]),
+    );
+    optionEls.set(key, node);
+    opts.append(node);
+  }
+  renderSelection();
+
+  const modal = el('div', { class: 'modal hotkey-modal' },
+    el('h2', {}, 'Change hotkeys'),
+    el('div', { class: 'hk-sub' }, 'Customize how you talk to Sotto'),
+    el('div', { class: 'hk-row' },
+      el('div', { class: 'hk-info' },
+        el('div', { class: 'hk-name' }, 'Push to talk'),
+        el('div', { class: 'hk-desc' }, 'Dictate short bursts of text while holding this hotkey'),
+      ),
+      opts,
+    ),
+    el('div', { class: 'hk-row' },
+      el('div', { class: 'hk-info' },
+        el('div', { class: 'hk-name' }, 'Hands-free mode'),
+        el('div', { class: 'hk-desc' }, 'Double-tap your push-to-talk key to start, tap once (or press Esc) to stop'),
+      ),
+      el('div', { class: 'hk-opts' },
+        el('div', { class: 'hk-opt', style: 'cursor:default' },
+          el('span', { class: 'keycap' }, 'double-tap')),
+      ),
+    ),
+    el('button', {
+      class: 'hk-reset',
+      onclick: () => pick('fn'),
+    }, 'Reset to default'),
+  );
+  openModal(modal, { onClose: rerender });
+}

@@ -1,0 +1,191 @@
+/* Sotto design tokens — cream chrome, white canvas, ink text, lavender accent. */
+
+@font-face {
+  font-family: 'Instrument Serif';
+  src: url('../shared/fonts/InstrumentSerif-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Instrument Serif';
+  src: url('../shared/fonts/InstrumentSerif-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+}
+
+:root {
+  --cream: #f4f2ec;
+  --cream-deep: #edeae1;
+  --canvas: #ffffff;
+  --ink: #1c1c1a;
+  --ink-soft: #55554f;
+  --ink-faint: #8a8a82;
+  --line: #e7e5dd;
+  --line-soft: #efede6;
+  --card: #f6f5f2;
+  --card-hover: #f0efeb;
+  --callout: #fbf9e8;
+  --lavender: #e7dbfa;
+  --purple: #7c5ce0;
+  --purple-deep: #5f3fc4;
+  --green: #1e5c3a;
+  --red: #c0392b;
+  --gold: #b8860b;
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+  --serif: 'Instrument Serif', 'Times New Roman', serif;
+  --shadow-card: 0 1px 2px rgba(28, 28, 26, 0.05);
+  --shadow-pop: 0 12px 40px rgba(28, 28, 26, 0.18);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  font-family: var(--sans);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+}
+
+button {
+  font-family: var(--sans);
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: inherit;
+  font-size: inherit;
+}
+
+input, textarea, select {
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--ink);
+}
+
+::selection { background: var(--lavender); }
+
+/* ---- shared components ---- */
+
+.btn-dark {
+  background: var(--ink);
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 9px 18px;
+  border-radius: var(--radius-md);
+  transition: background 0.15s ease;
+}
+.btn-dark:hover { background: #333330; }
+.btn-dark:active { background: #000; }
+.btn-dark:disabled { background: #b9b8b2; cursor: default; }
+
+.btn-gray {
+  background: var(--card);
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 9px 18px;
+  border-radius: var(--radius-md);
+  transition: background 0.15s ease;
+}
+.btn-gray:hover { background: var(--card-hover); }
+
+.btn-ghost {
+  color: var(--ink-soft);
+  font-weight: 500;
+  padding: 7px 12px;
+  border-radius: var(--radius-sm);
+}
+.btn-ghost:hover { background: var(--card); color: var(--ink); }
+
+.keycap {
+  display: inline-block;
+  background: #fff;
+  border: 1px solid #d9d7cf;
+  border-bottom-width: 2px;
+  border-radius: 6px;
+  padding: 1px 7px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  vertical-align: 1px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.serif-display {
+  font-family: var(--serif);
+  font-weight: 400;
+  letter-spacing: 0.005em;
+}
+
+.serif-display em {
+  font-style: italic;
+  color: var(--purple);
+}
+
+/* toggle switch */
+.switch {
+  position: relative;
+  width: 40px;
+  height: 24px;
+  border-radius: 999px;
+  background: #d8d6ce;
+  transition: background 0.18s ease;
+  flex-shrink: 0;
+}
+.switch::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  transition: left 0.18s ease;
+}
+.switch.on { background: var(--ink); }
+.switch.on::after { left: 18px; }
+
+/* modal scrim */
+.scrim {
+  position: fixed;
+  inset: 0;
+  background: rgba(28, 28, 26, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  animation: fadeIn 0.15s ease;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.modal {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: var(--shadow-pop);
+  padding: 32px;
+  max-height: 84vh;
+  overflow-y: auto;
+  animation: popIn 0.18s cubic-bezier(0.3, 1, 0.4, 1);
+}
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.97) translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+.hidden { display: none !important; }

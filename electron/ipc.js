@@ -157,6 +157,7 @@ function registerIpc(ctx) {
   });
 
   // ---- misc ----
+  ipcMain.handle('app:env', () => ({ fakeMic: !!process.env.SOTTO_FAKE_MIC }));
   ipcMain.handle('app:version', () => app.getVersion());
   ipcMain.handle('app:open-external', (_e, url) => {
     if (/^https?:\/\//.test(String(url))) shell.openExternal(url);
