@@ -15,7 +15,11 @@ class Inserter {
     if (!text) return false;
     this.lastText = text;
     const saved = this._snapshotClipboard();
-    clipboard.writeText(text);
+    // Prefer the native path: it marks the pasteboard "concealed" so
+    // clipboard managers don't archive every dictation.
+    if (!this.hotkeys.setPasteboard(text)) {
+      clipboard.writeText(text);
+    }
 
     // Test mode: leave the text on the clipboard, don't press keys.
     if (process.env.SOTTO_NO_PASTE === '1') return true;
@@ -38,6 +42,19 @@ class Inserter {
       this._restoreClipboard(saved);
     }
     return true;
+  }
+
+  // Focus changed mid-transcription: keep the text ready instead of pasting
+  // into the wrong app. Deliberately unmarked, so it persists in clipboard
+  // managers until used.
+  holdToClipboard(text) {
+    this.lastText = text;
+    clipboard.writeText(text);
+    new Notification({
+      title: 'Dictation ready to paste',
+      body: 'You switched apps while Sotto was transcribing. Press ⌘V (or ⌘⌃V later) to paste it.',
+      silent: true,
+    }).show();
   }
 
   copyLast() {

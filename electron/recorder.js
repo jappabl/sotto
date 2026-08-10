@@ -9,6 +9,14 @@ const path = require('path');
 
 const CTRL_KEYS = [59, 62]; // left/right control
 
+// Bundle ids where short messages read better without a trailing period.
+const CHAT_BUNDLES = new Set([
+  'com.apple.MobileSMS', 'com.apple.iChat',
+  'net.whatsapp.WhatsApp', 'com.hnc.Discord', 'com.tinyspeck.slackmacgap',
+  'ru.keepcoder.Telegram', 'org.telegram.desktop', 'org.whispersystems.signal-desktop',
+  'com.facebook.archon', 'com.microsoft.teams2',
+]);
+
 class Recorder {
   constructor({ store, hotkeys, transcriber, inserter, polisher = null, sysaudio = null, log = () => {} }) {
     this.store = store;
@@ -28,6 +36,7 @@ class Recorder {
     this.context = { ok: false, before: '', after: '', selected: '' };
     this.capTimer = null;
     this._pendingStop = null;
+    this.onStateChange = null; // set by main; called with the new state
 
     hotkeys.on('holdStart', () => this._onHoldStart());
     hotkeys.on('holdEnd', (dur) => this._onHoldEnd(dur));
@@ -97,6 +106,7 @@ class Recorder {
     this.state = 'recording';
     this.sessionStart = Date.now();
     this.commandMode = false;
+    if (this.onStateChange) this.onStateChange('recording');
     this.hotkeys.setRecording(true);
     // Snapshot the frontmost app + text context now — that's where text lands.
     this.hotkeys.queryFront().then((f) => { this.frontApp = f; });
@@ -123,6 +133,7 @@ class Recorder {
   stopRecording() {
     if (this.state !== 'recording') return;
     this.state = 'processing';
+    if (this.onStateChange) this.onStateChange('processing');
     this.handsFree = false;
     clearTimeout(this.capTimer);
     this.hotkeys.setRecording(false);
@@ -141,6 +152,7 @@ class Recorder {
   cancel() {
     if (this.state !== 'recording') return;
     this.state = 'idle';
+    if (this.onStateChange) this.onStateChange('idle');
     this.handsFree = false;
     clearTimeout(this.capTimer);
     this.hotkeys.setRecording(false);
@@ -177,6 +189,17 @@ class Recorder {
       return { ok: false, reason: 'too-short' };
     }
 
+    const formatter = require('./formatter');
+
+    // Dead-silent audio (accidental tap, muted mic): skip transcription
+    // entirely — whisper would only hallucinate a pleasantry from it.
+    const rms = formatter.wavRms(Buffer.from(wav));
+    if (rms < 0.0015) {
+      this.log(`silent audio (rms ${rms.toFixed(5)}) — skipping transcription`);
+      this._finish(null);
+      return { ok: false, reason: 'silent' };
+    }
+
     const audioFile = `a-${Date.now()}.wav`;
     const wavPath = path.join(this.store.audioDir, audioFile);
     fs.writeFileSync(wavPath, Buffer.from(wav));
@@ -193,13 +216,21 @@ class Recorder {
         return await this._handleCommand(rawText, { durMs, audioFile, wavPath });
       }
 
-      const formatter = require('./formatter');
+      // Whisper hallucinates pleasantries on near-silence — drop them.
+      if (formatter.isLikelyHallucination(rawText, rms)) {
+        this.log(`dropped silence hallucination (rms ${rms.toFixed(4)}): ${rawText.slice(0, 30)}`);
+        this._finish(null);
+        try { fs.unlinkSync(wavPath); } catch { /* fine */ }
+        return { ok: false, reason: 'silence' };
+      }
+
       let { text, pressEnter } = formatter.formatTranscript(rawText, {
         removeFillers: settings.removeFillers,
         autoPunctuate: settings.autoPunctuate,
         pressEnterCommand: settings.pressEnterCommand,
         textStyle: settings.textStyle,
         cleanupLevel: settings.cleanupLevel,
+        chatApp: CHAT_BUNDLES.has(this.frontApp.bundle),
         dictionary: this.store.dictionary,
         snippets: this.store.snippets,
       });
@@ -227,9 +258,13 @@ class Recorder {
         }
       }
 
-      // Continuation casing/spacing against the text already in the field.
+      // Continuation casing/spacing against the text already around the cursor.
       if (this.context.ok) {
-        text = formatter.adjustForContext(text, this.context.before);
+        text = formatter.adjustForContext(text, this.context.before, this.context.after);
+        if (!text) {
+          this._finish(null);
+          return { ok: false, reason: 'seam-empty' };
+        }
       }
 
       const entry = this.store.addHistoryEntry({
@@ -237,6 +272,18 @@ class Recorder {
         app: this.frontApp.name, bundle: this.frontApp.bundle,
         durMs, audioFile,
       });
+
+      // If the user switched apps while we transcribed, never blind-paste
+      // into the wrong window — hold the text on the clipboard instead.
+      const nowFront = await this.hotkeys.queryFront();
+      if (this.frontApp.bundle && nowFront.bundle &&
+          nowFront.bundle !== this.frontApp.bundle) {
+        this.log(`focus moved (${this.frontApp.bundle} → ${nowFront.bundle}) — holding paste`);
+        this.inserter.holdToClipboard(text);
+        this._finish({ words: entry.words });
+        this._sendDashboard('data:changed', { what: 'history' });
+        return { ok: true, text, held: true };
+      }
 
       await this.inserter.insert(text, { pressEnter });
       this._finish({ words: entry.words });
@@ -313,6 +360,7 @@ class Recorder {
 
   _finish(result) {
     this.state = 'idle';
+    if (this.onStateChange) this.onStateChange('idle');
     this.handsFree = false;
     clearTimeout(this.capTimer);
     clearTimeout(this._pendingStop);

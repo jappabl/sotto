@@ -26,6 +26,7 @@ const SPOKEN_PUNCT = [
   [/\bnew line\b/gi, '\n'],
   [/\bnew paragraph\b/gi, '\n\n'],
   [/\b(?:new bullet|bullet point)\b/gi, '\n- '],
+  [/\bdot dot dot\b/gi, '...'],
 ];
 
 function stripFillers(text) {
@@ -165,6 +166,25 @@ function matchCaseWord(orig, word) {
   return /^[A-Z]/.test(orig) ? word[0].toUpperCase() + word.slice(1) : word;
 }
 
+// Currency and percent: "20 dollars and 50 cents" → "$20.50", "15 percent" →
+// "15%". Digits only; ambiguous word-number phrases stay as spoken.
+function normalizeMoney(text) {
+  return text
+    .replace(/\b(\d+(?:\.\d+)?)\s+dollars?(?:\s+and\s+(\d{1,2})\s+cents?)?\b/gi,
+      (m, d, c) => '$' + d + (c ? '.' + c.padStart(2, '0') : ''))
+    .replace(/\b(\d+(?:\.\d+)?)\s+euros?\b/gi, '€$1')
+    .replace(/\b(\d+(?:\.\d+)?)\s+pounds\b/gi, '£$1')
+    .replace(/\b(\d+(?:\.\d+)?)\s+percent\b/gi, '$1%');
+}
+
+// Chat apps read better without a trailing period on short messages.
+function dropTrailingPeriodForChat(text) {
+  if (!text.includes('\n') && text.length < 200 && /[^.]\.$/.test(text)) {
+    return text.slice(0, -1);
+  }
+  return text;
+}
+
 // Times: "5 p.m." / "5 PM" → "5pm" (the style the original app uses).
 // The final dot of "a.m." doubles as the sentence period, so keep it unless
 // the sentence clearly continues in lowercase.
@@ -185,14 +205,18 @@ function applySpokenPunctuation(text) {
     out = out.replace(re, sub);
   }
   // Tidy: no space before punctuation we just inserted, single space after.
+  // Shield ellipses ("...") so the double-period cleanup and the sentence
+  // capitalizer treat them as thought-continuation, not sentence ends.
+  out = out.replace(/\.{3,}/g, '\uE000');
   out = out
-    .replace(/\s+([,.;:!?])/g, '$1')
+    .replace(/\s+([,.;:!?\uE000])/g, '$1')
     .replace(/([,.;:!?])(?=[^\s\n.)!?,;:])/g, '$1 ')
     .replace(/[ \t]*\n[ \t]*/g, '\n')
-    .replace(/([.!?])\s*\.+/g, '$1');
-  // Capitalize after sentence-enders and paragraph breaks (a single "new line"
-  // continues the thought, so it keeps its casing).
+    .replace(/([.!?])\s*\.+/g, '$1'); // "end. ." → "end."
+  // Capitalize after sentence-enders and paragraph breaks (a single "new
+  // line" continues the thought, so it keeps its casing).
   out = out.replace(/([.!?]\s+|\n{2,})([a-z])/g, (m, sep, ch) => sep + ch.toUpperCase());
+  out = out.replace(/\uE000/g, '...');
   return out.trim();
 }
 
@@ -259,6 +283,8 @@ function finalTidy(text) {
   let out = stripEmDashes(text)
     .replace(/[ \t]{2,}/g, ' ')
     .replace(/\s+([,.;:!?])/g, '$1')
+    .replace(/\bi\b(?!\.e)(?!'|’)/g, 'I') // bare "i" is the pronoun (not "i.e.")
+    .replace(/\bi(['’])(ll|m|ve|d)\b/g, 'I$1$2')
     .trim();
   if (out) out = out[0].toUpperCase() + out.slice(1);
   return out;
@@ -292,20 +318,80 @@ function escapeRe(s) {
   return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-// Context-aware continuation: adapt the insert to the text already before the
-// cursor — lowercase when joining mid-sentence, add a leading space when the
-// existing text doesn't end with one.
-function adjustForContext(text, before) {
-  if (!text || !before || !before.trim()) return text;
+// Context-aware continuation: adapt the insert to the text already around the
+// cursor. The goal is a seam nobody can find afterwards:
+//   - joining mid-sentence lowercases the first word
+//   - a missing space before/after the cursor is added
+//   - no space is added right after an opening bracket/quote or a newline
+//   - the word right before the cursor is never duplicated ("the" + "the plan")
+//   - punctuation never doubles up against what follows the cursor
+function adjustForContext(text, before, after = '') {
+  if (!text) return text;
   let out = text;
-  const endsMidSentence = /[\w,;:—-]\s*$/.test(before) && !/[.!?…]\s*$/.test(before);
-  if (endsMidSentence && /^[A-Z][a-z]/.test(out) && !/^I\b/.test(out)) {
-    out = out[0].toLowerCase() + out.slice(1);
+
+  if (before && before.trim()) {
+    // Seam dedup: dictation often re-speaks the word the user stopped at.
+    const lastWord = (before.match(/([A-Za-z][A-Za-z'’-]*)\s*$/) || [])[1];
+    const firstWord = (out.match(/^([A-Za-z][A-Za-z'’-]*)/) || [])[1];
+    if (lastWord && firstWord && lastWord.toLowerCase() === firstWord.toLowerCase()) {
+      out = out.slice(firstWord.length).replace(/^[\s,]+/, '');
+      if (!out) return '';
+    }
+
+    const endsMidSentence = /[\w,;:-]\s*$/.test(before) && !/[.!?…]\s*$/.test(before);
+    if (endsMidSentence && /^[A-Z][a-z]/.test(out) && !/^I\b/.test(out)) {
+      out = out[0].toLowerCase() + out.slice(1);
+    }
+    // After a newline the insert starts a fresh line — capitalize it.
+    if (/\n\s*$/.test(before) && /^[a-z]/.test(out)) {
+      out = out[0].toUpperCase() + out.slice(1);
+    }
+    // Leading space, except after whitespace/newline or an opening delimiter.
+    const noSpaceAfter = /[\s\n([{“‘"'\/@#$]$/.test(before);
+    if (!noSpaceAfter && !/^[\s.,;:!?)\]}]/.test(out)) {
+      out = ' ' + out;
+    }
   }
-  if (!/\s$/.test(before) && !/^[\s.,;:!?)]/.test(out)) {
-    out = ' ' + out;
+
+  if (after && after.trim()) {
+    // Don't double up sentence punctuation against what follows the cursor.
+    if (/^[.!?,;:]/.test(after.trimStart())) {
+      out = out.replace(/[.!?,;:]+$/, '');
+    }
+    // Trailing space when the cursor sits directly before a word.
+    if (/^[A-Za-z0-9([{“‘"']/.test(after) && !/\s$/.test(out)) {
+      out = out + ' ';
+    }
   }
   return out;
+}
+
+// Whisper reliably hallucinates a few phrases on silence or breath noise.
+// When the audio was effectively silent, these are noise, not speech.
+const SILENCE_PHRASES = new Set([
+  'you', 'bye', 'thank you', 'thanks', 'thank you.', 'okay', 'so',
+  'thanks for watching', 'thank you for watching', 'thanks for watching!',
+  'thank you so much for watching', 'subscribe', "we'll see you next time",
+  'see you next time', 'the end', '.', 'peace',
+]);
+function isLikelyHallucination(text, rms) {
+  const norm = String(text || '').toLowerCase().replace(/[.!,?]+$/, '').trim();
+  if (!norm) return true;
+  if (rms >= 0.006) return false; // real speech energy — trust the words
+  return SILENCE_PHRASES.has(norm);
+}
+
+// Mean RMS of a 16-bit mono WAV buffer (44-byte header assumed).
+function wavRms(buf) {
+  if (!buf || buf.length <= 44) return 0;
+  let sum = 0;
+  let n = 0;
+  for (let i = 44; i + 1 < buf.length; i += 2) {
+    const v = buf.readInt16LE(i) / 32768;
+    sum += v * v;
+    n++;
+  }
+  return n ? Math.sqrt(sum / n) : 0;
 }
 
 /**
@@ -357,6 +443,7 @@ function formatTranscript(rawText, options = {}) {
   if (level !== 'none') {
     text = applySpokenEmails(text);
     text = normalizeTimes(text);
+    text = normalizeMoney(text);
     text = applySpokenEmoji(text);
     text = fixHomophones(text);
     text = applyListFormation(text);
@@ -372,12 +459,17 @@ function formatTranscript(rawText, options = {}) {
   }
   text = finalTidy(text);
   text = applyStyle(text, textStyle, dictionary);
+  if (options.chatApp) text = dropTrailingPeriodForChat(text);
   return { text, pressEnter };
 }
 
 module.exports = {
   formatTranscript,
   adjustForContext,
+  isLikelyHallucination,
+  wavRms,
+  normalizeMoney,
+  dropTrailingPeriodForChat,
   stripEmDashes,
   stripFillers,
   stripPreamble,

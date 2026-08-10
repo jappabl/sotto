@@ -94,8 +94,16 @@ function boot() {
     }
 
     const trayCtl = createTray(ctx);
-    hotkeys.on('holdStart', () => trayCtl.rebuild());
-    hotkeys.on('holdEnd', () => trayCtl.rebuild());
+    recorder.onStateChange = (state) => trayCtl.setRecording(state === 'recording');
+
+    // Global "paste last transcript" — works even if the original paste
+    // landed in the wrong field.
+    const { globalShortcut } = require('electron');
+    try {
+      globalShortcut.register('Command+Control+V', () => inserter.pasteLast());
+    } catch (e) {
+      log('paste-last shortcut unavailable: ' + e.message);
+    }
 
     hotkeys.on('axChange', (trusted) => {
       log('accessibility: ' + trusted);
@@ -105,6 +113,17 @@ function boot() {
     });
 
     hotkeys.start();
+
+    // Keep the flow bar on-screen when displays connect/disconnect or change
+    // resolution — a saved position can otherwise land in the void.
+    const { screen } = require('electron');
+    const reposition = () => {
+      const { setFlowbarPosition } = require('./windows');
+      setFlowbarPosition(windows.flowbar, store.getSettings());
+    };
+    screen.on('display-added', reposition);
+    screen.on('display-removed', reposition);
+    screen.on('display-metrics-changed', reposition);
 
     // Warm the transcription server so the first dictation is fast.
     if (transcriber.hasModel(settings.model)) {
@@ -252,6 +271,9 @@ async function runE2EDictation(ctx) {
     if (recorder.state === 'idle') {
       const hist = store.getHistory({ limit: 1 });
       if (hist.length) {
+        // The pasteboard write goes through keymon's runloop — give it a beat
+        // before reading, so the assertion doesn't race the write.
+        await sleep(400);
         const { clipboard } = require('electron');
         process.stdout.write('E2E_RESULT ' + JSON.stringify({
           text: hist[0].text,

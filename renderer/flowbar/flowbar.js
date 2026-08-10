@@ -229,6 +229,8 @@ window.sotto.on('flow:record-cancel', async ({ keepAudio }) => {
   const { wav, durMs } = collectWav();
   teardownCapture();
   setState('idle');
+  const settings = await window.sotto.invoke('settings:get');
+  if (settings.soundEffects) blip(392, 130, 0.05); // soft downward "nope"
   await window.sotto.sendAudio(keepAudio ? wav : null, { durMs, cancelled: true });
 });
 
@@ -239,6 +241,8 @@ window.sotto.on('flow:done', async ({ words }) => {
     if (settings.soundEffects) { blip(660, 90); blip(990, 120, 0.05, 70); }
     setTimeout(() => setState('idle'), 700);
   } else {
+    // Distinct empty-result cue, so nobody waits for a paste that isn't coming.
+    if (settings.soundEffects && state === 'processing') blip(294, 140, 0.045);
     setState('idle');
   }
 });

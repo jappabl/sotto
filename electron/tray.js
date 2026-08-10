@@ -3,14 +3,16 @@
 const { Tray, Menu, nativeImage } = require('electron');
 const path = require('path');
 
+function loadTemplate(name) {
+  const image = nativeImage.createFromPath(path.join(__dirname, '..', 'assets', name));
+  if (!image.isEmpty()) image.setTemplateImage(true);
+  return image;
+}
+
 function createTray(ctx) {
-  const iconPath = path.join(__dirname, '..', 'assets', 'trayTemplate.png');
-  let image = nativeImage.createFromPath(iconPath);
-  if (image.isEmpty()) {
-    image = nativeImage.createEmpty();
-  }
-  image.setTemplateImage(true);
-  const tray = new Tray(image);
+  const idleImage = loadTemplate('trayTemplate.png');
+  const recImage = loadTemplate('trayRecordingTemplate.png');
+  const tray = new Tray(idleImage.isEmpty() ? nativeImage.createEmpty() : idleImage);
   tray.setToolTip('Sotto — voice dictation');
 
   const rebuild = () => {
@@ -41,7 +43,12 @@ function createTray(ctx) {
     tray.setContextMenu(menu);
   };
   rebuild();
-  return { tray, rebuild };
+  const setRecording = (recording) => {
+    const img = recording ? recImage : idleImage;
+    if (!img.isEmpty()) tray.setImage(img);
+    rebuild();
+  };
+  return { tray, rebuild, setRecording };
 }
 
 module.exports = { createTray };

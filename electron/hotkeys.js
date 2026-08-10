@@ -148,6 +148,14 @@ class Hotkeys {
     this.send('paste!');
   }
 
+  // Set the OS pasteboard through keymon, marked concealed so clipboard
+  // managers ignore it. Returns false when keymon isn't running.
+  setPasteboard(text) {
+    if (!this.proc || !this.proc.stdin.writable) return false;
+    this.send('pb! ' + Buffer.from(String(text), 'utf8').toString('base64'));
+    return true;
+  }
+
   queryFront() {
     return new Promise((resolve) => {
       this._frontWaiters.push(resolve);
