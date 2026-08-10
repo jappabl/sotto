@@ -1,5 +1,7 @@
 # Sotto
 
+![Sotto](assets/logo.png)
+
 **Open-source voice dictation for macOS.** Hold a key, speak, release — clean,
 formatted text appears at your cursor in any app. Modeled on the Wispr Flow
 experience, rebuilt from scratch, and **100% local**: transcription runs
@@ -83,7 +85,7 @@ Requirements: macOS 13+ on Apple Silicon, Xcode Command Line Tools
 whisper.cpp for building (`brew install whisper-cpp`).
 
 ```bash
-git clone <this repo> sotto && cd sotto
+git clone https://github.com/jappabl/sotto.git && cd sotto
 npm install
 npm run build:native   # builds keymon + bundles whisper.cpp into bin/
 npm start
