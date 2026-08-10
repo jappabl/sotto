@@ -15,7 +15,8 @@ const MODEL_URLS = {
 
 function findBinary(name) {
   const candidates = [
-    path.join(process.resourcesPath || '', 'bin', name),
+    path.join(process.resourcesPath || '', 'bin', name), // packaged app
+    path.join(__dirname, '..', 'bin', name),             // dev checkout
     `/opt/homebrew/bin/${name}`,
     `/usr/local/bin/${name}`,
   ];

@@ -8,10 +8,10 @@
   "main": "electron/main.js",
   "scripts": {
     "start": "electron .",
-    "build:native": "./native/build.sh",
-    "test": "node --test test/unit/",
-    "test:smoke": "node test/smoke/transcribe.test.js && node test/smoke/applaunch.test.js",
-    "dist": "electron-builder --mac"
+    "build:native": "./native/build.sh && ./native/bundle-whisper.sh",
+    "test": "node --test 'test/unit/*.test.js'",
+    "test:smoke": "node test/smoke/transcribe.test.js && node test/smoke/applaunch.test.js && node test/smoke/dictation.test.js",
+    "dist": "npm run build:native && electron-builder --mac"
   },
   "devDependencies": {
     "electron": "^38.2.0",
