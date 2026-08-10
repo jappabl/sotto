@@ -3,6 +3,7 @@
 import { el } from './ui.js';
 import { icons } from './icons.js';
 import { renderHome } from './pages/home.js';
+import { renderMeetings } from './pages/meetings.js';
 import { renderDictionary } from './pages/dictionary.js';
 import { renderSnippets } from './pages/snippets.js';
 import { renderStyle } from './pages/stylepage.js';
@@ -12,6 +13,7 @@ import { renderHelp } from './pages/help.js';
 
 const PAGES = {
   home: { label: 'Home', icon: icons.home, render: renderHome },
+  meetings: { label: 'Meetings', icon: icons.people, render: renderMeetings },
   dictionary: { label: 'Dictionary', icon: icons.book, render: renderDictionary },
   snippets: { label: 'Snippets', icon: icons.scissors, render: renderSnippets },
   style: { label: 'Style', icon: icons.type, render: renderStyle },

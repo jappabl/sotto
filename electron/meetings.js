@@ -234,6 +234,8 @@ class MeetingManager {
   async stop() {
     const session = this.active;
     if (!session) return { ok: false, reason: 'not-recording' };
+    // Mark first so the meetcap exit handler doesn't race us to finalize.
+    session.meta.state = 'stopping';
     try { session.proc.stdin.write('stop\n'); } catch { /* dead */ }
     // Give meetcap a moment to flush final chunks, then wait for the queue.
     await new Promise((r) => setTimeout(r, 1200));

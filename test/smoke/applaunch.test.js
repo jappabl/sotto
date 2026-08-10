@@ -39,6 +39,19 @@ fs.writeFileSync(path.join(USERDATA, 'dictionary.json'), JSON.stringify([
 fs.writeFileSync(path.join(USERDATA, 'snippets.json'), JSON.stringify([
   { id: 's1', trigger: 'personal email', expansion: 'hao@example.com', ts: now },
 ]));
+// A finished meeting so the Meetings list renders with real content.
+const mdir = path.join(USERDATA, 'meetings', 'mseed1');
+fs.mkdirSync(mdir, { recursive: true });
+fs.writeFileSync(path.join(mdir, 'meta.json'), JSON.stringify({
+  id: 'mseed1', title: 'Product sync', startedAt: now - 7200000,
+  endedAt: now - 5400000, state: 'enhanced', template: 'auto', appHint: 'Zoom', segments: 3,
+}));
+fs.writeFileSync(path.join(mdir, 'notes.md'), 'pricing pushback\nfollow up re: API');
+fs.writeFileSync(path.join(mdir, 'enhanced.md'), '## Pricing\n- **Decision:** keep the current tier structure\n\n## Action items\n- [ ] Send API docs to their team');
+fs.writeFileSync(path.join(mdir, 'transcript.jsonl'), [
+  JSON.stringify({ t0: 0, t1: 20, who: 'them', text: 'We are a bit worried about the enterprise pricing tier.' }),
+  JSON.stringify({ t0: 20, t1: 35, who: 'me', text: 'Totally fair, let me walk you through what is included.' }),
+].join('\n') + '\n');
 
 fs.rmSync(SHOTS, { recursive: true, force: true });
 fs.mkdirSync(SHOTS, { recursive: true });
@@ -73,7 +86,7 @@ child.on('exit', (code) => {
     assert.ok(out.includes('SMOKE_OK'), 'autopilot did not finish.\n' + out + err);
     assert.equal(code, 0, 'non-zero exit: ' + code + '\n' + err);
     const expected = [
-      'dash-home', 'dash-dictionary', 'dash-snippets', 'dash-style',
+      'dash-home', 'dash-meetings', 'dash-dictionary', 'dash-snippets', 'dash-style',
       'dash-insights', 'dash-settings', 'dash-help',
       'flow-idle', 'flow-recording', 'flow-processing', 'flow-error',
       'ob-0', 'ob-1', 'ob-2', 'ob-3', 'ob-4', 'ob-5', 'ob-6', 'ob-7',

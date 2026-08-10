@@ -256,7 +256,7 @@ async function runSmokeAutopilot(ctx) {
 
     windows.dashboard.show();
     await sleep(600);
-    for (const page of ['home', 'dictionary', 'snippets', 'style', 'insights', 'settings', 'help']) {
+    for (const page of ['home', 'meetings', 'dictionary', 'snippets', 'style', 'insights', 'settings', 'help']) {
       windows.dashboard.webContents.send('debug:navigate', page);
       await sleep(650);
       await capture(windows.dashboard, 'dash-' + page);
