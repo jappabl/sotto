@@ -204,7 +204,46 @@ function modelLabel(m) {
 }
 
 async function orgRow(rerender) {
-  const org = await window.sotto.invoke('org:status');
+  const [org, cap] = await Promise.all([
+    window.sotto.invoke('org:status'),
+    window.sotto.invoke('org:git-capability'),
+  ]);
+  const right = org.configured
+    ? el('span', { style: 'display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end' },
+        el('button', {
+          class: 'btn-gray',
+          onclick: async () => {
+            const ok = await window.sotto.invoke('org:invite');
+            toast(ok
+              ? 'Invite copied. Add them as a collaborator on the page that just opened.'
+              : 'This org is a plain folder. Share the folder itself to invite.');
+          },
+        }, 'Invite'),
+        el('button', {
+          class: 'btn-gray',
+          onclick: async () => {
+            toast('Syncing…');
+            const r = await window.sotto.invoke('org:sync');
+            toast(r.ok ? 'Org synced' : 'Nothing to sync');
+          },
+        }, 'Sync now'),
+        el('button', { class: 'btn-ghost', onclick: async () => { await window.sotto.invoke('org:open-folder'); } }, 'Open'),
+        el('button', { class: 'btn-ghost', onclick: async () => { await window.sotto.invoke('org:leave'); rerender(); } }, 'Leave'),
+      )
+    : el('span', { style: 'display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end' },
+        cap.gh ? el('button', {
+          class: 'btn-dark',
+          onclick: () => orgNameModal(rerender, cap.login),
+        }, 'Create on GitHub') : null,
+        el('button', {
+          class: 'btn-gray',
+          onclick: () => orgJoinModal(rerender),
+        }, 'Join from GitHub'),
+        el('button', {
+          class: 'btn-ghost',
+          onclick: async () => { await window.sotto.invoke('org:choose'); rerender(); },
+        }, 'Use a folder'),
+      );
   return el('div', { class: 'setting-row' },
     el('div', { class: 'setting-info' },
       el('div', { class: 'setting-name' }, 'Org space'),
@@ -212,19 +251,77 @@ async function orgRow(rerender) {
         org.configured
           ? el('span', {}, 'Sharing through ', el('b', {}, org.name),
               org.members > 1 ? ` · ${org.members} people have shared` : '',
-              '. Meeting notes you share land there; teammates pointing Sotto at the same folder see them.')
-          : 'Pick a folder your team already shares (iCloud, Dropbox, Drive, a repo). Shared notes travel through it. No accounts, no server.'),
+              '. Notes you share sync automatically; teammates in the same org see them in Meetings.')
+          : cap.gh
+            ? `One click makes a private repo on your GitHub (${cap.login}) that becomes your team's shared notes space. Joining is pasting owner/repo. No accounts beyond GitHub, no server.`
+            : 'Join a GitHub-backed org by pasting owner/repo, or use any shared folder (iCloud, Dropbox, Drive). Install the gh CLI to create orgs in one click.'),
     ),
-    org.configured
-      ? el('span', { style: 'display:flex;gap:8px' },
-          el('button', { class: 'btn-gray', onclick: async () => { await window.sotto.invoke('org:open-folder'); } }, 'Open'),
-          el('button', { class: 'btn-ghost', onclick: async () => { await window.sotto.invoke('org:leave'); rerender(); } }, 'Leave'),
-        )
-      : el('button', {
-          class: 'btn-gray',
-          onclick: async () => { await window.sotto.invoke('org:choose'); rerender(); },
-        }, 'Choose folder'),
+    right,
   );
+}
+
+function orgNameModal(rerender, login) {
+  const input = el('input', { placeholder: 'e.g. team-notes', maxlength: '60' });
+  const go = async () => {
+    const name = input.value.trim();
+    if (!name) return;
+    close();
+    toast('Creating your org on GitHub…');
+    try {
+      const r = await window.sotto.invoke('org:create-github', name);
+      toast(`Org "${r.name}" is live. Use Invite to add people.`);
+    } catch (e) {
+      toast(String(e.message || 'Creation failed').replace(/^.*Error:\s*/, '').slice(0, 90));
+    }
+    rerender();
+  };
+  const modal = el('div', { class: 'modal form-modal' },
+    el('h2', {}, 'Create your org'),
+    el('div', { class: 'form-field' },
+      el('label', {}, 'Org name'),
+      input,
+      el('div', { class: 'form-hint' }, `Creates a private repo under ${login}. Teammates you invite as collaborators become the org.`),
+    ),
+    el('div', { class: 'form-actions' },
+      el('button', { class: 'btn-gray', onclick: () => close() }, 'Cancel'),
+      el('button', { class: 'btn-dark', onclick: go }, 'Create'),
+    ),
+  );
+  const close = openModal(modal);
+  input.focus();
+  modal.addEventListener('keydown', (e) => { if (e.key === 'Enter') go(); });
+}
+
+function orgJoinModal(rerender) {
+  const input = el('input', { placeholder: 'owner/repo or a github.com link' });
+  const go = async () => {
+    const ref = input.value.trim();
+    if (!ref) return;
+    close();
+    toast('Joining org…');
+    try {
+      const r = await window.sotto.invoke('org:join-github', ref);
+      toast(`Joined "${r.name}". Shared notes appear in Meetings.`);
+    } catch (e) {
+      toast(String(e.message || 'Join failed').replace(/^.*Error:\s*/, '').slice(0, 90));
+    }
+    rerender();
+  };
+  const modal = el('div', { class: 'modal form-modal' },
+    el('h2', {}, 'Join an org'),
+    el('div', { class: 'form-field' },
+      el('label', {}, 'GitHub repo'),
+      input,
+      el('div', { class: 'form-hint' }, 'Ask a teammate for their org repo, like jappabl/team-notes. Private repos need you added as a collaborator first.'),
+    ),
+    el('div', { class: 'form-actions' },
+      el('button', { class: 'btn-gray', onclick: () => close() }, 'Cancel'),
+      el('button', { class: 'btn-dark', onclick: go }, 'Join'),
+    ),
+  );
+  const close = openModal(modal);
+  input.focus();
+  modal.addEventListener('keydown', (e) => { if (e.key === 'Enter') go(); });
 }
 
 async function micRow(settings, save) {

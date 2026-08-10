@@ -101,6 +101,28 @@ function boot() {
     };
     orgspace.watch();
 
+    const { GitOrg } = require('./gitorg');
+    const gitorg = new GitOrg({
+      baseDir: userData,
+      getSettings: () => store.getSettings(),
+      setSettings: (p) => store.setSettings(p),
+      log,
+    });
+    ctx.gitorg = gitorg;
+    gitorg.onSynced = () => orgspace.onChange && orgspace.onChange();
+    // Keep the org fresh: pull/push at launch and every 3 minutes.
+    if (!SMOKE) {
+      setTimeout(() => gitorg.sync('launch'), 8000);
+      setInterval(() => gitorg.sync('timer'), 3 * 60 * 1000);
+    }
+    // Push right after a share lands in the folder.
+    const origShare = orgspace.share.bind(orgspace);
+    orgspace.share = (...args) => {
+      const r = origShare(...args);
+      if (r.ok) setTimeout(() => gitorg.sync('share'), 500);
+      return r;
+    };
+
     // Meeting events flow to the dashboard for live UI.
     meetings.onEvent = (event, payload) => {
       if (windows.dashboard && !windows.dashboard.isDestroyed()) {

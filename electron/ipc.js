@@ -274,6 +274,32 @@ function registerIpc(ctx) {
     return true;
   });
 
+  // ---- GitHub-backed orgs (zero-git-knowledge flows) ----
+  const { gitorg } = ctx;
+  ipcMain.handle('org:git-capability', () => gitorg.capability());
+  ipcMain.handle('org:create-github', async (_e, name) => {
+    const r = await gitorg.create(name);
+    orgspace.watch();
+    await gitorg.sync('create');
+    return { ok: true, ...r };
+  });
+  ipcMain.handle('org:join-github', async (_e, ref) => {
+    const r = await gitorg.join(ref);
+    orgspace.watch();
+    await gitorg.sync('join');
+    return { ok: true, ...r };
+  });
+  ipcMain.handle('org:sync', () => gitorg.sync('manual'));
+  ipcMain.handle('org:invite', async () => {
+    const info = await gitorg.inviteUrl();
+    if (info) {
+      require('electron').clipboard.writeText(
+        `Join my Sotto org: install Sotto (github.com/jappabl/sotto), then Settings > General > Org space > Join from GitHub, and paste: ${info.slug}\n(I need to add you as a collaborator first: ${info.settings})`);
+      shell.openExternal(info.settings);
+    }
+    return !!info;
+  });
+
   // ---- onboarding ----
   ipcMain.handle('ob:finish', (_e, { userName }) => {
     store.setSettings({ onboarded: true, userName: userName || store.getSettings().userName });
