@@ -36,8 +36,10 @@
       "target": [{ "target": "dmg", "arch": ["arm64"] }],
       "extendInfo": {
         "NSMicrophoneUsageDescription": "Sotto uses the microphone to transcribe your speech into text.",
+        "NSAudioCaptureUsageDescription": "Sotto records meeting audio locally on this Mac to transcribe your meetings.",
         "LSUIElement": false
       }
-    }
+    },
+    "afterSign": "native/afterSign.js"
   }
 }
