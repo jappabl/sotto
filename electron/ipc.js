@@ -319,6 +319,17 @@ function registerIpc(ctx) {
     return { organized };
   });
 
+  // ---- pre-meeting briefs ----
+  const { calendar, briefer } = ctx;
+  ipcMain.handle('cal:status', async () => ({
+    available: calendar.available(),
+    status: await calendar.status(),
+  }));
+  ipcMain.handle('cal:request', () => calendar.requestAccess());
+  ipcMain.handle('cal:upcoming', (_e, hours) => calendar.upcoming(hours || 12));
+  ipcMain.handle('brief:build', async (_e, { event, force }) => briefer.build(event, { force }));
+  ipcMain.handle('brief:cached', (_e, eventId) => briefer.cache[eventId] || null);
+
   // ---- knowledge (ask everything) ----
   const { knowledge, embedder } = ctx;
   ipcMain.handle('know:stats', () => {

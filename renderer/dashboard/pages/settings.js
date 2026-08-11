@@ -111,6 +111,18 @@ export async function renderSettings(container) {
       onChange: (v) => save({ commandMode: v }, rerender),
     }));
     body.append(toggleRow({
+      name: 'Pre-meeting briefs',
+      desc: 'A few minutes before a calendar meeting, Sotto reminds you what you last agreed with the people in it. Built from your own notes, on this Mac.',
+      value: settings.preMeetingBriefs,
+      onChange: (v) => save({ preMeetingBriefs: v }, rerender),
+    }));
+    body.append(toggleRow({
+      name: 'Look up companies online',
+      desc: 'Also fetch the other side’s company website for a brief. This is the one thing Sotto sends outward: their domain, to their own site. Off by default.',
+      value: settings.webRecon,
+      onChange: (v) => save({ webRecon: v }, rerender),
+    }));
+    body.append(toggleRow({
       name: 'Meeting detection',
       desc: 'When a call starts in Zoom, Teams, Webex, FaceTime, Slack, or Discord, offer to take meeting notes.',
       value: settings.meetingDetection,

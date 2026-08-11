@@ -1025,3 +1025,19 @@ html, body { height: 100%; overflow: hidden; background: var(--cream); }
   padding: 18px 20px;
   max-width: 720px;
 }
+
+/* ---------- pre-meeting briefs ---------- */
+.brief-body {
+  padding: 4px 20px 18px 84px;
+  border-top: 1px solid var(--line-soft);
+  background: #fafaf7;
+}
+.brief-body .meet-rendered { max-width: 620px; font-size: 14px; }
+.brief-body .meet-rendered h2,
+.brief-body .meet-rendered h3 { font-size: 13px; margin: 14px 0 6px; color: var(--ink-soft); }
+.brief-empty { color: var(--ink-faint); font-size: 13.5px; padding: 10px 0; }
+.brief-src {
+  margin-top: 12px;
+  font-size: 11.5px;
+  color: var(--ink-faint);
+}

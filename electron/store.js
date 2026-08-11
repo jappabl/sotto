@@ -22,6 +22,9 @@ const DEFAULT_SETTINGS = {
   aiPolish: false,           // local-LLM cleanup pass (needs LLM model)
   meetingDetection: true,    // offer to take notes when a call starts
   semanticSearch: true,      // hybrid embeddings in Ask (needs embed model)
+  preMeetingBriefs: true,    // brief me before calendar meetings (local only)
+  webRecon: false,           // ALSO fetch the counterpart company's site
+                             // (opt-in: this is the one outbound request)
   askHotkey: 'Command+Shift+A', // speak a question, hear the answer
   askSpeaks: true,           // read answers aloud (macOS `say`)
   brainDumpHotkey: 'Command+Shift+N', // ramble -> organized note

@@ -9,4 +9,9 @@ swiftc -O keymon.swift -o ../bin/keymon
 swiftc -O meetcap.swift -o ../bin/meetcap \
   -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __info_plist -Xlinker meetcap-info.plist
 codesign --force --sign - ../bin/meetcap >/dev/null 2>&1 || true
-echo "built bin/keymon bin/meetcap"
+# calmon reads the calendar for pre-meeting briefs; its plist carries the
+# usage strings macOS shows in the permission prompt.
+swiftc -O calmon.swift -o ../bin/calmon \
+  -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __info_plist -Xlinker calmon-info.plist
+codesign --force --sign - ../bin/calmon >/dev/null 2>&1 || true
+echo "built bin/keymon bin/meetcap bin/calmon"

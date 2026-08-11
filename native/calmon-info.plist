@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>CFBundleIdentifier</key>
+  <string>dev.haolin.sotto.calmon</string>
+  <key>CFBundleName</key>
+  <string>Sotto Calendar</string>
+  <key>NSCalendarsUsageDescription</key>
+  <string>Sotto reads your upcoming meetings on this Mac to prepare a brief before each call. It never edits your calendar.</string>
+  <key>NSCalendarsFullAccessUsageDescription</key>
+  <string>Sotto reads your upcoming meetings on this Mac to prepare a brief before each call. It never edits your calendar.</string>
+</dict>
+</plist>

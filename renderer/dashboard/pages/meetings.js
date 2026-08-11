@@ -31,11 +31,12 @@ export async function renderMeetings(container) {
 // ---------------------------------------------------------------------------
 
 async function renderList(container) {
-  const [meetings, status, org, shared] = await Promise.all([
+  const [meetings, status, org, shared, cal] = await Promise.all([
     window.sotto.invoke('meet:list'),
     window.sotto.invoke('meet:status'),
     window.sotto.invoke('org:status'),
     window.sotto.invoke('org:list'),
+    window.sotto.invoke('cal:status').catch(() => ({ available: false })),
   ]);
   container.replaceChildren();
   unsubs.push(window.sotto.on('org:changed', () => {
@@ -61,6 +62,8 @@ async function renderList(container) {
           }, 'Start meeting notes'),
     ),
   );
+
+  await renderComingUp(container, cal);
 
   if (meetings.length === 0) {
     container.append(
@@ -127,6 +130,87 @@ async function renderList(container) {
         'Working with a team? Point Sotto at a shared folder in Settings → General and shared notes appear here for everyone. No accounts, no server.'),
     );
   }
+}
+
+// "Coming up": the next few calendar meetings, each with a brief built from
+// what you already know about the people in them.
+async function renderComingUp(container, cal) {
+  if (!cal || !cal.available) return;
+  if (cal.status !== 'authorized') {
+    container.append(
+      el('div', { class: 'tip-card', style: 'margin-bottom:22px' },
+        el('div', {},
+          el('h3', {}, 'Get briefed before every call'),
+          el('p', {}, 'Let Sotto read your calendar and it will remind you what you last agreed with the people you are about to meet. Read-only, and it stays on this Mac.'),
+        ),
+        el('button', {
+          class: 'btn-dark',
+          onclick: async () => {
+            await window.sotto.invoke('cal:request');
+            renderList(container);
+          },
+        }, 'Connect calendar'),
+      ),
+    );
+    return;
+  }
+
+  const { events } = await window.sotto.invoke('cal:upcoming', 12).catch(() => ({ events: [] }));
+  if (!events.length) return;
+
+  container.append(el('div', { class: 'day-label' }, 'COMING UP'));
+  const list = el('div', { class: 'activity-list' });
+  for (const ev of events.slice(0, 4)) {
+    const who = (ev.attendees || []).map((a) => a.name || a.email).filter(Boolean);
+    const row = el('div', { class: 'activity-row' },
+      el('div', { class: 'act-time' }, timeLabel(ev.startMs)),
+      el('div', { class: 'act-text' },
+        el('span', { style: 'font-weight:600' }, ev.title),
+        who.length ? el('span', { style: 'color:var(--ink-faint)' }, `  ·  ${who.slice(0, 3).join(', ')}`) : null,
+      ),
+      el('button', {
+        class: 'btn-gray', style: 'padding:4px 12px;font-size:12.5px;white-space:nowrap',
+        onclick: async (e) => {
+          const btn = e.target;
+          btn.textContent = 'Preparing…';
+          const brief = await window.sotto.invoke('brief:build', { event: ev }).catch(() => null);
+          btn.remove();
+          showBrief(row, brief);
+        },
+      }, 'Brief me'),
+    );
+    list.append(row);
+  }
+  container.append(list);
+
+  // A notification click asks us to open a specific brief immediately.
+  unsubs.push(window.sotto.on('brief:open', async ({ eventId }) => {
+    const cached = await window.sotto.invoke('brief:cached', eventId).catch(() => null);
+    if (cached) {
+      const first = list.querySelector('.activity-row');
+      if (first) showBrief(first, cached);
+    }
+  }));
+}
+
+function showBrief(row, brief) {
+  const existing = row.parentElement.querySelector('.brief-body');
+  if (existing) existing.remove();
+  const body = el('div', { class: 'brief-body' });
+  if (!brief || brief.empty || !brief.text) {
+    body.append(el('div', { class: 'brief-empty' },
+      'Nothing in your notes about this one yet.'));
+  } else {
+    body.append(el('div', { class: 'meet-rendered', html: renderMarkdown(brief.text) }));
+    if (brief.company) {
+      body.append(el('div', { class: 'brief-src' }, `Company info from ${brief.company.domain}`));
+    }
+    if (brief.sources && brief.sources.length) {
+      body.append(el('div', { class: 'brief-src' },
+        'From your notes: ' + brief.sources.slice(0, 3).map((s) => s.title).join(' · ')));
+    }
+  }
+  row.after(body);
 }
 
 function meetingRow(m, container, status) {

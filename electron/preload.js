@@ -32,6 +32,7 @@ const listenChannels = [
   'debug:ask-demo',
   'debug:ask-phase',
   'notes:changed',
+  'brief:open',
 ];
 
 contextBridge.exposeInMainWorld('sotto', {

@@ -87,6 +87,13 @@ function boot() {
     const embedder = new Embedder({ modelsDir: path.join(userData, 'models'), log });
     const { Knowledge } = require('./knowledge');
     const knowledge = new Knowledge({ store, meetings, orgspace, polisher, embedder, notes, baseDir: userData, log });
+    const { Calendar } = require('./calendar');
+    const calendar = new Calendar({ log });
+    const { Briefer } = require('./briefer');
+    const briefer = new Briefer({
+      knowledge, polisher, calendar, baseDir: userData,
+      getSettings: () => store.getSettings(), log,
+    });
 
     // First-run demo meeting: lets you try Enhance before your first real call.
     if (meetings.list().length === 0 && !store.getSettings().demoSeeded) {
@@ -102,7 +109,7 @@ function boot() {
       flowbar: null,
       onboarding: null,
     };
-    const ctx = { store, hotkeys, transcriber, polisher, inserter, recorder, meetings, enhancer, orgspace, knowledge, embedder, notes, windows, app, log };
+    const ctx = { store, hotkeys, transcriber, polisher, inserter, recorder, meetings, enhancer, orgspace, knowledge, embedder, notes, calendar, briefer, windows, app, log };
 
     // A finished brain dump gets organized by the local model, then indexed.
     recorder.onBrainDump = async (meta) => {
@@ -183,6 +190,37 @@ function boot() {
         }
       }
     };
+
+    // Pre-meeting brief: a few minutes before a calendar meeting, prepare the
+    // brief quietly and offer it. Never for meetings you have nothing on.
+    const briefed = new Set();
+    setInterval(async () => {
+      try {
+        if (!store.getSettings().preMeetingBriefs) return;
+        if (!calendar.available()) return;
+        const ev = await calendar.next({ withinMinutes: 6 });
+        if (!ev || briefed.has(ev.id)) return;
+        briefed.add(ev.id);
+        const brief = await briefer.build(ev);
+        if (!brief || brief.empty) return;
+        const n = new (require('electron').Notification)({
+          title: `${ev.title} in a few minutes`,
+          body: brief.attendees.length
+            ? `You have notes on ${brief.attendees.slice(0, 2).join(' and ')}. Click to review.`
+            : 'You have related notes. Click to review.',
+          silent: true,
+        });
+        n.on('click', () => {
+          if (windows.dashboard && !windows.dashboard.isDestroyed()) {
+            windows.dashboard.show();
+            windows.dashboard.webContents.send('brief:open', { eventId: brief.eventId });
+            windows.dashboard.webContents.send('debug:navigate', 'meetings');
+          }
+        });
+        n.show();
+        log(`pre-meeting brief ready: ${ev.title}`);
+      } catch (e) { log('brief check failed: ' + e.message); }
+    }, 120000);
 
     // Meeting detection: when a meeting app holds the mic and we're not
     // already capturing, offer to take notes (once per hour per app).
