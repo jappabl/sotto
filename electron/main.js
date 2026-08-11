@@ -432,7 +432,7 @@ async function runSmokeAutopilot(ctx) {
       await capture(windows.dashboard, 'dash-' + page);
     }
 
-    for (const state of ['idle', 'recording', 'processing', 'error']) {
+    for (const state of ['idle', 'recording', 'processing', 'flash', 'error', 'command', 'meeting']) {
       windows.flowbar.webContents.send('debug:flow-state', state);
       await sleep(450);
       await capture(windows.flowbar, 'flow-' + state);
@@ -443,7 +443,7 @@ async function runSmokeAutopilot(ctx) {
     const { setFlowbarExpanded } = require('./windows');
     setFlowbarExpanded(windows.flowbar, ctx.store.getSettings(), true);
     await sleep(250);
-    for (const phase of ['listening', 'thinking']) {
+    for (const phase of ['listening', 'thinking', 'error']) {
       windows.flowbar.webContents.send('debug:ask-phase', phase);
       await sleep(600);
       await capture(windows.flowbar, 'flow-ask-' + phase);

@@ -88,8 +88,9 @@ child.on('exit', (code) => {
     const expected = [
       'dash-home', 'dash-ask', 'dash-meetings', 'dash-dictionary', 'dash-snippets', 'dash-style',
       'dash-insights', 'dash-settings', 'dash-help',
-      'flow-idle', 'flow-recording', 'flow-processing', 'flow-error',
-      'flow-ask-listening', 'flow-ask-thinking', 'flow-ask',
+      'flow-idle', 'flow-recording', 'flow-processing', 'flow-flash', 'flow-error',
+      'flow-command', 'flow-meeting',
+      'flow-ask-listening', 'flow-ask-thinking', 'flow-ask-error', 'flow-ask',
       'ob-0', 'ob-1', 'ob-2', 'ob-3', 'ob-4', 'ob-5', 'ob-6', 'ob-7',
     ];
     for (const name of expected) {

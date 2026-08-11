@@ -326,9 +326,15 @@ document.addEventListener('mouseup', async () => {
 
 // Visual smoke-test hook: force a pill state without recording.
 window.sotto.on('debug:flow-state', (which) => {
-  if (which === 'recording') {
+  askActive = false;
+  commandMode = which === 'command';
+  meetingLive = which === 'meeting';
+  if (which === 'recording' || which === 'command' || which === 'meeting') {
     setState('recording');
-    levels = levels.map(() => 0.15 + Math.random() * 0.8);
+    levels = levels.map((_, i) => 0.2 + Math.abs(Math.sin(i * 0.8)) * 0.75);
+    for (let i = 0; i < NUM_BARS; i++) {
+      barEls[i].style.height = Math.max(3, Math.round(levels[i] * 24)) + 'px';
+    }
   } else if (which === 'error') {
     setState('error');
     msg.textContent = 'Transcription failed';
@@ -612,7 +618,8 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && askActiv
 window.sotto.on('debug:ask-phase', (phase) => {
   askActive = true;
   askSetPhase(phase);
-  askLabel.textContent = phase === 'listening' ? 'Listening' : 'Thinking';
+  askLabel.textContent = phase === 'listening' ? 'Listening'
+    : phase === 'error' ? 'I didn’t catch that' : 'Thinking';
   if (phase === 'listening') {
     askBarEls.forEach((b, i) => { b.style.height = Math.max(2, Math.round(Math.abs(Math.sin(i * 0.7)) * 12)) + 'px'; });
   }
