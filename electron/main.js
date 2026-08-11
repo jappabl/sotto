@@ -479,7 +479,15 @@ async function runSmokeAutopilot(ctx) {
         if (seen.split('|')[0].trim() === page) break;
         await sleep(100);
       }
-      await sleep(250);
+      // The DOM being right does not mean the pixels are. Wait for two real
+      // frames or the capture can catch a half-updated compositor frame: new
+      // sidebar, previous page's content.
+      await windows.dashboard.webContents.executeJavaScript(
+        `Promise.race([
+          new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(() => setTimeout(r, 120)))),
+          new Promise((r) => setTimeout(r, 900)),
+        ])`,
+      ).catch(() => {});
       await capture(windows.dashboard, 'dash-' + page);
       process.stdout.write(`PAGE ${page} :: ${seen.trim()}\n`);
     }

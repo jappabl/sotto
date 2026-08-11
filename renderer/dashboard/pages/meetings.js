@@ -153,7 +153,13 @@ async function fillComingUp(slot, container) {
           class: 'btn-cal',
           title: 'Connect calendar',
           onclick: async () => {
-            await window.sotto.invoke('cal:request');
+            const status = await window.sotto.invoke('cal:request').catch(() => null);
+            // macOS only ever shows its prompt once. If it was already answered,
+            // the click has nothing to show, so send them where they can change it.
+            if (status !== 'authorized') {
+              toast('Calendar access is off. Turn on Sotto under Privacy and Security.');
+              await window.sotto.invoke('perm:cal-open-settings').catch(() => {});
+            }
             renderList(container);
           },
         }, el('span', { html: icons.gcal })),

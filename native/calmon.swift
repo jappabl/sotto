@@ -33,15 +33,21 @@ func authStatusString() -> String {
 }
 
 func requestAccess() {
+    // The completion lands on an arbitrary queue, and this process spends the
+    // rest of its life blocked on readLine, so wait here and pump the run loop
+    // rather than hoping the callback finds somewhere to run.
+    let sem = DispatchSemaphore(value: 0)
     if #available(macOS 14.0, *) {
-        store.requestFullAccessToEvents { _, _ in
-            emit(["e": "auth", "status": authStatusString()])
-        }
+        store.requestFullAccessToEvents { _, _ in sem.signal() }
     } else {
-        store.requestAccess(to: .event) { _, _ in
-            emit(["e": "auth", "status": authStatusString()])
-        }
+        store.requestAccess(to: .event) { _, _ in sem.signal() }
     }
+    let deadline = Date().addingTimeInterval(120)
+    while sem.wait(timeout: .now() + 0.05) == .timedOut {
+        RunLoop.current.run(mode: .default, before: Date().addingTimeInterval(0.05))
+        if Date() > deadline { break }   // prompt left unanswered
+    }
+    emit(["e": "auth", "status": authStatusString()])
 }
 
 func emailOf(_ p: EKParticipant) -> String {

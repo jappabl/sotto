@@ -135,6 +135,10 @@ function registerIpc(ctx) {
     shell.openExternal('x-apple.systempreferences:com.apple.preference.security?Privacy_Microphone');
     return true;
   });
+  ipcMain.handle('perm:cal-open-settings', () => {
+    shell.openExternal('x-apple.systempreferences:com.apple.preference.security?Privacy_Calendars');
+    return true;
+  });
 
   // ---- models ----
   ipcMain.handle('models:list', () => transcriber.listModels());

@@ -37,6 +37,8 @@
       "extendInfo": {
         "NSMicrophoneUsageDescription": "Sotto uses the microphone to transcribe your speech into text.",
         "NSAudioCaptureUsageDescription": "Sotto records meeting audio locally on this Mac to transcribe your meetings.",
+        "NSCalendarsUsageDescription": "Sotto reads your upcoming events so it can remind you what you last agreed with the people you are about to meet.",
+        "NSCalendarsFullAccessUsageDescription": "Sotto reads your upcoming events so it can remind you what you last agreed with the people you are about to meet.",
         "LSUIElement": false
       }
     },

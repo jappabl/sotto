@@ -38,7 +38,7 @@ export const icons = {
 
   // Google Calendar mark, for the connect affordance. Calendars reach Sotto
   // through macOS Calendar, which is where most people's Google account lives.
-  gcal: `<svg viewBox="0 0 48 48" width="22" height="22" aria-hidden="true">
+  gcal: `<svg viewBox="9 9 30 30" width="22" height="22" aria-hidden="true">
     <rect x="10" y="10" width="28" height="28" fill="#fff"/>
     <path d="M10 10h28v5H10z" fill="#ea4335"/>
     <path d="M33 10h5v28h-5z" fill="#fbbc04"/>
