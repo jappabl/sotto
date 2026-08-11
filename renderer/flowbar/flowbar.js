@@ -44,18 +44,32 @@ let stopping = false;
 // Loopback/virtual devices route SYSTEM audio in as a "microphone" — never
 // auto-select one of those for dictation.
 const VIRTUAL_MIC = /blackhole|soundflower|loopback|aggregate|vb-?cable|obs|virtual/i;
+const BUILTIN_MIC = /macbook.*microphone|built-?in/i;
 
 async function resolveMicDeviceId(setting) {
   try {
-    const devices = (await navigator.mediaDevices.enumerateDevices())
-      .filter((d) => d.kind === 'audioinput');
+    const devices = await navigator.mediaDevices.enumerateDevices();
+    const inputs = devices.filter((d) => d.kind === 'audioinput');
     if (setting && setting !== 'auto') {
-      if (devices.some((d) => d.deviceId === setting)) return setting;
+      if (inputs.some((d) => d.deviceId === setting)) return setting;
     }
-    // auto: keep the system default unless it's a virtual device.
-    const def = devices.find((d) => d.deviceId === 'default');
+    const builtin = inputs.find((d) => BUILTIN_MIC.test(d.label));
+    const def = inputs.find((d) => d.deviceId === 'default');
+
+    // A Bluetooth headset used as the mic drops the whole device into
+    // low-quality HFP "call mode" and mixes playback into the capture — voice
+    // recognition falls apart. Detect it (the default input also exists as an
+    // output device with the same name) and prefer the clean built-in mic.
+    if (def && builtin && def.deviceId !== builtin.deviceId) {
+      const outLabels = devices.filter((d) => d.kind === 'audiooutput').map((d) => d.label);
+      const defName = def.label.replace(/^default\s*-?\s*/i, '').trim();
+      const isHeadset = defName && outLabels.some((o) =>
+        o.replace(/^default\s*-?\s*/i, '').trim() === defName);
+      if (isHeadset) return builtin.deviceId; // route mic to built-in, keep audio on the headset
+    }
+
     if (def && !VIRTUAL_MIC.test(def.label)) return undefined; // system default is fine
-    const real = devices.find((d) => d.deviceId !== 'default' && !VIRTUAL_MIC.test(d.label));
+    const real = inputs.find((d) => d.deviceId !== 'default' && !VIRTUAL_MIC.test(d.label));
     return real ? real.deviceId : undefined;
   } catch {
     return undefined;

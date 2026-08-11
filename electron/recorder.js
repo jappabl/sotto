@@ -221,7 +221,14 @@ class Recorder {
       // Whisper hallucinates pleasantries on near-silence — drop them.
       if (formatter.isLikelyHallucination(rawText, rms)) {
         this.log(`dropped silence hallucination (rms ${rms.toFixed(4)}): ${rawText.slice(0, 30)}`);
-        this._finish(null);
+        // Loud audio that yields no words = the mic heard noise/music, not
+        // speech (a Bluetooth headset mic or a noisy room). Say so instead of
+        // failing silently, so it never looks like the app is just broken.
+        if (rms > 0.05 && !rawText.trim()) {
+          this._sendFlowbar('flow:error', { message: 'Didn’t catch speech — try the built-in mic or move closer' });
+        }
+        this.state = 'idle';
+        if (this.onStateChange) this.onStateChange('idle');
         try { fs.unlinkSync(wavPath); } catch { /* fine */ }
         return { ok: false, reason: 'silence' };
       }
