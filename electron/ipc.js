@@ -300,6 +300,26 @@ function registerIpc(ctx) {
     return !!info;
   });
 
+  // ---- knowledge (ask everything) ----
+  const { knowledge } = ctx;
+  ipcMain.handle('know:stats', () => knowledge.stats());
+  ipcMain.handle('know:search', (_e, query) => knowledge.search(String(query || ''), { limit: 12 }));
+  ipcMain.handle('know:ask', async (e, query) => {
+    const send = (hits) => {
+      if (windows.dashboard && !windows.dashboard.isDestroyed()) {
+        windows.dashboard.webContents.send('know:retrieved', hits);
+      }
+    };
+    return knowledge.ask(String(query || ''), { onRetrieved: send });
+  });
+  ipcMain.handle('know:open', (_e, { source, refId }) => {
+    if (!windows.dashboard || windows.dashboard.isDestroyed()) return false;
+    windows.dashboard.show();
+    if (source === 'meeting') windows.dashboard.webContents.send('know:goto-meeting', refId);
+    else windows.dashboard.webContents.send('debug:navigate', source === 'dictation' ? 'home' : 'meetings');
+    return true;
+  });
+
   // ---- onboarding ----
   ipcMain.handle('ob:finish', (_e, { userName }) => {
     store.setSettings({ onboarded: true, userName: userName || store.getSettings().userName });

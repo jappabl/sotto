@@ -891,6 +891,95 @@ html, body { height: 100%; overflow: hidden; background: var(--cream); }
 .enhance-modal { width: 440px; }
 .rec-live { display: inline-flex; align-items: center; }
 
+/* ---------- ask (knowledge) ---------- */
+.ask-bar { display: flex; gap: 10px; margin-bottom: 4px; }
+.ask-input {
+  flex: 1;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  padding: 13px 16px;
+  font-size: 15px;
+  outline: none;
+}
+.ask-input:focus { border-color: var(--purple); }
+.ask-result { margin-top: 20px; }
+.ask-answer-card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 22px 24px;
+}
+.ask-answer {
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: var(--ink);
+}
+.ask-cite {
+  color: var(--purple-deep);
+  font-weight: 700;
+  font-size: 10px;
+  background: var(--lavender);
+  border-radius: 5px;
+  padding: 0 4px;
+  margin: 0 1px;
+  cursor: default;
+  vertical-align: super;
+}
+.ask-thinking {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink-soft);
+}
+.ask-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--line);
+  border-top-color: var(--purple);
+  border-radius: 50%;
+  animation: askspin 0.8s linear infinite;
+}
+@keyframes askspin { to { transform: rotate(360deg); } }
+.ask-warn {
+  margin-top: 12px;
+  font-size: 12.5px;
+  color: #8a6d1a;
+  background: #fbf3d9;
+  border-radius: 9px;
+  padding: 8px 12px;
+}
+.ask-hint { color: var(--ink-faint); font-size: 13px; margin-top: 6px; }
+.ask-sources { margin-top: 18px; }
+.ask-sources-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--ink-faint);
+  margin-bottom: 8px;
+}
+.ask-source {
+  border: 1px solid var(--line-soft);
+  border-radius: 11px;
+  padding: 11px 14px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: background 0.12s ease, border-color 0.12s ease;
+}
+.ask-source:hover { background: #fafaf7; border-color: var(--line); }
+.ask-source-badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 2px 7px;
+  border-radius: 999px;
+  margin-right: 8px;
+}
+.ask-source-badge.meeting { background: var(--lavender); color: var(--purple-deep); }
+.ask-source-badge.dictation { background: #e8e6de; color: var(--ink-soft); }
+.ask-source-badge.shared { background: #dcece2; color: var(--green); }
+.ask-source-title { font-weight: 600; font-size: 13.5px; }
+.ask-source-date { color: var(--ink-faint); font-size: 12px; margin-left: 8px; }
+.ask-source-snippet { color: var(--ink-soft); font-size: 13px; margin-top: 5px; line-height: 1.45; }
+
 /* toast */
 #toast {
   position: fixed;

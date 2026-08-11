@@ -3,6 +3,7 @@
 import { el } from './ui.js';
 import { icons } from './icons.js';
 import { renderHome } from './pages/home.js';
+import { renderAsk } from './pages/ask.js';
 import { renderMeetings } from './pages/meetings.js';
 import { renderDictionary } from './pages/dictionary.js';
 import { renderSnippets } from './pages/snippets.js';
@@ -13,6 +14,7 @@ import { renderHelp } from './pages/help.js';
 
 const PAGES = {
   home: { label: 'Home', icon: icons.home, render: renderHome },
+  ask: { label: 'Ask', icon: icons.sparkleSearch, render: renderAsk },
   meetings: { label: 'Meetings', icon: icons.people, render: renderMeetings },
   dictionary: { label: 'Dictionary', icon: icons.book, render: renderDictionary },
   snippets: { label: 'Snippets', icon: icons.scissors, render: renderSnippets },
@@ -72,6 +74,10 @@ window.sotto.on('settings:changed', () => {
   if (current === 'settings' || current === 'home') navigate(current);
 });
 window.sotto.on('ob:ax-status', async () => { await refreshPermBadge(); buildNav(); });
+window.sotto.on('know:goto-meeting', (id) => {
+  window.__gotoMeeting = id;
+  navigate('meetings');
+});
 
 async function refreshPermBadge() {
   const [mic, ax] = await Promise.all([

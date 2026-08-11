@@ -17,6 +17,11 @@ function cleanup() {
 
 export async function renderMeetings(container) {
   cleanup();
+  // Deep-link from Ask: open a specific meeting.
+  if (window.__gotoMeeting) {
+    currentMeetingId = window.__gotoMeeting;
+    window.__gotoMeeting = null;
+  }
   if (currentMeetingId) return renderMeeting(container, currentMeetingId);
   return renderList(container);
 }

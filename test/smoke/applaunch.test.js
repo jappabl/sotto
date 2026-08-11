@@ -86,7 +86,7 @@ child.on('exit', (code) => {
     assert.ok(out.includes('SMOKE_OK'), 'autopilot did not finish.\n' + out + err);
     assert.equal(code, 0, 'non-zero exit: ' + code + '\n' + err);
     const expected = [
-      'dash-home', 'dash-meetings', 'dash-dictionary', 'dash-snippets', 'dash-style',
+      'dash-home', 'dash-ask', 'dash-meetings', 'dash-dictionary', 'dash-snippets', 'dash-style',
       'dash-insights', 'dash-settings', 'dash-help',
       'flow-idle', 'flow-recording', 'flow-processing', 'flow-error',
       'ob-0', 'ob-1', 'ob-2', 'ob-3', 'ob-4', 'ob-5', 'ob-6', 'ob-7',

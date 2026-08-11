@@ -77,6 +77,8 @@ function boot() {
     meetings.sweepOrphans();
     recorder.meetingsRef = meetings;
     const enhancer = new Enhancer({ polisher, log });
+    const { Knowledge } = require('./knowledge');
+    const knowledge = new Knowledge({ store, meetings, orgspace, polisher, log });
 
     // First-run demo meeting: lets you try Enhance before your first real call.
     if (meetings.list().length === 0 && !store.getSettings().demoSeeded) {
@@ -92,7 +94,16 @@ function boot() {
       flowbar: null,
       onboarding: null,
     };
-    const ctx = { store, hotkeys, transcriber, polisher, inserter, recorder, meetings, enhancer, orgspace, windows, app, log };
+    const ctx = { store, hotkeys, transcriber, polisher, inserter, recorder, meetings, enhancer, orgspace, knowledge, windows, app, log };
+
+    // Any change to the corpus invalidates the search index (rebuilt lazily).
+    const origAddHistory = store.addHistoryEntry.bind(store);
+    store.addHistoryEntry = (...a) => { const r = origAddHistory(...a); knowledge.markDirty(); return r; };
+    const origMeetEmit = meetings._emit.bind(meetings);
+    meetings._emit = (event, payload) => {
+      if (event === 'meeting:ended' || event === 'meeting:segment') knowledge.markDirty();
+      origMeetEmit(event, payload);
+    };
 
     orgspace.onChange = () => {
       if (windows.dashboard && !windows.dashboard.isDestroyed()) {
@@ -332,7 +343,7 @@ async function runSmokeAutopilot(ctx) {
 
     windows.dashboard.show();
     await sleep(600);
-    for (const page of ['home', 'meetings', 'dictionary', 'snippets', 'style', 'insights', 'settings', 'help']) {
+    for (const page of ['home', 'ask', 'meetings', 'dictionary', 'snippets', 'style', 'insights', 'settings', 'help']) {
       windows.dashboard.webContents.send('debug:navigate', page);
       await sleep(650);
       await capture(windows.dashboard, 'dash-' + page);
