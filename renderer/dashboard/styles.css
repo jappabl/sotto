@@ -925,6 +925,10 @@ html, body { height: 100%; overflow: hidden; background: var(--cream); }
   line-height: 1.65;
   color: var(--ink);
 }
+.ask-ungrounded {
+  text-decoration: underline dotted #d99a2b;
+  text-underline-offset: 3px;
+}
 .ask-cite {
   color: var(--purple-deep);
   font-weight: 700;

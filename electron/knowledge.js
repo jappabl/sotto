@@ -335,9 +335,13 @@ class Knowledge {
       }
       const cited = new Set((clean.match(/\[(\d+)\]/g) || []).map((m) => parseInt(m.slice(1), 10) - 1));
       const sources = top.map((h, i) => ({ ...h, cited: cited.has(i) }));
-      // Cheap groundedness flag: did the answer reuse words from a cited chunk?
-      const grounded = checkGrounded(clean, top);
-      return { answer: clean, sources, grounded };
+      // Per-sentence groundedness: check each claim against the source(s) it
+      // cites (falling back to all sources), so an unsupported line is flagged
+      // rather than trusted. A wrong-but-confident answer is worse than none.
+      const sentences = checkSentences(clean, top);
+      const grounded = sentences.length
+        ? sentences.filter((s) => s.grounded).length / sentences.length : 1;
+      return { answer: clean, sources, sentences, grounded };
     } catch (err) {
       this.log('ask failed: ' + err.message);
       return { answer: null, reason: err.message, sources: top };
@@ -345,16 +349,27 @@ class Knowledge {
   }
 }
 
-// Coarse groundedness: fraction of the answer's content words that appear in
-// the cited chunks. Low = the model likely drifted off-source.
-function checkGrounded(answer, sources) {
+// Split the answer into claims and score each against the chunk(s) it cites
+// (or all chunks when it cites none). Returns [{text, grounded, overlap}].
+function checkSentences(answer, sources) {
   const { tokenize } = require('./bm25');
-  const answerWords = new Set(tokenize(answer.replace(/\[\d+\]/g, '')));
-  if (answerWords.size === 0) return 1;
-  const corpus = new Set(tokenize(sources.map((s) => s.text).join(' ')));
-  let hit = 0;
-  for (const w of answerWords) if (corpus.has(w)) hit++;
-  return Math.round((hit / answerWords.size) * 100) / 100;
+  const parts = answer
+    .split(/(?<=[.!?])\s+|\n+/)
+    .map((s) => s.trim())
+    .filter((s) => s.replace(/[\s•\-*]/g, '').length > 3);
+  const allWords = new Set(tokenize(sources.map((s) => s.text).join(' ')));
+  return parts.map((text) => {
+    const citeNums = [...text.matchAll(/\[(\d+)\]/g)].map((m) => parseInt(m[1], 10) - 1);
+    const scope = citeNums.length
+      ? new Set(tokenize(citeNums.map((i) => sources[i]?.text || '').join(' ')))
+      : allWords;
+    const words = tokenize(text.replace(/\[\d+\]/g, ''));
+    if (!words.length) return { text, grounded: true, overlap: 1 };
+    let hit = 0;
+    for (const w of words) if (scope.has(w)) hit++;
+    const overlap = hit / words.length;
+    return { text, grounded: overlap >= 0.5, overlap: Math.round(overlap * 100) / 100 };
+  });
 }
 
 const ASK_SYSTEM = `You answer questions using ONLY the numbered excerpts from the user's own notes.
@@ -444,4 +459,4 @@ function hashText(s) {
   return h.toString(36);
 }
 
-module.exports = { Knowledge, sectionsOf, transcriptWindows };
+module.exports = { Knowledge, sectionsOf, transcriptWindows, __checkSentences: checkSentences };

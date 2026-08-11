@@ -99,9 +99,11 @@ export async function renderAsk(container) {
 
     if (res.answer) {
       const sources = res.sources || [];
-      card.append(el('div', { class: 'ask-answer', html: renderAnswer(res.answer, sources) }));
-      if (res.grounded !== undefined && res.grounded < 0.45) {
-        card.append(el('div', { class: 'ask-warn' }, '⚠ This answer may not be fully grounded in your notes — check the sources.'));
+      card.append(el('div', { class: 'ask-answer', html: renderAnswer(res.answer, sources, res.sentences) }));
+      const ungrounded = (res.sentences || []).filter((s) => !s.grounded).length;
+      if (ungrounded) {
+        card.append(el('div', { class: 'ask-warn' },
+          `⚠ ${ungrounded === 1 ? 'A line is' : ungrounded + ' lines are'} underlined — Sotto couldn’t match ${ungrounded === 1 ? 'it' : 'them'} to the cited note. Double-check against the sources.`));
       }
       const cited = sources.filter((s) => s.cited).length ? sources.filter((s) => s.cited) : sources.slice(0, 3);
       card.append(sourceList('Sources', cited));
@@ -149,13 +151,23 @@ function sourceLabel(source) {
   return source === 'dictation' ? 'Dictation' : source === 'shared' ? 'Shared' : 'Meeting';
 }
 
-// Turn [1]/[2] citations into superscript chips; escape everything else.
-function renderAnswer(text, sources) {
-  const esc = String(text)
-    .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
-  return esc.replace(/\[(\d+)\]/g, (m, n) => {
-    const i = parseInt(n, 10) - 1;
-    const title = sources[i] ? sources[i].title.replace(/"/g, '') : '';
-    return `<sup class="ask-cite" title="${title}">${n}</sup>`;
-  }).replace(/\n/g, '<br>');
+const escHtml = (s) => String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+const citeSup = (s, sources) => escHtml(s).replace(/\[(\d+)\]/g, (m, n) => {
+  const i = parseInt(n, 10) - 1;
+  const title = sources[i] ? sources[i].title.replace(/"/g, '') : '';
+  return `<sup class="ask-cite" title="${title}">${n}</sup>`;
+});
+
+// Render the answer. When we have per-sentence groundedness, mark unsupported
+// lines with a dotted underline; otherwise render the whole answer plainly.
+function renderAnswer(text, sources, sentences) {
+  if (sentences && sentences.length) {
+    return sentences.map((s) => {
+      const inner = citeSup(s.text, sources);
+      return s.grounded
+        ? `<span>${inner}</span>`
+        : `<span class="ask-ungrounded" title="Not found in the cited note">${inner}</span>`;
+    }).join(' ');
+  }
+  return citeSup(text, sources).replace(/\n/g, '<br>');
 }

@@ -87,3 +87,12 @@ test('retrieve falls back to bm25 mode without an embedder', async () => {
   assert.ok(r.hits.length >= 1);
   assert.equal(r.hits[0].source, 'dictation');
 });
+
+test('per-sentence groundedness flags an unsupported claim', () => {
+  const { __checkSentences } = require('../../electron/knowledge');
+  const sources = [{ text: 'We agreed to keep the current three tiers and revisit enterprise pricing in Q4.' }];
+  const s = __checkSentences('Keep the current tiers, revisiting in Q4 [1]. We also chose the Berlin office [1].', sources);
+  assert.equal(s.length, 2);
+  assert.equal(s[0].grounded, true);   // matches the cited source
+  assert.equal(s[1].grounded, false);  // fabricated, no overlap
+});

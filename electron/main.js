@@ -247,6 +247,19 @@ function boot() {
 
     store.pruneOldAudio();
 
+    // Warm the search index (and embeddings) in the background so the first
+    // Ask is instant, not a cold build.
+    if (!SMOKE) {
+      setTimeout(() => {
+        try {
+          knowledge.build();
+          if (store.getSettings().semanticSearch !== false && embedder.available()) {
+            knowledge.ensureVectors().catch((e) => log('vector warmup failed: ' + e.message));
+          }
+        } catch (e) { log('knowledge warmup failed: ' + e.message); }
+      }, 12000);
+    }
+
     app.on('second-instance', () => {
       if (windows.dashboard && !windows.dashboard.isDestroyed()) {
         windows.dashboard.show();
