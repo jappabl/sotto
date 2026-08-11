@@ -202,6 +202,17 @@ function boot() {
 
     hotkeys.start();
 
+    // If Accessibility isn't granted (fresh install, or the packaged app
+    // after dev mode), fire the system prompt once instead of dying silently.
+    let axPrompted = false;
+    hotkeys.on('axStatus', (trusted) => {
+      if (!trusted && !axPrompted && !SMOKE) {
+        axPrompted = true;
+        hotkeys.promptAccessibility();
+        log('accessibility missing — showed system prompt');
+      }
+    });
+
     // Keep the flow bar on-screen when displays connect/disconnect or change
     // resolution — a saved position can otherwise land in the void.
     const { screen } = require('electron');
