@@ -9,10 +9,11 @@ const { BM25, reciprocalRankFusion } = require('./bm25');
 const CHUNK_WORDS = 180;       // target words per transcript chunk
 
 class Knowledge {
-  constructor({ store, meetings, orgspace, polisher, embedder = null, baseDir = null, log = () => {} }) {
+  constructor({ store, meetings, orgspace, polisher, embedder = null, notes = null, baseDir = null, log = () => {} }) {
     this.store = store;
     this.meetings = meetings;
     this.orgspace = orgspace;
+    this.notes = notes;
     this.polisher = polisher;
     this.embedder = embedder;
     this.log = log;
@@ -89,6 +90,27 @@ class Knowledge {
           t0: win.t0,
           kind: 'transcript',
         });
+      }
+    }
+
+    // Brain-dump notes: prefer the organized version, fall back to raw.
+    if (this.notes) {
+      for (const meta of this.notes.list()) {
+        const data = this.notes.read(meta.id);
+        if (!data) continue;
+        const body = data.note || data.raw;
+        if (!body) continue;
+        for (const [i, sec] of sectionsOf(body).entries()) {
+          push({
+            id: `note:${meta.id}:${i}`,
+            source: 'note',
+            refId: meta.id,
+            title: meta.title || 'Note',
+            ts: meta.createdAt,
+            text: sec,
+            kind: data.note ? 'notes' : 'my-notes',
+          });
+        }
       }
     }
 
@@ -202,7 +224,7 @@ class Knowledge {
 
   // Source-type prior: decisions/answers live in enhanced notes and the
   // user's own notes, not raw transcript filler.
-  static SOURCE_PRIOR = { meeting: 1.0, dictation: 1.0, shared: 1.05 };
+  static SOURCE_PRIOR = { meeting: 1.0, dictation: 1.0, shared: 1.05, note: 1.1 };
   static KIND_PRIOR = { notes: 1.5, 'my-notes': 1.3, transcript: 1.0 };
 
   search(query, { limit = 8 } = {}) {

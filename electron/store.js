@@ -22,6 +22,9 @@ const DEFAULT_SETTINGS = {
   aiPolish: false,           // local-LLM cleanup pass (needs LLM model)
   meetingDetection: true,    // offer to take notes when a call starts
   semanticSearch: true,      // hybrid embeddings in Ask (needs embed model)
+  askHotkey: 'Command+Shift+A', // speak a question, hear the answer
+  askSpeaks: true,           // read answers aloud (macOS `say`)
+  brainDumpHotkey: 'Command+Shift+N', // ramble -> organized note
   orgDir: '',                // shared folder = the org; empty = solo
   commandMode: true,         // fn+ctrl chord edits the selection by voice
   removeFillers: true,

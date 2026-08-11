@@ -111,6 +111,45 @@ function setFlowbarPosition(win, settings) {
   win.setBounds(b);
 }
 
+// Ask HUD: a non-activating panel that pops on the ask-by-voice hotkey,
+// listens, then shows/reads the answer. Never steals focus, floats over
+// fullscreen apps like the flow bar.
+function createAskHud() {
+  const disp = screen.getPrimaryDisplay();
+  const wa = disp.workArea;
+  const w = 520;
+  const h = 300;
+  const win = new BrowserWindow({
+    width: w,
+    height: h,
+    x: wa.x + Math.round((wa.width - w) / 2),
+    y: wa.y + wa.height - h - 70,
+    type: 'panel',
+    frame: false,
+    transparent: true,
+    resizable: false,
+    movable: false,
+    minimizable: false,
+    maximizable: false,
+    closable: false,
+    fullscreenable: false,
+    hasShadow: false,
+    alwaysOnTop: true,
+    skipTaskbar: true,
+    show: false,
+    webPreferences: {
+      preload: PRELOAD,
+      contextIsolation: true,
+      nodeIntegration: false,
+      backgroundThrottling: false,
+    },
+  });
+  win.setAlwaysOnTop(true, 'screen-saver', 2);
+  win.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true, skipTransformProcessType: true });
+  win.loadFile(path.join(__dirname, '..', 'renderer', 'askhud', 'index.html'));
+  return win;
+}
+
 function createOnboarding() {
   const win = new BrowserWindow({
     width: 960,
@@ -132,4 +171,4 @@ function createOnboarding() {
   return win;
 }
 
-module.exports = { createDashboard, createFlowbar, createOnboarding, setFlowbarPosition, flowbarBounds, FLOWBAR };
+module.exports = { createDashboard, createFlowbar, createOnboarding, createAskHud, setFlowbarPosition, flowbarBounds, FLOWBAR };

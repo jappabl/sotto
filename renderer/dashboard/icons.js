@@ -33,5 +33,6 @@ export const icons = {
   cloudOff: s('<path d="M4.5 12.5h6.9a3.1 3.1 0 0 0 .6-6.1 4.5 4.5 0 0 0-8.3-1.5A3.6 3.6 0 0 0 4.5 12.5z"/><path d="m2.5 2.5 11 11"/>'),
   undo: s('<path d="M3 6.5h6.5a3.5 3.5 0 0 1 0 7H6"/><path d="M5.8 3.7 3 6.5l2.8 2.8"/>'),
   people: s('<circle cx="5.5" cy="5.5" r="2.3"/><path d="M1.8 13.4a3.7 3.7 0 0 1 7.4 0"/><circle cx="11" cy="5" r="1.9"/><path d="M10.2 9.3a3.4 3.4 0 0 1 4 3.4"/>'),
+  notepad: s('<rect x="3" y="2" width="10" height="12.5" rx="1.6"/><path d="M5.6 5.5h4.8M5.6 8h4.8M5.6 10.5h3"/>'),
   sparkleSearch: s('<circle cx="6.8" cy="6.8" r="4.2"/><path d="m10 10 3.4 3.4"/><path d="M6.8 4.4l.5 1.4 1.4.5-1.4.5-.5 1.4-.5-1.4-1.4-.5 1.4-.5z" fill="currentColor" stroke="none"/>'),
 };

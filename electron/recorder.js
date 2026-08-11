@@ -95,6 +95,21 @@ class Recorder {
     }
   }
 
+  // Brain dump: hands-free capture whose transcript becomes an organized
+  // note instead of being pasted at the cursor.
+  toggleBrainDump() {
+    if (this.state === 'recording' && this.brainDump) {
+      this.handsFree = false;
+      this.stopRecording();
+      return 'stopping';
+    }
+    if (this.state !== 'idle') return 'busy';
+    this.brainDump = true;
+    this.handsFree = true;
+    this.startRecording('brain-dump');
+    return 'started';
+  }
+
   async startRecording(mode) {
     if (this.state !== 'idle') return;
     const settings = this.store.getSettings();
@@ -217,6 +232,9 @@ class Recorder {
       if (this.commandMode) {
         return await this._handleCommand(rawText, { durMs, audioFile, wavPath });
       }
+      if (this.brainDump) {
+        return await this._handleBrainDump(rawText, { durMs, wavPath });
+      }
 
       // Whisper hallucinates pleasantries on near-silence — drop them.
       if (formatter.isLikelyHallucination(rawText, rms)) {
@@ -305,6 +323,29 @@ class Recorder {
       this.state = 'idle';
       return { ok: false, reason: err.message };
     }
+  }
+
+  // Brain dump: the whole ramble becomes an organized note, not pasted text.
+  async _handleBrainDump(rawText, { durMs, wavPath }) {
+    this.brainDump = false;
+    try { fs.unlinkSync(wavPath); } catch { /* fine */ }
+    const { formatTranscript } = require('./formatter');
+    // Light cleanup only: keep every thought, just drop fillers/stutters.
+    const clean = formatTranscript(rawText, {
+      cleanupLevel: 'light', pressEnterCommand: false, textStyle: 'formal',
+      dictionary: this.store.dictionary, snippets: this.store.snippets,
+    }).text;
+    if (!clean || clean.split(/\s+/).length < 8) {
+      this._sendFlowbar('flow:error', { message: 'Too short to make a note' });
+      this.state = 'idle';
+      if (this.onStateChange) this.onStateChange('idle');
+      return { ok: false, reason: 'too-short' };
+    }
+    const meta = this.notesRef.create({ raw: clean, durMs });
+    this.log(`brain dump captured: ${meta.words} words -> ${meta.id}`);
+    this._finish({ words: meta.words });
+    if (this.onBrainDump) this.onBrainDump(meta);
+    return { ok: true, noteId: meta.id };
   }
 
   // Command Mode: the dictation is an instruction applied to the selection.

@@ -14,7 +14,7 @@ const { Polisher } = require('./polisher');
 const { Inserter } = require('./inserter');
 const { Recorder } = require('./recorder');
 const { registerIpc } = require('./ipc');
-const { createDashboard, createFlowbar, createOnboarding } = require('./windows');
+const { createDashboard, createFlowbar, createOnboarding, createAskHud } = require('./windows');
 const { createTray } = require('./tray');
 
 const SMOKE = process.env.SOTTO_SMOKE === '1';
@@ -77,10 +77,13 @@ function boot() {
     meetings.sweepOrphans();
     recorder.meetingsRef = meetings;
     const enhancer = new Enhancer({ polisher, log });
+    const { Notes } = require('./notes');
+    const notes = new Notes({ baseDir: userData, log });
+    recorder.notesRef = notes;
     const { Embedder } = require('./embedder');
     const embedder = new Embedder({ modelsDir: path.join(userData, 'models'), log });
     const { Knowledge } = require('./knowledge');
-    const knowledge = new Knowledge({ store, meetings, orgspace, polisher, embedder, baseDir: userData, log });
+    const knowledge = new Knowledge({ store, meetings, orgspace, polisher, embedder, notes, baseDir: userData, log });
 
     // First-run demo meeting: lets you try Enhance before your first real call.
     if (meetings.list().length === 0 && !store.getSettings().demoSeeded) {
@@ -96,7 +99,35 @@ function boot() {
       flowbar: null,
       onboarding: null,
     };
-    const ctx = { store, hotkeys, transcriber, polisher, inserter, recorder, meetings, enhancer, orgspace, knowledge, embedder, windows, app, log };
+    const ctx = { store, hotkeys, transcriber, polisher, inserter, recorder, meetings, enhancer, orgspace, knowledge, embedder, notes, windows, app, log };
+
+    // A finished brain dump gets organized by the local model, then indexed.
+    recorder.onBrainDump = async (meta) => {
+      knowledge.markDirty();
+      if (windows.dashboard && !windows.dashboard.isDestroyed()) {
+        windows.dashboard.webContents.send('notes:changed', { id: meta.id, state: 'raw' });
+      }
+      if (!enhancer.available()) return;
+      try {
+        const data = notes.read(meta.id);
+        const organized = await enhancer.organizeDump(data.raw, { title: '' });
+        notes.saveOrganized(meta.id, organized);
+        const t = await enhancer.suggestTitle([organized.slice(0, 2000)]);
+        if (t) notes.updateMeta(meta.id, { title: t });
+        knowledge.markDirty();
+        log(`brain dump organized: ${meta.id}`);
+        if (windows.dashboard && !windows.dashboard.isDestroyed()) {
+          windows.dashboard.webContents.send('notes:changed', { id: meta.id, state: 'organized' });
+        }
+        new (require('electron').Notification)({
+          title: 'Note written',
+          body: (notes.read(meta.id)?.meta.title) || 'Your brain dump is organized.',
+          silent: true,
+        }).show();
+      } catch (e) {
+        log('brain dump organize failed: ' + e.message);
+      }
+    };
 
     // Any change to the corpus invalidates the search index (rebuilt lazily).
     const origAddHistory = store.addHistoryEntry.bind(store);
@@ -204,6 +235,39 @@ function boot() {
       globalShortcut.register('Command+Control+V', () => inserter.pasteLast());
     } catch (e) {
       log('paste-last shortcut unavailable: ' + e.message);
+    }
+
+    // Ask by voice: one hotkey, speak a question, hear the answer from your
+    // notes. Never steals focus from what you were doing.
+    windows.askhud = createAskHud();
+    const openAskHud = () => {
+      if (recorder.state !== 'idle') return; // don't fight a dictation
+      const w = windows.askhud;
+      if (!w || w.isDestroyed()) return;
+      w.showInactive();
+      w.webContents.send('ask:start', {});
+    };
+    try {
+      globalShortcut.register(store.getSettings().askHotkey || 'Command+Shift+A', openAskHud);
+    } catch (e) {
+      log('ask hotkey unavailable: ' + e.message);
+    }
+    ctx.openAskHud = openAskHud;
+
+    // Brain dump: hold a thought, talk it out, get a written note back.
+    try {
+      globalShortcut.register(store.getSettings().brainDumpHotkey || 'Command+Shift+N', () => {
+        const r = recorder.toggleBrainDump();
+        if (r === 'started') {
+          new (require('electron').Notification)({
+            title: 'Brain dump started',
+            body: 'Talk it out. Press the shortcut again when you’re done.',
+            silent: true,
+          }).show();
+        }
+      });
+    } catch (e) {
+      log('brain dump hotkey unavailable: ' + e.message);
     }
 
     hotkeys.on('axChange', (trusted) => {

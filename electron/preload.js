@@ -27,6 +27,9 @@ const listenChannels = [
   'org:changed',
   'know:retrieved',
   'know:goto-meeting',
+  'ask:start',
+  'ask:answer',
+  'notes:changed',
 ];
 
 contextBridge.exposeInMainWorld('sotto', {

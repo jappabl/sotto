@@ -300,6 +300,25 @@ function registerIpc(ctx) {
     return !!info;
   });
 
+  // ---- brain-dump notes ----
+  const { notes } = ctx;
+  ipcMain.handle('notes:list', () => notes.list());
+  ipcMain.handle('notes:read', (_e, id) => notes.read(id));
+  ipcMain.handle('notes:remove', (_e, id) => { notes.remove(id); ctx.knowledge.markDirty(); return true; });
+  ipcMain.handle('notes:hotkey', () => store.getSettings().brainDumpHotkey);
+  ipcMain.handle('notes:toggle-capture', () => recorder.toggleBrainDump());
+  ipcMain.handle('notes:organize', async (_e, id) => {
+    const data = notes.read(id);
+    if (!data) throw new Error('note-not-found');
+    if (!enhancer.available()) throw new Error('llm-unavailable');
+    const organized = await enhancer.organizeDump(data.raw, { title: data.meta.title });
+    notes.saveOrganized(id, organized);
+    const t = await enhancer.suggestTitle([organized.slice(0, 2000)]);
+    if (t) notes.updateMeta(id, { title: t });
+    ctx.knowledge.markDirty();
+    return { organized };
+  });
+
   // ---- knowledge (ask everything) ----
   const { knowledge, embedder } = ctx;
   ipcMain.handle('know:stats', () => {
@@ -342,6 +361,74 @@ function registerIpc(ctx) {
     };
     return knowledge.ask(String(query || ''), { onRetrieved: send });
   });
+  // Ask by voice: the HUD sends the recorded question; we transcribe it,
+  // answer it from the notes, push the result back, and read it aloud.
+  ipcMain.handle('ask:voice', async (_e, { wav, durMs }) => {
+    const hud = windows.askhud;
+    const reply = (payload) => {
+      if (hud && !hud.isDestroyed()) hud.webContents.send('ask:answer', payload);
+    };
+    try {
+      const fs2 = require('fs');
+      const path2 = require('path');
+      const os2 = require('os');
+      const formatter = require('./formatter');
+      if (!wav || wav.byteLength < 44 + 8000) {
+        reply({ answer: null, message: 'I didn’t catch a question.' });
+        return { ok: false };
+      }
+      const buf = Buffer.from(wav);
+      const rms = formatter.wavRms(buf);
+      if (rms < 0.0015) {
+        reply({ answer: null, message: 'I didn’t hear anything.' });
+        return { ok: false };
+      }
+      const tmp = path2.join(os2.tmpdir(), `sotto-ask-${Date.now()}.wav`);
+      fs2.writeFileSync(tmp, buf);
+      const settings = store.getSettings();
+      let question = '';
+      try {
+        const t = await transcriber.transcribe(tmp, { model: settings.model, language: settings.language });
+        question = formatter.formatTranscript(t.text, { cleanupLevel: 'light', pressEnterCommand: false }).text;
+      } finally {
+        try { fs2.unlinkSync(tmp); } catch { /* fine */ }
+      }
+      if (!question || formatter.isLikelyHallucination(question, rms)) {
+        reply({ answer: null, message: 'I didn’t catch a question.' });
+        return { ok: false };
+      }
+      const res = await knowledge.ask(question);
+      reply({
+        question,
+        answer: res.answer,
+        sentences: res.sentences,
+        sources: res.sources,
+        message: res.answer ? null
+          : res.reason === 'llm-unavailable' ? 'Turn on AI Polish in Settings to get spoken answers.'
+          : 'I couldn’t find that in your notes.',
+      });
+      // Speak it. macOS `say` keeps this dependency-free; the answer is
+      // stripped of citation markers so it reads naturally.
+      if (res.answer && store.getSettings().askSpeaks) {
+        const spoken = res.answer.replace(/\[\d+\]/g, '').replace(/\s{2,}/g, ' ').slice(0, 700);
+        const { execFile } = require('child_process');
+        if (ctx.sayProc) { try { ctx.sayProc.kill(); } catch {} }
+        ctx.sayProc = execFile('/usr/bin/say', ['-r', '190', spoken], () => { ctx.sayProc = null; });
+      }
+      return { ok: true };
+    } catch (err) {
+      ctx.log('ask:voice failed: ' + err.message);
+      reply({ answer: null, message: 'Something went wrong.' });
+      return { ok: false, error: 'failed' };
+    }
+  });
+  ipcMain.handle('ask:close', () => {
+    if (ctx.sayProc) { try { ctx.sayProc.kill(); } catch {} ctx.sayProc = null; }
+    const hud = windows.askhud;
+    if (hud && !hud.isDestroyed()) hud.hide();
+    return true;
+  });
+
   ipcMain.handle('know:open', (_e, { source, refId }) => {
     if (!windows.dashboard || windows.dashboard.isDestroyed()) return false;
     windows.dashboard.show();
