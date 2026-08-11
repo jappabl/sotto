@@ -364,9 +364,9 @@ function registerIpc(ctx) {
   // Ask by voice: the HUD sends the recorded question; we transcribe it,
   // answer it from the notes, push the result back, and read it aloud.
   ipcMain.handle('ask:voice', async (_e, { wav, durMs }) => {
-    const hud = windows.askhud;
+    const bar = windows.flowbar;
     const reply = (payload) => {
-      if (hud && !hud.isDestroyed()) hud.webContents.send('ask:answer', payload);
+      if (bar && !bar.isDestroyed()) bar.webContents.send('ask:answer', payload);
     };
     try {
       const fs2 = require('fs');
@@ -407,14 +407,8 @@ function registerIpc(ctx) {
           : res.reason === 'llm-unavailable' ? 'Turn on AI Polish in Settings to get spoken answers.'
           : 'I couldn’t find that in your notes.',
       });
-      // Speak it. macOS `say` keeps this dependency-free; the answer is
-      // stripped of citation markers so it reads naturally.
-      if (res.answer && store.getSettings().askSpeaks) {
-        const spoken = res.answer.replace(/\[\d+\]/g, '').replace(/\s{2,}/g, ' ').slice(0, 700);
-        const { execFile } = require('child_process');
-        if (ctx.sayProc) { try { ctx.sayProc.kill(); } catch {} }
-        ctx.sayProc = execFile('/usr/bin/say', ['-r', '190', spoken], () => { ctx.sayProc = null; });
-      }
+      // Speech happens in the renderer (Web Speech API) so word-boundary
+      // events can drive the word-by-word reveal in sync with the voice.
       return { ok: true };
     } catch (err) {
       ctx.log('ask:voice failed: ' + err.message);
@@ -423,9 +417,9 @@ function registerIpc(ctx) {
     }
   });
   ipcMain.handle('ask:close', () => {
-    if (ctx.sayProc) { try { ctx.sayProc.kill(); } catch {} ctx.sayProc = null; }
-    const hud = windows.askhud;
-    if (hud && !hud.isDestroyed()) hud.hide();
+    // Collapse the flow bar window back to pill size.
+    const { setFlowbarExpanded } = require('./windows');
+    setFlowbarExpanded(windows.flowbar, store.getSettings(), false);
     return true;
   });
 

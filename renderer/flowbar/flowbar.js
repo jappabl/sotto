@@ -339,3 +339,254 @@ window.sotto.on('debug:flow-state', (which) => {
 
 // Start with mouse pass-through enabled.
 window.sotto.invoke('flow:set-ignore-mouse', true);
+
+// ============ ask: the pill expands into an answer, in place ============
+
+const askEl = document.getElementById('ask');
+const askLabel = document.getElementById('ask-label');
+const askBarsEl = document.getElementById('ask-bars');
+const askQuestion = document.getElementById('ask-question');
+const askAnswer = document.getElementById('ask-answer');
+const askSources = document.getElementById('ask-sources');
+
+const ASK_BARS = 22;
+for (let i = 0; i < ASK_BARS; i++) askBarsEl.appendChild(document.createElement('i'));
+const askBarEls = [...askBarsEl.children];
+let askLevels = new Array(ASK_BARS).fill(0);
+
+let askActive = false;
+let askListening = false;
+let askCtx = null;
+let askStream = null;
+let askNode = null;
+let askChunks = [];
+let askChunksLen = 0;
+let askRate = 48000;
+let askSpeechStarted = false;
+let askLastVoice = 0;
+let askStart = 0;
+let askStopTimer = null;
+let askCloseTimer = null;
+let askRevealTimer = null;
+let wordEls = [];
+
+function askSetPhase(phase) {
+  pill.className = 'ask ask-' + phase;
+}
+
+async function askBegin() {
+  askReset();
+  askActive = true;
+  askSetPhase('listening');
+  askLabel.textContent = 'Listening';
+  try {
+    askStream = await navigator.mediaDevices.getUserMedia({
+      audio: { channelCount: 1, echoCancellation: true, noiseSuppression: true, autoGainControl: true },
+    });
+    askCtx = new AudioContext();
+    askRate = askCtx.sampleRate;
+    await askCtx.audioWorklet.addModule('worklet.js');
+    const src = askCtx.createMediaStreamSource(askStream);
+    askNode = new AudioWorkletNode(askCtx, 'capture');
+    askNode.port.onmessage = (e) => onAskAudio(e.data);
+    src.connect(askNode);
+    askListening = true;
+    askStart = performance.now();
+    askLastVoice = askStart;
+    askStopTimer = setTimeout(askFinishListening, 15000);
+  } catch {
+    askFail('Microphone unavailable');
+  }
+}
+
+function onAskAudio({ samples, rms }) {
+  if (!askListening) return;
+  askChunks.push(samples);
+  askChunksLen += samples.length;
+  askLevels.push(Math.min(1, rms * 5.5));
+  if (askLevels.length > ASK_BARS) askLevels.shift();
+  for (let i = 0; i < ASK_BARS; i++) {
+    askBarEls[i].style.height = Math.max(2, Math.round((askLevels[i] || 0) * 13)) + 'px';
+  }
+  const now = performance.now();
+  if (rms > 0.02) { askSpeechStarted = true; askLastVoice = now; }
+  if (askSpeechStarted && now - askLastVoice > 1100 && now - askStart > 800) askFinishListening();
+}
+
+async function askFinishListening() {
+  if (!askListening) return;
+  askListening = false;
+  clearTimeout(askStopTimer);
+  const durMs = Math.round(performance.now() - askStart);
+  const merged = new Float32Array(askChunksLen);
+  let off = 0;
+  for (const c of askChunks) { merged.set(c, off); off += c.length; }
+  askChunks = []; askChunksLen = 0;
+  const wav = encodeWav16k(merged, askRate);
+  askTeardown();
+  if (!askSpeechStarted || durMs < 300) { askClose(); return; }
+  askSetPhase('thinking');
+  askLabel.textContent = 'Thinking';
+  const res = await window.sotto.invoke('ask:voice', { wav, durMs });
+  if (res && res.error) askFail('Something went wrong');
+}
+
+function askTeardown() {
+  try { askNode && askNode.disconnect(); } catch {}
+  try { askCtx && askCtx.close(); } catch {}
+  try { askStream && askStream.getTracks().forEach((t) => t.stop()); } catch {}
+  askNode = null; askCtx = null; askStream = null;
+}
+
+// ---- word-by-word reveal, driven by the speech engine's own boundaries ----
+
+function askDisplayText(res) {
+  return String(res.answer || '')
+    .replace(/\[\d+\]/g, '').replace(/\s{2,}/g, ' ').replace(/\s+([.,!?;:])/g, '$1').trim();
+}
+
+function askSoftRanges(res, text) {
+  const soft = [];
+  for (const s of res.sentences || []) {
+    if (s.grounded) continue;
+    const clean = s.text.replace(/\[\d+\]/g, '').replace(/\s{2,}/g, ' ').trim();
+    const at = text.indexOf(clean.slice(0, 40));
+    if (at >= 0) soft.push([at, at + clean.length]);
+  }
+  return soft;
+}
+
+function askLayoutWords(text, soft) {
+  askAnswer.replaceChildren();
+  wordEls = [];
+  const re = /\S+\s*/g;
+  let m;
+  while ((m = re.exec(text)) !== null) {
+    const span = document.createElement('span');
+    span.className = 'w';
+    span.textContent = m[0];
+    if (soft.some(([a, b]) => m.index >= a && m.index < b)) span.classList.add('soft');
+    askAnswer.appendChild(span);
+    wordEls.push({ el: span, at: m.index, end: m.index + m[0].length });
+  }
+}
+
+function askRevealUpTo(charIndex) {
+  for (const w of wordEls) {
+    if (w.at <= charIndex) w.el.classList.add('on');
+    w.el.classList.toggle('now', charIndex >= w.at && charIndex < w.end);
+  }
+}
+
+function askRevealAll() {
+  for (const w of wordEls) { w.el.classList.add('on'); w.el.classList.remove('now'); }
+}
+
+function askPacedReveal(msPerWord = 165) {
+  let i = 0;
+  clearInterval(askRevealTimer);
+  askRevealTimer = setInterval(() => {
+    if (i >= wordEls.length) { clearInterval(askRevealTimer); askRevealAll(); return; }
+    wordEls[i].el.classList.add('on');
+    i++;
+  }, msPerWord);
+}
+
+function askSpeakAndReveal(text, speaks) {
+  const synth = window.speechSynthesis;
+  if (!speaks || !synth) { askPacedReveal(); return; }
+  try {
+    synth.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.rate = 1.05;
+    let gotBoundary = false;
+    const guard = setTimeout(() => { if (!gotBoundary) askPacedReveal(); }, 700);
+    u.onboundary = (e) => {
+      if (e.name && e.name !== 'word') return;
+      gotBoundary = true;
+      clearTimeout(guard);
+      askRevealUpTo(e.charIndex);
+    };
+    u.onend = () => { clearTimeout(guard); clearInterval(askRevealTimer); askRevealAll(); };
+    u.onerror = () => { clearTimeout(guard); askPacedReveal(); };
+    synth.speak(u);
+  } catch {
+    askPacedReveal();
+  }
+}
+
+window.sotto.on('flow:ask-start', () => askBegin());
+
+window.sotto.on('ask:answer', async (res) => {
+  if (!askActive) return;
+  askQuestion.textContent = res.question || '';
+  const settings = await window.sotto.invoke('settings:get').catch(() => ({}));
+  askSetPhase('answer');
+  askLabel.textContent = 'From your notes';
+  const text = res.answer ? askDisplayText(res) : (res.message || 'Nothing in your notes covers that.');
+  askLayoutWords(text, res.answer ? askSoftRanges(res, text) : []);
+  askSources.replaceChildren();
+  for (const s of (res.sources || []).filter((x) => x.cited).slice(0, 3)) {
+    const chip = document.createElement('div');
+    chip.className = 'src';
+    chip.textContent = s.title;
+    chip.title = s.title;
+    chip.onclick = () => window.sotto.invoke('know:open', { source: s.source, refId: s.refId });
+    askSources.appendChild(chip);
+  }
+  askSpeakAndReveal(text, settings.askSpeaks !== false);
+  askAutoClose(Math.max(9000, text.split(/\s+/).length * 260 + 5000));
+});
+
+function askAutoClose(ms) { clearTimeout(askCloseTimer); askCloseTimer = setTimeout(askClose, ms); }
+
+function askFail(msg) {
+  askSetPhase('error');
+  askLabel.textContent = msg;
+  askAutoClose(3000);
+}
+
+function askReset() {
+  clearTimeout(askCloseTimer); clearTimeout(askStopTimer); clearInterval(askRevealTimer);
+  try { window.speechSynthesis && window.speechSynthesis.cancel(); } catch {}
+  askChunks = []; askChunksLen = 0; askSpeechStarted = false;
+  askLevels = new Array(ASK_BARS).fill(0);
+  askQuestion.textContent = '';
+  askAnswer.replaceChildren();
+  askSources.replaceChildren();
+  wordEls = [];
+}
+
+function askClose() {
+  clearInterval(askRevealTimer);
+  try { window.speechSynthesis && window.speechSynthesis.cancel(); } catch {}
+  askTeardown();
+  askListening = false;
+  askActive = false;
+  // Collapse back into the pill, then let main shrink the window.
+  setState('idle');
+  window.sotto.invoke('ask:close');
+}
+
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && askActive) askClose(); });
+
+// Visual smoke hook: show a canned mid-speech answer without listening.
+window.sotto.on('debug:ask-demo', (p) => {
+  askActive = true;
+  askSetPhase('answer');
+  askLabel.textContent = 'From your notes';
+  askQuestion.textContent = p.question;
+  askLayoutWords(p.text, p.soft || []);
+  askSources.replaceChildren();
+  for (const t of p.sources || []) {
+    const c = document.createElement('div');
+    c.className = 'src';
+    c.textContent = t;
+    askSources.appendChild(c);
+  }
+  const upto = Math.floor(wordEls.length * 0.62);
+  wordEls.forEach((w, i) => {
+    if (i < upto) w.el.classList.add('on');
+    if (i === upto - 1) w.el.classList.add('now');
+  });
+});

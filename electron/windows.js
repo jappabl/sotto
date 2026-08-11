@@ -37,6 +37,10 @@ function createDashboard() {
 // grows/shrinks with CSS so the window never needs resizing (fewer flicker
 // and compositor edge cases). Mouse events pass through except over the pill.
 const FLOWBAR = { w: 260, h: 84, margin: 4 };
+// When the pill expands into an answer it needs room to grow upward; the
+// window itself is transparent and click-through, so a bigger frame costs
+// nothing visually.
+const FLOWBAR_ASK = { w: 640, h: 380 };
 
 function flowbarBounds(dock, offset) {
   const disp = screen.getPrimaryDisplay();
@@ -111,43 +115,23 @@ function setFlowbarPosition(win, settings) {
   win.setBounds(b);
 }
 
-// Ask HUD: a non-activating panel that pops on the ask-by-voice hotkey,
-// listens, then shows/reads the answer. Never steals focus, floats over
-// fullscreen apps like the flow bar.
-function createAskHud() {
-  const disp = screen.getPrimaryDisplay();
-  const wa = disp.workArea;
-  const w = 520;
-  const h = 300;
-  const win = new BrowserWindow({
-    width: w,
-    height: h,
-    x: wa.x + Math.round((wa.width - w) / 2),
-    y: wa.y + wa.height - h - 70,
-    type: 'panel',
-    frame: false,
-    transparent: true,
-    resizable: false,
-    movable: false,
-    minimizable: false,
-    maximizable: false,
-    closable: false,
-    fullscreenable: false,
-    hasShadow: false,
-    alwaysOnTop: true,
-    skipTaskbar: true,
-    show: false,
-    webPreferences: {
-      preload: PRELOAD,
-      contextIsolation: true,
-      nodeIntegration: false,
-      backgroundThrottling: false,
-    },
-  });
-  win.setAlwaysOnTop(true, 'screen-saver', 2);
-  win.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true, skipTransformProcessType: true });
-  win.loadFile(path.join(__dirname, '..', 'renderer', 'askhud', 'index.html'));
-  return win;
+// Grow/shrink the flow bar window around its own bottom edge, so the pill
+// stays put while the answer card expands above it.
+function setFlowbarExpanded(win, settings, expanded) {
+  if (!win || win.isDestroyed()) return;
+  const base = flowbarBounds(settings.flowBarDock, settings.flowBarOffset);
+  if (!expanded) {
+    win.setBounds(base);
+    return;
+  }
+  const disp = screen.getPrimaryDisplay().workArea;
+  const bottom = base.y + base.height;
+  const w = FLOWBAR_ASK.w;
+  const h = FLOWBAR_ASK.h;
+  let x = base.x + Math.round((base.width - w) / 2);
+  x = Math.max(disp.x + 8, Math.min(x, disp.x + disp.width - w - 8));
+  const y = Math.max(disp.y + 8, bottom - h);
+  win.setBounds({ x, y, width: w, height: h });
 }
 
 function createOnboarding() {
@@ -171,4 +155,4 @@ function createOnboarding() {
   return win;
 }
 
-module.exports = { createDashboard, createFlowbar, createOnboarding, createAskHud, setFlowbarPosition, flowbarBounds, FLOWBAR };
+module.exports = { createDashboard, createFlowbar, createOnboarding, setFlowbarPosition, setFlowbarExpanded, flowbarBounds, FLOWBAR };

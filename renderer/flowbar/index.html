@@ -8,10 +8,23 @@
   <div id="stage">
     <div id="tooltip">Click to start dictating</div>
     <div id="pill" class="idle">
+      <!-- compact states -->
       <div id="dots"></div>
       <div id="bars"></div>
       <div id="shimmer"><span></span><span></span><span></span></div>
       <div id="msg"></div>
+
+      <!-- expanded ask state: grows out of this same pill -->
+      <div id="ask">
+        <div id="ask-head">
+          <span id="ask-dot"></span>
+          <span id="ask-label">Listening</span>
+          <div id="ask-bars"></div>
+        </div>
+        <div id="ask-question"></div>
+        <div id="ask-answer"></div>
+        <div id="ask-sources"></div>
+      </div>
     </div>
   </div>
   <script src="flowbar.js"></script>

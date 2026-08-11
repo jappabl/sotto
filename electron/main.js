@@ -14,7 +14,7 @@ const { Polisher } = require('./polisher');
 const { Inserter } = require('./inserter');
 const { Recorder } = require('./recorder');
 const { registerIpc } = require('./ipc');
-const { createDashboard, createFlowbar, createOnboarding, createAskHud } = require('./windows');
+const { createDashboard, createFlowbar, createOnboarding, setFlowbarExpanded } = require('./windows');
 const { createTray } = require('./tray');
 
 const SMOKE = process.env.SOTTO_SMOKE === '1';
@@ -54,9 +54,12 @@ function boot() {
     if (process.env.SOTTO_DEBUG || SMOKE) process.stdout.write('sotto: ' + line);
   };
 
-  app.whenReady().then(() => {
+  app.whenReady().then(async () => {
     const userData = app.getPath('userData');
     fs.mkdirSync(userData, { recursive: true });
+    // Renderer assets are local files that change with every build; a stale
+    // HTTP cache silently serves old CSS/JS after an update.
+    try { await require('electron').session.defaultSession.clearCache(); } catch { /* fine */ }
     const store = new Store(userData);
     const transcriber = new Transcriber({
       modelsDir: path.join(userData, 'models'),
@@ -237,15 +240,15 @@ function boot() {
       log('paste-last shortcut unavailable: ' + e.message);
     }
 
-    // Ask by voice: one hotkey, speak a question, hear the answer from your
-    // notes. Never steals focus from what you were doing.
-    windows.askhud = createAskHud();
+    // Ask by voice: one hotkey and the flow bar pill itself grows into the
+    // answer. No second window, no focus stolen.
     const openAskHud = () => {
       if (recorder.state !== 'idle') return; // don't fight a dictation
-      const w = windows.askhud;
+      const w = windows.flowbar;
       if (!w || w.isDestroyed()) return;
+      setFlowbarExpanded(w, store.getSettings(), true);
       w.showInactive();
-      w.webContents.send('ask:start', {});
+      w.webContents.send('flow:ask-start', {});
     };
     try {
       globalShortcut.register(store.getSettings().askHotkey || 'Command+Shift+A', openAskHud);
@@ -434,6 +437,20 @@ async function runSmokeAutopilot(ctx) {
       await sleep(450);
       await capture(windows.flowbar, 'flow-' + state);
     }
+    windows.flowbar.webContents.send('debug:flow-state', 'idle');
+
+    // The pill expanded into an answer, caught mid-reveal.
+    const { setFlowbarExpanded } = require('./windows');
+    setFlowbarExpanded(windows.flowbar, ctx.store.getSettings(), true);
+    await sleep(300);
+    windows.flowbar.webContents.send('debug:ask-demo', {
+      question: 'What did I say I need to work on?',
+      text: 'Fix the pricing page before Friday and reply to Sarah about the partnership.',
+      sources: ['Project implementation discussion', 'Dictation in Claude'],
+    });
+    await sleep(900);
+    await capture(windows.flowbar, 'flow-ask');
+    setFlowbarExpanded(windows.flowbar, ctx.store.getSettings(), false);
     windows.flowbar.webContents.send('debug:flow-state', 'idle');
 
     const { createOnboarding } = require('./windows');

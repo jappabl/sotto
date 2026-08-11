@@ -27,8 +27,9 @@ const listenChannels = [
   'org:changed',
   'know:retrieved',
   'know:goto-meeting',
-  'ask:start',
+  'flow:ask-start',
   'ask:answer',
+  'debug:ask-demo',
   'notes:changed',
 ];
 
