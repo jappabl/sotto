@@ -390,6 +390,15 @@ function renderLiveBody(container, id, data) {
   notes.focus();
   feed.scrollTop = feed.scrollHeight;
 
+  unsubs.push(window.sotto.on('meeting:titled', ({ id: mid, title }) => {
+    // The calendar named it a moment after recording began. Do not overwrite
+    // a title the user has already started typing over.
+    if (mid !== id || !title || document.activeElement === titleInput) return;
+    // Only replace the generated stand-in ("Monday morning meeting").
+    if (!titleInput.value || /(morning|afternoon|evening) meeting$/i.test(titleInput.value)) {
+      titleInput.value = title;
+    }
+  }));
   unsubs.push(window.sotto.on('meeting:segment', ({ id: mid, seg }) => {
     if (mid !== id) return;
     feed.append(segmentRow(seg));

@@ -75,9 +75,11 @@ class Calendar {
     return r.status;
   }
 
-  async upcoming(hours = 12) {
+  // `meetingsOnly` keeps the half of a calendar that is actually other people.
+  async upcoming(hours = 12, { meetingsOnly = true } = {}) {
     const r = await this._run(`upcoming ${Math.max(1, Math.min(72, hours))}`);
-    return { status: r.status, events: r.events };
+    const events = (r.events || []).map((e) => ({ ...e, conference: conferenceUrl(e) }));
+    return { status: r.status, events: meetingsOnly ? events.filter(isMeeting) : events };
   }
 
   // The next meeting starting within `withinMinutes` (or currently running).
@@ -86,6 +88,50 @@ class Calendar {
     const now = Date.now();
     return events.find((e) => e.startMs - now <= withinMinutes * 60000 && e.endMs > now) || null;
   }
+
+  // The meeting happening right now, for naming a recording as it starts.
+  async current({ graceMinutes = 10 } = {}) {
+    const { events } = await this.upcoming(3);
+    const now = Date.now();
+    const live = events.filter((e) => e.startMs - graceMinutes * 60000 <= now && e.endMs > now);
+    live.sort((a, b) => Math.abs(a.startMs - now) - Math.abs(b.startMs - now));
+    return live[0] || null;
+  }
 }
 
-module.exports = { Calendar };
+// Video call links, which are the strongest evidence an event involves people
+// who are not in the room. Ordered by how common they are in practice.
+const CONFERENCE_PATTERNS = [
+  /https?:\/\/[\w.-]*zoom\.us\/j\/\S+/i,
+  /https?:\/\/meet\.google\.com\/[a-z-]{5,}/i,
+  /https?:\/\/teams\.(?:microsoft|live)\.com\/l\/meetup-join\/\S+/i,
+  /https?:\/\/[\w.-]*webex\.com\/\S+/i,
+  /https?:\/\/[\w.-]*whereby\.com\/\S+/i,
+  /https?:\/\/meet\.jit\.si\/\S+/i,
+  /https?:\/\/[\w.-]*bluejeans\.com\/\S+/i,
+  /https?:\/\/[\w.-]*around\.co\/\S+/i,
+];
+
+function conferenceUrl(event) {
+  const haystack = [event.location, event.url, event.notes].filter(Boolean).join('\n');
+  for (const re of CONFERENCE_PATTERNS) {
+    const m = haystack.match(re);
+    if (m) return m[0].replace(/[).,>\]]+$/, '');
+  }
+  return null;
+}
+
+// A calendar holds two kinds of thing: appointments with other people, and
+// blocks you put on your own day. Only the first kind is a meeting, and only
+// the first kind is worth preparing for.
+function isMeeting(event) {
+  if (!event) return false;
+  if (event.myStatus === 'declined') return false;
+  const others = (event.attendees || []).filter((a) => a && (a.name || a.email));
+  if (others.length) return true;
+  if (event.conference || conferenceUrl(event)) return true;
+  // No other people and no link: a focus block, a commute, a reminder.
+  return false;
+}
+
+module.exports = { Calendar, isMeeting, conferenceUrl };

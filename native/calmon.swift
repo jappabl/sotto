@@ -56,6 +56,19 @@ func emailOf(_ p: EKParticipant) -> String {
     return s.hasPrefix("mailto:") ? String(s.dropFirst("mailto:".count)) : s
 }
 
+// What this participant said. A meeting you declined is not your meeting.
+func myStatus(_ ev: EKEvent) -> String {
+    for p in ev.attendees ?? [] where p.isCurrentUser {
+        switch p.participantStatus {
+        case .accepted: return "accepted"
+        case .declined: return "declined"
+        case .tentative: return "tentative"
+        default: return "pending"
+        }
+    }
+    return ""
+}
+
 func upcoming(hours: Double) {
     let now = Date()
     let end = now.addingTimeInterval(hours * 3600)
@@ -82,6 +95,10 @@ func upcoming(hours: Double) {
             "notes": String((ev.notes ?? "").prefix(2000)),
             "organizer": ev.organizer?.name ?? "",
             "attendees": attendees,
+            "url": ev.url?.absoluteString ?? "",
+            "myStatus": myStatus(ev),
+            // Events marked free are usually blocks you put on your own day.
+            "free": ev.availability == .free,
         ])
     }
     out.sort { (($0["startMs"] as? Double) ?? 0) < (($1["startMs"] as? Double) ?? 0) }

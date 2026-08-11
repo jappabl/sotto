@@ -22,6 +22,7 @@ const listenChannels = [
   'meeting:segment',
   'meeting:warning',
   'meeting:ended',
+  'meeting:titled',
   'meet:enhance-progress',
   'flow:meeting-state',
   'org:changed',

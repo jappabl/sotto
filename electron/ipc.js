@@ -181,7 +181,26 @@ function registerIpc(ctx) {
   const { meetings, enhancer } = ctx;
   ipcMain.handle('meet:list', () => meetings.list());
   ipcMain.handle('meet:read', (_e, id) => meetings.read(id));
-  ipcMain.handle('meet:start', (_e, opts) => meetings.start(opts || {}));
+  ipcMain.handle('meet:start', (_e, opts) => {
+    const r = meetings.start(opts || {});
+    // Name it from the calendar once recording is already underway. Looking it
+    // up first would put a process spawn between the click and the microphone.
+    if (r.ok && !(opts && opts.title)) {
+      ctx.calendar.current().then((ev) => {
+        if (!ev) return;
+        meetings.updateMeta(r.id, {
+          title: ev.title,
+          calendarEventId: ev.id,
+          attendees: (ev.attendees || []).map((a) => a.name || a.email).filter(Boolean),
+          autoTitled: true,
+        });
+        for (const w of BrowserWindow.getAllWindows()) {
+          if (!w.isDestroyed()) w.webContents.send('meeting:titled', { id: r.id, title: ev.title });
+        }
+      }).catch(() => {});
+    }
+    return r;
+  });
   ipcMain.handle('meet:stop', () => meetings.stop());
   ipcMain.handle('meet:status', () => meetings.status());
   ipcMain.handle('meet:save-notes', (_e, { id, notes }) => meetings.saveNotes(id, notes));
