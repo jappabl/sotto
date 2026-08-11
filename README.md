@@ -87,6 +87,25 @@ joining your call and nothing leaving your Mac (macOS 14.4+):
 
 A demo meeting is seeded on first run so you can try Enhance immediately.
 
+## Ask: one place for everything you've said
+
+Everything you dictate and every meeting you capture becomes searchable and
+answerable from the **Ask** tab — a private second brain, all on-device:
+
+- **Ask in plain language** — "what did we decide about pricing?", "list my
+  open action items" — and get a direct answer built only from your own notes,
+  with inline citations that deep-link to the exact meeting or dictation.
+- **Hybrid retrieval** — BM25 keyword search fused with local embeddings
+  (nomic-embed via llama.cpp) so paraphrases match, not just exact words
+  ("how much to charge big companies" finds your enterprise-pricing note).
+  Keyword-only works out of the box; semantic is a one-click 140 MB opt-in.
+- **Grounded, not guessed** — a retrieval score floor and a fixed refusal keep
+  the model from answering out of thin air, and every answer sentence is
+  checked against the note it cites; anything unsupported gets underlined and
+  flagged instead of silently trusted.
+- **Nothing leaves the Mac** — retrieval, embeddings, and answers all run
+  locally; no cloud, no account.
+
 ## What it does
 
 - **Push-to-talk dictation** into any macOS app. Hold your key, speak, release. Double-tap for hands-free, Esc cancels, ping and pop sound cues.
