@@ -2,22 +2,28 @@
 // shared org notes. Gathers a chunked corpus, indexes it with BM25, and
 // answers questions grounded on the retrieved chunks via the local LLM.
 
-const { BM25 } = require('./bm25');
+const fs = require('fs');
+const path = require('path');
+const { BM25, reciprocalRankFusion } = require('./bm25');
 
 const CHUNK_WORDS = 180;       // target words per transcript chunk
-const CHUNK_OVERLAP_WORDS = 30;
 
 class Knowledge {
-  constructor({ store, meetings, orgspace, polisher, log = () => {} }) {
+  constructor({ store, meetings, orgspace, polisher, embedder = null, baseDir = null, log = () => {} }) {
     this.store = store;
     this.meetings = meetings;
     this.orgspace = orgspace;
     this.polisher = polisher;
+    this.embedder = embedder;
     this.log = log;
     this.index = null;
     this.chunks = new Map();   // id -> chunk
+    this.vectors = new Map();  // id -> { hash, vec: Float32Array }
+    this.vecPath = baseDir ? path.join(baseDir, 'knowledge-vectors.json') : null;
     this.builtAt = 0;
     this.dirty = true;
+    this._vecReady = false;
+    this._loadVecCache();
   }
 
   markDirty() {
@@ -129,7 +135,60 @@ class Knowledge {
   }
 
   _ensure() {
-    if (this.dirty || !this.index) this.build();
+    if (this.dirty || !this.index) { this.build(); this._vecReady = false; }
+  }
+
+  // ---- vector cache (semantic search) ----
+
+  _loadVecCache() {
+    if (!this.vecPath) return;
+    try {
+      const raw = JSON.parse(fs.readFileSync(this.vecPath, 'utf8'));
+      for (const [id, entry] of Object.entries(raw)) {
+        this.vectors.set(id, { hash: entry.h, vec: Float32Array.from(entry.v) });
+      }
+      this.log(`loaded ${this.vectors.size} cached embeddings`);
+    } catch { /* none yet */ }
+  }
+
+  _saveVecCache() {
+    if (!this.vecPath) return;
+    const out = {};
+    for (const [id, e] of this.vectors) out[id] = { h: e.hash, v: Array.from(e.vec) };
+    try {
+      const tmp = this.vecPath + '.tmp';
+      fs.writeFileSync(tmp, JSON.stringify(out));
+      fs.renameSync(tmp, this.vecPath);
+    } catch (err) { this.log('vec cache save failed: ' + err.message); }
+  }
+
+  // Embed any chunks whose text changed or is uncached. Batched. Prunes
+  // vectors for chunks that no longer exist.
+  async ensureVectors() {
+    if (!this.embedder || !this.embedder.available()) return false;
+    this._ensure();
+    const toEmbed = [];
+    for (const [id, c] of this.chunks) {
+      const h = hashText(c.header + c.text);
+      const cached = this.vectors.get(id);
+      if (!cached || cached.hash !== h) toEmbed.push({ id, hash: h, text: `${c.header}\n${c.text}` });
+    }
+    // Drop stale vectors.
+    for (const id of [...this.vectors.keys()]) if (!this.chunks.has(id)) this.vectors.delete(id);
+
+    if (toEmbed.length) {
+      this.log(`embedding ${toEmbed.length} chunks…`);
+      const BATCH = 32;
+      for (let i = 0; i < toEmbed.length; i += BATCH) {
+        const slice = toEmbed.slice(i, i + BATCH);
+        const vecs = await this.embedder.embed(slice.map((s) => s.text), 'document');
+        if (!vecs) return false;
+        slice.forEach((s, j) => this.vectors.set(s.id, { hash: s.hash, vec: vecs[j] }));
+      }
+      this._saveVecCache();
+    }
+    this._vecReady = true;
+    return true;
   }
 
   stats() {
@@ -176,18 +235,75 @@ class Knowledge {
     }));
   }
 
+  // Hybrid retrieval: fuse BM25 with semantic (embedding) results via RRF,
+  // then apply recency/source/kind priors. Falls back to BM25-only when the
+  // embedder or its model isn't available. Async because embedding is.
+  async retrieve(query, { limit = 8 } = {}) {
+    this._ensure();
+    if (!this.index) return { hits: [], mode: 'none' };
+
+    const bmList = this.index.search(query, { limit: 50 });
+    let vecList = null;
+    if (this.embedder && this.embedder.available()) {
+      try {
+        if (!this._vecReady) await this.ensureVectors();
+        const { dot } = require('./embedder');
+        const qv = await this.embedder.embedOne(query, 'query');
+        if (qv) {
+          vecList = [...this.vectors.entries()]
+            .filter(([id]) => this.chunks.has(id))
+            .map(([id, e]) => ({ id, sim: dot(qv, e.vec) }))
+            .sort((a, b) => b.sim - a.sim)
+            .slice(0, 50);
+        }
+      } catch (err) { this.log('semantic retrieval failed: ' + err.message); }
+    }
+
+    let fusedIds;
+    if (vecList) {
+      const fused = reciprocalRankFusion([bmList, vecList], { k: 60 });
+      fusedIds = [...fused.entries()].map(([id, rrf]) => ({ id, rrf }));
+    } else {
+      // BM25-only: synthesize a comparable score from rank.
+      fusedIds = bmList.map((r, i) => ({ id: r.id, rrf: 1 / (60 + i + 1) }));
+    }
+
+    const now = Date.now();
+    const bmScore = new Map(bmList.map((r) => [r.id, r.score]));
+    const ranked = fusedIds.map(({ id, rrf }) => {
+      const c = this.chunks.get(id);
+      if (!c) return null;
+      const ageDays = (now - (c.ts || now)) / 86400000;
+      const recency = Math.max(0.7, 1 / (1 + ageDays / 180));
+      const sourceP = Knowledge.SOURCE_PRIOR[c.source] || 1;
+      const kindP = Knowledge.KIND_PRIOR[c.kind] || 1;
+      return { c, id, adj: rrf * recency * sourceP * kindP, bm25: bmScore.get(id) || 0 };
+    }).filter(Boolean).sort((a, b) => b.adj - a.adj).slice(0, limit);
+
+    return {
+      mode: vecList ? 'hybrid' : 'bm25',
+      hits: ranked.map(({ c, id, adj, bm25 }) => ({
+        id, score: Math.round(adj * 1e5) / 1e5, bm25,
+        source: c.source, refId: c.refId, title: c.title, ts: c.ts, kind: c.kind, t0: c.t0,
+        snippet: snippet(c.text, query), text: c.text,
+      })),
+    };
+  }
+
   // ---- grounded answer ----
 
   async ask(query, { onRetrieved = () => {} } = {}) {
     this._ensure();
-    const hits = this.search(query, { limit: 8 });
+    const { hits, mode } = await this.retrieve(query, { limit: 8 });
     onRetrieved(hits);
     if (!hits.length) {
       return { answer: null, reason: 'no-results', sources: [] };
     }
     // Retrieval score floor: if even the best match is weak, don't let the 3B
-    // answer from world knowledge — show the near-misses instead.
-    if ((hits[0].bm25 || 0) < 1.2) {
+    // answer from world knowledge — show the near-misses instead. In hybrid
+    // mode a strong semantic match can carry bm25=0, so only gate on BM25 when
+    // that's the only signal we have.
+    if (mode === 'bm25' && (hits[0].bm25 || 0) < 1.2) {
       return { answer: null, reason: 'weak-match', sources: hits.slice(0, 5) };
     }
     if (!this.polisher || !this.polisher.available()) {
@@ -317,6 +433,15 @@ function snippet(text, query, len = 220) {
 function clip(s, n) {
   s = String(s).replace(/\s+/g, ' ').trim();
   return s.length > n ? s.slice(0, n) + '…' : s;
+}
+
+// djb2 — a stable fingerprint of chunk text, so cached embeddings are reused
+// until the text actually changes.
+function hashText(s) {
+  let h = 5381;
+  const str = String(s);
+  for (let i = 0; i < str.length; i++) h = ((h << 5) + h + str.charCodeAt(i)) | 0;
+  return h.toString(36);
 }
 
 module.exports = { Knowledge, sectionsOf, transcriptWindows };

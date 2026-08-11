@@ -75,3 +75,15 @@ test('markDirty forces a rebuild', () => {
   k.markDirty();
   assert.equal(k.search('alpha').length, 2);
 });
+
+test('retrieve falls back to bm25 mode without an embedder', async () => {
+  const now = Date.now();
+  const k = fakeKnowledge(
+    [{ id: 'd1', ts: now, text: 'quarterly budget planning notes', app: 'Notes' }],
+    [],
+  );
+  const r = await k.retrieve('budget');
+  assert.equal(r.mode, 'bm25');
+  assert.ok(r.hits.length >= 1);
+  assert.equal(r.hits[0].source, 'dictation');
+});

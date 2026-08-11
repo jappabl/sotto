@@ -13,15 +13,34 @@ export async function renderAsk(container) {
   const stats = await window.sotto.invoke('know:stats');
   container.replaceChildren();
 
+  const modeLabel = stats.semantic && stats.semantic.on ? 'semantic + keyword' : 'keyword';
   container.append(
     el('div', { class: 'page-head' },
       el('h1', { class: 'page-title' }, 'Ask'),
       el('span', { class: 'act-meta' },
         stats.chunks
-          ? `${stats.chunks} passages across your notes`
+          ? `${stats.chunks} passages · ${modeLabel} search`
           : 'nothing captured yet'),
     ),
   );
+  // Offer the one-time semantic upgrade when the engine is present but the
+  // model isn't downloaded.
+  if (stats.chunks && stats.semantic && stats.semantic.engine && !stats.semantic.installed) {
+    container.append(
+      el('div', { class: 'ask-upgrade' },
+        el('span', {}, 'Enable semantic search so paraphrases match, not just exact words. Runs on-device.'),
+        el('button', {
+          class: 'btn-gray', style: 'white-space:nowrap',
+          onclick: async (e) => {
+            e.target.textContent = 'Downloading…';
+            try { await window.sotto.invoke('know:download-embed'); toast('Semantic search on'); }
+            catch { toast('Download failed'); }
+            renderAsk(container);
+          },
+        }, 'Turn on (140 MB)'),
+      ),
+    );
+  }
 
   const input = el('input', {
     class: 'ask-input',

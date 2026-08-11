@@ -902,6 +902,18 @@ html, body { height: 100%; overflow: hidden; background: var(--cream); }
   outline: none;
 }
 .ask-input:focus { border-color: var(--purple); }
+.ask-upgrade {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  background: var(--callout);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-top: 14px;
+  font-size: 13.5px;
+  color: var(--ink-soft);
+}
 .ask-result { margin-top: 20px; }
 .ask-answer-card {
   background: var(--card);

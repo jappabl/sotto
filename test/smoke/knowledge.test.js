@@ -9,6 +9,8 @@ const os = require('os');
 const assert = require('assert');
 const { Knowledge } = require('../../electron/knowledge');
 const { Polisher } = require('../../electron/polisher');
+const { Embedder } = require('../../electron/embedder');
+const fs = require('fs');
 
 const MODELS = path.join(os.homedir(), 'Library', 'Application Support', 'Sotto', 'models');
 
@@ -39,13 +41,13 @@ const meetingsData = [
   },
 ];
 
-function makeKnowledge(polisher) {
+function makeKnowledge(polisher, embedder = null, baseDir = null) {
   const store = { getHistory: () => history };
   const meetings = {
     list: () => meetingsData.map((m) => m.meta),
     read: (id) => meetingsData.find((m) => m.meta.id === id) || null,
   };
-  return new Knowledge({ store, meetings, orgspace: null, polisher, log: (m) => {} });
+  return new Knowledge({ store, meetings, orgspace: null, polisher, embedder, baseDir, log: (m) => {} });
 }
 
 async function main() {
@@ -66,6 +68,21 @@ async function main() {
   const r3 = kNoLLM.search('domain renewal');
   assert.equal(r3[0].source, 'dictation');
   console.log('  dictation query ->', r3[0].snippet.slice(0, 50));
+
+  // Semantic (embedding) retrieval: a paraphrase with no shared keywords.
+  const embedder = new Embedder({ modelsDir: MODELS, log: () => {} });
+  if (embedder.available()) {
+    const tmpBase = fs.mkdtempSync(path.join(os.tmpdir(), 'sotto-know-'));
+    const kh = makeKnowledge(null, embedder, tmpBase);
+    const hy = await kh.retrieve('how much should we charge big companies');
+    console.log('  paraphrase ->', hy.mode, '|', hy.hits[0] ? hy.hits[0].title : '(none)');
+    assert.equal(hy.mode, 'hybrid', 'embedder installed but hybrid mode did not engage');
+    assert.ok(hy.hits.some((h) => /pricing/i.test(h.title)), 'semantic search should surface the pricing meeting from a paraphrase');
+    embedder.stop();
+    fs.rmSync(tmpBase, { recursive: true, force: true });
+  } else {
+    console.log('  (embed model not installed — semantic step skipped)');
+  }
 
   const p = new Polisher({ modelsDir: MODELS, log: () => {} });
   if (!p.available()) {

@@ -77,8 +77,10 @@ function boot() {
     meetings.sweepOrphans();
     recorder.meetingsRef = meetings;
     const enhancer = new Enhancer({ polisher, log });
+    const { Embedder } = require('./embedder');
+    const embedder = new Embedder({ modelsDir: path.join(userData, 'models'), log });
     const { Knowledge } = require('./knowledge');
-    const knowledge = new Knowledge({ store, meetings, orgspace, polisher, log });
+    const knowledge = new Knowledge({ store, meetings, orgspace, polisher, embedder, baseDir: userData, log });
 
     // First-run demo meeting: lets you try Enhance before your first real call.
     if (meetings.list().length === 0 && !store.getSettings().demoSeeded) {
@@ -94,7 +96,7 @@ function boot() {
       flowbar: null,
       onboarding: null,
     };
-    const ctx = { store, hotkeys, transcriber, polisher, inserter, recorder, meetings, enhancer, orgspace, knowledge, windows, app, log };
+    const ctx = { store, hotkeys, transcriber, polisher, inserter, recorder, meetings, enhancer, orgspace, knowledge, embedder, windows, app, log };
 
     // Any change to the corpus invalidates the search index (rebuilt lazily).
     const origAddHistory = store.addHistoryEntry.bind(store);
@@ -269,6 +271,7 @@ function boot() {
       hotkeys.stop();
       transcriber.stopServer();
       polisher.stop();
+      embedder.stop();
       sysaudio.restore();
     });
 

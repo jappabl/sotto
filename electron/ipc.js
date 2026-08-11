@@ -301,9 +301,39 @@ function registerIpc(ctx) {
   });
 
   // ---- knowledge (ask everything) ----
-  const { knowledge } = ctx;
-  ipcMain.handle('know:stats', () => knowledge.stats());
-  ipcMain.handle('know:search', (_e, query) => knowledge.search(String(query || ''), { limit: 12 }));
+  const { knowledge, embedder } = ctx;
+  ipcMain.handle('know:stats', () => {
+    const s = knowledge.stats();
+    s.semantic = {
+      engine: !!embedder.serverBin,
+      installed: embedder.hasModel(),
+      on: store.getSettings().semanticSearch !== false && embedder.available(),
+    };
+    return s;
+  });
+  ipcMain.handle('know:search', async (_e, query) => {
+    const r = await knowledge.retrieve(String(query || ''), { limit: 12 });
+    return r.hits;
+  });
+  ipcMain.handle('know:reindex', async () => {
+    knowledge.markDirty();
+    knowledge.build();
+    if (store.getSettings().semanticSearch !== false) await knowledge.ensureVectors().catch(() => {});
+    return knowledge.stats();
+  });
+  ipcMain.handle('know:download-embed', async () => {
+    const send = (p) => {
+      if (windows.dashboard && !windows.dashboard.isDestroyed()) {
+        windows.dashboard.webContents.send('ob:model-progress', { model: 'embed', progress: p });
+      }
+    };
+    await embedder.downloadModel(send);
+    send(1);
+    knowledge.markDirty();
+    knowledge.build();
+    await knowledge.ensureVectors().catch(() => {});
+    return true;
+  });
   ipcMain.handle('know:ask', async (e, query) => {
     const send = (hits) => {
       if (windows.dashboard && !windows.dashboard.isDestroyed()) {
