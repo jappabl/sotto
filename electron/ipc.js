@@ -393,8 +393,11 @@ function registerIpc(ctx) {
       } finally {
         try { fs2.unlinkSync(tmp); } catch { /* fine */ }
       }
-      if (!question || formatter.isLikelyHallucination(question, rms)) {
-        reply({ answer: null, message: 'I didn’t catch a question.' });
+      // A mis-heard fragment ("Do.", "You") must never reach retrieval: it
+      // matches nothing and the model answers noise with noise.
+      const contentWords = question.replace(/[^a-zA-Z\s']/g, ' ').trim().split(/\s+/).filter((w) => w.length > 2);
+      if (!question || formatter.isLikelyHallucination(question, rms) || contentWords.length < 2) {
+        reply({ answer: null, message: 'I didn’t catch that.' });
         return { ok: false };
       }
       const res = await knowledge.ask(question);

@@ -352,7 +352,14 @@ class Knowledge {
       );
       const clean = String(answer || '').trim();
       if (!clean) return { answer: null, reason: 'empty', sources: top };
-      if (/^NOT_FOUND\b/i.test(clean) || /\bnot (?:in|contained|found)\b/i.test(clean) && clean.length < 90) {
+      // Refusal can arrive as a bare token, repeated once per bullet, or as
+      // prose. Treat any of those as "not in your notes" rather than letting
+      // a wall of NOT_FOUND render as an answer.
+      const withoutMarkers = clean.replace(/NOT_FOUND/gi, '').replace(/[\s•\-*.,[\]\d]/g, '');
+      if (/NOT_FOUND/i.test(clean) && withoutMarkers.length < 12) {
+        return { answer: null, reason: 'not-in-notes', sources: top };
+      }
+      if (/\bnot (?:in|contained|found)\b/i.test(clean) && clean.length < 90) {
         return { answer: null, reason: 'not-in-notes', sources: top };
       }
       const cited = new Set((clean.match(/\[(\d+)\]/g) || []).map((m) => parseInt(m.slice(1), 10) - 1));
@@ -397,7 +404,8 @@ function checkSentences(answer, sources) {
 const ASK_SYSTEM = `You answer questions using ONLY the numbered excerpts from the user's own notes.
 - Use only facts stated in the excerpts. Never use outside knowledge, never invent details.
 - End every factual claim with the bracketed number of the excerpt that supports it, like [1] or [2].
-- If the excerpts do not contain the answer, reply with exactly: NOT_FOUND
+- If the excerpts do not answer the question, your entire reply must be exactly: NOT_FOUND
+  Never write NOT_FOUND as part of a longer reply, and never repeat it.
 - Prefer the source's own wording. For questions spanning several notes, answer as a short bullet list, one source per bullet.
 - Be brief and direct. No preamble, no "based on the excerpts", no em dashes.
 

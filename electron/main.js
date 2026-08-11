@@ -439,16 +439,21 @@ async function runSmokeAutopilot(ctx) {
     }
     windows.flowbar.webContents.send('debug:flow-state', 'idle');
 
-    // The pill expanded into an answer, caught mid-reveal.
+    // Ask phases: compact while it works, expanded once it answers.
     const { setFlowbarExpanded } = require('./windows');
     setFlowbarExpanded(windows.flowbar, ctx.store.getSettings(), true);
-    await sleep(300);
+    await sleep(250);
+    for (const phase of ['listening', 'thinking']) {
+      windows.flowbar.webContents.send('debug:ask-phase', phase);
+      await sleep(600);
+      await capture(windows.flowbar, 'flow-ask-' + phase);
+    }
     windows.flowbar.webContents.send('debug:ask-demo', {
       question: 'What did I say I need to work on?',
       text: 'Fix the pricing page before Friday and reply to Sarah about the partnership.',
       sources: ['Project implementation discussion', 'Dictation in Claude'],
     });
-    await sleep(900);
+    await sleep(1100);
     await capture(windows.flowbar, 'flow-ask');
     setFlowbarExpanded(windows.flowbar, ctx.store.getSettings(), false);
     windows.flowbar.webContents.send('debug:flow-state', 'idle');

@@ -30,6 +30,7 @@ const listenChannels = [
   'flow:ask-start',
   'ask:answer',
   'debug:ask-demo',
+  'debug:ask-phase',
   'notes:changed',
 ];
 

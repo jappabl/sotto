@@ -372,6 +372,53 @@ let wordEls = [];
 
 function askSetPhase(phase) {
   pill.className = 'ask ask-' + phase;
+  if (phase !== 'answer') { pill.style.height = ''; pill.style.width = ''; }
+}
+
+// Measure the finished card, then animate the compact pill into exactly that
+// box. Measuring first matters: sampling mid-transition would read the text
+// wrapped at the narrow width and lock in a too-tall card.
+function askExpandToContent() {
+  const startW = pill.offsetWidth;
+  const startH = pill.offsetHeight;
+
+  pill.style.transition = 'none';
+  pill.classList.remove('ask-listening', 'ask-thinking', 'ask-error');
+  pill.classList.add('ask-answer');
+  pill.style.width = '';
+  pill.style.height = '';
+
+  // Width is settled once, from the fully wrapped text, so it never jitters
+  // per word. Height then grows line by line as the words arrive.
+  askAnswer.classList.add('measuring');
+  const targetW = pill.offsetWidth;
+  askAnswer.classList.remove('measuring');
+
+  pill.style.width = targetW + 'px';
+  if (wordEls.length) wordEls[0].el.classList.add('on'); // one line to open on
+  const firstH = Math.min(300, pill.offsetHeight);
+
+  pill.style.width = startW + 'px';
+  pill.style.height = startH + 'px';
+  void pill.offsetWidth; // flush the start box before animating
+  pill.style.transition = '';
+  requestAnimationFrame(() => {
+    pill.style.width = targetW + 'px';
+    pill.style.height = firstH + 'px';
+  });
+}
+
+// Re-fit height if content reflows (long answers wrapping as words land).
+function askFitHeight() {
+  if (!pill.classList.contains('ask-answer')) return;
+  const current = pill.style.height;
+  pill.style.transition = 'none';
+  pill.style.height = 'auto';
+  const target = Math.min(300, pill.offsetHeight);
+  pill.style.height = current || target + 'px';
+  void pill.offsetWidth;
+  pill.style.transition = '';
+  pill.style.height = target + 'px';
 }
 
 async function askBegin() {
@@ -478,6 +525,14 @@ function askRevealUpTo(charIndex) {
   }
 }
 
+// Reveal words up to an index in the word list (used by paced fallback).
+function askRevealCount(n) {
+  wordEls.forEach((w, i) => {
+    w.el.classList.toggle('on', i < n);
+    w.el.classList.toggle('now', i === n - 1);
+  });
+}
+
 function askRevealAll() {
   for (const w of wordEls) { w.el.classList.add('on'); w.el.classList.remove('now'); }
 }
@@ -487,8 +542,9 @@ function askPacedReveal(msPerWord = 165) {
   clearInterval(askRevealTimer);
   askRevealTimer = setInterval(() => {
     if (i >= wordEls.length) { clearInterval(askRevealTimer); askRevealAll(); return; }
-    wordEls[i].el.classList.add('on');
     i++;
+    askRevealCount(i);
+    askFitHeight();
   }, msPerWord);
 }
 
@@ -506,8 +562,9 @@ function askSpeakAndReveal(text, speaks) {
       gotBoundary = true;
       clearTimeout(guard);
       askRevealUpTo(e.charIndex);
+      askFitHeight();
     };
-    u.onend = () => { clearTimeout(guard); clearInterval(askRevealTimer); askRevealAll(); };
+    u.onend = () => { clearTimeout(guard); clearInterval(askRevealTimer); askRevealAll(); askFitHeight(); };
     u.onerror = () => { clearTimeout(guard); askPacedReveal(); };
     synth.speak(u);
   } catch {
@@ -519,23 +576,14 @@ window.sotto.on('flow:ask-start', () => askBegin());
 
 window.sotto.on('ask:answer', async (res) => {
   if (!askActive) return;
-  askQuestion.textContent = res.question || '';
   const settings = await window.sotto.invoke('settings:get').catch(() => ({}));
-  askSetPhase('answer');
-  askLabel.textContent = 'From your notes';
   const text = res.answer ? askDisplayText(res) : (res.message || 'Nothing in your notes covers that.');
+  // Lay the words out invisibly, grow the card to exactly fit them, then let
+  // them arrive in step with the voice.
   askLayoutWords(text, res.answer ? askSoftRanges(res, text) : []);
-  askSources.replaceChildren();
-  for (const s of (res.sources || []).filter((x) => x.cited).slice(0, 3)) {
-    const chip = document.createElement('div');
-    chip.className = 'src';
-    chip.textContent = s.title;
-    chip.title = s.title;
-    chip.onclick = () => window.sotto.invoke('know:open', { source: s.source, refId: s.refId });
-    askSources.appendChild(chip);
-  }
-  askSpeakAndReveal(text, settings.askSpeaks !== false);
-  askAutoClose(Math.max(9000, text.split(/\s+/).length * 260 + 5000));
+  askExpandToContent();
+  setTimeout(() => askSpeakAndReveal(text, settings.askSpeaks !== false), 240);
+  askAutoClose(Math.max(9000, text.split(/\s+/).length * 300 + 5200));
 });
 
 function askAutoClose(ms) { clearTimeout(askCloseTimer); askCloseTimer = setTimeout(askClose, ms); }
@@ -570,23 +618,20 @@ function askClose() {
 
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && askActive) askClose(); });
 
+// Visual smoke hooks.
+window.sotto.on('debug:ask-phase', (phase) => {
+  askActive = true;
+  askSetPhase(phase);
+  askLabel.textContent = phase === 'listening' ? 'Listening' : 'Thinking';
+  if (phase === 'listening') {
+    askBarEls.forEach((b, i) => { b.style.height = Math.max(2, Math.round(Math.abs(Math.sin(i * 0.7)) * 12)) + 'px'; });
+  }
+});
+
 // Visual smoke hook: show a canned mid-speech answer without listening.
 window.sotto.on('debug:ask-demo', (p) => {
   askActive = true;
-  askSetPhase('answer');
-  askLabel.textContent = 'From your notes';
-  askQuestion.textContent = p.question;
   askLayoutWords(p.text, p.soft || []);
-  askSources.replaceChildren();
-  for (const t of p.sources || []) {
-    const c = document.createElement('div');
-    c.className = 'src';
-    c.textContent = t;
-    askSources.appendChild(c);
-  }
-  const upto = Math.floor(wordEls.length * 0.62);
-  wordEls.forEach((w, i) => {
-    if (i < upto) w.el.classList.add('on');
-    if (i === upto - 1) w.el.classList.add('now');
-  });
+  askExpandToContent();
+  askRevealCount(Math.floor(wordEls.length * 0.62));
 });
