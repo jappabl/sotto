@@ -379,46 +379,36 @@ function askSetPhase(phase) {
 // box. Measuring first matters: sampling mid-transition would read the text
 // wrapped at the narrow width and lock in a too-tall card.
 function askExpandToContent() {
-  const startW = pill.offsetWidth;
-  const startH = pill.offsetHeight;
-
-  pill.style.transition = 'none';
   pill.classList.remove('ask-listening', 'ask-thinking', 'ask-error');
   pill.classList.add('ask-answer');
+  // Open on the first word and let the pill grow outward from there.
+  if (wordEls.length) wordEls[0].el.classList.add('on');
+  askFitBox();
+}
+
+// Size the pill to exactly the words revealed so far. Because the pill is
+// centered, growing the box makes it expand outward from the middle, so the
+// answer never sits in a half-empty capsule.
+function askFitBox() {
+  if (!pill.classList.contains('ask-answer')) return;
+  const curW = pill.style.width;
+  const curH = pill.style.height;
+  pill.style.transition = 'none';
   pill.style.width = '';
   pill.style.height = '';
-
-  // Width is settled once, from the fully wrapped text, so it never jitters
-  // per word. Height then grows line by line as the words arrive.
-  askAnswer.classList.add('measuring');
-  const targetW = pill.offsetWidth;
-  askAnswer.classList.remove('measuring');
-
-  pill.style.width = targetW + 'px';
-  if (wordEls.length) wordEls[0].el.classList.add('on'); // one line to open on
-  const firstH = Math.min(300, pill.offsetHeight);
-
-  pill.style.width = startW + 'px';
-  pill.style.height = startH + 'px';
-  void pill.offsetWidth; // flush the start box before animating
+  // Fractional measurement, rounded up with a hair of slack: an integer
+  // width one subpixel short makes the last word wrap onto its own line.
+  const rect = pill.getBoundingClientRect();
+  const targetW = Math.ceil(rect.width) + 2;
+  const targetH = Math.min(300, Math.ceil(rect.height));
+  pill.style.width = curW || targetW + 'px';
+  pill.style.height = curH || targetH + 'px';
+  void pill.offsetWidth; // flush the start box before animating to the new one
   pill.style.transition = '';
   requestAnimationFrame(() => {
     pill.style.width = targetW + 'px';
-    pill.style.height = firstH + 'px';
+    pill.style.height = targetH + 'px';
   });
-}
-
-// Re-fit height if content reflows (long answers wrapping as words land).
-function askFitHeight() {
-  if (!pill.classList.contains('ask-answer')) return;
-  const current = pill.style.height;
-  pill.style.transition = 'none';
-  pill.style.height = 'auto';
-  const target = Math.min(300, pill.offsetHeight);
-  pill.style.height = current || target + 'px';
-  void pill.offsetWidth;
-  pill.style.transition = '';
-  pill.style.height = target + 'px';
 }
 
 async function askBegin() {
@@ -544,7 +534,7 @@ function askPacedReveal(msPerWord = 165) {
     if (i >= wordEls.length) { clearInterval(askRevealTimer); askRevealAll(); return; }
     i++;
     askRevealCount(i);
-    askFitHeight();
+    askFitBox();
   }, msPerWord);
 }
 
@@ -562,9 +552,9 @@ function askSpeakAndReveal(text, speaks) {
       gotBoundary = true;
       clearTimeout(guard);
       askRevealUpTo(e.charIndex);
-      askFitHeight();
+      askFitBox();
     };
-    u.onend = () => { clearTimeout(guard); clearInterval(askRevealTimer); askRevealAll(); askFitHeight(); };
+    u.onend = () => { clearTimeout(guard); clearInterval(askRevealTimer); askRevealAll(); askFitBox(); };
     u.onerror = () => { clearTimeout(guard); askPacedReveal(); };
     synth.speak(u);
   } catch {
@@ -634,4 +624,5 @@ window.sotto.on('debug:ask-demo', (p) => {
   askLayoutWords(p.text, p.soft || []);
   askExpandToContent();
   askRevealCount(Math.floor(wordEls.length * 0.62));
+  askFitBox();
 });

@@ -156,8 +156,8 @@ html, body {
   cursor: default;
   overflow: hidden;
   transition:
-    width 0.46s cubic-bezier(0.22, 1, 0.32, 1),
-    height 0.34s cubic-bezier(0.22, 1, 0.32, 1);
+    width 0.3s cubic-bezier(0.22, 1, 0.32, 1),
+    height 0.3s cubic-bezier(0.22, 1, 0.32, 1);
 }
 #pill.ask #dots, #pill.ask #bars, #pill.ask #shimmer, #pill.ask #msg { display: none; }
 
@@ -181,6 +181,7 @@ html, body {
 }
 
 #ask { display: none; flex-direction: column; width: 100%; min-width: 0; }
+#pill.ask-answer #ask { width: auto; }
 #pill.ask #ask { display: flex; }
 
 #ask-dot { display: none; }
@@ -225,6 +226,7 @@ html, body {
 #ask-answer { display: none; }
 #pill.ask-answer #ask-answer {
   display: block;
+  width: auto;
   font-size: 15.5px;
   font-weight: 500;
   line-height: 1.45;
@@ -245,4 +247,3 @@ html, body {
 }
 .w.on { display: inline-block; opacity: 1; filter: blur(0); transform: none; }
 .w.soft { color: rgba(255, 255, 255, 0.62); }
-#ask-answer.measuring .w { display: inline-block; opacity: 0; }
