@@ -208,6 +208,24 @@ html, body { height: 100%; overflow: hidden; background: var(--cream); }
   gap: 18px;
   margin-bottom: 18px;
 }
+/* Connect-calendar affordance: the mark carries it, so the button is just a
+   resting place for the mark. A worded button wrapped onto two lines here. */
+.btn-cal {
+  flex: none;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.btn-cal:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,.08); }
+.btn-cal:active { transform: translateY(0); }
+.btn-cal span { display: grid; place-items: center; }
+
 .tip-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 7px; }
 .tip-card p { color: var(--ink-soft); font-size: 14px; }
 

@@ -57,12 +57,23 @@ function navItem(key, def) {
   return item;
 }
 
-async function navigate(key) {
+// Page renders paint into the shared container as their data arrives, so two
+// running at once means a slow one can paint over the page you switched to.
+// One at a time makes that impossible.
+let navChain = Promise.resolve();
+
+function navigate(key) {
+  navChain = navChain.then(() => renderPage(key), () => renderPage(key));
+  return navChain;
+}
+
+async function renderPage(key) {
   current = key;
   buildNav();
   const def = PAGES[key] || BOTTOM_PAGES[key];
   page.scrollTop = 0;
   await def.render(page);
+  page.dataset.page = key;
 }
 
 window.addEventListener('navigate', (e) => navigate(e.detail));

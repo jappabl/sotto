@@ -35,4 +35,17 @@ export const icons = {
   people: s('<circle cx="5.5" cy="5.5" r="2.3"/><path d="M1.8 13.4a3.7 3.7 0 0 1 7.4 0"/><circle cx="11" cy="5" r="1.9"/><path d="M10.2 9.3a3.4 3.4 0 0 1 4 3.4"/>'),
   notepad: s('<rect x="3" y="2" width="10" height="12.5" rx="1.6"/><path d="M5.6 5.5h4.8M5.6 8h4.8M5.6 10.5h3"/>'),
   sparkleSearch: s('<circle cx="6.8" cy="6.8" r="4.2"/><path d="m10 10 3.4 3.4"/><path d="M6.8 4.4l.5 1.4 1.4.5-1.4.5-.5 1.4-.5-1.4-1.4-.5 1.4-.5z" fill="currentColor" stroke="none"/>'),
+
+  // Google Calendar mark, for the connect affordance. Calendars reach Sotto
+  // through macOS Calendar, which is where most people's Google account lives.
+  gcal: `<svg viewBox="0 0 48 48" width="22" height="22" aria-hidden="true">
+    <rect x="10" y="10" width="28" height="28" fill="#fff"/>
+    <path d="M10 10h28v5H10z" fill="#ea4335"/>
+    <path d="M33 10h5v28h-5z" fill="#fbbc04"/>
+    <path d="M10 33h28v5H10z" fill="#34a853"/>
+    <path d="M10 10h5v28h-5z" fill="#1967d2"/>
+    <rect x="15" y="15" width="18" height="18" fill="#fff"/>
+    <text x="24" y="30" font-size="14" font-weight="700" fill="#1967d2"
+      text-anchor="middle" font-family="Helvetica,Arial,sans-serif">31</text>
+  </svg>`,
 };

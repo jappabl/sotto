@@ -31,12 +31,11 @@ export async function renderMeetings(container) {
 // ---------------------------------------------------------------------------
 
 async function renderList(container) {
-  const [meetings, status, org, shared, cal] = await Promise.all([
+  const [meetings, status, org, shared] = await Promise.all([
     window.sotto.invoke('meet:list'),
     window.sotto.invoke('meet:status'),
     window.sotto.invoke('org:status'),
     window.sotto.invoke('org:list'),
-    window.sotto.invoke('cal:status').catch(() => ({ available: false })),
   ]);
   container.replaceChildren();
   unsubs.push(window.sotto.on('org:changed', () => {
@@ -63,7 +62,11 @@ async function renderList(container) {
     ),
   );
 
-  await renderComingUp(container, cal);
+  // The calendar helper is a process spawn, so it must never gate the page.
+  // Reserve the slot in document order and fill it when it answers.
+  const comingSlot = el('div');
+  container.append(comingSlot);
+  fillComingUp(comingSlot, container);
 
   if (meetings.length === 0) {
     container.append(
@@ -134,31 +137,35 @@ async function renderList(container) {
 
 // "Coming up": the next few calendar meetings, each with a brief built from
 // what you already know about the people in them.
-async function renderComingUp(container, cal) {
+async function fillComingUp(slot, container) {
+  const cal = await window.sotto.invoke('cal:status').catch(() => ({ available: false }));
+  // The page may have moved on while the helper was starting up.
+  if (!slot.isConnected) return;
   if (!cal || !cal.available) return;
   if (cal.status !== 'authorized') {
-    container.append(
+    slot.append(
       el('div', { class: 'tip-card', style: 'margin-bottom:22px' },
         el('div', {},
           el('h3', {}, 'Get briefed before every call'),
           el('p', {}, 'Let Sotto read your calendar and it will remind you what you last agreed with the people you are about to meet. Read-only, and it stays on this Mac.'),
         ),
         el('button', {
-          class: 'btn-dark',
+          class: 'btn-cal',
+          title: 'Connect calendar',
           onclick: async () => {
             await window.sotto.invoke('cal:request');
             renderList(container);
           },
-        }, 'Connect calendar'),
+        }, el('span', { html: icons.gcal })),
       ),
     );
     return;
   }
 
   const { events } = await window.sotto.invoke('cal:upcoming', 12).catch(() => ({ events: [] }));
-  if (!events.length) return;
+  if (!events.length || !slot.isConnected) return;
 
-  container.append(el('div', { class: 'day-label' }, 'COMING UP'));
+  slot.append(el('div', { class: 'day-label' }, 'COMING UP'));
   const list = el('div', { class: 'activity-list' });
   for (const ev of events.slice(0, 4)) {
     const who = (ev.attendees || []).map((a) => a.name || a.email).filter(Boolean);
@@ -181,7 +188,7 @@ async function renderComingUp(container, cal) {
     );
     list.append(row);
   }
-  container.append(list);
+  slot.append(list);
 
   // A notification click asks us to open a specific brief immediately.
   unsubs.push(window.sotto.on('brief:open', async ({ eventId }) => {

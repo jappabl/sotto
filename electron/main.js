@@ -466,8 +466,22 @@ async function runSmokeAutopilot(ctx) {
     await sleep(600);
     for (const page of ['home', 'ask', 'meetings', 'dictionary', 'snippets', 'style', 'insights', 'settings', 'help']) {
       windows.dashboard.webContents.send('debug:navigate', page);
-      await sleep(650);
+      // Wait for the page to actually finish rendering rather than guessing at
+      // a sleep. A capture of the wrong page is still a valid PNG, so file size
+      // alone can never catch a stuck or overtaken navigation.
+      const state = async () => windows.dashboard.webContents.executeJavaScript(
+        `(function(){var p=document.getElementById('page');var h=p.querySelector('h1');
+          return (p.dataset.page||'?')+' | painted:'+((h&&h.textContent)||'(no h1)').slice(0,30);})()`,
+      ).catch(() => '');
+      let seen = '';
+      for (let i = 0; i < 40; i++) {
+        seen = String(await state());
+        if (seen.split('|')[0].trim() === page) break;
+        await sleep(100);
+      }
+      await sleep(250);
       await capture(windows.dashboard, 'dash-' + page);
+      process.stdout.write(`PAGE ${page} :: ${seen.trim()}\n`);
     }
 
     for (const state of ['idle', 'recording', 'processing', 'flash', 'error', 'command', 'meeting']) {

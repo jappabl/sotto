@@ -70,7 +70,11 @@ const child = spawn(electron, ['.'], {
 
 let out = '';
 let err = '';
-child.stdout.on('data', (d) => { out += d; });
+child.stdout.on('data', (d) => {
+  out += d;
+  // Echo the per-page render reports so a wrong capture is legible in the log.
+  for (const l of String(d).split('\n')) if (l.startsWith('PAGE ')) console.log(l);
+});
 child.stderr.on('data', (d) => { err += d; });
 
 const timeout = setTimeout(() => {
@@ -100,6 +104,15 @@ child.on('exit', (code) => {
       const min = name.startsWith('flow-') ? 1500 : 4000;
       assert.ok(fs.statSync(p).size > min, 'capture suspiciously small: ' + name);
     }
+    // Each dashboard capture must actually be the page it claims to be.
+    for (const page of ['home', 'ask', 'meetings', 'dictionary', 'snippets', 'style',
+      'insights', 'settings', 'help']) {
+      const line = out.split('\n').find((l) => l.startsWith('PAGE ' + page + ' ::'));
+      assert.ok(line, 'no PAGE report for ' + page);
+      assert.equal(line.split('::')[1].split('|')[0].trim(), page,
+        `dash-${page}.png captured a page that had not finished rendering: ${line}`);
+    }
+
     // Renderer errors bubble to stderr as console messages in smoke mode.
     assert.ok(!/Uncaught|TypeError|ReferenceError/.test(err), 'renderer errors:\n' + err);
     console.log('APPLAUNCH_SMOKE_OK — captures in', SHOTS);
