@@ -29,6 +29,7 @@ fs.symlinkSync(realModels, path.join(USERDATA, 'models'));
 
 fs.writeFileSync(path.join(USERDATA, 'settings.json'), JSON.stringify({
   onboarded: true, userName: 'Test', soundEffects: false,
+  ...(process.env.SOTTO_BENCH ? JSON.parse(process.env.SOTTO_BENCH) : {}),
 }));
 
 const electron = path.join(ROOT, 'node_modules', '.bin', 'electron');
@@ -48,7 +49,11 @@ const child = spawn(electron, ['.'], {
 
 let out = '';
 let err = '';
-child.stdout.on('data', (d) => { out += d; });
+child.stdout.on('data', (d) => {
+  out += d;
+  // Surface the per-stage latency line so a regression is visible in the run.
+  for (const l of String(d).split('\n')) if (l.includes('latency {')) console.log(l.trim());
+});
 child.stderr.on('data', (d) => { err += d; });
 
 const timeout = setTimeout(() => {

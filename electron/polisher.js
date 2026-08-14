@@ -156,6 +156,9 @@ class Polisher {
         temperature: 0,
         max_tokens: maxTokens,
         stream: false,
+        // The system prompt and few-shot examples are identical on every call.
+        // Without this the server re-reads that whole prefix each time.
+        cache_prompt: true,
       });
       const req = http.request({
         host: '127.0.0.1',
@@ -187,6 +190,27 @@ class Polisher {
    * the caller should keep its deterministic version (any failure or
    * suspicious output).
    */
+  // Load the model and put the constant prefix in the KV cache. Called when
+  // recording starts, so it runs while the user is still talking instead of
+  // after they stop.
+  async warm() {
+    if (!(await this.ensureServer().catch(() => false))) return false;
+    if (this._warmedAt && Date.now() - this._warmedAt < 10 * 60000) return true;
+    const messages = [{ role: 'system', content: POLISH_SYSTEM }];
+    for (const [input, output] of FEW_SHOT) {
+      messages.push({ role: 'user', content: input });
+      messages.push({ role: 'assistant', content: output });
+    }
+    messages.push({ role: 'user', content: 'ok' });
+    try {
+      await this._chat(messages, { maxTokens: 1, timeoutMs: 20000 });
+      this._warmedAt = Date.now();
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
   async polish(text, { context = null, appName = '' } = {}) {
     if (!text || text.length < 8) return null;
     if (!(await this.ensureServer().catch(() => false))) return null;

@@ -123,6 +123,13 @@ class Recorder {
     this.commandMode = false;
     if (this.onStateChange) this.onStateChange('recording');
     this.hotkeys.setRecording(true);
+    // Load the models now rather than when the key comes up. Whatever this
+    // costs is hidden behind the time spent speaking, which is the only free
+    // time in the whole pipeline.
+    this.transcriber.ensureServer(settings.model).catch(() => {});
+    if (settings.aiPolish && this.polisher && settings.cleanupLevel !== 'none') {
+      this.polisher.warm().catch(() => {});
+    }
     // Snapshot the frontmost app + text context now — that's where text lands.
     this.hotkeys.queryFront().then((f) => { this.frontApp = f; });
     this.context = { ok: false, before: '', after: '', selected: '' };
@@ -149,6 +156,8 @@ class Recorder {
 
   stopRecording() {
     if (this.state !== 'recording') return;
+    // Everything from here until the text lands is latency the user sits through.
+    this.releasedAt = Date.now();
     this.state = 'processing';
     if (this.onStateChange) this.onStateChange('processing');
     this.handsFree = false;
@@ -219,7 +228,9 @@ class Recorder {
 
     const audioFile = `a-${Date.now()}.wav`;
     const wavPath = path.join(this.store.audioDir, audioFile);
+    const tDeliver = Date.now();
     fs.writeFileSync(wavPath, Buffer.from(wav));
+    const tWav = Date.now();
 
     try {
       const t0 = Date.now();
@@ -227,7 +238,8 @@ class Recorder {
         model: settings.model,
         language: settings.language,
       });
-      this.log(`transcribed in ${Date.now() - t0}ms via ${engine}: ${rawText.slice(0, 60)}`);
+      const tAsr = Date.now();
+      this.log(`transcribed in ${tAsr - t0}ms via ${engine}: ${rawText.slice(0, 60)}`);
 
       if (this.commandMode) {
         return await this._handleCommand(rawText, { durMs, audioFile, wavPath });
@@ -285,6 +297,8 @@ class Recorder {
         }
       }
 
+      const tPolish = Date.now();
+
       // Continuation casing/spacing against the text already around the cursor.
       if (this.context.ok) {
         text = formatter.adjustForContext(text, this.context.before, this.context.after);
@@ -313,6 +327,18 @@ class Recorder {
       }
 
       await this.inserter.insert(text, { pressEnter });
+      // One line per dictation, so a slow one can be explained rather than guessed at.
+      if (this.releasedAt) {
+        this.log('latency ' + JSON.stringify({
+          total: Date.now() - this.releasedAt,
+          deliver: tDeliver - this.releasedAt,
+          wav: tWav - tDeliver,
+          asr: tAsr - t0,
+          polish: tPolish - tAsr,
+          insert: Date.now() - tPolish,
+          audioMs: durMs,
+        }));
+      }
       this._finish({ words: entry.words });
       this._sendDashboard('data:changed', { what: 'history' });
       this._scheduleAutoLearn(text);

@@ -96,6 +96,8 @@ class Transcriber {
       '--host', '127.0.0.1',
       '--port', String(port),
       '-nt',
+      // Default is 4 regardless of machine; the encoder is the whole cost here.
+      '-t', String(Math.max(4, Math.min(8, os.cpus().length - 2))),
     ];
     this.log(`starting whisper-server on :${port} with ${model}`);
     const proc = spawn(this.serverBin, args, { stdio: ['ignore', 'pipe', 'pipe'] });

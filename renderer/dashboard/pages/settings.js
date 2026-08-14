@@ -59,7 +59,8 @@ export async function renderSettings(container) {
     body.append(hotkeyRow(settings, rerender));
     body.append(selectRow({
       name: 'Language',
-      desc: 'Language you dictate in. Auto-detect figures it out per dictation.',
+      desc: 'Language you dictate in. Auto-detect re-checks on every dictation, '
+        + 'which makes each one about a second slower. Naming your language skips that.',
       value: settings.language,
       options: LANGS,
       onChange: async (v) => { await save({ language: v }); },

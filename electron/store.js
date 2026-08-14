@@ -5,11 +5,22 @@
 const fs = require('fs');
 const path = require('path');
 
+// Auto-detect costs a whole extra encode pass per dictation, so start from the
+// system language and let multilingual users opt into 'auto' deliberately.
+function defaultLanguage() {
+  try {
+    const code = String(require('electron').app.getLocale() || 'en').split('-')[0].toLowerCase();
+    return /^[a-z]{2}$/.test(code) ? code : 'en';
+  } catch {
+    return 'en';
+  }
+}
+
 const DEFAULT_SETTINGS = {
   userName: '',
   onboarded: false,
   hotkey: 'fn',              // 'fn' | 'ctrl+alt' | 'rcmd' | 'ralt'
-  language: 'auto',          // whisper language code or 'auto'
+  language: defaultLanguage(), // whisper language code, or 'auto' to detect each time
   model: 'ggml-base.bin',
   soundEffects: true,
   muteWhileDictating: true,  // silence speakers during capture (no bleed)

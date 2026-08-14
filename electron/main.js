@@ -556,6 +556,17 @@ async function runE2EDictation(ctx) {
   await waitLoaded(windows.flowbar);
   await sleep(1500);
 
+  // Repeat runs measure the warm path: the first pays for loading the models.
+  const runs = parseInt(process.env.SOTTO_E2E_RUNS || '1', 10);
+  for (let i = 1; i < runs; i++) {
+    hotkeys.send('test-fn 1');
+    await sleep(holdMs);
+    hotkeys.send('test-fn 0');
+    const warmDeadline = Date.now() + 60000;
+    while (Date.now() < warmDeadline && recorder.state !== 'idle') await sleep(200);
+    await sleep(600);
+  }
+
   // Synthesize the fn hold through keymon's test hook.
   hotkeys.send('test-fn 1');
   await sleep(holdMs);

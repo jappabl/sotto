@@ -1,16 +1,16 @@
 # Graph Report - wispr  (2026-08-11)
 
 ## Corpus Check
-- 67 files · ~185,304 words
+- 68 files · ~186,678 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 527 nodes · 894 edges · 30 communities detected
+- 532 nodes · 901 edges · 30 communities detected
 - Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 35 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `7bdf3960`
+- Built from commit: `5e5846bb`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -70,7 +70,7 @@
 - `orgNameModal()` --calls--> `openModal()`  [INFERRED]
   renderer/dashboard/pages/settings.js → renderer/dashboard/ui.js
 
-## Communities (52 total, 10 thin omitted)
+## Communities (53 total, 9 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.07
@@ -121,39 +121,43 @@ Cohesion: 0.22
 Nodes (7): runSmokeAutopilot(), clamp01(), createFlowbar(), createOnboarding(), flowbarBounds(), setFlowbarExpanded(), setFlowbarPosition()
 
 ### Community 14 - "Community 14"
+Cohesion: 0.24
+Nodes (4): Calendar, conferenceUrl(), findCalmon(), isMeeting()
+
+### Community 15 - "Community 15"
 Cohesion: 0.29
 Nodes (5): Briefer, decodeEntities(), httpsGetText(), stripHtml(), tidyBrief()
 
-### Community 15 - "Community 15"
+### Community 16 - "Community 16"
 Cohesion: 0.27
 Nodes (4): defaultTitle(), Notes, readOr(), sanitize()
 
-### Community 17 - "Community 17"
+### Community 18 - "Community 18"
 Cohesion: 0.38
 Nodes (3): GitOrg, normalizeRepoRef(), run()
 
-### Community 18 - "Community 18"
+### Community 19 - "Community 19"
 Cohesion: 0.31
 Nodes (5): ChunkWriter, convertToInt16Mono16k(), emit(), startMicCapture(), startSystemCapture()
 
-### Community 19 - "Community 19"
+### Community 20 - "Community 20"
 Cohesion: 0.27
 Nodes (4): BM25, reciprocalRankFusion(), stem(), tokenize()
 
-### Community 21 - "Community 21"
+### Community 22 - "Community 22"
 Cohesion: 0.42
 Nodes (9): emit(), emitMods(), focusedContext(), handle(), installTap(), meetingProbe(), postKeyChord(), tapCallback() (+1 more)
 
 ### Community 23 - "Community 23"
+Cohesion: 0.57
+Nodes (7): authStatusString(), emailOf(), emit(), handle(), myStatus(), requestAccess(), upcoming()
+
+### Community 24 - "Community 24"
 Cohesion: 0.48
 Nodes (5): el(), go(), render(), renderDots(), stopMicMeter()
 
-### Community 24 - "Community 24"
-Cohesion: 0.67
-Nodes (6): authStatusString(), emailOf(), emit(), handle(), requestAccess(), upcoming()
-
 ## Knowledge Gaps
-- **10 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
