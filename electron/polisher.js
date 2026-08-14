@@ -46,6 +46,25 @@ const FEW_SHOT = [
   ['What time does the meeting start?', 'What time does the meeting start?'],
 ];
 
+// Polish exists to resolve self-corrections and disfluencies. On a transcript
+// that has none, a 3B model has nothing to fix and starts inventing work:
+// measured against real dictations it flipped "my system" to "your system",
+// expanded "spec" to "specification", dropped question marks, and once
+// answered the transcript instead of cleaning it. So only call it when the
+// text actually shows evidence of the thing it is for.
+const CORRECTION_CUE = /\b(no wait|wait no|scratch that|i mean|or rather|nevermind|never mind)\b/i;
+const RETRACTION_CUE = /\b(no|not)[,\s]+(actually|rather)\b|\bactually[,\s]+(no|i)\b/i;
+const FILLER_CUE = /\b(um+|uh+|erm|hmm+|you know)\b/i;
+const REPEATED_WORD = /\b(\w+)\s+\1\b/i;
+const NEGATED_RESTATE = /\bnot\s+\w+[,\s]+(the\s+)?(following|next|instead)\b/i;
+
+function needsPolish(text) {
+  const t = String(text || '');
+  if (!t) return false;
+  return CORRECTION_CUE.test(t) || RETRACTION_CUE.test(t) || FILLER_CUE.test(t)
+    || REPEATED_WORD.test(t) || NEGATED_RESTATE.test(t);
+}
+
 class Polisher {
   constructor({ modelsDir, log = () => {} }) {
     this.modelsDir = modelsDir;
@@ -273,6 +292,18 @@ function validatePolish(input, output) {
   let out = stripWrapping(output);
   if (!out) return null;
   if (/^(here is|here's|sure|certainly|i cannot|i can't|as an ai|the cleaned)/i.test(out)) return null;
+  // Answering or interpreting the transcript rather than cleaning it.
+  if (/^(i think you mean|you (probably )?mean|it (sounds|seems) like)/i.test(out)) return null;
+  // A question must stay a question. The model likes dropping the mark.
+  if (/\?\s*$/.test(input.trim()) && !/\?\s*$/.test(out.trim())) return null;
+  // Whose thing it is is not a cleanup decision: "my system" must not come
+  // back as "your system". Only additions are suspect. Dropping a pronoun is
+  // ordinary cleanup ("You know what, forget it" losing its "you").
+  const person = (s2, re) => (String(s2).toLowerCase().match(re) || []).length;
+  const FIRST = /\b(i|me|my|mine|myself|we|us|our|ours)\b/g;
+  const SECOND = /\b(you|your|yours|yourself)\b/g;
+  if (person(out, FIRST) > person(input, FIRST)
+      || person(out, SECOND) > person(input, SECOND)) return null;
   if (out.includes('\n') && !input.includes('\n')) return null;
   const ratio = out.length / input.length;
   if (ratio < 0.25 || ratio > 1.5) return null;
@@ -298,4 +329,4 @@ function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms));
 }
 
-module.exports = { Polisher, LLM_MODELS, DEFAULT_LLM, validatePolish };
+module.exports = { Polisher, LLM_MODELS, DEFAULT_LLM, validatePolish, needsPolish };

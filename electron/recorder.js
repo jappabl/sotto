@@ -282,7 +282,9 @@ class Recorder {
 
       // Optional local-LLM polish: catches fuzzy corrections the rules
       // missed. Deterministic text is the floor — null means keep ours.
-      if (settings.aiPolish && this.polisher && settings.cleanupLevel !== 'none') {
+      const { needsPolish } = require('./polisher');
+      if (settings.aiPolish && this.polisher && settings.cleanupLevel !== 'none'
+          && needsPolish(text)) {
         const polished = await this.polisher.polish(text, {
           context: this.context.ok ? this.context : null,
           appName: this.frontApp.name,

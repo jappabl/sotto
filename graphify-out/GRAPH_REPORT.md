@@ -1,16 +1,16 @@
-# Graph Report - wispr  (2026-08-11)
+# Graph Report - wispr  (2026-08-14)
 
 ## Corpus Check
-- 68 files · ~186,678 words
+- 68 files · ~120,725 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 532 nodes · 901 edges · 30 communities detected
+- 534 nodes · 905 edges · 30 communities detected
 - Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 35 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `5e5846bb`
+- Built from commit: `03294eb6`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -54,8 +54,8 @@
 5. `Hotkeys` - 17 edges
 6. `el()` - 14 edges
 7. `Transcriber` - 13 edges
-8. `Knowledge` - 13 edges
-9. `Polisher` - 12 edges
+8. `Polisher` - 13 edges
+9. `Knowledge` - 13 edges
 10. `Embedder` - 12 edges
 
 ## Surprising Connections (you probably didn't know these)
@@ -113,7 +113,7 @@ Cohesion: 0.19
 Nodes (9): droppedNames(), Enhancer, transcriptWindows(), annotate(), containment(), isEcho(), mapSources(), noteLines() (+1 more)
 
 ### Community 12 - "Community 12"
-Cohesion: 0.27
+Cohesion: 0.26
 Nodes (4): Polisher, sleep(), stripWrapping(), validatePolish()
 
 ### Community 13 - "Community 13"
