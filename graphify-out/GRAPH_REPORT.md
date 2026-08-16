@@ -1,16 +1,16 @@
 # Graph Report - wispr  (2026-08-14)
 
 ## Corpus Check
-- 68 files · ~120,725 words
+- 69 files · ~121,305 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 534 nodes · 905 edges · 30 communities detected
-- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 35 edges (avg confidence: 0.8)
+- 536 nodes · 907 edges · 30 communities detected
+- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 36 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `03294eb6`
+- Built from commit: `cd10510b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -70,7 +70,7 @@
 - `orgNameModal()` --calls--> `openModal()`  [INFERRED]
   renderer/dashboard/pages/settings.js → renderer/dashboard/ui.js
 
-## Communities (53 total, 9 thin omitted)
+## Communities (54 total, 9 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.07
@@ -113,8 +113,8 @@ Cohesion: 0.19
 Nodes (9): droppedNames(), Enhancer, transcriptWindows(), annotate(), containment(), isEcho(), mapSources(), noteLines() (+1 more)
 
 ### Community 12 - "Community 12"
-Cohesion: 0.26
-Nodes (4): Polisher, sleep(), stripWrapping(), validatePolish()
+Cohesion: 0.24
+Nodes (5): needsPolish(), Polisher, sleep(), stripWrapping(), validatePolish()
 
 ### Community 13 - "Community 13"
 Cohesion: 0.22
@@ -163,11 +163,11 @@ Nodes (5): el(), go(), render(), renderDots(), stopMicMeter()
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `formatTranscript()` connect `Community 5` to `Community 11`, `Community 6`?**
-  _High betweenness centrality (0.029) - this node is a cross-community bridge._
-- **Why does `applyCorrections()` connect `Community 6` to `Community 5`?**
-  _High betweenness centrality (0.015) - this node is a cross-community bridge._
-- **Why does `isEcho()` connect `Community 10` to `Community 3`?**
-  _High betweenness centrality (0.013) - this node is a cross-community bridge._
+  _High betweenness centrality (0.064) - this node is a cross-community bridge._
+- **Why does `needsPolish()` connect `Community 12` to `Community 11`?**
+  _High betweenness centrality (0.042) - this node is a cross-community bridge._
+- **Why does `Polisher` connect `Community 12` to `Community 1`?**
+  _High betweenness centrality (0.041) - this node is a cross-community bridge._
 - **Are the 4 inferred relationships involving `formatTranscript()` (e.g. with `main()` and `._handleBrainDump()`) actually correct?**
   _`formatTranscript()` has 4 INFERRED edges - model-reasoned connections that need verification._
 - **Should `Community 0` be split into smaller, more focused modules?**

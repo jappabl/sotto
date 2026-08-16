@@ -119,6 +119,10 @@
     "mtime": 1786398811.7673452,
     "hash": "27b07d917b80332f9b94354cfbdbff4c"
   },
+  "/Users/hlin/Documents/badminton/code/wispr/test/unit/polish-gate.test.js": {
+    "mtime": 1786697620.102777,
+    "hash": "46f21ab23d62da69b909681aa974acc9"
+  },
   "/Users/hlin/Documents/badminton/code/wispr/test/unit/provenance.test.js": {
     "mtime": 1786397924.5734816,
     "hash": "2f86ca5717035a0097f1ef617e9b6298"
@@ -168,8 +172,8 @@
     "hash": "a0423d1c95587a635e6dc4093c3daa3a"
   },
   "/Users/hlin/Documents/badminton/code/wispr/electron/recorder.js": {
-    "mtime": 1786696509.55689,
-    "hash": "59d298b92ad0a98595315940ef4bf54f"
+    "mtime": 1786697422.9441953,
+    "hash": "8c1879c63cf7ef53c42ce06c9be14b8b"
   },
   "/Users/hlin/Documents/badminton/code/wispr/electron/meetings.js": {
     "mtime": 1786397814.722362,
@@ -204,8 +208,8 @@
     "hash": "37e7e70550b389ab62cdce5f6dc1effe"
   },
   "/Users/hlin/Documents/badminton/code/wispr/electron/polisher.js": {
-    "mtime": 1786696509.5553238,
-    "hash": "ef2806fc021608a3d4041ac7e6ed29e0"
+    "mtime": 1786697620.065232,
+    "hash": "30b42b4ca8b43a80138338d82292467f"
   },
   "/Users/hlin/Documents/badminton/code/wispr/electron/formatter.js": {
     "mtime": 1786391832.7469416,

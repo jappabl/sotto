@@ -1,7 +1,7 @@
 {
   "name": "sotto",
   "productName": "Sotto",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Open-source local voice dictation for macOS — hold a key, speak, and polished text appears in any app.",
   "license": "MIT",
   "author": "Hao Lin",
